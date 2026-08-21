@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" fill="none">
+  <rect width="640" height="360" fill="#0f172a"/>
+  <rect x="24" y="18" width="592" height="324" rx="14" fill="#f8fafc"/>
+  <rect x="24" y="18" width="592" height="36" rx="14" fill="#e2e8f0"/>
+  <circle cx="48" cy="36" r="5" fill="#f87171"/>
+  <circle cx="66" cy="36" r="5" fill="#fbbf24"/>
+  <circle cx="84" cy="36" r="5" fill="#34d399"/>
+  <rect x="110" y="28" width="220" height="16" rx="8" fill="#cbd5e1"/>
+  <rect x="48" y="72" width="120" height="12" rx="6" fill="#2563eb"/>
+  <rect x="48" y="96" width="380" height="22" rx="8" fill="#0f172a"/>
+  <rect x="48" y="128" width="260" height="22" rx="8" fill="#1e293b"/>
+  <rect x="48" y="168" width="520" height="10" rx="5" fill="#cbd5e1"/>
+  <rect x="48" y="188" width="490" height="10" rx="5" fill="#e2e8f0"/>
+  <rect x="48" y="208" width="505" height="10" rx="5" fill="#e2e8f0"/>
+  <rect x="48" y="236" width="180" height="28" rx="8" fill="#dbeafe"/>
+  <text x="58" y="255" font-family="Arial" font-size="12" fill="#1d4ed8">Northline CRM - DR 91</text>
+  <rect x="48" y="280" width="90" height="32" rx="16" fill="#2563eb"/>
+</svg>

@@ -1,0 +1,385 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const publishers = [
+  { domain: 'entrepreneur.com', dr: 93, traffic: '12.8M', niche: 'Business' },
+  { domain: 'inc.com', dr: 92, traffic: '9.4M', niche: 'Startups' },
+  { domain: 'techradar.com', dr: 93, traffic: '48.1M', niche: 'Technology' },
+  { domain: 'searchenginejournal.com', dr: 91, traffic: '2.1M', niche: 'SEO' },
+  { domain: 'hubspot.com', dr: 93, traffic: '31.6M', niche: 'SaaS' },
+  { domain: 'zdnet.com', dr: 93, traffic: '18.7M', niche: 'IT' },
+  { domain: 'fastcompany.com', dr: 91, traffic: '8.9M', niche: 'Innovation' },
+  { domain: 'businessinsider.com', dr: 94, traffic: '52.3M', niche: 'News' },
+];
+
+const listings = [
+  { domain: 'fintechinsider.co', dr: 82, traffic: '186K', niche: 'Fintech', price: '$420', type: 'Guest post' },
+  { domain: 'saasweekly.io', dr: 76, traffic: '94K', niche: 'SaaS', price: '$310', type: 'Sponsored article' },
+  { domain: 'healthauthority.media', dr: 79, traffic: '141K', niche: 'Health', price: '$365', type: 'Guest post' },
+  { domain: 'climatedesk.org', dr: 84, traffic: '210K', niche: 'Sustainability', price: '$490', type: 'Editorial' },
+  { domain: 'retailgrowth.news', dr: 74, traffic: '67K', niche: 'Ecommerce', price: '$245', type: 'Guest post' },
+  { domain: 'cyberbrief.tech', dr: 81, traffic: '128K', niche: 'Cybersecurity', price: '$405', type: 'Resource page' },
+];
+
+const proofs = [
+  {
+    brand: 'Northline CRM',
+    placement: 'DR 91 SaaS publication',
+    result: '+38% organic signups in 90 days',
+    metric: '12.4K referring sessions',
+    image: '/proof-saas.svg',
+    alt: 'Live guest post on a DR 91 SaaS publication featuring Northline CRM',
+  },
+  {
+    brand: 'HarborPay',
+    placement: 'DR 88 fintech editorial',
+    result: 'Keyword cluster moved to page 1',
+    metric: 'DR 41 → 54 in 4 months',
+    image: '/proof-fintech.svg',
+    alt: 'Verified HarborPay editorial placement on a DR 88 fintech site',
+  },
+  {
+    brand: 'LumenFit',
+    placement: 'DR 79 health authority site',
+    result: 'Brand SERP dominated by earned mentions',
+    metric: '2.1M monthly organic on host',
+    image: '/proof-health.svg',
+    alt: 'LumenFit guest article live on a high-traffic health publisher',
+  },
+  {
+    brand: 'Orbit Analytics',
+    placement: 'DR 93 technology newsroom',
+    result: 'Pipeline sourced from referral traffic',
+    metric: '$180K influenced pipeline',
+    image: '/proof-tech.svg',
+    alt: 'Orbit Analytics mentioned in a DR 93 technology newsroom article',
+  },
+];
+
+const reviews = [
+  {
+    name: 'Maya Chen',
+    role: 'Head of Growth, Northline CRM',
+    quote:
+      'We stopped buying mystery links and started buying placements we could actually inspect. DR, traffic, and topical fit were all visible before we paid. Our category terms finally moved.',
+  },
+  {
+    name: 'James Whitaker',
+    role: 'Founder, HarborPay',
+    quote:
+      'Web Grouth made it simple to put HarborPay on fintech sites our buyers already read. The live traffic numbers matched what we saw in Ahrefs. That trust is why we keep coming back.',
+  },
+  {
+    name: 'Priya Nair',
+    role: 'CMO, LumenFit',
+    quote:
+      'Guest posts used to feel like a gamble. Here every listing shows organic traffic, DR, and niche. We booked four health placements in a week and watched branded search lift the same quarter.',
+  },
+  {
+    name: 'Daniel Ortiz',
+    role: 'VP Marketing, Orbit Analytics',
+    quote:
+      'As a SaaS brand we needed editorial quality, not blog spam. The marketplace filters for real organic traffic saved us months of outreach. Sales even used two of the articles in late-stage deals.',
+  },
+];
+---
+
+<BaseLayout>
+  <section class="relative flex min-h-[calc(100svh-3.5rem)] flex-col justify-center overflow-hidden bg-gradient-to-b from-white via-slate-50 to-slate-50 sm:min-h-0">
+    <div class="pointer-events-none absolute -left-24 top-10 h-56 w-56 rounded-full bg-brand-200/50 blur-3xl"></div>
+    <div class="pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-blue-100/80 blur-3xl"></div>
+    <div class="relative mx-auto grid w-full max-w-7xl items-center gap-3 px-4 py-3 sm:gap-8 sm:px-6 sm:py-10 lg:grid-cols-2 lg:gap-12 lg:px-8 lg:py-16">
+      <div class="animate-fadeUp">
+        <p class="mb-2 inline-flex items-center gap-2 rounded-full border border-brand-100 bg-white/80 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-brand-700 shadow-sm sm:mb-4 sm:px-3 sm:py-1 sm:text-xs">
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-600"></span>
+          Premium B2B backlink marketplace
+        </p>
+        <h1 class="text-[1.45rem] font-extrabold leading-[1.12] tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+          Put your brand on sites with
+          <span id="typed-text" class="text-brand-600">high-DR publications</span><span class="text-brand-400">|</span>
+        </h1>
+        <p class="mt-2 max-w-xl text-[13px] leading-snug text-slate-600 sm:mt-5 sm:text-lg sm:leading-relaxed">
+          High-DR guest posts and backlinks on publications with real organic traffic and topical authority—built for brands, SaaS founders, and digital marketers.
+        </p>
+        <ul class="mt-3 flex flex-wrap gap-1.5 text-[11px] font-semibold text-slate-700 sm:mt-6 sm:grid sm:grid-cols-2 sm:gap-3 sm:text-sm">
+          <li class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 sm:rounded-xl sm:px-3 sm:py-2">
+            <i class="fa-solid fa-chart-line text-brand-600"></i> DR 70–94+
+          </li>
+          <li class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 sm:rounded-xl sm:px-3 sm:py-2">
+            <i class="fa-solid fa-users text-brand-600"></i> Real organic traffic
+          </li>
+          <li class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 sm:rounded-xl sm:px-3 sm:py-2">
+            <i class="fa-solid fa-layer-group text-brand-600"></i> Topical matching
+          </li>
+          <li class="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 sm:rounded-xl sm:px-3 sm:py-2">
+            <i class="fa-solid fa-shield-halved text-brand-600"></i> Brand-safe editorial
+          </li>
+        </ul>
+        <div class="mt-3 flex flex-wrap items-center gap-2 sm:mt-7 sm:gap-3">
+          <a href="#marketplace" class="inline-flex items-center justify-center rounded-full bg-brand-600 px-5 py-2 text-sm font-bold text-white shadow-glass transition hover:bg-brand-700 sm:px-6 sm:py-3">
+            Browse Marketplace
+          </a>
+          <a href="#how-it-works" class="hidden items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-800 hover:border-brand-200 sm:inline-flex sm:px-6 sm:py-3">
+            See how it works
+          </a>
+        </div>
+      </div>
+
+      <div class="animate-fadeUp rounded-xl border border-white/80 bg-white/70 p-2 shadow-card backdrop-blur-xl sm:rounded-2xl sm:p-5">
+        <div class="mb-2 flex items-center justify-between sm:mb-3">
+          <p class="text-[10px] font-bold uppercase tracking-wide text-slate-500 sm:text-xs">Live placement proof</p>
+          <span class="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-bold text-emerald-700 sm:text-[11px]">Verified</span>
+        </div>
+        <div class="overflow-hidden rounded-lg sm:rounded-xl">
+          <div id="proof-track" class="flex transition-transform duration-500 ease-out">
+            {proofs.map((item) => (
+              <article class="relative min-w-full overflow-hidden rounded-lg border border-slate-200 bg-slate-900 sm:rounded-xl">
+                <img src={item.image} alt={item.alt} class="h-[9.5rem] w-full object-cover object-top sm:h-52" width="640" height="360" />
+                <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-950 via-slate-950/85 to-transparent p-3 text-white sm:p-5">
+                  <p class="text-[11px] font-semibold text-blue-200 sm:text-xs">{item.brand}</p>
+                  <h2 class="mt-0.5 text-sm font-extrabold leading-snug sm:text-lg">{item.placement}</h2>
+                  <p class="mt-1 hidden text-sm text-slate-200 sm:block">{item.result}</p>
+                  <p class="mt-2 inline-flex rounded-lg bg-white/10 px-2 py-1 text-[11px] font-bold sm:px-3 sm:text-xs">{item.metric}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+        <div class="mt-2 flex items-center justify-center gap-2 sm:mt-3">
+          {proofs.map((_, i) => (
+            <button
+              type="button"
+              data-proof-dot
+              class:list={['h-2 w-2 rounded-full', i === 0 ? 'bg-brand-600' : 'bg-slate-300']}
+              aria-label={`Show placement proof ${i + 1}`}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-slate-200 bg-white py-4" aria-label="High-authority publisher ticker">
+    <p class="mb-3 text-center text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
+      High-authority media with DR 90+ and real organic traffic
+    </p>
+    <div class="overflow-hidden">
+      <div class="flex w-max animate-marquee gap-4 pr-4">
+        {[...publishers, ...publishers].map((site) => (
+          <article class="flex min-w-[220px] items-center justify-between gap-4 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+            <div>
+              <p class="text-sm font-bold text-slate-900">{site.domain}</p>
+              <p class="text-xs text-slate-500">{site.niche}</p>
+            </div>
+            <div class="text-right">
+              <p class="text-sm font-extrabold text-brand-700">DR {site.dr}</p>
+              <p class="text-[11px] font-semibold text-slate-500">{site.traffic}/mo</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="quality" class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Built for brands that measure SEO in revenue, not vanity links</h2>
+      <p class="mt-4 text-slate-600">
+        Every listing is scored on Domain Rating, organic traffic, referring domains, and topical relevance so you can buy placements that move rankings—not just fill a spreadsheet.
+      </p>
+    </div>
+    <div class="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        { icon: 'fa-arrow-trend-up', title: 'DR you can trust', body: 'Inventory starts at DR 70 with a dedicated lane of DR 90+ newsrooms and industry authorities.' },
+        { icon: 'fa-magnifying-glass-chart', title: 'Real organic traffic', body: 'We show estimated monthly organic sessions, not inflated “visits.” If traffic looks fake, it never goes live.' },
+        { icon: 'fa-bullseye', title: 'Topical authority', body: 'Match your SaaS, ecommerce, fintech, or health brand to publishers already ranking in that category.' },
+        { icon: 'fa-file-lines', title: 'Editorial guest posts', body: 'Do-follow contextual links inside original articles written for readers—not spun directories.' },
+      ].map((item) => (
+        <article class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+          <i class={`fa-solid ${item.icon} text-xl text-brand-600`}></i>
+          <h3 class="mt-4 text-lg font-bold">{item.title}</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">{item.body}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="how-it-works" class="bg-white py-14">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-center text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">From search to live URL in three steps</h2>
+      <div class="mt-10 grid gap-6 lg:grid-cols-3">
+        {[
+          { step: '01', title: 'Filter the marketplace', body: 'Search by DR, organic traffic, country, niche, link type, and turnaround. Preview the live site before you spend a dollar.' },
+          { step: '02', title: 'Brief your placement', body: 'Share target URL, anchor guidance, and talking points. Our editorial desk aligns the article with the publisher’s audience.' },
+          { step: '03', title: 'Get the indexed link', body: 'You receive the live URL, screenshot, and metrics snapshot. Most orders complete in 5–12 business days.' },
+        ].map((item) => (
+          <article class="rounded-2xl border border-slate-200 bg-slate-50 p-6">
+            <p class="text-sm font-extrabold text-brand-600">{item.step}</p>
+            <h3 class="mt-2 text-xl font-bold">{item.title}</h3>
+            <p class="mt-3 text-sm leading-6 text-slate-600">{item.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section id="marketplace" class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
+      <div>
+        <h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Marketplace inventory</h2>
+        <p class="mt-2 max-w-xl text-slate-600">A live slice of brand-safe guest posts, sponsored articles, and resource-page links. Filter, compare, and buy in one checkout.</p>
+      </div>
+      <a href="#pricing" class="text-sm font-bold text-brand-700 hover:text-brand-800">View access plans →</a>
+    </div>
+    <div class="mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
+      <div class="grid grid-cols-12 bg-slate-50 px-4 py-3 text-[11px] font-bold uppercase tracking-wide text-slate-500">
+        <span class="col-span-4">Publisher</span>
+        <span class="col-span-2">DR</span>
+        <span class="col-span-2 hidden sm:block">Traffic</span>
+        <span class="col-span-2 hidden md:block">Type</span>
+        <span class="col-span-4 sm:col-span-2 md:col-span-2 text-right">Price</span>
+      </div>
+      {listings.map((row) => (
+        <div class="grid grid-cols-12 items-center border-t border-slate-100 px-4 py-4 text-sm">
+          <div class="col-span-4">
+            <p class="font-bold text-slate-900">{row.domain}</p>
+            <p class="text-xs text-slate-500">{row.niche}</p>
+          </div>
+          <p class="col-span-2 font-extrabold text-brand-700">DR {row.dr}</p>
+          <p class="col-span-2 hidden font-semibold text-slate-700 sm:block">{row.traffic}</p>
+          <p class="col-span-2 hidden text-slate-600 md:block">{row.type}</p>
+          <div class="col-span-4 flex items-center justify-end gap-3 sm:col-span-2">
+            <span class="font-extrabold">{row.price}</span>
+            <a href="#login" class="rounded-full bg-brand-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-brand-700">Buy</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section id="publishers" class="bg-slate-900 py-14 text-white">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Publisher quality bar</h2>
+      <p class="mt-3 max-w-2xl text-slate-300">Sites only stay listed if they keep real organic traffic, a clean backlink profile, and an editorial process. We re-audit DR and traffic every 30 days.</p>
+      <dl class="mt-10 grid gap-6 sm:grid-cols-3">
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <dt class="text-sm font-semibold text-blue-200">Active publishers</dt>
+          <dd class="mt-2 text-4xl font-extrabold">2,400+</dd>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <dt class="text-sm font-semibold text-blue-200">Median organic traffic</dt>
+          <dd class="mt-2 text-4xl font-extrabold">84K/mo</dd>
+        </div>
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <dt class="text-sm font-semibold text-blue-200">Orders delivered on time</dt>
+          <dd class="mt-2 text-4xl font-extrabold">97%</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="pricing" class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <h2 class="text-center text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Simple access for growing brands</h2>
+    <p class="mx-auto mt-3 max-w-2xl text-center text-slate-600">Pay per placement or unlock volume pricing. Built for in-house marketers and founders running their own SEO.</p>
+    <div class="mt-10 grid gap-6 lg:grid-cols-3">
+      <article class="rounded-2xl border border-slate-200 bg-white p-7 shadow-card">
+        <h3 class="text-lg font-bold">Starter</h3>
+        <p class="mt-2 text-4xl font-extrabold">$0</p>
+        <p class="mt-1 text-sm text-slate-500">Browse + pay per listing</p>
+        <ul class="mt-5 space-y-2 text-sm text-slate-600">
+          <li>Full marketplace search</li>
+          <li>DR, traffic, and niche filters</li>
+          <li>Standard 5–12 day delivery</li>
+        </ul>
+        <a href="#marketplace" class="mt-6 block rounded-full border border-slate-200 py-3 text-center text-sm font-bold hover:border-brand-300">Browse Marketplace</a>
+      </article>
+      <article class="rounded-2xl border-2 border-brand-600 bg-white p-7 shadow-glass">
+        <p class="text-xs font-bold uppercase tracking-wide text-brand-700">Most popular</p>
+        <h3 class="mt-1 text-lg font-bold">Growth</h3>
+        <p class="mt-2 text-4xl font-extrabold">$199<span class="text-base font-semibold text-slate-500">/mo</span></p>
+        <p class="mt-1 text-sm text-slate-500">For SaaS and brand SEO teams</p>
+        <ul class="mt-5 space-y-2 text-sm text-slate-600">
+          <li>8% off every placement</li>
+          <li>Priority matching by topical authority</li>
+          <li>Monthly DR &amp; traffic report</li>
+        </ul>
+        <a href="#login" class="mt-6 block rounded-full bg-brand-600 py-3 text-center text-sm font-bold text-white hover:bg-brand-700">Start Growth</a>
+      </article>
+      <article class="rounded-2xl border border-slate-200 bg-white p-7 shadow-card">
+        <h3 class="text-lg font-bold">Enterprise brand</h3>
+        <p class="mt-2 text-4xl font-extrabold">Custom</p>
+        <p class="mt-1 text-sm text-slate-500">Global brands with legal review</p>
+        <ul class="mt-5 space-y-2 text-sm text-slate-600">
+          <li>Dedicated inventory shortlists</li>
+          <li>Brand-safety and disclosure workflows</li>
+          <li>Multi-market publisher coverage</li>
+        </ul>
+        <a href="mailto:hello@webgrouth.com" class="mt-6 block rounded-full border border-slate-200 py-3 text-center text-sm font-bold hover:border-brand-300">Talk to sales</a>
+      </article>
+    </div>
+  </section>
+
+  <section id="reviews" class="bg-white py-14">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6">
+      <h2 class="text-center text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Verified client reviews</h2>
+      <p class="mt-3 text-center text-slate-600">Four recent reviews from brand and SaaS marketing leaders. All buyers completed at least one paid placement.</p>
+      <div class="relative mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-card sm:p-8">
+        <div id="review-track" class="flex transition-transform duration-500 ease-out">
+          {reviews.map((review) => (
+            <article class="min-w-full pr-0">
+              <div class="mb-4 flex gap-1 text-amber-400" aria-label="5 star rating">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+              <p class="text-lg font-medium leading-relaxed text-slate-800">“{review.quote}”</p>
+              <p class="mt-5 font-bold text-slate-900">{review.name}</p>
+              <p class="text-sm text-slate-500">{review.role}</p>
+            </article>
+          ))}
+        </div>
+        <div class="mt-6 flex items-center justify-between">
+          <button id="review-prev" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white" aria-label="Previous review">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <div class="flex gap-2">
+            {reviews.map((_, i) => (
+              <button
+                type="button"
+                data-review-dot
+                class:list={['h-2.5 w-2.5 rounded-full', i === 0 ? 'bg-brand-600' : 'bg-slate-300']}
+                aria-label={`Show review ${i + 1}`}
+              ></button>
+            ))}
+          </div>
+          <button id="review-next" type="button" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white" aria-label="Next review">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="mx-auto max-w-3xl px-4 py-14 sm:px-6">
+    <h2 class="text-center text-3xl font-extrabold tracking-tight text-slate-900">Questions brands ask before buying</h2>
+    <div class="mt-8 space-y-4">
+      {[
+        { q: 'Are the backlinks do-follow and contextual?', a: 'Yes. Marketplace guest posts and editorials include a contextual do-follow link unless a listing clearly marks no-follow or sponsored disclosure rules for that publisher.' },
+        { q: 'How do you verify organic traffic and DR?', a: 'We pull Domain Rating and organic traffic from industry-standard SEO datasets, then spot-check live indexation and referring-domain quality before a site is listed. Metrics refresh monthly.' },
+        { q: 'Can a SaaS founder buy without an SEO team?', a: 'Yes. Filter by your category, pick a listing, submit a short brief, and we handle outreach to the publisher. You approve the live URL when it goes live.' },
+        { q: 'Do you work with global brands outside the US?', a: 'Yes. Inventory covers United States, United Kingdom, EU, and APAC publishers. You can filter by country and language in the marketplace.' },
+      ].map((item) => (
+        <article class="rounded-2xl border border-slate-200 bg-white p-5">
+          <h3 class="font-bold text-slate-900">{item.q}</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-600">{item.a}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section id="login" class="px-4 pb-16 sm:px-6">
+    <div class="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-brand-100 bg-gradient-to-r from-brand-600 to-blue-700 px-6 py-12 text-center text-white shadow-glass sm:px-12">
+      <h2 class="text-3xl font-extrabold tracking-tight sm:text-4xl">Ready to buy high-DR placements with real traffic?</h2>
+      <p class="mx-auto mt-4 max-w-2xl text-blue-100">Open the marketplace, filter by DR and organic sessions, and place your brand where category buyers already research.</p>
+      <a href="#marketplace" class="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-sm font-bold text-brand-700 hover:bg-brand-50">Browse Marketplace</a>
+    </div>
+  </section>
+</BaseLayout>
