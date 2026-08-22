@@ -8,13 +8,88 @@
   }
 
   body {
-    @apply bg-slate-50 text-slate-900 antialiased;
+    @apply bg-slate-50 text-slate-800 antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-600 ring-offset-2;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-brand-600 px-5 py-2.5 text-sm font-bold text-white shadow-glass transition duration-200 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-lift;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-800 transition duration-200 hover:-translate-y-0.5 hover:border-brand-200 hover:text-brand-800;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200/90 bg-white shadow-card transition duration-300;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1 hover:border-brand-200 hover:shadow-lift;
+  }
+
+  .prose-article {
+    @apply text-[1.05rem] leading-8 text-slate-700;
+  }
+
+  .prose-article h2 {
+    @apply mb-3 mt-10 font-display text-2xl font-bold tracking-tight text-ink;
+  }
+
+  .prose-article h3 {
+    @apply mb-2 mt-8 font-display text-xl font-bold text-ink;
+  }
+
+  .prose-article p {
+    @apply mt-4;
+  }
+
+  .prose-article ul,
+  .prose-article ol {
+    @apply mt-4 list-disc space-y-2 pl-5;
+  }
+
+  .prose-article a {
+    @apply font-semibold text-brand-700 underline-offset-2 hover:underline;
+  }
+
+  .prose-article blockquote {
+    @apply my-6 border-l-4 border-brand-500 bg-brand-50/70 px-5 py-4 font-medium text-slate-800;
+  }
+
+  .prose-article table {
+    @apply mt-6 w-full text-left text-sm;
+  }
+
+  .prose-article th,
+  .prose-article td {
+    @apply border-b border-slate-200 px-3 py-2;
+  }
+
+  .callout {
+    @apply my-6 rounded-2xl border border-brand-100 bg-gradient-to-br from-brand-50 to-white p-5;
   }
 }
 
 @layer utilities {
   .glass {
-    @apply border border-white/70 bg-white/70 backdrop-blur-xl;
+    @apply border border-white/70 bg-white/75 backdrop-blur-xl;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -23,8 +98,22 @@
     scroll-behavior: auto;
   }
 
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .animate-marquee,
-  .animate-fadeUp {
+  .animate-fadeUp,
+  .animate-float,
+  .animate-pulseSoft {
     animation: none !important;
+  }
+
+  .btn-primary,
+  .btn-secondary,
+  .card-hover {
+    transition: none;
   }
 }
