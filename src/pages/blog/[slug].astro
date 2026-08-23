@@ -1,56 +1,36 @@
 ---
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-export function getStaticPaths() {
-  return [
-    { params: { slug: 'guest-posting-that-earns-its-place' } },
-    { params: { slug: 'what-makes-a-backlink-useful' } },
-    { params: { slug: 'the-seo-brief-your-content-team-needs' } }
-  ];
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.id,
+    },
+    props: {
+      post,
+    },
+  }));
 }
 
-const { slug } = Astro.params;
+const { post } = Astro.props;
+const { Content } = await render(post);
 
-const posts = {
-  'guest-posting-that-earns-its-place': {
-    category: 'Guest Posting',
-    title: 'Guest Posting That Earns Its Place',
-    date: 'August 12, 2026',
-    read: '6 min read',
-    intro: 'The best guest posts do not feel like a transaction. They feel like a useful answer in the right room.',
-    image: '/images/blog/guest-posting.jpg'
-  },
+const { title, description, category, date, author, readTime, image } = post.data;
 
-  'what-makes-a-backlink-useful': {
-    category: 'Link Building',
-    title: 'What Makes a Backlink Useful?',
-    date: 'July 28, 2026',
-    read: '5 min read',
-    intro: 'Authority matters, but context, audience, and intent decide whether a link contributes anything meaningful.',
-    image: '/images/blog/backlinks.jpg'
-  },
-
-  'the-seo-brief-your-content-team-needs': {
-    category: 'SEO',
-    title: 'The SEO Brief Your Content Team Needs',
-    date: 'July 10, 2026',
-    read: '7 min read',
-    intro: 'Move beyond keywords with a brief that gives writers a real audience, angle, and reason to care.',
-    image: '/images/blog/seo-brief.jpg'
-  }
-};
-
-const post = posts[slug as keyof typeof posts];
-
-if (!post) {
-  throw new Error('Post not found');
-}
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
 
 <BaseLayout
-  title={`${post.title} | Web Grouth`}
-  description={post.intro}
-  canonical={`https://webgrouth.com/blog/${slug}`}
+  title={`${title} | Web Grouth`}
+  description={description}
+  canonical={`https://webgrouth.com/blog/${post.id}`}
 >
   <section class="section">
     <div class="container">
@@ -60,29 +40,29 @@ if (!post) {
         <span>/</span>
         <a href="/blog">Blog</a>
         <span>/</span>
-        <span>{post.category}</span>
+        <span>{category}</span>
       </div>
 
-      <div class="article-header">
-        <span class="eyebrow">{post.category}</span>
+      <header class="article-header">
+        <span class="eyebrow">{category}</span>
 
-        <h1>{post.title}</h1>
+        <h1>{title}</h1>
 
-        <p class="lead">{post.intro}</p>
+        <p class="lead">{description}</p>
 
         <div class="article-meta">
-          <span>By Web Grouth</span>
+          <span>By {author}</span>
           <span>•</span>
-          <span>{post.date}</span>
+          <span>{formattedDate}</span>
           <span>•</span>
-          <span>{post.read}</span>
+          <span>{readTime}</span>
         </div>
-      </div>
+      </header>
 
       <div class="article-featured-image">
         <img
-          src={post.image}
-          alt={post.title}
+          src={image}
+          alt={title}
           loading="eager"
         />
       </div>
@@ -90,54 +70,7 @@ if (!post) {
       <div class="article-layout">
 
         <article class="article-body">
-
-          <p>
-            A strong search presence is not built from isolated tactics.
-            It is built from a series of clear, relevant signals that help
-            the right people discover and trust a brand.
-          </p>
-
-          <h2>Start with the reader</h2>
-
-          <p>
-            Before thinking about a metric, ask who should find this piece
-            and what they need to understand next. A useful article has a
-            job: explain a decision, offer a new perspective, or make a
-            complex idea easier to act on.
-          </p>
-
-          <blockquote>
-            Relevance is not a constraint on reach. It is what makes reach matter.
-          </blockquote>
-
-          <h2>Choose context over volume</h2>
-
-          <p>
-            The publication, the topic, and the destination should make sense
-            together. When those three pieces align, the link becomes part
-            of the story instead of an interruption to it.
-          </p>
-
-          <ul>
-            <li>Choose a publication relevant to your category.</li>
-            <li>Build a topic around a question the audience already has.</li>
-            <li>Use anchor text that reads naturally.</li>
-            <li>Make the destination genuinely useful after the click.</li>
-          </ul>
-
-          <h2>Make the next move clear</h2>
-
-          <p>
-            Good authority work compounds when you learn from each placement.
-            Keep a record of what resonated, which publications fit, and what
-            your audience did after discovering you.
-          </p>
-
-          <p>
-            That is how guest posting becomes more than a campaign.
-            It becomes a thoughtful part of your growth system.
-          </p>
-
+          <Content />
         </article>
 
         <aside class="article-aside">
