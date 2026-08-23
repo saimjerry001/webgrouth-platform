@@ -1,5 +1,259 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const posts=[{slug:'guest-posting-that-earns-its-place',category:'Guest Posting',title:'Guest posting that earns its place',date:'August 12, 2026',read:'6 min read',excerpt:'A practical framework for choosing topics, publications, and links that feel useful—not forced.'},{slug:'what-makes-a-backlink-useful',category:'Link Building',title:'What makes a backlink useful?',date:'July 28, 2026',read:'5 min read',excerpt:'Authority matters, but context, audience, and intent decide whether a link contributes anything meaningful.'},{slug:'the-seo-brief-your-content-team-needs',category:'SEO',title:'The SEO brief your content team needs',date:'July 10, 2026',read:'7 min read',excerpt:'Move beyond keywords with a brief that gives writers a real audience, angle, and reason to care.'}];
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blog');
+
+posts.sort((a, b) => {
+  return b.data.date.valueOf() - a.data.date.valueOf();
+});
+
+const featuredPost = posts[0];
+const remainingPosts = posts.slice(1);
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
 ---
-<BaseLayout title="Web Grouth Insights | SEO & Guest Posting" description="Practical insights on guest posting, SEO, link building, content marketing, and digital PR."><section class="page-hero"><div class="container reveal"><div class="breadcrumbs"><a href="/">Home</a> / Blog</div><span class="eyebrow">Notes from the work</span><h1>Ideas for being found—and remembered.</h1><p class="lead">Practical guidance on guest posting, authority, content, and the search habits that connect good brands with good audiences.</p></div></section><section class="section"><div class="container article-grid"><div><article class="article-card reveal"><span class="eyebrow">Featured · {posts[0].category}</span><h2><a href={'/blog/'+posts[0].slug}>{posts[0].title}</a></h2><div class="article-meta"><span>{posts[0].date}</span><span>•</span><span>{posts[0].read}</span></div><p>{posts[0].excerpt}</p><a class="inline-link" href={'/blog/'+posts[0].slug}>Read the article ↗</a></article>{posts.slice(1).map(post=><article class="article-card reveal"><span class="eyebrow">{post.category}</span><h3><a href={'/blog/'+post.slug}>{post.title}</a></h3><div class="article-meta"><span>{post.date}</span><span>•</span><span>{post.read}</span></div><p>{post.excerpt}</p><a class="inline-link" href={'/blog/'+post.slug}>Read the article ↗</a></article>)}</div><aside class="blog-sidebar"><div class="side-box"><span class="eyebrow">Need a hand?</span><h3>Need high-quality guest posts?</h3><p>Tell us what you’re trying to grow and we’ll help you find the clearest route.</p><a class="button button-primary" href="/contact">Talk to us <span>↗</span></a></div><div class="card"><h3>Categories</h3><div class="category-list" style="margin-top:18px"><span class="tag">SEO</span><span class="tag">Guest Posting</span><span class="tag">Link Building</span><span class="tag">Digital PR</span></div></div></aside></div></section></BaseLayout>
+
+<BaseLayout
+  title="Web Grouth Insights | SEO & Guest Posting"
+  description="Practical insights on guest posting, SEO, link building, content marketing, and digital PR."
+>
+
+  <section class="page-hero">
+    <div class="container reveal">
+
+      <div class="breadcrumbs">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>Blog</span>
+      </div>
+
+      <span class="eyebrow">Notes from the work</span>
+
+      <h1>
+        Ideas for being found—and remembered.
+      </h1>
+
+      <p class="lead">
+        Practical guidance on guest posting, authority, content,
+        and the search habits that connect good brands with good audiences.
+      </p>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container article-grid">
+
+      <div>
+
+        {featuredPost && (
+          <article class="article-card article-card-featured reveal">
+
+            <div class="article-card-image">
+              <img
+                src={featuredPost.data.image}
+                alt={featuredPost.data.title}
+                loading="eager"
+              />
+            </div>
+
+            <div class="article-card-content">
+
+              <span class="eyebrow">
+                Featured · {featuredPost.data.category}
+              </span>
+
+              <h2>
+                <a href={`/blog/${featuredPost.id}`}>
+                  {featuredPost.data.title}
+                </a>
+              </h2>
+
+              <div class="article-meta">
+                <span>
+                  {formatDate(featuredPost.data.date)}
+                </span>
+
+                <span>•</span>
+
+                <span>
+                  {featuredPost.data.readTime}
+                </span>
+              </div>
+
+              <p>
+                {featuredPost.data.description}
+              </p>
+
+              <a
+                class="inline-link"
+                href={`/blog/${featuredPost.id}`}
+              >
+                Read the article ↗
+              </a>
+
+            </div>
+
+          </article>
+        )}
+
+        <div class="blog-post-list">
+
+          {remainingPosts.map((post) => (
+            <article class="article-card reveal">
+
+              <div class="article-card-image">
+                <img
+                  src={post.data.image}
+                  alt={post.data.title}
+                  loading="lazy"
+                />
+              </div>
+
+              <div class="article-card-content">
+
+                <span class="eyebrow">
+                  {post.data.category}
+                </span>
+
+                <h3>
+                  <a href={`/blog/${post.id}`}>
+                    {post.data.title}
+                  </a>
+                </h3>
+
+                <div class="article-meta">
+                  <span>
+                    {formatDate(post.data.date)}
+                  </span>
+
+                  <span>•</span>
+
+                  <span>
+                    {post.data.readTime}
+                  </span>
+                </div>
+
+                <p>
+                  {post.data.description}
+                </p>
+
+                <a
+                  class="inline-link"
+                  href={`/blog/${post.id}`}
+                >
+                  Read the article ↗
+                </a>
+
+              </div>
+
+            </article>
+          ))}
+
+        </div>
+
+      </div>
+
+      <aside class="blog-sidebar">
+
+        <div class="side-box">
+
+          <span class="eyebrow">
+            Need a hand?
+          </span>
+
+          <h3>
+            Need high-quality guest posts?
+          </h3>
+
+          <p>
+            Tell us what you’re trying to grow and we’ll help
+            you find the clearest route.
+          </p>
+
+          <a
+            class="button button-primary"
+            href="/contact"
+          >
+            Talk to us <span>↗</span>
+          </a>
+
+        </div>
+
+        <div class="card">
+
+          <h3>
+            Explore Web Grouth
+          </h3>
+
+          <div
+            class="category-list"
+            style="margin-top:18px"
+          >
+
+            <a
+              class="tag"
+              href="/seo-services"
+            >
+              SEO
+            </a>
+
+            <a
+              class="tag"
+              href="/guest-posting"
+            >
+              Guest Posting
+            </a>
+
+            <a
+              class="tag"
+              href="/blog"
+            >
+              Link Building
+            </a>
+
+            <span class="tag">
+              Digital PR
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="card blog-sidebar-note">
+
+          <span class="eyebrow">
+            Web Grouth
+          </span>
+
+          <h3>
+            Build authority that actually matters.
+          </h3>
+
+          <p>
+            Contextual guest posts, relevant backlinks,
+            and practical SEO strategies for brands that
+            want sustainable search growth.
+          </p>
+
+          <a
+            class="inline-link"
+            href="/guest-posting"
+          >
+            Explore guest posting ↗
+          </a>
+
+        </div>
+
+      </aside>
+
+    </div>
+  </section>
+
+</BaseLayout>
