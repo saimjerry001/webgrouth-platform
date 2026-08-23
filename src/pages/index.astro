@@ -1,219 +1,648 @@
----
-import BaseLayout from '../layouts/BaseLayout.astro';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Grouth – Guest Posting & SEO Agency</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- Google Fonts (Inter) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-// ---------- WhatsApp (real number, single source in this file) ----------
-const whatsapp = { display: '+92 332 7810261', number: '923327810261' };
-const waHref = (msg) => `https://wa.me/${whatsapp.number}?text=${encodeURIComponent(msg)}`;
-const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest posting and SEO.");
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0b1120;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
 
-// ---------- tiny inline icon set (no external component needed) ----------
-const iconPaths = {
-  compass: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18zM15 9l-3 3-3 3 3-3 3-3zM15 9l-3 3-3 3',
-  link: 'M9 15l6-6M8 16.5a4 4 0 0 1 0-5.66l2.5-2.5a4 4 0 0 1 5.66 5.66L15 15M16 8.5a4 4 0 0 1 0 5.66l-2.5 2.5a4 4 0 0 1-5.66-5.66L9 9',
-  spark: 'M12 2l1.8 5.6L19 9l-5.2 1.4L12 16l-1.8-5.6L5 9l5.2-1.4z',
-  trending: 'M3 17l6-6 4 4 8-8M15 7h6v6',
-  check: 'M20 6L9 17l-5-5',
-  cpu: 'M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M7 7h10v10H7z',
-  search: 'M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.35-4.35',
-};
-function icon(name, size = 19) {
-  return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="${iconPaths[name] || iconPaths.link}"></path></svg>`;
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
 
-// ---------- content (only Guest Posting + SEO + Backlinks — nothing else) ----------
-const trustStatements = [
-  'Built for brands that care about relevance.',
-  'Context-first placements.',
-  'SEO-focused content.',
-  'Publisher-focused outreach.',
-];
+    /* ----- Buttons ----- */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
 
-const guestPostingPillars = [
-  { icon: 'compass', title: 'Relevant Publishers', text: 'Every opportunity is matched to your category and audience, not chosen for volume alone.' },
-  { icon: 'link', title: 'Contextual Links', text: 'Anchors sit naturally inside the narrative, in a place a reader would actually click.' },
-  { icon: 'spark', title: 'Quality Content', text: 'Articles are written to be genuinely useful to the publication\u2019s audience first.' },
-  { icon: 'trending', title: 'Strategic Placements', text: 'Each post is chosen to build toward a coherent authority profile over time.' },
-];
+    .btn-primary {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0b1120;
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(245, 158, 11, 0.5);
+    }
 
-const process = [
-  { step: '01', title: 'Tell us your goals', text: 'Share your niche, target audience, and the outcome you\u2019re working toward.' },
-  { step: '02', title: 'Choose relevant publishers', text: 'We surface publications and outreach routes that genuinely fit your category.' },
-  { step: '03', title: 'Create and place content', text: 'Approve the brief, the draft, and the publication details before anything goes live.' },
-  { step: '04', title: 'Track your authority growth', text: 'See what published, where it landed, and what to build on next.' },
-];
+    .btn-secondary {
+      background: transparent;
+      color: #e2e8f0;
+      border: 2px solid #334155;
+    }
+    .btn-secondary:hover {
+      border-color: #f59e0b;
+      color: #f59e0b;
+      transform: translateY(-3px);
+    }
 
-const whyUs = [
-  { title: 'Relevant publishers', text: 'Choose context over volume, with opportunities aligned to your niche and audience.' },
-  { title: 'Transparent process', text: 'Know exactly what you are ordering, why it fits, and what happens after you say yes.' },
-  { title: 'Content that earns its place', text: 'Useful, clear writing written for the reader first — and search second.' },
-  { title: 'No guaranteed-ranking claims', text: 'We build credible inputs, not promises no honest agency can make.' },
-];
+    .btn-whatsapp {
+      background: #25d366;
+      color: #0b1120;
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5c;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+    }
 
-const seoBacklinkServices = [
-  { icon: 'link', title: 'Link Building', text: 'Contextual backlinks earned through relevant outreach, not automated schemes.' },
-  { icon: 'search', title: 'On-Page SEO', text: 'Pages structured and written around the intent behind real search queries.' },
-  { icon: 'cpu', title: 'Technical SEO', text: 'Crawlability, site speed, and structure fixed so search engines can do their job.' },
-];
----
+    /* ----- Hero ----- */
+    .hero {
+      padding: 80px 0 60px;
+      background: radial-gradient(ellipse at 20% 50%, #1e293b 0%, #0b1120 70%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.08), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 16px 0 20px;
+      background: linear-gradient(to right, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 500px;
+      margin-bottom: 32px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #94a3b8;
+    }
+    .hero-badges i {
+      color: #f59e0b;
+      margin-right: 8px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 10px;
+    }
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+      border: 1px solid #1e293b;
+    }
+    .hero-image .badge-float {
+      position: relative;
+      margin-top: -40px;
+      margin-left: -20px;
+      background: #1e293b;
+      padding: 12px 20px;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid #334155;
+      backdrop-filter: blur(4px);
+    }
+    .badge-float .dot {
+      width: 12px;
+      height: 12px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse-dot 1.5s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
 
-<BaseLayout
-  title="Web Grouth | Guest Posting, SEO & Backlinks"
-  description="Web Grouth is a guest posting and SEO agency helping brands earn contextual backlinks through vetted publishers and editorial outreach."
->
-  <!-- ============ HERO ============ -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="reveal">
-        <span class="eyebrow">Guest Posting · SEO · Backlinks</span>
-        <h1>Build search authority<br />with real guest posts.</h1>
-        <p class="lead">Web Grouth helps brands earn relevant guest posts and contextual backlinks through vetted publishers — a focused service, not a scattershot one.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="/guest-posting">Get Guest Posts <span>↗</span></a>
-          <a class="button button-quiet" href="/seo-services">Explore SEO Services</a>
-        </div>
-        <p class="hero-proof">
-          Prefer to talk it through?
-          <a href={waHrefHero} target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">Message us on WhatsApp ↗</a>
-        </p>
+    /* ----- Trust Bar ----- */
+    .trust-bar {
+      background: #111b2e;
+      border-top: 1px solid #1e293b;
+      border-bottom: 1px solid #1e293b;
+      padding: 24px 0;
+    }
+    .trust-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      text-align: center;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+    }
+    .trust-item i {
+      color: #f59e0b;
+      font-size: 1.4rem;
+    }
+    .trust-item span {
+      color: #94a3b8;
+      font-weight: 400;
+    }
+
+    /* ----- Section Headers ----- */
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .section-header h2 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .section-header h2 span {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .section-header p {
+      color: #94a3b8;
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    /* ----- Cards (Services) ----- */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 30px;
+    }
+    .service-card {
+      background: #151f33;
+      border-radius: 20px;
+      padding: 32px 24px;
+      border: 1px solid #1e293b;
+      transition: 0.3s ease;
+      text-align: center;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: #f59e0b;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6);
+    }
+    .service-card i {
+      font-size: 2.8rem;
+      color: #f59e0b;
+      margin-bottom: 16px;
+    }
+    .service-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .service-card p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+    }
+
+    /* ----- Pricing / Packages ----- */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
+    }
+    .pricing-card {
+      background: #151f33;
+      border-radius: 24px;
+      padding: 40px 28px;
+      border: 1px solid #1e293b;
+      transition: 0.3s ease;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card.popular {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 1px #f59e0b, 0 20px 40px -12px rgba(245, 158, 11, 0.2);
+    }
+    .pricing-card.popular::before {
+      content: 'Most Popular';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #f59e0b;
+      color: #0b1120;
+      padding: 4px 16px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .pricing-card:hover {
+      transform: translateY(-6px);
+    }
+    .pricing-card .price {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 10px 0 4px;
+      color: #fbbf24;
+    }
+    .pricing-card .price span {
+      font-size: 1rem;
+      color: #94a3b8;
+      font-weight: 400;
+    }
+    .pricing-card ul {
+      list-style: none;
+      margin: 24px 0 32px;
+      flex: 1;
+    }
+    .pricing-card ul li {
+      padding: 8px 0;
+      border-bottom: 1px solid #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #cbd5e1;
+    }
+    .pricing-card ul li i {
+      color: #22c55e;
+      width: 20px;
+    }
+    .pricing-card .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* ----- Testimonials ----- */
+    .testimonials {
+      background: #111b2e;
+      padding: 60px 0;
+      margin: 40px 0;
+      border-top: 1px solid #1e293b;
+      border-bottom: 1px solid #1e293b;
+    }
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .testimonial-card {
+      background: #151f33;
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid #1e293b;
+      transition: 0.2s;
+    }
+    .testimonial-card:hover {
+      border-color: #f59e0b;
+    }
+    .testimonial-card .stars {
+      color: #f59e0b;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .testimonial-card blockquote {
+      font-size: 1rem;
+      color: #e2e8f0;
+      margin: 12px 0;
+      font-style: italic;
+    }
+    .testimonial-card .author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .testimonial-card .author img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #334155;
+    }
+    .testimonial-card .author .name {
+      font-weight: 600;
+    }
+    .testimonial-card .author .role {
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    /* ----- Final CTA ----- */
+    .cta-section {
+      text-align: center;
+      padding: 60px 0 80px;
+    }
+    .cta-section h2 {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+    }
+    .cta-section p {
+      color: #94a3b8;
+      max-width: 500px;
+      margin: 0 auto 30px;
+    }
+    .cta-section .btn-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-actions {
+        justify-content: center;
+      }
+      .hero-badges {
+        justify-content: center;
+      }
+      .hero-image .badge-float {
+        margin: 0 auto;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      .section-header h2 {
+        font-size: 2rem;
+      }
+      .pricing-card .price {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s forwards;
+    }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+  </style>
+</head>
+<body>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-content fade-up">
+      <div style="display:flex; align-items:center; gap:12px; color:#f59e0b; font-weight:600; margin-bottom:10px;">
+        <i class="fas fa-rocket"></i> Guest Posting · Backlinks · SEO
       </div>
-      <div class="visual reveal">
-        <div class="visual-frame">
-          <div class="visual-frame-inner">
-            <img
-              src="/images/webgrouth-hero.png"
-              alt="Illustration representing a network of connected websites linked by search authority and backlinks"
-              loading="eager"
-              width="1024"
-              height="1024"
-            />
-          </div>
-        </div>
-        <div class="visual-badge">
-          <span class="dot"></span>
-          <div><strong>Editorial-first</strong><span>relevance over volume</span></div>
-        </div>
+      <h1>Build Authority <br />with Real Guest Posts</h1>
+      <p>
+        Web Grouth helps brands earn relevant guest posts and contextual backlinks
+        through vetted publishers — a focused service, not a scattershot one.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Get Guest Posts</a>
+        <a href="#" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      </div>
+      <div class="hero-badges">
+        <span><i class="fas fa-check-circle"></i> 98% Success Rate</span>
+        <span><i class="fas fa-link"></i> Contextual Links</span>
+        <span><i class="fas fa-users"></i> 5,000+ Happy Clients</span>
       </div>
     </div>
-  </section>
-
-  <!-- ============ TRUST STRIP (text only, no fake logos) ============ -->
-  <div class="trusted">
-    <div class="container trust-statements reveal">
-      {trustStatements.map((s) => <span>{s}</span>)}
+    <div class="hero-image fade-up delay-1">
+      <div style="position:relative; width:100%; max-width:480px;">
+        <img src="https://placehold.co/600x600/1e293b/94a3b8?text=Web+Grouth" alt="Guest posting illustration" style="width:100%; border-radius:24px;" />
+        <div class="badge-float">
+          <span class="dot"></span>
+          <div><strong>Editorial-first</strong> <span style="color:#94a3b8;font-size:0.8rem;">relevance over volume</span></div>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- ============ GUEST POSTING (core service) ============ -->
-  <section class="section" id="guest-posting">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">Our core service</span>
-          <h2>Guest posting built around relevance.</h2>
-        </div>
-        <p class="lead">We focus on relevant websites, useful content, and contextual placements — not random backlink volume.</p>
+<!-- ==================== TRUST BAR ==================== -->
+<div class="trust-bar">
+  <div class="container trust-grid">
+    <div class="trust-item"><i class="fas fa-check-circle"></i> 100+ Quality Publishers</div>
+    <div class="trust-item"><i class="fas fa-star"></i> 4.9/5 Client Rating</div>
+    <div class="trust-item"><i class="fas fa-clock"></i> 48h Average Turnaround</div>
+    <div class="trust-item"><i class="fas fa-shield-alt"></i> 100% White-Hat</div>
+  </div>
+</div>
+
+<!-- ==================== SERVICES ==================== -->
+<section style="padding:60px 0;">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>What We <span>Deliver</span></h2>
+      <p>Every service is built around relevance, quality, and long-term authority.</p>
+    </div>
+    <div class="card-grid">
+      <div class="service-card fade-up delay-1">
+        <i class="fas fa-pen-fancy"></i>
+        <h3>Guest Posting</h3>
+        <p>Get published on niche-relevant sites with editorial-quality content that readers and search engines love.</p>
       </div>
-      <div class="grid-4">
-        {guestPostingPillars.map((p) => (
-          <div class="card reveal">
-            <span class="icon" set:html={icon(p.icon)} />
-            <h3>{p.title}</h3>
-            <p>{p.text}</p>
-          </div>
-        ))}
+      <div class="service-card fade-up delay-2">
+        <i class="fas fa-link"></i>
+        <h3>Contextual Backlinks</h3>
+        <p>Earn links that naturally fit within the narrative — not spammy footers or irrelevant sidebars.</p>
       </div>
-      <div style="margin-top:36px">
-        <a class="button button-primary" href="/guest-posting">Explore Guest Posting <span>↗</span></a>
+      <div class="service-card fade-up delay-3">
+        <i class="fas fa-chart-line"></i>
+        <h3>SEO Strategy</h3>
+        <p>On-page and technical SEO to ensure your site can fully leverage the authority you build.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ HOW IT WORKS ============ -->
-  <section class="section section-soft">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">How it works</span>
-          <h2>From brief to live link, without the fog.</h2>
-        </div>
-      </div>
-      <div class="process">
-        {process.map((p) => (
-          <div class="process-item reveal">
-            <span class="step">{p.step}</span>
-            <h3>{p.title}</h3>
-            <p>{p.text}</p>
-          </div>
-        ))}
-      </div>
+<!-- ==================== PRICING / PACKAGES ==================== -->
+<section style="padding:40px 0 60px;">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Choose Your <span>Package</span></h2>
+      <p>Transparent pricing for real, measurable results.</p>
     </div>
-  </section>
-
-  <!-- ============ WHY WEB GROUTH ============ -->
-  <section class="section">
-    <div class="container feature-band">
-      <div class="strategy-visual reveal">
-        <img
-          src="/images/webgrouth-strategy.png"
-          alt="Illustration of an SEO growth curve connected to content and backlink icons"
-          loading="lazy"
-          width="1024"
-          height="1024"
-        />
-      </div>
-      <div class="reveal">
-        <span class="eyebrow">Why Web Grouth</span>
-        <h2>Relevance over random volume.</h2>
-        <p class="lead" style="margin-top:14px">A durable backlink profile is built on fit and editorial context — not shortcuts.</p>
-        <ul class="check-list" style="margin-top:26px">
-          {whyUs.map((item) => (
-            <li>
-              <span class="tick" set:html={icon('check', 12)} />
-              <span><strong>{item.title}</strong><small>{item.text}</small></span>
-            </li>
-          ))}
+    <div class="pricing-grid">
+      <!-- Starter -->
+      <div class="pricing-card fade-up delay-1">
+        <h3>Starter</h3>
+        <div class="price">$499 <span>/ month</span></div>
+        <ul>
+          <li><i class="fas fa-check"></i> 1 Guest Post</li>
+          <li><i class="fas fa-check"></i> 1 Contextual Backlink</li>
+          <li><i class="fas fa-check"></i> DR 30+ Publisher</li>
+          <li><i class="fas fa-check"></i> Content Writing Included</li>
         </ul>
+        <a href="#" class="btn btn-secondary">Get Started</a>
+      </div>
+      <!-- Growth (Popular) -->
+      <div class="pricing-card popular fade-up delay-2">
+        <h3>Growth</h3>
+        <div class="price">$999 <span>/ month</span></div>
+        <ul>
+          <li><i class="fas fa-check"></i> 3 Guest Posts</li>
+          <li><i class="fas fa-check"></i> 3 Contextual Backlinks</li>
+          <li><i class="fas fa-check"></i> DR 40+ Publishers</li>
+          <li><i class="fas fa-check"></i> Content + Outreach</li>
+          <li><i class="fas fa-check"></i> Monthly Report</li>
+        </ul>
+        <a href="#" class="btn btn-primary">Choose Plan</a>
+      </div>
+      <!-- Pro -->
+      <div class="pricing-card fade-up delay-3">
+        <h3>Pro</h3>
+        <div class="price">$1,999 <span>/ month</span></div>
+        <ul>
+          <li><i class="fas fa-check"></i> 7 Guest Posts</li>
+          <li><i class="fas fa-check"></i> 7 Contextual Backlinks</li>
+          <li><i class="fas fa-check"></i> DR 50+ Publishers</li>
+          <li><i class="fas fa-check"></i> Full SEO Audit</li>
+          <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
+        </ul>
+        <a href="#" class="btn btn-secondary">Contact Sales</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ============ SEO & LINK BUILDING (supporting the guest posts) ============ -->
-  <section class="section section-soft">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">Supporting the placement</span>
-          <h2>SEO and link building that back it up.</h2>
-        </div>
-        <p class="lead">Guest posting works best alongside a search foundation that can actually use the authority it earns.</p>
-      </div>
-      <div class="grid-3">
-        {seoBacklinkServices.map((s) => (
-          <div class="card reveal">
-            <span class="icon" set:html={icon(s.icon)} />
-            <h3>{s.title}</h3>
-            <p>{s.text}</p>
+<!-- ==================== TESTIMONIALS ==================== -->
+<div class="testimonials">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>What Our <span>Clients Say</span></h2>
+      <p>Real feedback from real brands that built authority with us.</p>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up delay-1">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote>“Web Grouth delivered exactly what they promised: high-quality guest posts on relevant sites. Our organic traffic jumped 40% in two months.”</blockquote>
+        <div class="author">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" />
+          <div>
+            <div class="name">Michael Torres</div>
+            <div class="role">CMO, TechFlow</div>
           </div>
-        ))}
+        </div>
       </div>
-      <div style="margin-top:36px">
-        <a class="button button-quiet" href="/seo-services">Explore SEO Services <span>↗</span></a>
+      <div class="testimonial-card fade-up delay-2">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote>“I’ve tried many link-building services, but Web Grouth stands out for their transparency and editorial quality. My DA increased from 32 to 47 in 6 months.”</blockquote>
+        <div class="author">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" />
+          <div>
+            <div class="name">Sarah Chen</div>
+            <div class="role">Founder, Bloom & Co.</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-up delay-3">
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <blockquote>“Their process is smooth: they understand your niche, pitch relevant sites, and write content that actually adds value. Highly recommended.”</blockquote>
+        <div class="author">
+          <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Client" />
+          <div>
+            <div class="name">David Kim</div>
+            <div class="role">SEO Lead, Nexus Digital</div>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- ============ FINAL CTA ============ -->
-  <section class="container" style="margin-bottom:100px">
-    <div class="cta-band reveal">
-      <div>
-        <span class="eyebrow">Ready when you are</span>
-        <h2>Ready to build search authority?</h2>
-        <p class="lead" style="margin-top:14px">Tell us your niche and target site. We'll point you to relevant guest posting and backlink opportunities.</p>
-      </div>
-      <div class="cta-actions">
-        <a class="button button-primary" href="/contact">Start a Project <span>↗</span></a>
-        <a class="button button-quiet" href={waHrefHero} target="_blank" rel="noopener">Chat on WhatsApp</a>
-      </div>
+<!-- ==================== FINAL CTA ==================== -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="fade-up">Ready to Build <span style="background:linear-gradient(135deg,#fbbf24,#f59e0b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Search Authority</span>?</h2>
+    <p class="fade-up delay-1">Tell us your niche and goals. We’ll match you with relevant guest posting and backlink opportunities that drive real results.</p>
+    <div class="btn-group fade-up delay-2">
+      <a href="#" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Start a Project</a>
+      <a href="#" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
     </div>
-  </section>
-</BaseLayout>
+  </div>
+</section>
+
+<!-- ==================== FOOTER (optional) ==================== -->
+<footer style="text-align:center; padding:30px 0; border-top:1px solid #1e293b; color:#64748b; font-size:0.9rem;">
+  <div class="container">
+    &copy; 2026 Web Grouth. All rights reserved. &nbsp;|&nbsp; Built for relevance, not volume.
+  </div>
+</footer>
+
+<!-- small JS for any future interactivity -->
+<script>
+  // (optional) You can add a testimonial carousel or smooth scroll later
+  console.log('Web Grouth – Next Level Homepage');
+</script>
+
+</body>
+</html>
