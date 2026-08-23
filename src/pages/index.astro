@@ -3,30 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Grouth – Guest Posting & SEO Agency</title>
-  <!-- Font Awesome for icons -->
+  <title>Web Grouth – Guest Posting & SEO</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <!-- Google Fonts (Inter) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Inter', sans-serif;
-      background: #0b1120;
-      color: #e2e8f0;
+      background: #f8fafc;
+      color: #0f172a;
       line-height: 1.6;
     }
-
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 20px;
     }
+
+    /* ----- Transparent Header (sticky, blur) ----- */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding: 16px 0;
+      transition: 0.2s;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      color: #0f172a;
+    }
+    .logo span { color: #f59e0b; }
+    .nav a {
+      margin-left: 28px;
+      text-decoration: none;
+      color: #334155;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav a:hover { color: #f59e0b; }
+    .nav .btn-nav {
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 24px;
+      border-radius: 40px;
+      font-weight: 600;
+    }
+    .nav .btn-nav:hover { background: #f59e0b; color: #0f172a; }
 
     /* ----- Buttons ----- */
     .btn {
@@ -35,127 +68,95 @@
       border-radius: 50px;
       font-weight: 600;
       text-decoration: none;
-      transition: 0.3s ease;
+      transition: 0.3s;
       border: none;
       cursor: pointer;
-      font-size: 1rem;
     }
-
     .btn-primary {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
-      color: #0b1120;
-      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+      background: #0f172a;
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(15,23,42,0.15);
     }
     .btn-primary:hover {
+      background: #f59e0b;
+      color: #0f172a;
       transform: translateY(-3px);
-      box-shadow: 0 12px 28px rgba(245, 158, 11, 0.5);
+      box-shadow: 0 8px 24px rgba(245,158,11,0.3);
     }
-
     .btn-secondary {
       background: transparent;
-      color: #e2e8f0;
-      border: 2px solid #334155;
+      color: #0f172a;
+      border: 2px solid #e2e8f0;
     }
     .btn-secondary:hover {
       border-color: #f59e0b;
       color: #f59e0b;
-      transform: translateY(-3px);
     }
-
     .btn-whatsapp {
       background: #25d366;
-      color: #0b1120;
+      color: #fff;
     }
     .btn-whatsapp:hover {
       background: #1ebe5c;
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
     }
 
     /* ----- Hero ----- */
     .hero {
       padding: 80px 0 60px;
-      background: radial-gradient(ellipse at 20% 50%, #1e293b 0%, #0b1120 70%);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: -30%;
-      right: -10%;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(245, 158, 11, 0.08), transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
+      background: linear-gradient(135deg, #fefcf5 0%, #ffffff 100%);
     }
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 60px;
       align-items: center;
-      position: relative;
-      z-index: 2;
     }
     .hero-content h1 {
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       font-weight: 800;
       line-height: 1.1;
       margin: 16px 0 20px;
-      background: linear-gradient(to right, #fbbf24, #f59e0b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
     }
+    .hero-content h1 span { color: #f59e0b; }
     .hero-content p {
       font-size: 1.2rem;
-      color: #94a3b8;
+      color: #475569;
       max-width: 500px;
       margin-bottom: 32px;
     }
     .hero-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 30px;
-      margin-top: 30px;
-      font-size: 0.9rem;
-      color: #94a3b8;
+      gap: 24px;
+      margin-top: 24px;
+      color: #475569;
+      font-weight: 500;
     }
-    .hero-badges i {
-      color: #f59e0b;
-      margin-right: 8px;
-    }
+    .hero-badges i { color: #f59e0b; margin-right: 8px; }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
       margin-top: 10px;
     }
-    .hero-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
     .hero-image img {
       max-width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-      border: 1px solid #1e293b;
+      border-radius: 24px;
+      box-shadow: 0 30px 60px -20px rgba(0,0,0,0.2);
+      border: 1px solid #f1f5f9;
     }
     .hero-image .badge-float {
-      position: relative;
-      margin-top: -40px;
-      margin-left: -20px;
-      background: #1e293b;
-      padding: 12px 20px;
-      border-radius: 60px;
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border: 1px solid #334155;
-      backdrop-filter: blur(4px);
+      gap: 14px;
+      background: #ffffff;
+      padding: 12px 24px;
+      border-radius: 60px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      margin-top: -30px;
+      margin-left: 20px;
+      border: 1px solid #f1f5f9;
     }
     .badge-float .dot {
       width: 12px;
@@ -169,34 +170,28 @@
       50% { opacity: 0.5; transform: scale(1.3); }
     }
 
-    /* ----- Trust Bar ----- */
+    /* ----- Trust Bar (matte) ----- */
     .trust-bar {
-      background: #111b2e;
-      border-top: 1px solid #1e293b;
-      border-bottom: 1px solid #1e293b;
-      padding: 24px 0;
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
+      padding: 20px 0;
     }
     .trust-grid {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
       gap: 20px;
-      text-align: center;
     }
     .trust-item {
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: 600;
+      color: #0f172a;
     }
-    .trust-item i {
-      color: #f59e0b;
-      font-size: 1.4rem;
-    }
-    .trust-item span {
-      color: #94a3b8;
-      font-weight: 400;
-    }
+    .trust-item i { color: #f59e0b; font-size: 1.2rem; }
+    .trust-item span { font-weight: 400; color: #64748b; }
 
     /* ----- Section Headers ----- */
     .section-header {
@@ -206,55 +201,44 @@
     .section-header h2 {
       font-size: 2.6rem;
       font-weight: 700;
-      margin-bottom: 12px;
     }
-    .section-header h2 span {
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
+    .section-header h2 span { color: #f59e0b; }
     .section-header p {
-      color: #94a3b8;
+      color: #64748b;
       max-width: 600px;
-      margin: 0 auto;
+      margin: 10px auto 0;
       font-size: 1.1rem;
     }
 
-    /* ----- Cards (Services) ----- */
+    /* ----- Service Cards (white, matte shadows) ----- */
     .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 30px;
     }
     .service-card {
-      background: #151f33;
-      border-radius: 20px;
+      background: #ffffff;
+      border-radius: 24px;
       padding: 32px 24px;
-      border: 1px solid #1e293b;
-      transition: 0.3s ease;
+      border: 1px solid #f1f5f9;
+      transition: 0.3s;
       text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
     .service-card:hover {
       transform: translateY(-8px);
       border-color: #f59e0b;
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.6);
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08);
     }
     .service-card i {
       font-size: 2.8rem;
       color: #f59e0b;
       margin-bottom: 16px;
     }
-    .service-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
-    }
-    .service-card p {
-      color: #94a3b8;
-      font-size: 0.95rem;
-    }
+    .service-card h3 { font-size: 1.4rem; margin-bottom: 12px; }
+    .service-card p { color: #64748b; }
 
-    /* ----- Pricing / Packages ----- */
+    /* ----- Pricing (cards with matte finish) ----- */
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -262,18 +246,19 @@
       margin-top: 20px;
     }
     .pricing-card {
-      background: #151f33;
-      border-radius: 24px;
+      background: #ffffff;
+      border-radius: 28px;
       padding: 40px 28px;
-      border: 1px solid #1e293b;
-      transition: 0.3s ease;
+      border: 1px solid #f1f5f9;
+      transition: 0.3s;
       position: relative;
       display: flex;
       flex-direction: column;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
     .pricing-card.popular {
       border-color: #f59e0b;
-      box-shadow: 0 0 0 1px #f59e0b, 0 20px 40px -12px rgba(245, 158, 11, 0.2);
+      box-shadow: 0 0 0 1px #f59e0b, 0 20px 40px -12px rgba(245,158,11,0.12);
     }
     .pricing-card.popular::before {
       content: 'Most Popular';
@@ -282,21 +267,19 @@
       left: 50%;
       transform: translateX(-50%);
       background: #f59e0b;
-      color: #0b1120;
-      padding: 4px 16px;
+      color: #fff;
+      padding: 4px 20px;
       border-radius: 30px;
       font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
     }
-    .pricing-card:hover {
-      transform: translateY(-6px);
-    }
+    .pricing-card:hover { transform: translateY(-6px); }
     .pricing-card .price {
       font-size: 2.8rem;
       font-weight: 700;
       margin: 10px 0 4px;
-      color: #fbbf24;
+      color: #0f172a;
     }
     .pricing-card .price span {
       font-size: 1rem;
@@ -310,28 +293,22 @@
     }
     .pricing-card ul li {
       padding: 8px 0;
-      border-bottom: 1px solid #1e293b;
+      border-bottom: 1px solid #f1f5f9;
       display: flex;
       align-items: center;
       gap: 10px;
-      color: #cbd5e1;
+      color: #334155;
     }
-    .pricing-card ul li i {
-      color: #22c55e;
-      width: 20px;
-    }
-    .pricing-card .btn {
-      width: 100%;
-      text-align: center;
-    }
+    .pricing-card ul li i { color: #22c55e; width: 20px; }
+    .pricing-card .btn { width: 100%; text-align: center; }
 
-    /* ----- Testimonials ----- */
+    /* ----- Testimonials (white cards) ----- */
     .testimonials {
-      background: #111b2e;
+      background: #f8fafc;
       padding: 60px 0;
       margin: 40px 0;
-      border-top: 1px solid #1e293b;
-      border-bottom: 1px solid #1e293b;
+      border-top: 1px solid #f1f5f9;
+      border-bottom: 1px solid #f1f5f9;
     }
     .testimonial-grid {
       display: grid;
@@ -339,23 +316,18 @@
       gap: 30px;
     }
     .testimonial-card {
-      background: #151f33;
-      border-radius: 16px;
+      background: #ffffff;
+      border-radius: 20px;
       padding: 28px;
-      border: 1px solid #1e293b;
+      border: 1px solid #f1f5f9;
       transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
     }
-    .testimonial-card:hover {
-      border-color: #f59e0b;
-    }
-    .testimonial-card .stars {
-      color: #f59e0b;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
+    .testimonial-card:hover { border-color: #f59e0b; }
+    .testimonial-card .stars { color: #f59e0b; letter-spacing: 2px; margin-bottom: 10px; }
     .testimonial-card blockquote {
       font-size: 1rem;
-      color: #e2e8f0;
+      color: #0f172a;
       margin: 12px 0;
       font-style: italic;
     }
@@ -370,27 +342,20 @@
       height: 48px;
       border-radius: 50%;
       object-fit: cover;
-      background: #334155;
+      background: #e2e8f0;
     }
-    .testimonial-card .author .name {
-      font-weight: 600;
-    }
-    .testimonial-card .author .role {
-      font-size: 0.8rem;
-      color: #94a3b8;
-    }
+    .testimonial-card .author .name { font-weight: 600; }
+    .testimonial-card .author .role { font-size: 0.8rem; color: #64748b; }
 
-    /* ----- Final CTA ----- */
+    /* ----- CTA (clean white) ----- */
     .cta-section {
       text-align: center;
       padding: 60px 0 80px;
     }
-    .cta-section h2 {
-      font-size: 2.6rem;
-      margin-bottom: 16px;
-    }
+    .cta-section h2 { font-size: 2.6rem; margin-bottom: 16px; }
+    .cta-section h2 span { color: #f59e0b; }
     .cta-section p {
-      color: #94a3b8;
+      color: #64748b;
       max-width: 500px;
       margin: 0 auto 30px;
     }
@@ -401,36 +366,27 @@
       flex-wrap: wrap;
     }
 
-    /* Responsive */
+    /* ----- Footer (matte) ----- */
+    .footer {
+      background: #ffffff;
+      border-top: 1px solid #f1f5f9;
+      padding: 30px 0;
+      text-align: center;
+      color: #94a3b8;
+    }
+
+    /* ----- Responsive ----- */
     @media (max-width: 900px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-content p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-actions {
-        justify-content: center;
-      }
-      .hero-badges {
-        justify-content: center;
-      }
-      .hero-image .badge-float {
-        margin: 0 auto;
-      }
+      .hero-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero-content p { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-badges { justify-content: center; }
+      .hero-image .badge-float { margin: 0 auto; }
+      .nav { display: none; } /* simple mobile: you can add a hamburger later */
     }
     @media (max-width: 600px) {
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-      .section-header h2 {
-        font-size: 2rem;
-      }
-      .pricing-card .price {
-        font-size: 2.2rem;
-      }
+      .hero-content h1 { font-size: 2.5rem; }
+      .section-header h2 { font-size: 2rem; }
     }
 
     /* Animations */
@@ -440,10 +396,7 @@
       animation: fadeUp 0.8s forwards;
     }
     @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      to { opacity: 1; transform: translateY(0); }
     }
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
@@ -453,14 +406,27 @@
 </head>
 <body>
 
-<!-- ==================== HERO ==================== -->
+<!-- ========== TRANSPARENT HEADER ========== -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="logo">Web<span>Grouth</span></div>
+    <nav class="nav">
+      <a href="#">Services</a>
+      <a href="#">Pricing</a>
+      <a href="#">Testimonials</a>
+      <a href="#" class="btn-nav">Get Started</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ========== HERO ========== -->
 <section class="hero">
   <div class="container hero-grid">
     <div class="hero-content fade-up">
-      <div style="display:flex; align-items:center; gap:12px; color:#f59e0b; font-weight:600; margin-bottom:10px;">
+      <div style="display:flex; align-items:center; gap:12px; color:#f59e0b; font-weight:600; margin-bottom:6px;">
         <i class="fas fa-rocket"></i> Guest Posting · Backlinks · SEO
       </div>
-      <h1>Build Authority <br />with Real Guest Posts</h1>
+      <h1>Build Authority <br /><span>with Real</span> Guest Posts</h1>
       <p>
         Web Grouth helps brands earn relevant guest posts and contextual backlinks
         through vetted publishers — a focused service, not a scattershot one.
@@ -476,28 +442,28 @@
       </div>
     </div>
     <div class="hero-image fade-up delay-1">
-      <div style="position:relative; width:100%; max-width:480px;">
-        <img src="https://placehold.co/600x600/1e293b/94a3b8?text=Web+Grouth" alt="Guest posting illustration" style="width:100%; border-radius:24px;" />
+      <div style="position:relative; max-width:480px; margin:0 auto;">
+        <img src="https://placehold.co/600x600/f1f5f9/0f172a?text=Web+Grouth" alt="Guest posting illustration" />
         <div class="badge-float">
           <span class="dot"></span>
-          <div><strong>Editorial-first</strong> <span style="color:#94a3b8;font-size:0.8rem;">relevance over volume</span></div>
+          <div><strong>Editorial-first</strong> <span style="color:#64748b;font-size:0.85rem;">relevance over volume</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== TRUST BAR ==================== -->
+<!-- ========== TRUST BAR (matte) ========== -->
 <div class="trust-bar">
   <div class="container trust-grid">
     <div class="trust-item"><i class="fas fa-check-circle"></i> 100+ Quality Publishers</div>
     <div class="trust-item"><i class="fas fa-star"></i> 4.9/5 Client Rating</div>
-    <div class="trust-item"><i class="fas fa-clock"></i> 48h Average Turnaround</div>
+    <div class="trust-item"><i class="fas fa-clock"></i> 48h Avg Turnaround</div>
     <div class="trust-item"><i class="fas fa-shield-alt"></i> 100% White-Hat</div>
   </div>
 </div>
 
-<!-- ==================== SERVICES ==================== -->
+<!-- ========== SERVICES ========== -->
 <section style="padding:60px 0;">
   <div class="container">
     <div class="section-header fade-up">
@@ -524,7 +490,7 @@
   </div>
 </section>
 
-<!-- ==================== PRICING / PACKAGES ==================== -->
+<!-- ========== PRICING ========== -->
 <section style="padding:40px 0 60px;">
   <div class="container">
     <div class="section-header fade-up">
@@ -532,7 +498,6 @@
       <p>Transparent pricing for real, measurable results.</p>
     </div>
     <div class="pricing-grid">
-      <!-- Starter -->
       <div class="pricing-card fade-up delay-1">
         <h3>Starter</h3>
         <div class="price">$499 <span>/ month</span></div>
@@ -544,7 +509,6 @@
         </ul>
         <a href="#" class="btn btn-secondary">Get Started</a>
       </div>
-      <!-- Growth (Popular) -->
       <div class="pricing-card popular fade-up delay-2">
         <h3>Growth</h3>
         <div class="price">$999 <span>/ month</span></div>
@@ -557,7 +521,6 @@
         </ul>
         <a href="#" class="btn btn-primary">Choose Plan</a>
       </div>
-      <!-- Pro -->
       <div class="pricing-card fade-up delay-3">
         <h3>Pro</h3>
         <div class="price">$1,999 <span>/ month</span></div>
@@ -574,7 +537,7 @@
   </div>
 </section>
 
-<!-- ==================== TESTIMONIALS ==================== -->
+<!-- ========== TESTIMONIALS ========== -->
 <div class="testimonials">
   <div class="container">
     <div class="section-header fade-up">
@@ -619,10 +582,10 @@
   </div>
 </div>
 
-<!-- ==================== FINAL CTA ==================== -->
+<!-- ========== FINAL CTA ========== -->
 <section class="cta-section">
   <div class="container">
-    <h2 class="fade-up">Ready to Build <span style="background:linear-gradient(135deg,#fbbf24,#f59e0b); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;">Search Authority</span>?</h2>
+    <h2 class="fade-up">Ready to Build <span>Search Authority</span>?</h2>
     <p class="fade-up delay-1">Tell us your niche and goals. We’ll match you with relevant guest posting and backlink opportunities that drive real results.</p>
     <div class="btn-group fade-up delay-2">
       <a href="#" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Start a Project</a>
@@ -631,18 +594,12 @@
   </div>
 </section>
 
-<!-- ==================== FOOTER (optional) ==================== -->
-<footer style="text-align:center; padding:30px 0; border-top:1px solid #1e293b; color:#64748b; font-size:0.9rem;">
+<!-- ========== FOOTER (matte) ========== -->
+<footer class="footer">
   <div class="container">
     &copy; 2026 Web Grouth. All rights reserved. &nbsp;|&nbsp; Built for relevance, not volume.
   </div>
 </footer>
-
-<!-- small JS for any future interactivity -->
-<script>
-  // (optional) You can add a testimonial carousel or smooth scroll later
-  console.log('Web Grouth – Next Level Homepage');
-</script>
 
 </body>
 </html>
