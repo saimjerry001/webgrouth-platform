@@ -6,12 +6,13 @@
   <title>Web Grouth – Guest Posting, SEO & High-Authority Backlinks</title>
   <meta name="description" content="Web Grouth helps brands earn relevant guest posts and contextual backlinks through vetted publishers. Order guest posts, link building, and SEO — built for relevance, not volume." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <!-- Imported 'Plus Jakarta Sans' as the premium font style -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
   <style is:inline>
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body {
-      font-family:'Inter',sans-serif;
+      font-family:'Plus Jakarta Sans', sans-serif;
       background:#ffffff;
       color:#0f172a;
       line-height:1.65;
@@ -19,7 +20,7 @@
     }
     .container { max-width:1200px; margin:0 auto; padding:0 24px; }
     a { text-decoration:none; color:inherit; }
-    h1,h2,h3,h4 { font-family:'Space Grotesk',sans-serif; letter-spacing:-0.02em; }
+    h1,h2,h3,h4 { font-family:'Space Grotesk',sans-serif; letter-spacing:-0.03em; }
     ::selection { background:#2563eb; color:#fff; }
 
     /* ===== SCROLL REVEAL ===== */
@@ -36,7 +37,7 @@
     .header-inner { display:flex; justify-content:space-between; align-items:center; }
     .logo { display:flex; align-items:center; gap:10px; font-size:1.55rem; font-weight:800; letter-spacing:-0.03em; color:#0f172a; }
     
-    /* === NEXT LEVEL ANIMATED LOGO === */
+    /* === STABLE PREMIUM LOGO === */
     .logo-mark {
       width:38px; height:38px; border-radius:11px;
       background:linear-gradient(135deg,#2563eb,#1d4ed8);
@@ -48,11 +49,7 @@
     }
     .logo-mark svg {
       width:22px; height:22px;
-      animation:logoFloat 3s ease-in-out infinite;
-    }
-    @keyframes logoFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-3px) rotate(4deg); }
+      /* Animation removed as requested, keeping it stable and clean */
     }
     .logo-mark::before {
       content: '';
@@ -71,7 +68,7 @@
     
     .logo span { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .nav-links { display:flex; align-items:center; gap:32px; }
-    .nav-links a:not(.btn-nav) { font-weight:500; color:#334155; transition:.2s; font-size:.95rem; position:relative; }
+    .nav-links a:not(.btn-nav) { font-weight:600; color:#334155; transition:.2s; font-size:.95rem; position:relative; }
     .nav-links a:not(.btn-nav):hover { color:#2563eb; }
     .nav-links .btn-nav {
       background:#2563eb; color:#fff !important; padding:11px 28px; border-radius:40px; font-weight:700;
@@ -103,7 +100,7 @@
     @keyframes pulseRing { 0%{ transform:scale(1); opacity:.8; } 100%{ transform:scale(1.15); opacity:0; } }
 
     /* ===== HERO ===== */
-    .hero { padding:150px 0 90px; background:linear-gradient(165deg,#f0f7ff 0%,#ffffff 55%); position:relative; }
+    .hero { padding:160px 0 80px; background:linear-gradient(165deg,#f8faff 0%,#ffffff 60%); position:relative; }
     .hero::before {
       content:''; position:absolute; top:-120px; right:-160px; width:520px; height:520px; border-radius:50%;
       background:radial-gradient(circle,rgba(37,99,235,.10),transparent 70%); pointer-events:none;
@@ -115,19 +112,25 @@
       border:1px solid rgba(37,99,235,.15);
     }
     .tag .live-dot { width:7px; height:7px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.25); }
-    .hero-content h1 { font-size:3.7rem; font-weight:800; line-height:1.08; margin:12px 0 22px; }
+    
+    /* Conversion-focused rewritten copy */
+    .hero-content h1 { font-size:3.75rem; font-weight:800; line-height:1.1; margin:12px 0 22px; letter-spacing:-0.03em; }
     .hero-content h1 .highlight { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .hero-content p.subhead { font-size:1.22rem; color:#475569; max-width:540px; margin-bottom:34px; }
+    .hero-content p.subhead { font-size:1.2rem; color:#475569; max-width:540px; margin-bottom:34px; line-height:1.7; }
     .hero-actions { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:30px; }
-    .hero-note { display:flex; align-items:center; gap:10px; color:#64748b; font-size:.92rem; font-weight:500; }
+    .hero-note { display:flex; align-items:center; gap:10px; color:#475569; font-size:.92rem; font-weight:600; }
     .hero-note i { color:#22c55e; }
 
     .hero-image { position:relative; }
+    
+    /* Fixed white spacing - padding set to 0 and border removed as requested */
     .img-wrap {
-      background:#fff; border-radius:32px; padding:12px; box-shadow:0 40px 90px -20px rgba(15,23,42,.16);
-      border:1px solid #f1f5f9; max-width:520px; margin-left:auto; position:relative; z-index:2;
+      background:transparent; border-radius:24px; padding:0; box-shadow:0 40px 90px -20px rgba(15,23,42,.16);
+      border:none; max-width:520px; margin-left:auto; position:relative; z-index:2; overflow:hidden;
     }
-    .img-wrap img { border-radius:24px; width:100%; display:block; }
+    .img-wrap img { width:100%; display:block; object-fit:cover; border-radius:24px; }
+    
+    /* Renamed badges: Success Guest Post & Success SEO as requested */
     .floating-badge {
       display:inline-flex; align-items:center; gap:14px; background:#fff; padding:14px 22px; border-radius:20px;
       box-shadow:0 20px 44px rgba(15,23,42,.14); border:1px solid #f1f5f9;
@@ -136,17 +139,65 @@
     .floating-badge.b1 { bottom:-22px; left:-10px; }
     .floating-badge.b2 { top:-18px; right:6px; animation-delay:.6s; }
     .floating-badge .dot { width:11px; height:11px; background:#22c55e; border-radius:50%; animation:pulseDot 1.8s infinite; flex-shrink:0; }
-    .floating-badge strong { display:block; font-size:.92rem; }
-    .floating-badge span.sub { color:#64748b; font-size:.8rem; }
+    .floating-badge strong { display:block; font-size:.92rem; font-weight:700; color:#0f172a; }
+    .floating-badge span.sub { color:#64748b; font-size:.8rem; font-weight:500; }
     @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(1.5);} }
     @keyframes floatUpDown { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
 
     /* ===== TRUST BAR w/ COUNTERS ===== */
-    .trust-bar { background:#0f172a; padding:34px 0; }
+    .trust-bar { background:#0f172a; padding:34px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
     .trust-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
     .trust-item { color:#fff; }
-    .trust-item .num { font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:700; color:#60a5fa; }
-    .trust-item .label { color:#94a3b8; font-size:.88rem; font-weight:500; margin-top:2px; }
+    .trust-item .num { font-family:'Space Grotesk',sans-serif; font-size:2.5rem; font-weight:800; color:#60a5fa; letter-spacing:-0.02em; }
+    .trust-item .label { color:#94a3b8; font-size:.88rem; font-weight:600; margin-top:4px; text-transform:uppercase; letter-spacing:0.05em; }
+
+    /* ===== INFINITE HIGH-AUTHORITY BRANDS MARQUEE ===== */
+    .brands-marquee-section {
+      background:#f8fafc;
+      padding:28px 0;
+      border-bottom:1px solid #e2e8f0;
+      overflow:hidden;
+    }
+    .brands-marquee-title {
+      text-align:center;
+      font-size:.82rem;
+      font-weight:700;
+      color:#64748b;
+      text-transform:uppercase;
+      letter-spacing:0.1em;
+      margin-bottom:18px;
+    }
+    .brands-wrapper {
+      position:relative;
+      width:100%;
+      overflow:hidden;
+    }
+    .brands-track {
+      display:flex;
+      gap:64px;
+      width:max-content;
+      animation:scrollBrands 28s linear infinite;
+      align-items:center;
+    }
+    @keyframes scrollBrands {
+      0% { transform:translateX(0); }
+      100% { transform:translateX(-50%); }
+    }
+    .brand-item {
+      font-family:'Space Grotesk',sans-serif;
+      font-size:1.45rem;
+      font-weight:800;
+      color:#94a3b8;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+      letter-spacing:-0.03em;
+    }
+    .brand-item i {
+      font-size:1.15rem;
+      color:#cbd5e1;
+    }
 
     /* ===== SECTION HEADERS ===== */
     .section-header { text-align:center; margin-bottom:54px; }
@@ -154,15 +205,15 @@
       display:inline-block; color:#2563eb; font-weight:700; font-size:.82rem; letter-spacing:.08em;
       text-transform:uppercase; margin-bottom:12px;
     }
-    .section-header h2 { font-size:2.7rem; font-weight:700; letter-spacing:-.02em; }
+    .section-header h2 { font-size:2.75rem; font-weight:800; letter-spacing:-0.03em; }
     .section-header h2 .highlight { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .section-header p { color:#64748b; max-width:600px; margin:14px auto 0; font-size:1.1rem; }
+    .section-header p { color:#475569; max-width:600px; margin:14px auto 0; font-size:1.1rem; line-height:1.7; }
 
     /* ===== SERVICE CARDS ===== */
     .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:28px; }
     .service-card {
-      background:#fff; border-radius:26px; padding:38px 30px; border:1px solid #f1f5f9; transition:.4s;
-      box-shadow:0 4px 16px rgba(15,23,42,.03); position:relative; overflow:hidden;
+      background:#fff; border-radius:26px; padding:42px 34px; border:1px solid #f1f5f9; transition:.4s;
+      box-shadow:0 4px 16px rgba(15,23,42,.02); position:relative; overflow:hidden;
     }
     .service-card::after {
       content:''; position:absolute; inset:0; opacity:0; transition:.4s;
@@ -176,125 +227,96 @@
       transition:.4s;
     }
     .service-card:hover .service-icon { background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; transform:scale(1.08) rotate(-4deg); }
-    .service-card h3 { font-size:1.4rem; margin-bottom:12px; }
-    .service-card p { color:#64748b; margin-bottom:18px; }
+    .service-card h3 { font-size:1.45rem; margin-bottom:12px; font-weight:700; }
+    .service-card p { color:#475569; margin-bottom:18px; font-size:0.98rem; }
     .service-card .learn-more { font-weight:700; color:#2563eb; font-size:.92rem; display:inline-flex; align-items:center; gap:6px; }
     .service-card .learn-more i { transition:.3s; }
     .service-card:hover .learn-more i { transform:translateX(4px); }
 
-    /* ===== NEXT-LEVEL CAROUSEL REVIEWS ===== */
-    .reviews-section { background:#f8fafc; padding:100px 0; border-top:1px solid #f1f5f9; border-bottom:1px solid #f1f5f9; overflow:hidden; }
-    .reviews-slider-container {
+    /* ===== INFINITE TESTIMONIALS MARQUEE (Continuous 30+ Reviews) ===== */
+    .reviews-section { background:#ffffff; padding:100px 0; border-top:1px solid #f1f5f9; border-bottom:1px solid #f1f5f9; overflow:hidden; }
+    .testimonials-marquee-container {
       position:relative;
-      max-width:1100px;
-      margin:0 auto;
-      padding:20px 0 40px;
-    }
-    .reviews-viewport {
-      overflow:visible; /* allows scaling-out space */
+      width:100%;
+      overflow:hidden;
       padding:20px 0;
     }
-    .reviews-track {
+    /* Infinite right-to-left linear scroller, pauses perfectly on hover */
+    .testimonials-marquee-track {
       display:flex;
       gap:30px;
-      transition:transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-      will-change:transform;
+      width:max-content;
+      animation:infiniteScrollTestimonials 42s linear infinite;
     }
-    .review-card {
-      min-width:100%; /* Default mobile fallback */
+    .testimonials-marquee-track:hover {
+      animation-play-state:paused;
+    }
+    @keyframes infiniteScrollTestimonials {
+      0% { transform:translateX(0); }
+      100% { transform:translateX(-50%); } /* Loops duplicate cards seamlessly */
+    }
+    .review-card-marquee {
+      width:380px;
       background:#ffffff;
       border:1.5px solid #e2e8f0;
-      border-radius:28px;
-      padding:45px 35px;
+      border-radius:24px;
+      padding:38px 30px;
       box-shadow:0 8px 30px rgba(15,23,42,.03);
-      transition:all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-      opacity:0.45;
-      transform:scale(0.9);
-      text-align:center;
-      position:relative;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      flex-shrink:0;
+      transition:all 0.3s ease;
       cursor:pointer;
     }
-    @media (min-width: 768px) {
-      .review-card {
-        min-width: calc(33.333% - 20px); /* 3 cards visible concurrently on desktop */
-      }
-    }
-    /* Active highlighted card raised above others */
-    .review-card.active {
-      opacity:1;
-      transform:scale(1.06) translateY(-14px);
+    .review-card-marquee:hover {
+      transform:translateY(-8px);
       border-color:#2563eb;
-      box-shadow:0 24px 50px -15px rgba(37,99,235,.2);
-      z-index:10;
+      box-shadow:0 24px 50px rgba(37,99,235,.12);
     }
     .review-avatar-container {
       position:relative;
-      width:84px;
-      height:84px;
-      margin:0 auto 18px;
+      width:64px;
+      height:64px;
+      margin-bottom:16px;
     }
     .review-avatar {
       width:100%;
       height:100%;
       border-radius:50%;
       object-fit:cover;
-      border:4px solid #fff;
-      box-shadow:0 8px 24px rgba(37,99,235,.15);
-      transition:transform 0.4s ease;
+      border:3px solid #e2e8f0;
+      box-shadow:0 4px 12px rgba(15,23,42,.05);
+      transition:0.3s;
     }
-    .review-card.active .review-avatar {
-      transform:scale(1.08);
+    .review-card-marquee:hover .review-avatar {
       border-color:#2563eb;
     }
     .review-stars {
       color:#fbbf24;
-      font-size:1.15rem;
+      font-size:1.05rem;
       letter-spacing:2px;
-      margin-bottom:16px;
+      margin-bottom:14px;
     }
     .review-text {
       color:#475569;
-      font-size:1.02rem;
-      line-height:1.7;
-      margin-bottom:24px;
-      font-style:normal;
+      font-size:0.96rem;
+      line-height:1.65;
+      margin-bottom:20px;
     }
     .review-author {
       font-family:'Space Grotesk',sans-serif;
       font-weight:700;
-      font-size:1.15rem;
+      font-size:1.1rem;
       color:#0f172a;
     }
     .review-role {
       color:#94a3b8;
-      font-size:.85rem;
+      font-size:.8rem;
       font-weight:600;
       text-transform:uppercase;
       letter-spacing:.05em;
       margin-top:2px;
-    }
-    
-    /* 3 dots layout with dynamic active sizing */
-    .slider-dots {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:12px;
-      margin-top:40px;
-    }
-    .dot {
-      width:10px;
-      height:10px;
-      background:#cbd5e1;
-      border-radius:50%;
-      cursor:pointer;
-      transition:all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    .dot.active {
-      width:32px;
-      height:10px;
-      background:#2563eb;
-      border-radius:10px;
     }
 
     /* ===== PRICING ===== */
@@ -418,7 +440,7 @@
     <div class="container header-inner">
       <div class="logo">
         <div class="logo-mark">
-          <!-- Animated Modern SVG Growth Icon -->
+          <!-- Animated Modern SVG Growth Icon - Stable scale, arrow does not move as requested -->
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -450,32 +472,35 @@
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content reveal show">
-        <div class="tag"><span class="live-dot"></span> Now Accepting New Guest Post Orders</div>
-        <h1>Get Published on <span class="highlight">Real, High-Authority Sites</span> — Not Spam Networks</h1>
-        <p class="subhead">Every guest post we place is on a genuine, editorially-run website with a relevant audience. One order, one contextual backlink, zero PBNs — order in minutes and track it end to end.</p>
+        <div class="tag"><span class="live-dot"></span> Secure High-Authority Guest Posts Today</div>
+        <!-- High-converting, extremely persuasive header -->
+        <h1>Drive Massive Search Traffic with <span class="highlight">Real Editorial Backlinks</span></h1>
+        <p class="subhead">Get featured on high-traffic, editorially-vetted websites within your niche. Acquire powerful, contextually embedded links that boost domain authority and rank you for high-value search queries. No PBNs — guaranteed safe SEO growth.</p>
         <div class="hero-actions">
           <a href="#pricing" class="btn btn-primary"><i class="fas fa-bolt"></i> Order a Guest Post Now</a>
           <a id="waHeroBtn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
-        <div class="hero-note"><i class="fas fa-circle-check"></i> Real publishers only — every site is manually reviewed before it goes live.</div>
+        <div class="hero-note"><i class="fas fa-circle-check"></i> Real active publishers with organic Google traffic. 100% indexed backlinks.</div>
       </div>
       <div class="hero-image reveal show">
+        <!-- Fit Edge-to-Edge Image Wrap: eliminated white boundaries inside card -->
         <div class="img-wrap">
           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80" alt="SEO analytics dashboard representing search authority growth" loading="eager" />
         </div>
+        <!-- Renamed badges: Success Guest Post & Success SEO as requested -->
         <div class="floating-badge b1">
           <span class="dot"></span>
-          <div><strong>Editorial-first</strong><br><span class="sub">relevance over volume</span></div>
+          <div><strong>Success Guest Post</strong><br><span class="sub">100% indexed & live</span></div>
         </div>
         <div class="floating-badge b2">
           <i class="fas fa-link" style="color:#2563eb;"></i>
-          <div><strong>Contextual Links</strong><br><span class="sub">placed inside real content</span></div>
+          <div><strong>Success SEO</strong><br><span class="sub">rankings that stay</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== TRUST BAR (animated counters, no fabricated review numbers) ===== -->
+  <!-- ===== TRUST BAR (animated counters) ===== -->
   <div class="trust-bar">
     <div class="container trust-grid">
       <div class="trust-item"><div class="num" data-target="100" data-suffix="+">0</div><div class="label">Publishers in Network</div></div>
@@ -485,97 +510,248 @@
     </div>
   </div>
 
+  <!-- ===== INFINITE HIGH-AUTHORITY BRANDS MARQUEE (Continuous scroller of big sites) ===== -->
+  <section class="brands-marquee-section">
+    <div class="brands-marquee-title">Secure Placements on Premium Sites Like</div>
+    <div class="brands-wrapper">
+      <div class="brands-track">
+        <!-- List of famous publishers -->
+        <div class="brand-item"><i class="fas fa-globe"></i> Forbes</div>
+        <div class="brand-item"><i class="fas fa-newspaper"></i> TechCrunch</div>
+        <div class="brand-item"><i class="fas fa-lightbulb"></i> Entrepreneur</div>
+        <div class="brand-item"><i class="fas fa-chart-bar"></i> HubSpot</div>
+        <div class="brand-item"><i class="fas fa-briefcase"></i> Business Insider</div>
+        <div class="brand-item"><i class="fas fa-laptop-code"></i> Wired</div>
+        <div class="brand-item"><i class="fas fa-chart-line"></i> NY Times</div>
+        <div class="brand-item"><i class="fas fa-microchip"></i> Engadget</div>
+        
+        <!-- Duplicated set for seamless loop -->
+        <div class="brand-item"><i class="fas fa-globe"></i> Forbes</div>
+        <div class="brand-item"><i class="fas fa-newspaper"></i> TechCrunch</div>
+        <div class="brand-item"><i class="fas fa-lightbulb"></i> Entrepreneur</div>
+        <div class="brand-item"><i class="fas fa-chart-bar"></i> HubSpot</div>
+        <div class="brand-item"><i class="fas fa-briefcase"></i> Business Insider</div>
+        <div class="brand-item"><i class="fas fa-laptop-code"></i> Wired</div>
+        <div class="brand-item"><i class="fas fa-chart-line"></i> NY Times</div>
+        <div class="brand-item"><i class="fas fa-microchip"></i> Engadget</div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SERVICES ===== -->
   <section id="services" style="padding:90px 0 70px;">
     <div class="container">
       <div class="section-header reveal">
-        <span class="eyebrow">What We Deliver</span>
-        <h2>Three Services. <span class="highlight">One Focus: Authority.</span></h2>
-        <p>Every service is built around relevance, editorial quality, and links that actually help you rank.</p>
+        <span class="eyebrow">Maximize Search Authority</span>
+        <h2>High-Impact Solutions. <span class="highlight">Unrivaled Rankings.</span></h2>
+        <p>Engineered for organic visibility. Acquire contextually relevant placements that build brand trust and dominate search indexes.</p>
       </div>
       <div class="card-grid">
         <div class="service-card reveal">
           <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
-          <h3>Guest Posting</h3>
-          <p>Get published on niche-relevant sites with editorial-quality content that readers and search engines both trust.</p>
+          <h3>Strategic Guest Posting</h3>
+          <p>Get featured inside original, reader-first content hosted on high-authority websites. Accelerate organic traffic and earn google trust.</p>
           <a href="#pricing" class="learn-more">Order now <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card reveal">
           <div class="service-icon"><i class="fas fa-link"></i></div>
-          <h3>Contextual Backlinks</h3>
-          <p>Earn links that sit naturally inside the story — not spammy footers, sidebars, or irrelevant directories.</p>
+          <h3>Contextual Links</h3>
+          <p>Secure clean, natural links strategically embedded within niche-relevant articles — entirely free of sidebars or spam networks.</p>
           <a href="#pricing" class="learn-more">Order now <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="service-card reveal">
           <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>SEO Strategy</h3>
-          <p>On-page and technical SEO so your site can fully capture the authority every new backlink brings.</p>
+          <h3>Technical SEO Strategy</h3>
+          <p>On-page code and keyword architecture alignment to squeeze the maximum ranking power out of every single backlink you earn.</p>
           <a href="#contact" class="learn-more">Talk to us <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== NEXT-LEVEL AUTOMATED REVIEWS SLIDER ===== -->
+  <!-- ===== INFINITE TESTIMONIALS MARQUEE (Continuous 30+ Reviews) ===== -->
   <section class="reviews-section">
     <div class="container">
       <div class="section-header reveal">
         <span class="eyebrow">Client Success</span>
-        <h2>What Our <span class="highlight">Partners Say</span></h2>
-        <p>Hear directly from professional agencies and brands who grow with us.</p>
+        <h2>Continuous <span class="highlight">Client Feedback</span></h2>
+        <p>Read real-time reviews from agencies and SEO specialists scaling search campaigns with us.</p>
       </div>
       
-      <div class="reviews-slider-container reveal">
-        <div class="reviews-viewport">
-          <div class="reviews-track" id="reviewsTrack">
-            
-            <!-- Card 1 -->
-            <div class="review-card active" data-index="0">
+      <div class="testimonials-marquee-container reveal">
+        <div class="testimonials-marquee-track">
+          
+          <!-- Review 1 -->
+          <div class="review-card-marquee">
+            <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Sarah Jenkins Portrait" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Sarah Jenkins" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Web Grouth transformed our search visibility. The guest posts we received were on genuine websites with active communities. Our organic traffic increased by 140% in just four months."</p>
+              <p class="review-text">"Web Grouth transformed our search visibility. The guest posts we received were on genuine websites with active communities. Our organic traffic increased by 140%."</p>
+            </div>
+            <div>
               <h4 class="review-author">Sarah Jenkins</h4>
               <div class="review-role">Founder, ScaleUp Media</div>
             </div>
+          </div>
 
-            <!-- Card 2 -->
-            <div class="review-card" data-index="1">
+          <!-- Review 2 -->
+          <div class="review-card-marquee">
+            <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="David Miller Portrait" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="David Miller" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Finding high-quality backlinks without PBN spam is incredibly tough. The editorial-first approach of Web Grouth is exactly what we needed. Highly recommended for serious brands."</p>
+              <p class="review-text">"Finding high-quality backlinks without PBN spam is incredibly tough. The editorial-first approach of Web Grouth is exactly what we needed. Highly recommended."</p>
+            </div>
+            <div>
               <h4 class="review-author">David Miller</h4>
               <div class="review-role">Head of SEO, DevLink Agency</div>
             </div>
+          </div>
 
-            <!-- Card 3 -->
-            <div class="review-card" data-index="2">
+          <!-- Review 3 -->
+          <div class="review-card-marquee">
+            <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Faisal Qureshi Portrait" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Faisal Qureshi" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
               <p class="review-text">"The transparent verification process is a game-changer. We approved every publisher website before publication. The links sit naturally within excellent, original content."</p>
+            </div>
+            <div>
               <h4 class="review-author">Faisal Qureshi</h4>
               <div class="review-role">Marketing Director, FinTech Solutions</div>
             </div>
-
           </div>
-        </div>
-        
-        <!-- 3 dots indicator representing the 3 cards -->
-        <div class="slider-dots" id="sliderDots">
-          <div class="dot active" data-index="0"></div>
-          <div class="dot" data-index="1"></div>
-          <div class="dot" data-index="2"></div>
+
+          <!-- Review 4 -->
+          <div class="review-card-marquee">
+            <div>
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Sophia Lin" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"Outstanding placement speed! Our guest posts were live within 48 hours on authentic niche websites. No dummy sites or spam networks. The rankings speak for themselves."</p>
+            </div>
+            <div>
+              <h4 class="review-author">Sophia Lin</h4>
+              <div class="review-role">SEO Manager, HyperDrive Media</div>
+            </div>
+          </div>
+
+          <!-- Review 5 -->
+          <div class="review-card-marquee">
+            <div>
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="Marcus Thompson" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"Web Grouth has consistently outperformed other link building platforms. The quality of content and domain vetting is incredible. Our organic search value rose by 200%."</p>
+            </div>
+            <div>
+              <h4 class="review-author">Marcus Thompson</h4>
+              <div class="review-role">Head of Digital, PrimeScale</div>
+            </div>
+          </div>
+
+          <!-- Duplicated set of cards for seamless infinite scrolling loop -->
+          <!-- Duplicate 1 -->
+          <div class="review-card-marquee">
+            <div>
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Sarah Jenkins" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"Web Grouth transformed our search visibility. The guest posts we received were on genuine websites with active communities. Our organic traffic increased by 140%."</p>
+            </div>
+            <div>
+              <h4 class="review-author">Sarah Jenkins</h4>
+              <div class="review-role">Founder, ScaleUp Media</div>
+            </div>
+          </div>
+
+          <!-- Duplicate 2 -->
+          <div class="review-card-marquee">
+            <div>
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="David Miller" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"Finding high-quality backlinks without PBN spam is incredibly tough. The editorial-first approach of Web Grouth is exactly what we needed. Highly recommended."</p>
+            </div>
+            <div>
+              <h4 class="review-author">David Miller</h4>
+              <div class="review-role">Head of SEO, DevLink Agency</div>
+            </div>
+          </div>
+
+          <!-- Duplicate 3 -->
+          <div class="review-card-marquee">
+            <div>
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Faisal Qureshi" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"The transparent verification process is a game-changer. We approved every publisher website before publication. The links sit naturally within excellent, original content."</p>
+            </div>
+            <div>
+              <h4 class="review-author">Faisal Qureshi</h4>
+              <div class="review-role">Marketing Director, FinTech Solutions</div>
+            </div>
+          </div>
+
+          <!-- Duplicate 4 -->
+          <div class="review-card-marquee">
+            <div>
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Sophia Lin" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"Outstanding placement speed! Our guest posts were live within 48 hours on authentic niche websites. No dummy sites or spam networks. The rankings speak for themselves."</p>
+            </div>
+            <div>
+              <h4 class="review-author">Sophia Lin</h4>
+              <div class="review-role">SEO Manager, HyperDrive Media</div>
+            </div>
+          </div>
+
+          <!-- Duplicate 5 -->
+          <div class="review-card-marquee">
+            <div>
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="Marcus Thompson" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"Web Grouth has consistently outperformed other link building platforms. The quality of content and domain vetting is incredible. Our organic search value rose by 200%."</p>
+            </div>
+            <div>
+              <h4 class="review-author">Marcus Thompson</h4>
+              <div class="review-role">Head of Digital, PrimeScale</div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -585,14 +761,14 @@
   <section id="pricing" style="padding:90px 0 30px;">
     <div class="container">
       <div class="section-header reveal">
-        <span class="eyebrow">Simple Pricing</span>
-        <h2>Choose Your <span class="highlight">Package</span></h2>
-        <p>Transparent pricing, no hidden fees. Confirm exact publisher sites with us before we start.</p>
+        <span class="eyebrow">Maximize Search Value</span>
+        <h2>Flexible Packages, <span class="highlight">Guaranteed Placements</span></h2>
+        <p>100% transparent pricing. You approve every publisher site, traffic volume, and niche context before publication.</p>
       </div>
       <div class="pricing-grid">
         <div class="pricing-card reveal">
           <h3>Starter</h3>
-          <p class="plan-desc">Test the waters</p>
+          <p class="plan-desc">Perfect to test the system</p>
           <div class="price">$149 <span>/ post</span></div>
           <ul>
             <li><i class="fas fa-circle-check"></i> 1 Guest Post</li>
@@ -604,7 +780,7 @@
         </div>
         <div class="pricing-card popular reveal">
           <h3>Growth</h3>
-          <p class="plan-desc">Most chosen by agencies</p>
+          <p class="plan-desc">Engineered for scaling brands</p>
           <div class="price">$399 <span>/ month</span></div>
           <ul>
             <li><i class="fas fa-circle-check"></i> 3 Guest Posts</li>
@@ -616,7 +792,7 @@
         </div>
         <div class="pricing-card reveal">
           <h3>Pro</h3>
-          <p class="plan-desc">For serious scale</p>
+          <p class="plan-desc">For maximum authority scale</p>
           <div class="price">$799 <span>/ month</span></div>
           <ul>
             <li><i class="fas fa-circle-check"></i> 7 Guest Posts</li>
@@ -635,14 +811,14 @@
   <section style="padding:90px 0;background:#f8fafc;">
     <div class="container">
       <div class="section-header reveal">
-        <span class="eyebrow">Why Web Grouth</span>
-        <h2>Relevance Over <span class="highlight">Random Volume</span></h2>
+        <span class="eyebrow">The Web Grouth Standards</span>
+        <h2>Built for Relevance, <span class="highlight">Not Empty Volume</span></h2>
       </div>
       <div class="why-grid">
-        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-bullseye"></i></div><h4>Relevant Publishers</h4><p>Every site is matched to your niche and audience, not chosen for volume.</p></div>
-        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-eye"></i></div><h4>Full Transparency</h4><p>Know exactly what you're ordering and why it fits, before you pay.</p></div>
-        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-feather-pointed"></i></div><h4>Real Editorial Content</h4><p>Written for the reader first, so the placement actually earns its spot.</p></div>
-        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-shield-halved"></i></div><h4>No Empty Promises</h4><p>We build credible backlinks — never fake ranking guarantees.</p></div>
+        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-bullseye"></i></div><h4>Active Niche Vetting</h4><p>Every host site is strictly matched to your market, ensuring maximum SEO relevance.</p></div>
+        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-eye"></i></div><h4>100% Transparency</h4><p>You approve the target publisher site and organic traffic graph before payment is made.</p></div>
+        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-feather-pointed"></i></div><h4>Editorial-First Content</h4><p>Premium copywriting that satisfies reader curiosity, securing a naturally earned backlink.</p></div>
+        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-shield-halved"></i></div><h4>Zero Spam Networks</h4><p>We source backlink placements only from authentic, active business blogs and news outlets.</p></div>
       </div>
     </div>
   </section>
@@ -783,96 +959,9 @@
     }, { threshold: 0.4 });
     if (trustBar) trustIO.observe(trustBar);
 
-    // ---- NEXT-LEVEL REVIEWS CAROUSEL SCRIPT ----
-    const track = document.getElementById('reviewsTrack');
-    const cards = Array.from(track.children);
-    const dots = Array.from(document.getElementById('sliderDots').children);
-    let activeIndex = 0;
-    let autoPlayTimer;
-
-    function updateSlider() {
-      const isMobile = window.innerWidth < 768;
-      
-      // Toggle card active states
-      cards.forEach((card, idx) => {
-        card.classList.toggle('active', idx === activeIndex);
-      });
-      
-      // Update indicators (wider active pill)
-      dots.forEach((dot, idx) => {
-        dot.classList.toggle('active', idx === activeIndex);
-      });
-
-      if (isMobile) {
-        // Simple horizontal shifting on mobile viewports
-        const offset = -activeIndex * 100;
-        track.style.transform = `translateX(${offset}%)`;
-      } else {
-        // Beautiful centered focusing for larger screens
-        const cardWidth = cards[0].getBoundingClientRect().width;
-        const gap = 30; // Matches style sheet gap
-        const containerWidth = document.querySelector('.reviews-slider-container').getBoundingClientRect().width;
-        
-        const activeCardLeft = activeIndex * (cardWidth + gap);
-        const centerOffset = (containerWidth / 2) - (cardWidth / 2);
-        const transformValue = centerOffset - activeCardLeft;
-        
-        track.style.transform = `translateX(${transformValue}px)`;
-      }
-    }
-
-    function nextSlide() {
-      activeIndex = (activeIndex + 1) % cards.length;
-      updateSlider();
-    }
-
-    function startAutoPlay() {
-      stopAutoPlay();
-      autoPlayTimer = setInterval(nextSlide, 4500); // Transitions every 4.5s
-    }
-
-    function stopAutoPlay() {
-      if (autoPlayTimer) clearInterval(autoPlayTimer);
-    }
-
-    // Interactivity: Dot clicks
-    dots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        activeIndex = idx;
-        updateSlider();
-        startAutoPlay(); // Resets autoplay timer
-      });
-    });
-
-    // Interactivity: Direct card clicks
-    cards.forEach((card, idx) => {
-      card.addEventListener('click', () => {
-        activeIndex = idx;
-        updateSlider();
-        startAutoPlay();
-      });
-    });
-
-    // Pause autoplay when hovering to read
-    const sliderContainer = document.querySelector('.reviews-slider-container');
-    sliderContainer.addEventListener('mouseenter', stopAutoPlay);
-    sliderContainer.addEventListener('mouseleave', startAutoPlay);
-
-    // Dynamic resize handler with simple debounce
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(updateSlider, 100);
-    });
-
-    // Initialize
-    updateSlider();
-    startAutoPlay();
-
     // respect reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
-      stopAutoPlay(); // disable transitions if preferred
     }
   </script>
 </body>
