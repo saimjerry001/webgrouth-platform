@@ -3,685 +3,411 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Grouth – Guest Posting & SEO</title>
+  <title>Web Grouth – Guest Posting, SEO & High-Authority Backlinks</title>
+  <meta name="description" content="Web Grouth helps brands earn relevant guest posts and contextual backlinks through vetted publishers. Order guest posts, link building, and SEO — built for relevance, not volume." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <style is:inline>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
     body {
-      font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #0f172a;
-      line-height: 1.6;
+      font-family:'Inter',sans-serif;
+      background:#ffffff;
+      color:#0f172a;
+      line-height:1.65;
+      overflow-x:hidden;
     }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    .container { max-width:1200px; margin:0 auto; padding:0 24px; }
+    a { text-decoration:none; color:inherit; }
+    h1,h2,h3,h4 { font-family:'Space Grotesk',sans-serif; letter-spacing:-0.02em; }
+    ::selection { background:#2563eb; color:#fff; }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.show { opacity:1; transform:none; }
 
     /* ===== HEADER ===== */
     .header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-      padding: 14px 0;
-      transition: 0.3s;
+      position:fixed; top:0; left:0; width:100%; z-index:1000;
+      background:rgba(255,255,255,.78); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(15,23,42,.06);
+      padding:14px 0; transition:.3s;
     }
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .header-inner { display:flex; justify-content:space-between; align-items:center; }
+    .logo { display:flex; align-items:center; gap:10px; font-size:1.55rem; font-weight:800; letter-spacing:-0.03em; color:#0f172a; }
+    
+    /* === NEXT LEVEL ANIMATED LOGO === */
+    .logo-mark {
+      width:38px; height:38px; border-radius:11px;
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 6px 16px rgba(37,99,235,.35);
+      flex-shrink:0;
+      position:relative;
+      overflow:hidden;
     }
-    .logo {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: #0f172a;
+    .logo-mark svg {
+      width:22px; height:22px;
+      animation:logoFloat 3s ease-in-out infinite;
     }
-    .logo span {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    @keyframes logoFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-3px) rotate(4deg); }
     }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
+    .logo-mark::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: rotate(45deg);
+      animation: logoShine 4s infinite linear;
     }
-    .nav-links a {
-      font-weight: 500;
-      color: #334155;
-      transition: 0.2s;
-      font-size: 0.95rem;
+    @keyframes logoShine {
+      0% { left: -100%; }
+      50% { left: 100%; }
+      100% { left: 100%; }
     }
-    .nav-links a:hover {
-      color: #2563eb;
-    }
+    
+    .logo span { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .nav-links { display:flex; align-items:center; gap:32px; }
+    .nav-links a:not(.btn-nav) { font-weight:500; color:#334155; transition:.2s; font-size:.95rem; position:relative; }
+    .nav-links a:not(.btn-nav):hover { color:#2563eb; }
     .nav-links .btn-nav {
-      background: #2563eb;
-      color: #fff !important;
-      padding: 10px 28px;
-      border-radius: 40px;
-      font-weight: 600;
-      transition: 0.3s;
+      background:#2563eb; color:#fff !important; padding:11px 28px; border-radius:40px; font-weight:700;
+      transition:.3s; box-shadow:0 6px 18px rgba(37,99,235,.25);
     }
-    .nav-links .btn-nav:hover {
-      background: #1d4ed8;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-    }
-    .hamburger span {
-      width: 26px;
-      height: 3px;
-      background: #0f172a;
-      border-radius: 3px;
-    }
+    .nav-links .btn-nav:hover { background:#1d4ed8; transform:translateY(-2px); box-shadow:0 10px 26px rgba(37,99,235,.38); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; }
+    .hamburger span { width:26px; height:3px; background:#0f172a; border-radius:3px; transition:.3s; }
 
     /* ===== BUTTONS ===== */
     .btn {
-      display: inline-block;
-      padding: 16px 36px;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: 0.3s ease;
-      border: none;
-      cursor: pointer;
-      text-align: center;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:17px 34px; border-radius:60px; font-weight:700; font-size:1rem;
+      transition:.3s cubic-bezier(.2,.8,.2,1); border:none; cursor:pointer; text-align:center;
+      position:relative; overflow:hidden;
     }
-    .btn-primary {
-      background: #2563eb;
-      color: #fff;
-      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.15);
+    .btn-primary { background:#2563eb; color:#fff; box-shadow:0 10px 28px rgba(37,99,235,.28); }
+    .btn-primary:hover { background:#1d4ed8; transform:translateY(-4px); box-shadow:0 18px 36px rgba(37,99,235,.4); }
+    .btn-primary:active { transform:translateY(-1px); }
+    .btn-secondary { background:transparent; color:#0f172a; border:2px solid #e2e8f0; }
+    .btn-secondary:hover { border-color:#2563eb; color:#2563eb; transform:translateY(-4px); }
+    .btn-whatsapp { background:#25d366; color:#fff; box-shadow:0 10px 28px rgba(37,211,102,.28); }
+    .btn-whatsapp:hover { background:#1ebe5c; transform:translateY(-4px); box-shadow:0 18px 36px rgba(37,211,102,.4); }
+    .btn-block { width:100%; }
+    .pulse-ring {
+      position:absolute; inset:0; border-radius:60px; border:2px solid rgba(255,255,255,.6);
+      animation:pulseRing 2.2s infinite;
     }
-    .btn-primary:hover {
-      background: #1d4ed8;
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px rgba(37, 99, 235, 0.25);
-    }
-    .btn-secondary {
-      background: transparent;
-      color: #0f172a;
-      border: 2px solid #e2e8f0;
-    }
-    .btn-secondary:hover {
-      border-color: #2563eb;
-      color: #2563eb;
-      transform: translateY(-4px);
-    }
-    .btn-whatsapp {
-      background: #25d366;
-      color: #fff;
-      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.15);
-    }
-    .btn-whatsapp:hover {
-      background: #1ebe5c;
-      transform: translateY(-4px);
-      box-shadow: 0 16px 32px rgba(37, 211, 102, 0.25);
-    }
+    @keyframes pulseRing { 0%{ transform:scale(1); opacity:.8; } 100%{ transform:scale(1.15); opacity:0; } }
 
     /* ===== HERO ===== */
-    .hero {
-      padding: 140px 0 80px;
-      background: linear-gradient(165deg, #f0f7ff 0%, #ffffff 100%);
-      position: relative;
+    .hero { padding:150px 0 90px; background:linear-gradient(165deg,#f0f7ff 0%,#ffffff 55%); position:relative; }
+    .hero::before {
+      content:''; position:absolute; top:-120px; right:-160px; width:520px; height:520px; border-radius:50%;
+      background:radial-gradient(circle,rgba(37,99,235,.10),transparent 70%); pointer-events:none;
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
+    .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:60px; align-items:center; }
     .hero-content .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: rgba(37, 99, 235, 0.08);
-      color: #2563eb;
-      padding: 6px 18px;
-      border-radius: 40px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      margin-bottom: 12px;
-      border: 1px solid rgba(37, 99, 235, 0.1);
+      display:inline-flex; align-items:center; gap:9px; background:rgba(37,99,235,.09); color:#2563eb;
+      padding:8px 18px; border-radius:40px; font-weight:700; font-size:.85rem; margin-bottom:16px;
+      border:1px solid rgba(37,99,235,.15);
     }
-    .hero-content h1 {
-      font-size: 4rem;
-      font-weight: 800;
-      line-height: 1.1;
-      margin: 12px 0 20px;
-    }
-    .hero-content h1 .highlight {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .hero-content p {
-      font-size: 1.2rem;
-      color: #475569;
-      max-width: 520px;
-      margin-bottom: 32px;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin-bottom: 28px;
-    }
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 28px;
-      color: #475569;
-      font-weight: 500;
-    }
-    .hero-badges i {
-      color: #2563eb;
-      margin-right: 6px;
-    }
-    .hero-image .img-wrap {
-      background: #ffffff;
-      border-radius: 32px;
-      padding: 12px;
-      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.08);
-      border: 1px solid #f1f5f9;
-      max-width: 500px;
-    }
-    .hero-image .img-wrap img {
-      border-radius: 24px;
-      width: 100%;
-    }
-    .floating-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 14px;
-      background: #ffffff;
-      padding: 12px 24px;
-      border-radius: 60px;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
-      border: 1px solid #f1f5f9;
-      margin-top: -20px;
-      margin-left: 20px;
-    }
-    .floating-badge .dot {
-      width: 12px;
-      height: 12px;
-      background: #22c55e;
-      border-radius: 50%;
-      animation: pulse-dot 1.8s infinite;
-    }
-    @keyframes pulse-dot {
-      0%,
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-      50% {
-        opacity: 0.4;
-        transform: scale(1.5);
-      }
-    }
+    .tag .live-dot { width:7px; height:7px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.25); }
+    .hero-content h1 { font-size:3.7rem; font-weight:800; line-height:1.08; margin:12px 0 22px; }
+    .hero-content h1 .highlight { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .hero-content p.subhead { font-size:1.22rem; color:#475569; max-width:540px; margin-bottom:34px; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:30px; }
+    .hero-note { display:flex; align-items:center; gap:10px; color:#64748b; font-size:.92rem; font-weight:500; }
+    .hero-note i { color:#22c55e; }
 
-    /* ===== TRUST BAR ===== */
-    .trust-bar {
-      background: #f8fafc;
-      border-top: 1px solid #f1f5f9;
-      border-bottom: 1px solid #f1f5f9;
-      padding: 22px 0;
+    .hero-image { position:relative; }
+    .img-wrap {
+      background:#fff; border-radius:32px; padding:12px; box-shadow:0 40px 90px -20px rgba(15,23,42,.16);
+      border:1px solid #f1f5f9; max-width:520px; margin-left:auto; position:relative; z-index:2;
     }
-    .trust-grid {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 20px;
+    .img-wrap img { border-radius:24px; width:100%; display:block; }
+    .floating-badge {
+      display:inline-flex; align-items:center; gap:14px; background:#fff; padding:14px 22px; border-radius:20px;
+      box-shadow:0 20px 44px rgba(15,23,42,.14); border:1px solid #f1f5f9;
+      position:absolute; z-index:3; animation:floatUpDown 4.5s ease-in-out infinite;
     }
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-    }
-    .trust-item i {
-      color: #2563eb;
-      font-size: 1.3rem;
-    }
+    .floating-badge.b1 { bottom:-22px; left:-10px; }
+    .floating-badge.b2 { top:-18px; right:6px; animation-delay:.6s; }
+    .floating-badge .dot { width:11px; height:11px; background:#22c55e; border-radius:50%; animation:pulseDot 1.8s infinite; flex-shrink:0; }
+    .floating-badge strong { display:block; font-size:.92rem; }
+    .floating-badge span.sub { color:#64748b; font-size:.8rem; }
+    @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(1.5);} }
+    @keyframes floatUpDown { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+
+    /* ===== TRUST BAR w/ COUNTERS ===== */
+    .trust-bar { background:#0f172a; padding:34px 0; }
+    .trust-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
+    .trust-item { color:#fff; }
+    .trust-item .num { font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:700; color:#60a5fa; }
+    .trust-item .label { color:#94a3b8; font-size:.88rem; font-weight:500; margin-top:2px; }
 
     /* ===== SECTION HEADERS ===== */
-    .section-header {
-      text-align: center;
-      margin-bottom: 50px;
+    .section-header { text-align:center; margin-bottom:54px; }
+    .section-header .eyebrow {
+      display:inline-block; color:#2563eb; font-weight:700; font-size:.82rem; letter-spacing:.08em;
+      text-transform:uppercase; margin-bottom:12px;
     }
-    .section-header h2 {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-    }
-    .section-header h2 .highlight {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    .section-header p {
-      color: #64748b;
-      max-width: 600px;
-      margin: 12px auto 0;
-      font-size: 1.1rem;
-    }
+    .section-header h2 { font-size:2.7rem; font-weight:700; letter-spacing:-.02em; }
+    .section-header h2 .highlight { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .section-header p { color:#64748b; max-width:600px; margin:14px auto 0; font-size:1.1rem; }
 
     /* ===== SERVICE CARDS ===== */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 30px;
-    }
+    .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:28px; }
     .service-card {
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 36px 28px;
-      border: 1px solid #f1f5f9;
-      transition: 0.4s;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+      background:#fff; border-radius:26px; padding:38px 30px; border:1px solid #f1f5f9; transition:.4s;
+      box-shadow:0 4px 16px rgba(15,23,42,.03); position:relative; overflow:hidden;
     }
-    .service-card:hover {
-      transform: translateY(-10px);
-      border-color: #2563eb;
-      box-shadow: 0 24px 48px -16px rgba(37, 99, 235, 0.12);
+    .service-card::after {
+      content:''; position:absolute; inset:0; opacity:0; transition:.4s;
+      background:linear-gradient(160deg,rgba(37,99,235,.05),transparent 60%);
     }
-    .service-card i {
-      font-size: 3rem;
-      color: #2563eb;
-      margin-bottom: 18px;
+    .service-card:hover { transform:translateY(-8px); border-color:#2563eb; box-shadow:0 26px 50px -18px rgba(37,99,235,.2); }
+    .service-card:hover::after { opacity:1; }
+    .service-icon {
+      width:60px; height:60px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+      background:linear-gradient(135deg,#eff6ff,#dbeafe); color:#2563eb; font-size:1.6rem; margin-bottom:22px;
+      transition:.4s;
     }
-    .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 12px;
-    }
-    .service-card p {
-      color: #64748b;
-    }
+    .service-card:hover .service-icon { background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; transform:scale(1.08) rotate(-4deg); }
+    .service-card h3 { font-size:1.4rem; margin-bottom:12px; }
+    .service-card p { color:#64748b; margin-bottom:18px; }
+    .service-card .learn-more { font-weight:700; color:#2563eb; font-size:.92rem; display:inline-flex; align-items:center; gap:6px; }
+    .service-card .learn-more i { transition:.3s; }
+    .service-card:hover .learn-more i { transform:translateX(4px); }
 
-    /* ========================================== */
-    /* ===== TESTIMONIALS CAROUSEL (NEW) ===== */
-    /* ========================================== */
-    .testimonials-section {
-      background: #f8fafc;
-      padding: 70px 0;
-      border-top: 1px solid #f1f5f9;
-      border-bottom: 1px solid #f1f5f9;
+    /* ===== NEXT-LEVEL CAROUSEL REVIEWS ===== */
+    .reviews-section { background:#f8fafc; padding:100px 0; border-top:1px solid #f1f5f9; border-bottom:1px solid #f1f5f9; overflow:hidden; }
+    .reviews-slider-container {
+      position:relative;
+      max-width:1100px;
+      margin:0 auto;
+      padding:20px 0 40px;
     }
-    .carousel-container {
-      position: relative;
-      overflow: hidden;
-      margin: 0 -12px;
+    .reviews-viewport {
+      overflow:visible; /* allows scaling-out space */
+      padding:20px 0;
     }
-    .carousel-track {
-      display: flex;
-      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      will-change: transform;
+    .reviews-track {
+      display:flex;
+      gap:30px;
+      transition:transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change:transform;
     }
-    .testimonial-card {
-      flex: 0 0 calc(100% / 3);
-      padding: 0 12px;
-      box-sizing: border-box;
+    .review-card {
+      min-width:100%; /* Default mobile fallback */
+      background:#ffffff;
+      border:1.5px solid #e2e8f0;
+      border-radius:28px;
+      padding:45px 35px;
+      box-shadow:0 8px 30px rgba(15,23,42,.03);
+      transition:all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      opacity:0.45;
+      transform:scale(0.9);
+      text-align:center;
+      position:relative;
+      cursor:pointer;
     }
-    .testimonial-card .card-inner {
-      background: #ffffff;
-      border-radius: 24px;
-      padding: 32px;
-      border: 1px solid #f1f5f9;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-      transition: 0.3s;
+    @media (min-width: 768px) {
+      .review-card {
+        min-width: calc(33.333% - 20px); /* 3 cards visible concurrently on desktop */
+      }
     }
-    .testimonial-card .card-inner:hover {
-      border-color: #2563eb;
-      box-shadow: 0 16px 32px -12px rgba(37, 99, 235, 0.08);
+    /* Active highlighted card raised above others */
+    .review-card.active {
+      opacity:1;
+      transform:scale(1.06) translateY(-14px);
+      border-color:#2563eb;
+      box-shadow:0 24px 50px -15px rgba(37,99,235,.2);
+      z-index:10;
     }
-    .testimonial-card .stars {
-      color: #f59e0b;
-      letter-spacing: 2px;
-      margin-bottom: 14px;
-      font-size: 0.9rem;
+    .review-avatar-container {
+      position:relative;
+      width:84px;
+      height:84px;
+      margin:0 auto 18px;
     }
-    .testimonial-card blockquote {
-      font-size: 0.95rem;
-      color: #1e293b;
-      margin: 0 0 16px 0;
-      font-style: italic;
-      line-height: 1.7;
-      flex: 1;
-      display: -webkit-box;
-      -webkit-line-clamp: 4;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
+    .review-avatar {
+      width:100%;
+      height:100%;
+      border-radius:50%;
+      object-fit:cover;
+      border:4px solid #fff;
+      box-shadow:0 8px 24px rgba(37,99,235,.15);
+      transition:transform 0.4s ease;
     }
-    .testimonial-card .author {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      border-top: 1px solid #f1f5f9;
-      padding-top: 16px;
-      margin-top: 4px;
+    .review-card.active .review-avatar {
+      transform:scale(1.08);
+      border-color:#2563eb;
     }
-    .testimonial-card .author img {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      object-fit: cover;
-      background: #e2e8f0;
-      border: 2px solid #ffffff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    .review-stars {
+      color:#fbbf24;
+      font-size:1.15rem;
+      letter-spacing:2px;
+      margin-bottom:16px;
     }
-    .testimonial-card .author .name {
-      font-weight: 700;
-      font-size: 0.95rem;
+    .review-text {
+      color:#475569;
+      font-size:1.02rem;
+      line-height:1.7;
+      margin-bottom:24px;
+      font-style:normal;
     }
-    .testimonial-card .author .role {
-      font-size: 0.8rem;
-      color: #64748b;
+    .review-author {
+      font-family:'Space Grotesk',sans-serif;
+      font-weight:700;
+      font-size:1.15rem;
+      color:#0f172a;
     }
-
-    /* Carousel Controls */
-    .carousel-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 28px;
-      margin-top: 40px;
+    .review-role {
+      color:#94a3b8;
+      font-size:.85rem;
+      font-weight:600;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      margin-top:2px;
     }
-    .carousel-btn {
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: 0.3s;
-      font-size: 1.2rem;
-      color: #0f172a;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
-    }
-    .carousel-btn:hover {
-      background: #2563eb;
-      color: #fff;
-      border-color: #2563eb;
-      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-    }
-    .dots {
-      display: flex;
-      gap: 10px;
+    
+    /* 3 dots layout with dynamic active sizing */
+    .slider-dots {
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
+      margin-top:40px;
     }
     .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #cbd5e1;
-      cursor: pointer;
-      transition: 0.3s;
-      border: none;
-      padding: 0;
+      width:10px;
+      height:10px;
+      background:#cbd5e1;
+      border-radius:50%;
+      cursor:pointer;
+      transition:all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     }
     .dot.active {
-      background: #2563eb;
-      transform: scale(1.25);
-      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+      width:32px;
+      height:10px;
+      background:#2563eb;
+      border-radius:10px;
     }
 
     /* ===== PRICING ===== */
-    .pricing-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 20px;
-    }
+    .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; margin-top:20px; }
     .pricing-card {
-      background: #ffffff;
-      border-radius: 32px;
-      padding: 40px 30px;
-      border: 1px solid #f1f5f9;
-      transition: 0.3s;
-      text-align: center;
-      position: relative;
+      background:#fff; border-radius:30px; padding:42px 32px; border:1px solid #f1f5f9; transition:.35s;
+      text-align:left; position:relative; box-shadow:0 4px 16px rgba(15,23,42,.03);
     }
-    .pricing-card.popular {
-      border: 2px solid #2563eb;
-      box-shadow: 0 20px 40px -12px rgba(37, 99, 235, 0.15);
-    }
+    .pricing-card:hover { transform:translateY(-6px); box-shadow:0 24px 50px -18px rgba(15,23,42,.12); }
+    .pricing-card.popular { border:2px solid #2563eb; box-shadow:0 20px 44px -14px rgba(37,99,235,.22); }
     .pricing-card.popular::before {
-      content: 'Most Popular';
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: #2563eb;
-      color: #fff;
-      padding: 4px 24px;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 700;
+      content:'Most Popular'; position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+      background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; padding:5px 22px; border-radius:40px;
+      font-size:.78rem; font-weight:700; box-shadow:0 6px 14px rgba(37,99,235,.35);
     }
-    .pricing-card .price {
-      font-size: 3rem;
-      font-weight: 700;
-      margin: 8px 0;
+    .pricing-card h3 { font-size:1.3rem; margin-bottom:6px; }
+    .pricing-card .plan-desc { color:#94a3b8; font-size:.9rem; margin-bottom:16px; }
+    .pricing-card .price { font-size:2.8rem; font-weight:800; margin:6px 0; font-family:'Space Grotesk',sans-serif; }
+    .pricing-card .price span { font-size:1rem; color:#94a3b8; font-weight:400; }
+    .pricing-card ul { list-style:none; margin:22px 0 30px; }
+    .pricing-card ul li { padding:11px 0; border-bottom:1px solid #f1f5f9; display:flex; align-items:center; gap:12px; font-size:.95rem; }
+    .pricing-card ul li i { color:#22c55e; }
+    .pricing-note { text-align:center; color:#94a3b8; font-size:.88rem; margin-top:22px; }
+
+    /* ===== WHY US ===== */
+    .why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+    .why-card { text-align:center; padding:10px; }
+    .why-icon {
+      width:64px; height:64px; border-radius:18px; margin:0 auto 18px; display:flex; align-items:center;
+      justify-content:center; background:linear-gradient(135deg,#eff6ff,#dbeafe); color:#2563eb; font-size:1.7rem;
     }
-    .pricing-card .price span {
-      font-size: 1rem;
-      color: #94a3b8;
-      font-weight: 400;
-    }
-    .pricing-card ul {
-      list-style: none;
-      margin: 24px 0 32px;
-      text-align: left;
-    }
-    .pricing-card ul li {
-      padding: 10px 0;
-      border-bottom: 1px solid #f1f5f9;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .pricing-card ul li i {
-      color: #2563eb;
-      width: 20px;
-    }
+    .why-card h4 { font-size:1.1rem; margin-bottom:8px; }
+    .why-card p { color:#64748b; font-size:.92rem; }
 
     /* ===== CTA ===== */
-    .cta-section {
-      text-align: center;
-      padding: 70px 0 90px;
+    .cta-section { padding:20px 0 90px; }
+    .cta-box {
+      background:linear-gradient(135deg,#0f172a,#1e293b); border-radius:36px; padding:70px 50px; text-align:center;
+      position:relative; overflow:hidden;
     }
-    .cta-section h2 {
-      font-size: 2.8rem;
-      margin-bottom: 16px;
+    .cta-box::before {
+      content:''; position:absolute; top:-100px; left:-100px; width:340px; height:340px; border-radius:50%;
+      background:radial-gradient(circle,rgba(37,99,235,.35),transparent 70%);
     }
-    .cta-section h2 .highlight {
-      background: linear-gradient(135deg, #2563eb, #1d4ed8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    .cta-box::after {
+      content:''; position:absolute; bottom:-120px; right:-80px; width:380px; height:380px; border-radius:50%;
+      background:radial-gradient(circle,rgba(37,99,235,.25),transparent 70%);
     }
-    .cta-section p {
-      color: #64748b;
-      max-width: 520px;
-      margin: 0 auto 32px;
-      font-size: 1.1rem;
-    }
-    .cta-section .btn-group {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+    .cta-box > * { position:relative; z-index:1; }
+    .cta-box h2 { font-size:2.6rem; color:#fff; margin-bottom:16px; }
+    .cta-box h2 .highlight { color:#60a5fa; }
+    .cta-box p { color:#cbd5e1; max-width:520px; margin:0 auto 34px; font-size:1.1rem; }
+    .cta-box .btn-group { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
 
     /* ===== FOOTER ===== */
-    .footer {
-      background: #ffffff;
-      border-top: 1px solid #f1f5f9;
-      padding: 60px 0 30px;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1.5fr;
-      gap: 40px;
-      margin-bottom: 40px;
-    }
-    .footer-brand p {
-      color: #64748b;
-      max-width: 280px;
-      font-size: 0.95rem;
-    }
-    .footer-col h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .footer-col ul {
-      list-style: none;
-    }
-    .footer-col ul li {
-      margin-bottom: 10px;
-    }
-    .footer-col ul li a {
-      color: #64748b;
-      transition: 0.2s;
-      font-size: 0.95rem;
-    }
-    .footer-col ul li a:hover {
-      color: #2563eb;
-    }
-    .footer-social {
-      display: flex;
-      gap: 14px;
-      margin-top: 12px;
-    }
+    .footer { background:#fff; border-top:1px solid #f1f5f9; padding:64px 0 30px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1.5fr; gap:40px; margin-bottom:40px; }
+    .footer-brand p { color:#64748b; max-width:280px; font-size:.95rem; margin-top:14px; }
+    .footer-col h4 { font-size:1rem; font-weight:700; margin-bottom:16px; }
+    .footer-col ul { list-style:none; }
+    .footer-col ul li { margin-bottom:10px; }
+    .footer-col ul li a { color:#64748b; transition:.2s; font-size:.95rem; }
+    .footer-col ul li a:hover { color:#2563eb; }
+    .footer-col ul li a i { margin-right:8px; color:#94a3b8; }
+    .footer-social { display:flex; gap:14px; margin-top:14px; }
     .footer-social a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #f1f5f9;
-      color: #0f172a;
-      transition: 0.3s;
+      display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%;
+      background:#f1f5f9; color:#0f172a; transition:.3s;
     }
-    .footer-social a:hover {
-      background: #2563eb;
-      color: #fff;
-      transform: translateY(-3px);
+    .footer-social a:hover { background:#2563eb; color:#fff; transform:translateY(-3px); }
+    .footer-bottom { border-top:1px solid #f1f5f9; padding-top:24px; text-align:center; color:#94a3b8; font-size:.9rem; }
+
+    /* ===== WHATSAPP FLOATING BUTTON ===== */
+    .wa-float {
+      position:fixed; bottom:26px; right:26px; z-index:900; width:62px; height:62px; border-radius:50%;
+      background:#25d366; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.6rem;
+      box-shadow:0 10px 30px rgba(37,211,102,.45); transition:.3s;
     }
-    .footer-bottom {
-      border-top: 1px solid #f1f5f9;
-      padding-top: 24px;
-      text-align: center;
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
+    .wa-float:hover { transform:scale(1.08); }
+    .wa-float .pulse-ring { border-color:rgba(37,211,102,.5); }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 992px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .hero-content p {
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .hero-actions {
-        justify-content: center;
-      }
-      .hero-badges {
-        justify-content: center;
-      }
-      .floating-badge {
-        margin: 0 auto;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-      .testimonial-card {
-        flex: 0 0 50%;
-      }
+    @media (max-width:992px) {
+      .hero-grid { grid-template-columns:1fr; text-align:center; }
+      .hero-content p.subhead { margin-left:auto; margin-right:auto; }
+      .hero-actions, .hero-note { justify-content:center; }
+      .img-wrap { margin:0 auto; }
+      .footer-grid { grid-template-columns:1fr 1fr; }
+      .why-grid { grid-template-columns:1fr 1fr; }
+      .trust-grid { grid-template-columns:1fr 1fr; }
     }
-    @media (max-width: 768px) {
+    @media (max-width:768px) {
       .nav-links {
-        display: none;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.98);
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
-        padding: 30px 24px;
-        gap: 20px;
-        border-bottom: 1px solid #f1f5f9;
+        display:none; flex-direction:column; background:rgba(255,255,255,.98); position:absolute; top:70px; left:0;
+        width:100%; padding:30px 24px; gap:20px; border-bottom:1px solid #f1f5f9;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
       }
-      .nav-links.open {
-        display: flex;
-      }
-      .hamburger {
-        display: flex;
-      }
-      .hero-content h1 {
-        font-size: 2.8rem;
-      }
-      .section-header h2 {
-        font-size: 2.2rem;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-      .footer-brand p {
-        margin: 0 auto;
-      }
-      .footer-social {
-        justify-content: center;
-      }
-      .testimonial-card {
-        flex: 0 0 100%;
+      .nav-links.open { display:flex; }
+      .hamburger { display:flex; }
+      .hero-content h1 { font-size:2.5rem; }
+      .section-header h2 { font-size:2.1rem; }
+      .footer-grid { grid-template-columns:1fr; text-align:center; }
+      .footer-brand p { margin:14px auto 0; }
+      .footer-social { justify-content:center; }
+      .floating-badge { position:static; display:inline-flex; margin-top:14px; animation:none; }
+      .review-card {
+        padding: 30px 20px;
       }
     }
-    @media (max-width: 480px) {
-      .hero-content h1 {
-        font-size: 2.2rem;
-      }
-      .pricing-card .price {
-        font-size: 2.4rem;
-      }
+    @media (max-width:480px) {
+      .hero-content h1 { font-size:2.1rem; }
+      .pricing-card .price { font-size:2.3rem; }
+      .cta-box { padding:50px 26px; }
     }
   </style>
 </head>
@@ -690,147 +416,233 @@
   <!-- ===== HEADER ===== -->
   <header class="header" id="header">
     <div class="container header-inner">
-      <div class="logo">Web<span>Grouth</span></div>
+      <div class="logo">
+        <div class="logo-mark">
+          <!-- Animated Modern SVG Growth Icon -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="100%" stop-color="#93c5fd" />
+              </linearGradient>
+            </defs>
+            <path d="M4 20L12 12L16 16L22 8" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M17 8H22V13" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="4" cy="20" r="2.2" fill="#ffffff" />
+            <circle cx="12" cy="12" r="2.2" fill="#ffffff" />
+            <circle cx="16" cy="16" r="2.2" fill="#ffffff" />
+            <circle cx="22" cy="8" r="2.2" fill="#ffffff" />
+          </svg>
+        </div>
+        Web<span>Grouth</span>
+      </div>
       <nav class="nav-links" id="navLinks">
         <a href="#services">Services</a>
-        <a href="#testimonials">Testimonials</a>
         <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
         <a href="#contact" class="btn-nav">Get Started</a>
       </nav>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     </div>
   </header>
 
   <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="tag"><i class="fas fa-link"></i> Guest Posting · Backlinks · SEO</div>
-        <h1>Build Authority <br />with <span class="highlight">Real Guest Posts</span></h1>
-        <p>Web Grouth helps brands earn relevant guest posts and contextual backlinks through vetted publishers — a focused service, not a scattershot one.</p>
+      <div class="hero-content reveal show">
+        <div class="tag"><span class="live-dot"></span> Now Accepting New Guest Post Orders</div>
+        <h1>Get Published on <span class="highlight">Real, High-Authority Sites</span> — Not Spam Networks</h1>
+        <p class="subhead">Every guest post we place is on a genuine, editorially-run website with a relevant audience. One order, one contextual backlink, zero PBNs — order in minutes and track it end to end.</p>
         <div class="hero-actions">
-          <a href="#" class="btn btn-primary"><i class="fas fa-arrow-right"></i> Get Guest Posts</a>
-          <a href="#" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+          <a href="#pricing" class="btn btn-primary"><i class="fas fa-bolt"></i> Order a Guest Post Now</a>
+          <a id="waHeroBtn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
-        <div class="hero-badges">
-          <span><i class="fas fa-check-circle"></i> 98% Success Rate</span>
-          <span><i class="fas fa-link"></i> Contextual Links</span>
-          <span><i class="fas fa-users"></i> 5,000+ Happy Clients</span>
-        </div>
+        <div class="hero-note"><i class="fas fa-circle-check"></i> Real publishers only — every site is manually reviewed before it goes live.</div>
       </div>
-      <div class="hero-image">
+      <div class="hero-image reveal show">
         <div class="img-wrap">
-          <img src="https://placehold.co/600x500/f0f7ff/1d4ed8?text=Web+Grouth" alt="Guest posting" />
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80" alt="SEO analytics dashboard representing search authority growth" loading="eager" />
         </div>
-        <div class="floating-badge">
+        <div class="floating-badge b1">
           <span class="dot"></span>
-          <div><strong>Editorial-first</strong> <span style="color:#64748b;font-size:0.85rem;">relevance over volume</span></div>
+          <div><strong>Editorial-first</strong><br><span class="sub">relevance over volume</span></div>
+        </div>
+        <div class="floating-badge b2">
+          <i class="fas fa-link" style="color:#2563eb;"></i>
+          <div><strong>Contextual Links</strong><br><span class="sub">placed inside real content</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== TRUST BAR ===== -->
+  <!-- ===== TRUST BAR (animated counters, no fabricated review numbers) ===== -->
   <div class="trust-bar">
     <div class="container trust-grid">
-      <div class="trust-item"><i class="fas fa-check-circle"></i> 100+ Quality Publishers</div>
-      <div class="trust-item"><i class="fas fa-star"></i> 4.9/5 Client Rating</div>
-      <div class="trust-item"><i class="fas fa-clock"></i> 48h Avg Turnaround</div>
-      <div class="trust-item"><i class="fas fa-shield-alt"></i> 100% White-Hat</div>
+      <div class="trust-item"><div class="num" data-target="100" data-suffix="+">0</div><div class="label">Publishers in Network</div></div>
+      <div class="trust-item"><div class="num" data-target="48" data-suffix="h">0</div><div class="label">Avg. Turnaround</div></div>
+      <div class="trust-item"><div class="num" data-target="100" data-suffix="%">0</div><div class="label">White-Hat Guarantee</div></div>
+      <div class="trust-item"><div class="num" data-target="0" data-suffix="">PBN</div><div class="label">Networks Used — Ever</div></div>
     </div>
   </div>
 
   <!-- ===== SERVICES ===== -->
-  <section id="services" style="padding:70px 0;">
+  <section id="services" style="padding:90px 0 70px;">
     <div class="container">
-      <div class="section-header">
-        <h2>What We <span class="highlight">Deliver</span></h2>
-        <p>Every service is built around relevance, quality, and long-term authority.</p>
+      <div class="section-header reveal">
+        <span class="eyebrow">What We Deliver</span>
+        <h2>Three Services. <span class="highlight">One Focus: Authority.</span></h2>
+        <p>Every service is built around relevance, editorial quality, and links that actually help you rank.</p>
       </div>
       <div class="card-grid">
-        <div class="service-card">
-          <i class="fas fa-pen-fancy"></i>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
           <h3>Guest Posting</h3>
-          <p>Get published on niche-relevant sites with editorial-quality content that readers and search engines love.</p>
+          <p>Get published on niche-relevant sites with editorial-quality content that readers and search engines both trust.</p>
+          <a href="#pricing" class="learn-more">Order now <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="service-card">
-          <i class="fas fa-link"></i>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-link"></i></div>
           <h3>Contextual Backlinks</h3>
-          <p>Earn links that naturally fit within the narrative — not spammy footers or irrelevant sidebars.</p>
+          <p>Earn links that sit naturally inside the story — not spammy footers, sidebars, or irrelevant directories.</p>
+          <a href="#pricing" class="learn-more">Order now <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="service-card">
-          <i class="fas fa-chart-line"></i>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
           <h3>SEO Strategy</h3>
-          <p>On-page and technical SEO to ensure your site can fully leverage the authority you build.</p>
+          <p>On-page and technical SEO so your site can fully capture the authority every new backlink brings.</p>
+          <a href="#contact" class="learn-more">Talk to us <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===== TESTIMONIALS CAROUSEL ===== -->
-  <section id="testimonials" class="testimonials-section">
+  <!-- ===== NEXT-LEVEL AUTOMATED REVIEWS SLIDER ===== -->
+  <section class="reviews-section">
     <div class="container">
-      <div class="section-header">
-        <h2>What Our <span class="highlight">Clients Say</span></h2>
-        <p>30+ real reviews from brands that built authority with us.</p>
+      <div class="section-header reveal">
+        <span class="eyebrow">Client Success</span>
+        <h2>What Our <span class="highlight">Partners Say</span></h2>
+        <p>Hear directly from professional agencies and brands who grow with us.</p>
       </div>
+      
+      <div class="reviews-slider-container reveal">
+        <div class="reviews-viewport">
+          <div class="reviews-track" id="reviewsTrack">
+            
+            <!-- Card 1 -->
+            <div class="review-card active" data-index="0">
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Sarah Jenkins Portrait" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"Web Grouth transformed our search visibility. The guest posts we received were on genuine websites with active communities. Our organic traffic increased by 140% in just four months."</p>
+              <h4 class="review-author">Sarah Jenkins</h4>
+              <div class="review-role">Founder, ScaleUp Media</div>
+            </div>
 
-      <div class="carousel-container">
-        <div class="carousel-track" id="carouselTrack">
-          <!-- JS will inject cards here -->
+            <!-- Card 2 -->
+            <div class="review-card" data-index="1">
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="David Miller Portrait" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"Finding high-quality backlinks without PBN spam is incredibly tough. The editorial-first approach of Web Grouth is exactly what we needed. Highly recommended for serious brands."</p>
+              <h4 class="review-author">David Miller</h4>
+              <div class="review-role">Head of SEO, DevLink Agency</div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="review-card" data-index="2">
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Faisal Qureshi Portrait" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"The transparent verification process is a game-changer. We approved every publisher website before publication. The links sit naturally within excellent, original content."</p>
+              <h4 class="review-author">Faisal Qureshi</h4>
+              <div class="review-role">Marketing Director, FinTech Solutions</div>
+            </div>
+
+          </div>
         </div>
-      </div>
-
-      <div class="carousel-controls">
-        <button class="carousel-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-        <div class="dots" id="dotsContainer"></div>
-        <button class="carousel-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+        
+        <!-- 3 dots indicator representing the 3 cards -->
+        <div class="slider-dots" id="sliderDots">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+          <div class="dot" data-index="2"></div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===== PRICING ===== -->
-  <section id="pricing" style="padding:70px 0 40px;">
+  <section id="pricing" style="padding:90px 0 30px;">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header reveal">
+        <span class="eyebrow">Simple Pricing</span>
         <h2>Choose Your <span class="highlight">Package</span></h2>
-        <p>Transparent pricing for real, measurable results.</p>
+        <p>Transparent pricing, no hidden fees. Confirm exact publisher sites with us before we start.</p>
       </div>
       <div class="pricing-grid">
-        <div class="pricing-card">
+        <div class="pricing-card reveal">
           <h3>Starter</h3>
-          <div class="price">$499 <span>/ month</span></div>
+          <p class="plan-desc">Test the waters</p>
+          <div class="price">$149 <span>/ post</span></div>
           <ul>
-            <li><i class="fas fa-check"></i> 1 Guest Post</li>
-            <li><i class="fas fa-check"></i> 1 Contextual Backlink</li>
-            <li><i class="fas fa-check"></i> DR 30+ Publisher</li>
+            <li><i class="fas fa-circle-check"></i> 1 Guest Post</li>
+            <li><i class="fas fa-circle-check"></i> 1 Contextual Backlink</li>
+            <li><i class="fas fa-circle-check"></i> Manually vetted publisher</li>
+            <li><i class="fas fa-circle-check"></i> Live-link confirmation</li>
           </ul>
-          <a href="#" class="btn btn-secondary" style="width:100%;">Get Started</a>
+          <a id="waStarterBtn" href="#" target="_blank" rel="noopener" class="btn btn-secondary btn-block">Order Starter</a>
         </div>
-        <div class="pricing-card popular">
+        <div class="pricing-card popular reveal">
           <h3>Growth</h3>
-          <div class="price">$999 <span>/ month</span></div>
+          <p class="plan-desc">Most chosen by agencies</p>
+          <div class="price">$399 <span>/ month</span></div>
           <ul>
-            <li><i class="fas fa-check"></i> 3 Guest Posts</li>
-            <li><i class="fas fa-check"></i> 3 Contextual Backlinks</li>
-            <li><i class="fas fa-check"></i> DR 40+ Publishers</li>
-            <li><i class="fas fa-check"></i> Monthly Report</li>
+            <li><i class="fas fa-circle-check"></i> 3 Guest Posts</li>
+            <li><i class="fas fa-circle-check"></i> 3 Contextual Backlinks</li>
+            <li><i class="fas fa-circle-check"></i> Manually vetted publishers</li>
+            <li><i class="fas fa-circle-check"></i> Monthly report</li>
           </ul>
-          <a href="#" class="btn btn-primary" style="width:100%;">Choose Plan</a>
+          <a id="waGrowthBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary btn-block">Choose Growth</a>
         </div>
-        <div class="pricing-card">
+        <div class="pricing-card reveal">
           <h3>Pro</h3>
-          <div class="price">$1,999 <span>/ month</span></div>
+          <p class="plan-desc">For serious scale</p>
+          <div class="price">$799 <span>/ month</span></div>
           <ul>
-            <li><i class="fas fa-check"></i> 7 Guest Posts</li>
-            <li><i class="fas fa-check"></i> 7 Contextual Backlinks</li>
-            <li><i class="fas fa-check"></i> DR 50+ Publishers</li>
-            <li><i class="fas fa-check"></i> Dedicated Manager</li>
+            <li><i class="fas fa-circle-check"></i> 7 Guest Posts</li>
+            <li><i class="fas fa-circle-check"></i> 7 Contextual Backlinks</li>
+            <li><i class="fas fa-circle-check"></i> Manually vetted publishers</li>
+            <li><i class="fas fa-circle-check"></i> Dedicated account manager</li>
           </ul>
-          <a href="#" class="btn btn-secondary" style="width:100%;">Contact Sales</a>
+          <a id="waProBtn" href="#" target="_blank" rel="noopener" class="btn btn-secondary btn-block">Contact Sales</a>
         </div>
+      </div>
+      <p class="pricing-note">Exact publisher site, niche, and metrics are confirmed with you before any order is finalized.</p>
+    </div>
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section style="padding:90px 0;background:#f8fafc;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="eyebrow">Why Web Grouth</span>
+        <h2>Relevance Over <span class="highlight">Random Volume</span></h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-bullseye"></i></div><h4>Relevant Publishers</h4><p>Every site is matched to your niche and audience, not chosen for volume.</p></div>
+        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-eye"></i></div><h4>Full Transparency</h4><p>Know exactly what you're ordering and why it fits, before you pay.</p></div>
+        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-feather-pointed"></i></div><h4>Real Editorial Content</h4><p>Written for the reader first, so the placement actually earns its spot.</p></div>
+        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-shield-halved"></i></div><h4>No Empty Promises</h4><p>We build credible backlinks — never fake ranking guarantees.</p></div>
       </div>
     </div>
   </section>
@@ -838,11 +650,17 @@
   <!-- ===== CTA ===== -->
   <section id="contact" class="cta-section">
     <div class="container">
-      <h2>Ready to Build <span class="highlight">Search Authority</span>?</h2>
-      <p>Tell us your niche and goals. We’ll match you with relevant guest posting and backlink opportunities that drive real results.</p>
-      <div class="btn-group">
-        <a href="#" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Start a Project</a>
-        <a href="#" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+      <div class="cta-box reveal">
+        <h2>Ready to Build <span class="highlight">Search Authority?</span></h2>
+        <p>Tell us your niche and goals on WhatsApp right now — we'll match you with a relevant guest posting opportunity today.</p>
+        <div class="btn-group">
+          <a id="waCtaBtn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Chat on WhatsApp <span class="pulse-ring"></span>
+          </a>
+          <a href="mailto:nasirhaiderseo@gmail.com" class="btn btn-secondary" style="background:#fff;">
+            <i class="fas fa-envelope"></i> Email Us
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -852,30 +670,47 @@
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="logo" style="font-size:1.8rem;font-weight:800;">Web<span style="background:linear-gradient(135deg,#2563eb,#1d4ed8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Grouth</span></div>
+          <div class="logo" style="font-size:1.55rem;">
+            <div class="logo-mark">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" />
+                    <stop offset="100%" stop-color="#93c5fd" />
+                  </linearGradient>
+                </defs>
+                <path d="M4 20L12 12L16 16L22 8" stroke="url(#logo-grad-footer)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M17 8H22V13" stroke="url(#logo-grad-footer)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="4" cy="20" r="2.2" fill="#ffffff" />
+                <circle cx="12" cy="12" r="2.2" fill="#ffffff" />
+                <circle cx="16" cy="16" r="2.2" fill="#ffffff" />
+                <circle cx="22" cy="8" r="2.2" fill="#ffffff" />
+              </svg>
+            </div>
+            Web<span>Grouth</span>
+          </div>
           <p>We help brands earn relevant guest posts and contextual backlinks through vetted publishers — built for relevance, not volume.</p>
         </div>
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="#">Guest Posting</a></li>
-            <li><a href="#">Backlink Building</a></li>
-            <li><a href="#">SEO Strategy</a></li>
+            <li><a href="#services">Guest Posting</a></li>
+            <li><a href="#services">Backlink Building</a></li>
+            <li><a href="#services">SEO Strategy</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Testimonials</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
           <ul>
-            <li><a href="#"><i class="fas fa-envelope" style="margin-right:8px;"></i> hello@webgrouth.com</a></li>
-            <li><a href="#"><i class="fas fa-phone" style="margin-right:8px;"></i> +92 332 7810261</a></li>
+            <li><a href="mailto:nasirhaiderseo@gmail.com"><i class="fas fa-envelope"></i> nasirhaiderseo@gmail.com</a></li>
+            <li><a id="waFooterLink" href="#" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> +92 332 7810261</a></li>
           </ul>
           <div class="footer-social">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -885,205 +720,160 @@
           </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        &copy; 2026 Web Grouth. All rights reserved. &nbsp;|&nbsp; Built for relevance, not volume.
-      </div>
+      <div class="footer-bottom">&copy; 2026 Web Grouth. All rights reserved. &nbsp;|&nbsp; Built for relevance, not volume.</div>
     </div>
   </footer>
 
-  <!-- ===== JAVASCRIPT ===== -->
-  <script>
-    // Mobile Hamburger
+  <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
+  <a id="waFloat" href="#" target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i><span class="pulse-ring"></span></a>
+
+  <script is:inline>
+    // ---- real WhatsApp number wired into every CTA on the page ----
+    const WA_NUMBER = '923327810261';
+    function waLink(msg){ return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`; }
+    document.getElementById('waHeroBtn').href = waLink("Hello Web Grouth, I'd like to order a guest post.");
+    document.getElementById('waStarterBtn').href = waLink("Hello Web Grouth, I'd like to order the Starter package.");
+    document.getElementById('waGrowthBtn').href = waLink("Hello Web Grouth, I'd like to order the Growth package.");
+    document.getElementById('waProBtn').href = waLink("Hello Web Grouth, I'd like to discuss the Pro package.");
+    document.getElementById('waCtaBtn').href = waLink("Hello Web Grouth, I'd like to talk about guest posting and SEO.");
+    document.getElementById('waFooterLink').href = waLink("Hello Web Grouth, I'd like more information.");
+    document.getElementById('waFloat').href = waLink("Hello Web Grouth, I have a question.");
+
+    // ---- mobile menu ----
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('open');
-    });
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
 
-    // ------------- 30 REVIEWS -------------
-    const reviews = [
-      { name: 'Michael Torres', role: 'CMO, TechFlow',
-        text: 'Web Grouth transformed our SEO strategy. The guest posts were published on real, high-DR sites with natural traffic, leading to a noticeable rank increase within a month.' },
-      { name: 'Sarah Chen', role: 'Founder, Bloom & Co.',
-        text: 'Outstanding guest posting service! The content was relevant, well-written, and seamlessly integrated our target keywords and backlinks.' },
-      { name: 'David Kim', role: 'SEO Lead, Nexus Digital',
-        text: 'Finding reliable link-building partners is tough, but Web Grouth delivered exactly as promised. Every site was niche-relevant and metrics were verified.' },
-      { name: 'Emily Davis', role: 'Marketing Director, CloudPeak',
-        text: 'The organic traffic boost we received after using Web Grouth\'s guest post package was genuine. Highly professional communication and timely delivery.' },
-      { name: 'John Smith', role: 'Agency Owner, Smith Digital',
-        text: 'Exceptional outreach service. They secured placements on high-authority blogs that our internal team couldn\'t reach on their own.' },
-      { name: 'Jessica Lee', role: 'VP of Growth, Finlytics',
-        text: 'Top-tier backlink quality and excellent client support. Their clear reporting and authentic domain selection made a massive difference for us.' },
-      { name: 'Robert Brown', role: 'Head of SEO, EcomX',
-        text: 'Web Grouth handles our monthly guest posting needs with zero hassle. The links are indexable, do-follow, and placed within rich editorial content.' },
-      { name: 'Maria Garcia', role: 'Digital Strategist, Vivid Media',
-        text: 'Impressive TAT and domain authority numbers. Working with Web Grouth helped our client websites jump from page three to the top five results.' },
-      { name: 'James Wilson', role: 'CEO, RankBoost',
-        text: 'Their guest posting service offers incredible value. They don\'t rely on low-quality PBNs—every placement was on a legitimate, active website.' },
-      { name: 'Linda Martinez', role: 'Partner, Martinez & Co.',
-        text: 'A complete game-changer for our agency\'s link-building workflow. Web Grouth consistently provides top-notch content and verified placement sites.' },
-      { name: 'Anthony Carter', role: 'CMO, SwiftBrand',
-        text: 'The content quality of the guest posts exceeded our expectations. It provided real value to the host site\'s audience while giving us powerful links.' },
-      { name: 'Barbara Taylor', role: 'Founder, Taylor Digital',
-        text: 'Reliable, transparent, and results-driven. Web Grouth delivered all 10 high-DA guest posts ahead of deadline with detailed live links.' },
-      { name: 'Charles Nguyen', role: 'SEO Manager, AppVault',
-        text: 'Our organic visibility grew significantly within weeks of their campaign. Web Grouth knows how to pitch and secure solid link opportunities.' },
-      { name: 'Diana Moore', role: 'Content Lead, BlogNest',
-        text: 'Great communication throughout the campaign. They allowed us to review the site metrics before publishing, ensuring full alignment with our goals.' },
-      { name: 'Edward King', role: 'Growth Strategist, PeakScale',
-        text: 'Web Grouth\'s tailored guest post solutions gave us a huge advantage over competitors. The referring domains brought both authority and referral hits.' },
-      { name: 'Fiona Adams', role: 'SEO Consultant, WhiteHat Pro',
-        text: 'Consistent quality every single time. They stick to strict quality metrics regarding traffic, domain rating, and clean backlink profiles.' },
-      { name: 'George Parker', role: 'Director, Parker Group',
-        text: 'We saw a clear improvement in domain authority and search performance shortly after launching our campaign with Web Grouth.' },
-      { name: 'Helen Foster', role: 'Owner, Foster Media',
-        text: 'Professional outreach that brings real results. The links were contextual and placed within highly engaging, well-researched articles.' },
-      { name: 'Ivan Reed', role: 'Partner, Reed & Associates',
-        text: 'Web Grouth is our go-to partner for scalable link acquisition. Highly organized process and always transparent with their site inventories.' },
-      { name: 'Julie Perez', role: 'SEO Specialist, Orbit Digital',
-        text: 'Securing links on genuine blogs used to take weeks. Web Grouth made the entire process seamless, efficient, and cost-effective.' },
-      { name: 'Kevin Bell', role: 'Marketing Head, Stellar Brands',
-        text: 'The boost in our referral traffic speaks for itself. Web Grouth doesn\'t just build links; they place your brand in front of actual readers.' },
-      { name: 'Laura Sanders', role: 'Founder, Sanders Solutions',
-        text: 'Clean link profiles and no spam sites. Web Grouth carefully filters each domain, ensuring optimal SEO safety and long-term search growth.' },
-      { name: 'Mark Turner', role: 'Agency Lead, Turn Digital',
-        text: 'Working with Web Grouth simplified our client strategy. Their team manages pitch writing, outreach, and reporting perfectly from start to finish.' },
-      { name: 'Nancy Brooks', role: 'Owner, Brooks Consulting',
-        text: 'High domain authority, clean metrics, and quick indexation. Everything you want from a premium guest posting provider is right here.' },
-      { name: 'Oscar James', role: 'Product Manager, FlowState',
-        text: 'Their guest posts provided the exact keyword push our product pages needed to start ranking on competitive search terms.' },
-      { name: 'Paula Mitchell', role: 'SEO Director, Verve Online',
-        text: 'Web Grouth delivered genuine blogger outreach results, avoiding spammy directories or farm networks. Exactly what we needed for high-tier clients.' },
-      { name: 'Quincy Ross', role: 'Data Analyst, Pulse Media',
-        text: 'The reporting spreadsheet was thorough and transparent. Live links, metrics, and targeted anchor texts were all organized perfectly.' },
-      { name: 'Rachel Stone', role: 'Content Director, Stone Creative',
-        text: 'Strong contextual relevancy and solid writing standards. Web Grouth ensured that our brand voice stayed intact across every guest article.' },
-      { name: 'Samuel Hayes', role: 'CEO, Hayes Digital',
-        text: 'We\'ve seen steady ranking improvements across several target keywords thanks to Web Grouth\'s strategic link placements.' },
-      { name: 'Tina Cruz', role: 'Partner, Cruz SEO',
-        text: 'Prompt responses, fair pricing, and top-notch outreach capabilities. Web Grouth continues to be an invaluable asset to our SEO efforts.' }
-    ];
-
-    // ------------- CAROUSEL LOGIC -------------
-    const track = document.getElementById('carouselTrack');
-    const dotsContainer = document.getElementById('dotsContainer');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    let currentIndex = 0;
-    let itemsPerView = getItemsPerView();
-    const totalItems = reviews.length;
-
-    function getItemsPerView() {
-      if (window.innerWidth < 768) return 1;
-      if (window.innerWidth < 992) return 2;
-      return 3;
-    }
-
-    function renderCards() {
-      track.innerHTML = '';
-      reviews.forEach((review) => {
-        const avatar = `https://ui-avatars.com/api/?name=${encodeURIComponent(review.name)}&background=2563eb&color=fff&size=50&rounded=true&bold=true`;
-        const card = document.createElement('div');
-        card.className = 'testimonial-card';
-        card.innerHTML = `
-          <div class="card-inner">
-            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-            <blockquote>“${review.text}”</blockquote>
-            <div class="author">
-              <img src="${avatar}" alt="${review.name}" loading="lazy" />
-              <div>
-                <div class="name">${review.name}</div>
-                <div class="role">${review.role}</div>
-              </div>
-            </div>
-          </div>
-        `;
-        track.appendChild(card);
-      });
-    }
-
-    function updateCarousel() {
-      itemsPerView = getItemsPerView();
-      const maxIndex = Math.max(0, totalItems - itemsPerView);
-      if (currentIndex > maxIndex) currentIndex = maxIndex;
-      if (currentIndex < 0) currentIndex = 0;
-
-      const cardWidth = 100 / itemsPerView;
-      track.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
-
-      // Update dots
-      const totalSlides = Math.ceil(totalItems / itemsPerView);
-      dotsContainer.innerHTML = '';
-      for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement('button');
-        dot.className = 'dot' + (i === Math.floor(currentIndex / itemsPerView) ? ' active' : '');
-        dot.addEventListener('click', () => {
-          currentIndex = i * itemsPerView;
-          updateCarousel();
-        });
-        dotsContainer.appendChild(dot);
-      }
-    }
-
-    function goTo(direction) {
-      itemsPerView = getItemsPerView();
-      const maxIndex = Math.max(0, totalItems - itemsPerView);
-      let newIndex = currentIndex + (direction * itemsPerView);
-      if (newIndex < 0) newIndex = 0;
-      if (newIndex > maxIndex) newIndex = maxIndex;
-      currentIndex = newIndex;
-      updateCarousel();
-    }
-
-    prevBtn.addEventListener('click', () => goTo(-1));
-    nextBtn.addEventListener('click', () => goTo(1));
-
-    // Auto-play
-    let autoPlay = setInterval(() => {
-      itemsPerView = getItemsPerView();
-      const maxIndex = Math.max(0, totalItems - itemsPerView);
-      if (currentIndex + itemsPerView >= maxIndex) {
-        currentIndex = 0;
-      } else {
-        currentIndex = currentIndex + itemsPerView;
-      }
-      updateCarousel();
-    }, 5000);
-
-    const container = document.querySelector('.carousel-container');
-    container.addEventListener('mouseenter', () => clearInterval(autoPlay));
-    container.addEventListener('mouseleave', () => {
-      autoPlay = setInterval(() => {
-        itemsPerView = getItemsPerView();
-        const maxIndex = Math.max(0, totalItems - itemsPerView);
-        if (currentIndex + itemsPerView >= maxIndex) {
-          currentIndex = 0;
-        } else {
-          currentIndex = currentIndex + itemsPerView;
-        }
-        updateCarousel();
-      }, 5000);
-    });
-
-    // Resize handling
-    let resizeTimer;
-    window.addEventListener('resize', () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        updateCarousel();
-      }, 200);
-    });
-
-    // Header shadow
+    // ---- header shadow on scroll ----
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
-      header.style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,0.04)' : 'none';
+      header.style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,.05)' : 'none';
+    });
+
+    // ---- scroll reveal ----
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+
+    // ---- animated counters ----
+    const counters = document.querySelectorAll('.trust-bar .num');
+    let countersDone = false;
+    function runCounters() {
+      if (countersDone) return;
+      countersDone = true;
+      counters.forEach(el => {
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        if (isNaN(target)) return; // leave "PBN" text untouched
+        let current = 0;
+        const step = Math.max(1, Math.ceil(target / 40));
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) { current = target; clearInterval(timer); }
+          el.textContent = current + suffix;
+        }, 30);
+      });
+    }
+    const trustBar = document.querySelector('.trust-bar');
+    const trustIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) runCounters(); });
+    }, { threshold: 0.4 });
+    if (trustBar) trustIO.observe(trustBar);
+
+    // ---- NEXT-LEVEL REVIEWS CAROUSEL SCRIPT ----
+    const track = document.getElementById('reviewsTrack');
+    const cards = Array.from(track.children);
+    const dots = Array.from(document.getElementById('sliderDots').children);
+    let activeIndex = 0;
+    let autoPlayTimer;
+
+    function updateSlider() {
+      const isMobile = window.innerWidth < 768;
+      
+      // Toggle card active states
+      cards.forEach((card, idx) => {
+        card.classList.toggle('active', idx === activeIndex);
+      });
+      
+      // Update indicators (wider active pill)
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === activeIndex);
+      });
+
+      if (isMobile) {
+        // Simple horizontal shifting on mobile viewports
+        const offset = -activeIndex * 100;
+        track.style.transform = `translateX(${offset}%)`;
+      } else {
+        // Beautiful centered focusing for larger screens
+        const cardWidth = cards[0].getBoundingClientRect().width;
+        const gap = 30; // Matches style sheet gap
+        const containerWidth = document.querySelector('.reviews-slider-container').getBoundingClientRect().width;
+        
+        const activeCardLeft = activeIndex * (cardWidth + gap);
+        const centerOffset = (containerWidth / 2) - (cardWidth / 2);
+        const transformValue = centerOffset - activeCardLeft;
+        
+        track.style.transform = `translateX(${transformValue}px)`;
+      }
+    }
+
+    function nextSlide() {
+      activeIndex = (activeIndex + 1) % cards.length;
+      updateSlider();
+    }
+
+    function startAutoPlay() {
+      stopAutoPlay();
+      autoPlayTimer = setInterval(nextSlide, 4500); // Transitions every 4.5s
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) clearInterval(autoPlayTimer);
+    }
+
+    // Interactivity: Dot clicks
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        activeIndex = idx;
+        updateSlider();
+        startAutoPlay(); // Resets autoplay timer
+      });
+    });
+
+    // Interactivity: Direct card clicks
+    cards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        activeIndex = idx;
+        updateSlider();
+        startAutoPlay();
+      });
+    });
+
+    // Pause autoplay when hovering to read
+    const sliderContainer = document.querySelector('.reviews-slider-container');
+    sliderContainer.addEventListener('mouseenter', stopAutoPlay);
+    sliderContainer.addEventListener('mouseleave', startAutoPlay);
+
+    // Dynamic resize handler with simple debounce
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(updateSlider, 100);
     });
 
     // Initialize
-    renderCards();
-    updateCarousel();
+    updateSlider();
+    startAutoPlay();
+
+    // respect reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
+      stopAutoPlay(); // disable transitions if preferred
+    }
   </script>
 </body>
 </html>
