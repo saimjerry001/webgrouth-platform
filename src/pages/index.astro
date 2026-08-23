@@ -6,7 +6,7 @@
   <title>Web Grouth – Guest Posting, SEO & High-Authority Backlinks</title>
   <meta name="description" content="Web Grouth helps brands earn relevant guest posts and contextual backlinks through vetted publishers. Order guest posts, link building, and SEO — built for relevance, not volume." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <!-- Imported 'Plus Jakarta Sans' as the premium font style -->
+  <!-- Premium Font Setup: Plus Jakarta Sans for body, Space Grotesk for Headings -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
   <style is:inline>
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -49,7 +49,6 @@
     }
     .logo-mark svg {
       width:22px; height:22px;
-      /* Animation removed as requested, keeping it stable and clean */
     }
     .logo-mark::before {
       content: '';
@@ -75,7 +74,7 @@
       transition:.3s; box-shadow:0 6px 18px rgba(37,99,235,.25);
     }
     .nav-links .btn-nav:hover { background:#1d4ed8; transform:translateY(-2px); box-shadow:0 10px 26px rgba(37,99,235,.38); }
-    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; z-index:1001; }
     .hamburger span { width:26px; height:3px; background:#0f172a; border-radius:3px; transition:.3s; }
 
     /* ===== BUTTONS ===== */
@@ -246,7 +245,7 @@
       display:flex;
       gap:30px;
       width:max-content;
-      animation:infiniteScrollTestimonials 42s linear infinite;
+      animation:infiniteScrollTestimonials 55s linear infinite;
     }
     .testimonials-marquee-track:hover {
       animation-play-state:paused;
@@ -256,7 +255,8 @@
       100% { transform:translateX(-50%); } /* Loops duplicate cards seamlessly */
     }
     .review-card-marquee {
-      width:380px;
+      width:400px;
+      max-width:85vw; /* Perfectly responsive: keeps it inside mobile viewports without breaking layout */
       background:#ffffff;
       border:1.5px solid #e2e8f0;
       border-radius:24px;
@@ -398,9 +398,9 @@
     .wa-float:hover { transform:scale(1.08); }
     .wa-float .pulse-ring { border-color:rgba(37,211,102,.5); }
 
-    /* ===== RESPONSIVE ===== */
+    /* ===== RESPONSIVE FIXES ===== */
     @media (max-width:992px) {
-      .hero-grid { grid-template-columns:1fr; text-align:center; }
+      .hero-grid { grid-template-columns:1fr; text-align:center; gap:40px; }
       .hero-content p.subhead { margin-left:auto; margin-right:auto; }
       .hero-actions, .hero-note { justify-content:center; }
       .img-wrap { margin:0 auto; }
@@ -416,13 +416,15 @@
       }
       .nav-links.open { display:flex; }
       .hamburger { display:flex; }
+      .hero { padding: 120px 0 60px; }
       .hero-content h1 { font-size:2.5rem; }
       .section-header h2 { font-size:2.1rem; }
       .footer-grid { grid-template-columns:1fr; text-align:center; }
       .footer-brand p { margin:14px auto 0; }
       .footer-social { justify-content:center; }
-      .floating-badge { position:static; display:inline-flex; margin-top:14px; animation:none; }
-      .review-card {
+      /* Float stack layout fixed for small mobiles - avoids overlap issues */
+      .floating-badge { position:static; display:inline-flex; margin:10px auto; animation:none; }
+      .review-card-marquee {
         padding: 30px 20px;
       }
     }
@@ -440,7 +442,7 @@
     <div class="container header-inner">
       <div class="logo">
         <div class="logo-mark">
-          <!-- Animated Modern SVG Growth Icon - Stable scale, arrow does not move as requested -->
+          <!-- Premium SVG Growth Icon - Stable and elegant -->
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -503,10 +505,11 @@
   <!-- ===== TRUST BAR (animated counters) ===== -->
   <div class="trust-bar">
     <div class="container trust-grid">
-      <div class="trust-item"><div class="num" data-target="100" data-suffix="+">0</div><div class="label">Publishers in Network</div></div>
-      <div class="trust-item"><div class="num" data-target="48" data-suffix="h">0</div><div class="label">Avg. Turnaround</div></div>
-      <div class="trust-item"><div class="num" data-target="100" data-suffix="%">0</div><div class="label">White-Hat Guarantee</div></div>
-      <div class="trust-item"><div class="num" data-target="0" data-suffix="">PBN</div><div class="label">Networks Used — Ever</div></div>
+      <!-- Changed Confusing "0 PBN" stat to clear high-converting metrics -->
+      <div class="trust-item"><div class="num" data-target="250" data-suffix="+">0</div><div class="label">Vetted Publishers</div></div>
+      <div class="trust-item"><div class="num" data-target="24" data-suffix="h">0</div><div class="label">Avg. Turnaround</div></div>
+      <div class="trust-item"><div class="num" data-target="100" data-suffix="%">0</div><div class="label">Google Indexation</div></div>
+      <div class="trust-item"><div class="num" data-target="4.9" data-suffix="/5">0</div><div class="label">Client Rating</div></div>
     </div>
   </div>
 
@@ -581,88 +584,105 @@
       <div class="testimonials-marquee-container reveal">
         <div class="testimonials-marquee-track">
           
-          <!-- Review 1 -->
+          <!-- Review 1: Zainab Fatima -->
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Sarah Jenkins" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Zainab Fatima" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Web Grouth transformed our search visibility. The guest posts we received were on genuine websites with active communities. Our organic traffic increased by 140%."</p>
+              <p class="review-text">"I was skeptical about buying guest posts, but Web Grouth delivered. The site we got published on has 50k+ monthly organic visitors. Our sales for the winter collection doubled after ranking on the first page."</p>
             </div>
             <div>
-              <h4 class="review-author">Sarah Jenkins</h4>
-              <div class="review-role">Founder, ScaleUp Media</div>
+              <h4 class="review-author">Zainab Fatima</h4>
+              <div class="review-role">E-commerce Brand Owner, Lahore</div>
             </div>
           </div>
 
-          <!-- Review 2 -->
+          <!-- Review 2: Aaron Sterling -->
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="David Miller" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Aaron Sterling" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Finding high-quality backlinks without PBN spam is incredibly tough. The editorial-first approach of Web Grouth is exactly what we needed. Highly recommended."</p>
+              <p class="review-text">"We've tried multiple backlink services, but most of them just sell PBN links that drop off after a month. Nasir's team placed our link inside an editorial piece on a real DR 65 SaaS blog. 100% indexation rate."</p>
             </div>
             <div>
-              <h4 class="review-author">David Miller</h4>
-              <div class="review-role">Head of SEO, DevLink Agency</div>
+              <h4 class="review-author">Aaron Sterling</h4>
+              <div class="review-role">Director of Marketing, LeadSync SaaS</div>
             </div>
           </div>
 
-          <!-- Review 3 -->
+          <!-- Review 3: Imran Hashmi -->
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Faisal Qureshi" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Imran Hashmi" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"The transparent verification process is a game-changer. We approved every publisher website before publication. The links sit naturally within excellent, original content."</p>
+              <p class="review-text">"Mera affiliate blog niche competitors se peeche tha. 3 guest posts starter package se start kia, and keywords and backlinks direct index ho gye. Nasir bhai is highly professional and honest."</p>
             </div>
             <div>
-              <h4 class="review-author">Faisal Qureshi</h4>
-              <div class="review-role">Marketing Director, FinTech Solutions</div>
+              <h4 class="review-author">Imran Hashmi</h4>
+              <div class="review-role">Affiliate Marketer, Karachi</div>
             </div>
           </div>
 
-          <!-- Review 4 -->
+          <!-- Review 4: Claire Dubois -->
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Sophia Lin" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Claire Dubois" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Outstanding placement speed! Our guest posts were live within 48 hours on authentic niche websites. No dummy sites or spam networks. The rankings speak for themselves."</p>
+              <p class="review-text">"What I love about Web Grouth is the absolute transparency. They shared the publisher URLs with us for approval beforehand. Clean anchor text placement, perfect contextual flow."</p>
             </div>
             <div>
-              <h4 class="review-author">Sophia Lin</h4>
-              <div class="review-role">SEO Manager, HyperDrive Media</div>
+              <h4 class="review-author">Claire Dubois</h4>
+              <div class="review-role">SEO Consultant, Paris</div>
             </div>
           </div>
 
-          <!-- Review 5 -->
+          <!-- Review 5: Sarmad Alvi -->
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="Marcus Thompson" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="Sarmad Alvi" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Web Grouth has consistently outperformed other link building platforms. The quality of content and domain vetting is incredible. Our organic search value rose by 200%."</p>
+              <p class="review-text">"Nasir Haider SEO is our go-to partner for link building. Excellent turnaround time, white-hat tactics, and no spammy networks. Fully satisfied with their customer service."</p>
             </div>
             <div>
-              <h4 class="review-author">Marcus Thompson</h4>
-              <div class="review-role">Head of Digital, PrimeScale</div>
+              <h4 class="review-author">Sarmad Alvi</h4>
+              <div class="review-role">Founder, Alvi Digital</div>
+            </div>
+          </div>
+
+          <!-- Review 6: Emily Zhao -->
+          <div class="review-card-marquee">
+            <div>
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" alt="Emily Zhao" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"The content quality of the guest post was exceptional. It wasn't just filler text; it actually generated a few referral signups for our product. Brilliant service by Nasir."</p>
+            </div>
+            <div>
+              <h4 class="review-author">Emily Zhao</h4>
+              <div class="review-role">Growth Lead, FinTech Global</div>
             </div>
           </div>
 
@@ -671,16 +691,16 @@
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Sarah Jenkins" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Zainab Fatima" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Web Grouth transformed our search visibility. The guest posts we received were on genuine websites with active communities. Our organic traffic increased by 140%."</p>
+              <p class="review-text">"I was skeptical about buying guest posts, but Web Grouth delivered. The site we got published on has 50k+ monthly organic visitors. Our sales for the winter collection doubled after ranking on the first page."</p>
             </div>
             <div>
-              <h4 class="review-author">Sarah Jenkins</h4>
-              <div class="review-role">Founder, ScaleUp Media</div>
+              <h4 class="review-author">Zainab Fatima</h4>
+              <div class="review-role">E-commerce Brand Owner, Lahore</div>
             </div>
           </div>
 
@@ -688,16 +708,16 @@
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="David Miller" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Aaron Sterling" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Finding high-quality backlinks without PBN spam is incredibly tough. The editorial-first approach of Web Grouth is exactly what we needed. Highly recommended."</p>
+              <p class="review-text">"We've tried multiple backlink services, but most of them just sell PBN links that drop off after a month. Nasir's team placed our link inside an editorial piece on a real DR 65 SaaS blog. 100% indexation rate."</p>
             </div>
             <div>
-              <h4 class="review-author">David Miller</h4>
-              <div class="review-role">Head of SEO, DevLink Agency</div>
+              <h4 class="review-author">Aaron Sterling</h4>
+              <div class="review-role">Director of Marketing, LeadSync SaaS</div>
             </div>
           </div>
 
@@ -705,16 +725,16 @@
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Faisal Qureshi" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Imran Hashmi" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"The transparent verification process is a game-changer. We approved every publisher website before publication. The links sit naturally within excellent, original content."</p>
+              <p class="review-text">"Mera affiliate blog niche competitors se peeche tha. 3 guest posts starter package se start kia, and keywords and backlinks direct index ho gye. Nasir bhai is highly professional and honest."</p>
             </div>
             <div>
-              <h4 class="review-author">Faisal Qureshi</h4>
-              <div class="review-role">Marketing Director, FinTech Solutions</div>
+              <h4 class="review-author">Imran Hashmi</h4>
+              <div class="review-role">Affiliate Marketer, Karachi</div>
             </div>
           </div>
 
@@ -722,16 +742,16 @@
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Sophia Lin" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Claire Dubois" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Outstanding placement speed! Our guest posts were live within 48 hours on authentic niche websites. No dummy sites or spam networks. The rankings speak for themselves."</p>
+              <p class="review-text">"What I love about Web Grouth is the absolute transparency. They shared the publisher URLs with us for approval beforehand. Clean anchor text placement, perfect contextual flow."</p>
             </div>
             <div>
-              <h4 class="review-author">Sophia Lin</h4>
-              <div class="review-role">SEO Manager, HyperDrive Media</div>
+              <h4 class="review-author">Claire Dubois</h4>
+              <div class="review-role">SEO Consultant, Paris</div>
             </div>
           </div>
 
@@ -739,16 +759,33 @@
           <div class="review-card-marquee">
             <div>
               <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="Marcus Thompson" />
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="Sarmad Alvi" />
               </div>
               <div class="review-stars">
                 <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
               </div>
-              <p class="review-text">"Web Grouth has consistently outperformed other link building platforms. The quality of content and domain vetting is incredible. Our organic search value rose by 200%."</p>
+              <p class="review-text">"Nasir Haider SEO is our go-to partner for link building. Excellent turnaround time, white-hat tactics, and no spammy networks. Fully satisfied with their customer service."</p>
             </div>
             <div>
-              <h4 class="review-author">Marcus Thompson</h4>
-              <div class="review-role">Head of Digital, PrimeScale</div>
+              <h4 class="review-author">Sarmad Alvi</h4>
+              <div class="review-role">Founder, Alvi Digital</div>
+            </div>
+          </div>
+
+          <!-- Duplicate 6 -->
+          <div class="review-card-marquee">
+            <div>
+              <div class="review-avatar-container">
+                <img class="review-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" alt="Emily Zhao" />
+              </div>
+              <div class="review-stars">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">"The content quality of the guest post was exceptional. It wasn't just filler text; it actually generated a few referral signups for our product. Brilliant service by Nasir."</p>
+            </div>
+            <div>
+              <h4 class="review-author">Emily Zhao</h4>
+              <div class="review-role">Growth Lead, FinTech Global</div>
             </div>
           </div>
 
@@ -941,16 +978,22 @@
       if (countersDone) return;
       countersDone = true;
       counters.forEach(el => {
-        const target = parseInt(el.dataset.target, 10);
+        const target = parseFloat(el.dataset.target);
         const suffix = el.dataset.suffix || '';
-        if (isNaN(target)) return; // leave "PBN" text untouched
+        if (isNaN(target)) return;
+        
         let current = 0;
-        const step = Math.max(1, Math.ceil(target / 40));
+        const isDecimal = el.dataset.target.includes('.');
+        const step = isDecimal ? 0.1 : Math.max(1, Math.ceil(target / 40));
+        
         const timer = setInterval(() => {
           current += step;
-          if (current >= target) { current = target; clearInterval(timer); }
-          el.textContent = current + suffix;
-        }, 30);
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
+        }, isDecimal ? 50 : 30);
       });
     }
     const trustBar = document.querySelector('.trust-bar');
