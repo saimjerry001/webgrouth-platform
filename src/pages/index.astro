@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// ---------- business contact (single source in this file) ----------
+// ---------- WhatsApp (real number, single source in this file) ----------
 const whatsapp = { display: '+92 332 7810261', number: '923327810261' };
 const waHref = (msg) => `https://wa.me/${whatsapp.number}?text=${encodeURIComponent(msg)}`;
+const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest posting and SEO.");
 
 // ---------- tiny inline icon set (no external component needed) ----------
 const iconPaths = {
@@ -11,19 +12,15 @@ const iconPaths = {
   link: 'M9 15l6-6M8 16.5a4 4 0 0 1 0-5.66l2.5-2.5a4 4 0 0 1 5.66 5.66L15 15M16 8.5a4 4 0 0 1 0 5.66l-2.5 2.5a4 4 0 0 1-5.66-5.66L9 9',
   spark: 'M12 2l1.8 5.6L19 9l-5.2 1.4L12 16l-1.8-5.6L5 9l5.2-1.4z',
   trending: 'M3 17l6-6 4 4 8-8M15 7h6v6',
+  check: 'M20 6L9 17l-5-5',
   cpu: 'M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3M7 7h10v10H7z',
   search: 'M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM21 21l-4.35-4.35',
-  graduation: 'M22 10L12 5 2 10l10 5 10-5zM6 12.5V17c0 1.5 3 3 6 3s6-1.5 6-3v-4.5',
-  megaphone: 'M3 11v2a2 2 0 0 0 2 2h1l3 5v-5h1l8 4V6l-8 4H6a2 2 0 0 0-2 2zM19 8.5v7',
-  check: 'M20 6L9 17l-5-5',
-  node: 'M6 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM18 22a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM6 6c0 8 2 12 12 16',
-  arrow: 'M5 12h13M13 6l6 6-6 6',
 };
-function icon(name, size = 20) {
-  return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${iconPaths[name] || iconPaths.link}"></path></svg>`;
+function icon(name, size = 19) {
+  return `<svg viewBox="0 0 24 24" width="${size}" height="${size}" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="${iconPaths[name] || iconPaths.link}"></path></svg>`;
 }
 
-// ---------- page content ----------
+// ---------- content (only Guest Posting + SEO + Backlinks — nothing else) ----------
 const trustStatements = [
   'Built for brands that care about relevance.',
   'Context-first placements.',
@@ -38,22 +35,6 @@ const guestPostingPillars = [
   { icon: 'trending', title: 'Strategic Placements', text: 'Each post is chosen to build toward a coherent authority profile over time.' },
 ];
 
-const whyUs = [
-  { title: 'Relevant publishers', text: 'Choose context over volume, with opportunities aligned to your niche and audience.' },
-  { title: 'Transparent process', text: 'Know exactly what you are ordering, why it fits, and what happens after you say yes.' },
-  { title: 'Content that earns its place', text: 'Useful, clear writing written for the reader first — and search second.' },
-  { title: 'No guaranteed-ranking claims', text: 'We build credible inputs, not promises no honest agency can make.' },
-];
-
-const seoServiceList = [
-  { icon: 'cpu', title: 'Technical SEO', text: 'Crawlability, site speed, and structure fixed so search engines can do their job.' },
-  { icon: 'search', title: 'On-Page SEO', text: 'Pages structured and written around the intent behind real search queries.' },
-  { icon: 'link', title: 'Link Building', text: 'Contextual backlinks earned through relevant outreach, not automated schemes.' },
-  { icon: 'graduation', title: 'Content Strategy', text: 'A content plan built around topics your audience is already searching for.' },
-  { icon: 'megaphone', title: 'Digital PR', text: 'Story-led outreach that earns coverage, mentions, and durable visibility.' },
-  { icon: 'trending', title: 'SEO Audits', text: 'A clear, prioritized view of what is holding your search performance back.' },
-];
-
 const process = [
   { step: '01', title: 'Tell us your goals', text: 'Share your niche, target audience, and the outcome you\u2019re working toward.' },
   { step: '02', title: 'Choose relevant publishers', text: 'We surface publications and outreach routes that genuinely fit your category.' },
@@ -61,63 +42,38 @@ const process = [
   { step: '04', title: 'Track your authority growth', text: 'See what published, where it landed, and what to build on next.' },
 ];
 
-// Flow diagram stages: Brand -> Content -> Publisher -> Backlink -> Search Authority
-const flowStages = [
-  { icon: 'compass', label: 'Brand' },
-  { icon: 'spark', label: 'Content' },
-  { icon: 'megaphone', label: 'Publisher' },
-  { icon: 'link', label: 'Backlink' },
-  { icon: 'trending', label: 'Search Authority' },
+const whyUs = [
+  { title: 'Relevant publishers', text: 'Choose context over volume, with opportunities aligned to your niche and audience.' },
+  { title: 'Transparent process', text: 'Know exactly what you are ordering, why it fits, and what happens after you say yes.' },
+  { title: 'Content that earns its place', text: 'Useful, clear writing written for the reader first — and search second.' },
+  { title: 'No guaranteed-ranking claims', text: 'We build credible inputs, not promises no honest agency can make.' },
 ];
 
-// Insights — same source the /blog pages use, so nothing here is a separate hardcoded list
-const blogPosts = [
-  { slug: 'guest-posting-that-earns-its-place', category: 'Guest Posting', title: 'Guest posting that earns its place', date: 'August 12, 2026', read: '6 min read', excerpt: 'A practical framework for choosing topics, publications, and links that feel useful \u2014 not forced.' },
-  { slug: 'what-makes-a-backlink-useful', category: 'Link Building', title: 'What makes a backlink useful?', date: 'July 28, 2026', read: '5 min read', excerpt: 'Authority matters, but context, audience, and intent decide whether a link contributes anything meaningful.' },
-  { slug: 'the-seo-brief-your-content-team-needs', category: 'SEO', title: 'The SEO brief your content team needs', date: 'July 10, 2026', read: '7 min read', excerpt: 'Move beyond keywords with a brief that gives writers a real audience, angle, and reason to care.' },
+const seoBacklinkServices = [
+  { icon: 'link', title: 'Link Building', text: 'Contextual backlinks earned through relevant outreach, not automated schemes.' },
+  { icon: 'search', title: 'On-Page SEO', text: 'Pages structured and written around the intent behind real search queries.' },
+  { icon: 'cpu', title: 'Technical SEO', text: 'Crawlability, site speed, and structure fixed so search engines can do their job.' },
 ];
-
-const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest posting and SEO.");
 ---
 
 <BaseLayout
-  title="Web Grouth | Guest Posting, SEO & Link Building"
-  description="Web Grouth is a guest posting, SEO, and link building agency helping brands earn contextual backlinks through vetted publishers, editorial outreach, and digital PR."
+  title="Web Grouth | Guest Posting, SEO & Backlinks"
+  description="Web Grouth is a guest posting and SEO agency helping brands earn contextual backlinks through vetted publishers and editorial outreach."
 >
   <!-- ============ HERO ============ -->
   <section class="hero">
-    <div class="hero-bg" aria-hidden="true">
-      <svg viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice" style="opacity:.4">
-        <defs>
-          <linearGradient id="hn-grad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#4a8cff" stop-opacity=".25" />
-            <stop offset="100%" stop-color="#45e0c7" stop-opacity=".25" />
-          </linearGradient>
-        </defs>
-        <g fill="none" stroke="url(#hn-grad)" stroke-width="1">
-          <path d="M120 560 C 260 480, 340 380, 480 340 S 680 260, 760 180" />
-          <path d="M760 180 C 860 140, 980 150, 1080 90" />
-        </g>
-        <g fill="#45e0c7" opacity=".7">
-          <circle cx="120" cy="560" r="3.5" />
-          <circle cx="480" cy="340" r="4" />
-          <circle cx="760" cy="180" r="3.5" />
-          <circle cx="1080" cy="90" r="3" />
-        </g>
-      </svg>
-    </div>
     <div class="container hero-grid">
       <div class="reveal">
-        <span class="eyebrow">Guest posting · SEO · Digital PR</span>
-        <h1>Build search authority<br />that gets you found.</h1>
-        <p class="lead">Web Grouth helps brands earn relevant guest posts, contextual backlinks, and SEO authority through vetted publishers and editorial outreach — not random link volume.</p>
+        <span class="eyebrow">Guest Posting · SEO · Backlinks</span>
+        <h1>Build search authority<br />with real guest posts.</h1>
+        <p class="lead">Web Grouth helps brands earn relevant guest posts and contextual backlinks through vetted publishers — a focused service, not a scattershot one.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="/guest-posting">Get Guest Posts <span>↗</span></a>
-          <a class="button button-quiet" href="/seo-services">Explore Our Services</a>
+          <a class="button button-quiet" href="/seo-services">Explore SEO Services</a>
         </div>
         <p class="hero-proof">
           Prefer to talk it through?
-          <a href={waHrefHero} target="_blank" rel="noopener" style="color:var(--cyan);font-weight:700">Message us on WhatsApp ↗</a>
+          <a href={waHrefHero} target="_blank" rel="noopener" style="color:var(--accent);font-weight:700">Message us on WhatsApp ↗</a>
         </p>
       </div>
       <div class="visual reveal">
@@ -140,19 +96,19 @@ const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest postin
     </div>
   </section>
 
-  <!-- ============ TRUST STRIP ============ -->
+  <!-- ============ TRUST STRIP (text only, no fake logos) ============ -->
   <div class="trusted">
     <div class="container trust-statements reveal">
       {trustStatements.map((s) => <span>{s}</span>)}
     </div>
   </div>
 
-  <!-- ============ GUEST POSTING PRIMARY SECTION ============ -->
+  <!-- ============ GUEST POSTING (core service) ============ -->
   <section class="section" id="guest-posting">
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <span class="eyebrow">Our primary focus</span>
+          <span class="eyebrow">Our core service</span>
           <h2>Guest posting built around relevance.</h2>
         </div>
         <p class="lead">We focus on relevant websites, useful content, and contextual placements — not random backlink volume.</p>
@@ -166,7 +122,7 @@ const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest postin
           </div>
         ))}
       </div>
-      <div style="margin-top:40px">
+      <div style="margin-top:36px">
         <a class="button button-primary" href="/guest-posting">Explore Guest Posting <span>↗</span></a>
       </div>
     </div>
@@ -182,10 +138,9 @@ const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest postin
         </div>
       </div>
       <div class="process">
-        {process.map((p, i) => (
+        {process.map((p) => (
           <div class="process-item reveal">
             <span class="step">{p.step}</span>
-            {i < process.length - 1 && <span class="connector" set:html={icon('node', 18)} />}
             <h3>{p.title}</h3>
             <p>{p.text}</p>
           </div>
@@ -209,8 +164,8 @@ const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest postin
       <div class="reveal">
         <span class="eyebrow">Why Web Grouth</span>
         <h2>Relevance over random volume.</h2>
-        <p class="lead" style="margin-top:14px">A durable search presence is built on fit, editorial context, and content people actually want to read — not shortcuts.</p>
-        <ul class="check-list" style="margin-top:28px">
+        <p class="lead" style="margin-top:14px">A durable backlink profile is built on fit and editorial context — not shortcuts.</p>
+        <ul class="check-list" style="margin-top:26px">
           {whyUs.map((item) => (
             <li>
               <span class="tick" set:html={icon('check', 12)} />
@@ -222,18 +177,18 @@ const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest postin
     </div>
   </section>
 
-  <!-- ============ SEO SERVICES SECONDARY SECTION ============ -->
+  <!-- ============ SEO & LINK BUILDING (supporting the guest posts) ============ -->
   <section class="section section-soft">
     <div class="container">
       <div class="section-head reveal">
         <div>
           <span class="eyebrow">Supporting the placement</span>
-          <h2>SEO services that back it up.</h2>
+          <h2>SEO and link building that back it up.</h2>
         </div>
         <p class="lead">Guest posting works best alongside a search foundation that can actually use the authority it earns.</p>
       </div>
       <div class="grid-3">
-        {seoServiceList.map((s) => (
+        {seoBacklinkServices.map((s) => (
           <div class="card reveal">
             <span class="icon" set:html={icon(s.icon)} />
             <h3>{s.title}</h3>
@@ -241,69 +196,19 @@ const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest postin
           </div>
         ))}
       </div>
-      <div style="margin-top:40px">
+      <div style="margin-top:36px">
         <a class="button button-quiet" href="/seo-services">Explore SEO Services <span>↗</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ============ PUBLISHER / LINK BUILDING VISUAL ============ -->
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">How authority is built</span>
-          <h2>One story, several relevant signals.</h2>
-        </div>
-      </div>
-      <div
-        class="flow-diagram reveal"
-        role="img"
-        aria-label="Diagram: Brand leads to Content, which leads to Publisher, which leads to a Backlink, which builds Search Authority"
-      >
-        {flowStages.map((s, i) => (
-          <>
-            <div class="flow-stage">
-              <span class="flow-icon" set:html={icon(s.icon)} />
-              <span class="flow-label">{s.label}</span>
-            </div>
-            {i < flowStages.length - 1 && <span class="flow-arrow" set:html={icon('arrow', 16)} />}
-          </>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ INSIGHTS ============ -->
-  <section class="section section-soft">
-    <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <span class="eyebrow">Latest insights</span>
-          <h2>Notes on being found — and remembered.</h2>
-        </div>
-        <a class="button button-quiet" href="/blog">View All Insights <span>↗</span></a>
-      </div>
-      <div class="grid-3">
-        {blogPosts.map((post) => (
-          <a class="card reveal" href={'/blog/' + post.slug}>
-            <span class="eyebrow">{post.category}</span>
-            <h3 style="margin-top:14px">{post.title}</h3>
-            <div class="article-meta" style="margin:12px 0"><span>{post.date}</span><span>•</span><span>{post.read}</span></div>
-            <p>{post.excerpt}</p>
-          </a>
-        ))}
-      </div>
-    </div>
-  </section>
-
   <!-- ============ FINAL CTA ============ -->
-  <section class="container" style="margin-bottom:110px">
+  <section class="container" style="margin-bottom:100px">
     <div class="cta-band reveal">
       <div>
         <span class="eyebrow">Ready when you are</span>
         <h2>Ready to build search authority?</h2>
-        <p class="lead" style="margin-top:14px">Tell us what you're trying to grow. We'll help you identify the right guest posting and SEO path.</p>
+        <p class="lead" style="margin-top:14px">Tell us your niche and target site. We'll point you to relevant guest posting and backlink opportunities.</p>
       </div>
       <div class="cta-actions">
         <a class="button button-primary" href="/contact">Start a Project <span>↗</span></a>
@@ -311,18 +216,4 @@ const waHrefHero = waHref("Hello Web Grouth, I'd like to talk about guest postin
       </div>
     </div>
   </section>
-
-  <!-- flow diagram styles (kept local to this page since the diagram is defined inline above) -->
-  <style>
-    .flow-diagram{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:36px 30px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
-    .flow-stage{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:88px}
-    .flow-icon{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;border:1px solid var(--line-strong);color:var(--cyan)}
-    .flow-label{font-family:var(--font-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center}
-    .flow-arrow{color:var(--muted-2);flex:none}
-    @media(max-width:700px){
-      .flow-diagram{flex-direction:column;align-items:stretch}
-      .flow-stage{flex-direction:row;justify-content:flex-start;min-width:0}
-      .flow-arrow{transform:rotate(90deg);align-self:center;margin:2px 0}
-    }
-  </style>
 </BaseLayout>
