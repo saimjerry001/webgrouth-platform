@@ -7,7 +7,7 @@
   <meta name="description" content="Web Grouth helps brands earn relevant guest posts and contextual backlinks through vetted publishers. Order guest posts, link building, and SEO — built for relevance, not volume." />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
   <!-- Premium Font Setup: Plus Jakarta Sans for body, Space Grotesk for Headings -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style is:inline>
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
@@ -20,7 +20,7 @@
     }
     .container { max-width:1200px; margin:0 auto; padding:0 24px; }
     a { text-decoration:none; color:inherit; }
-    h1,h2,h3,h4 { font-family:'Space Grotesk',sans-serif; letter-spacing:-0.03em; }
+    h1,h2,h3,h4 { font-family:'Outfit',sans-serif; letter-spacing:-0.03em; font-weight:700; }
     ::selection { background:#2563eb; color:#fff; }
 
     /* ===== SCROLL REVEAL ===== */
@@ -99,7 +99,26 @@
     @keyframes pulseRing { 0%{ transform:scale(1); opacity:.8; } 100%{ transform:scale(1.15); opacity:0; } }
 
     /* ===== HERO ===== */
-    .hero { padding:160px 0 80px; background:linear-gradient(165deg,#f8faff 0%,#ffffff 60%); position:relative; }
+    .img-wrap {
+      position: relative;
+    }
+    .img-wrap img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 24px;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+      z-index: 1;
+    }
+    .img-wrap img.active {
+      opacity: 1;
+      z-index: 2;
+      position: relative; /* keeps the layout height */
+    }
+
+    .hero { padding:110px 0 40px; background:linear-gradient(165deg,#f8faff 0%,#ffffff 60%); position:relative; }
     .hero::before {
       content:''; position:absolute; top:-120px; right:-160px; width:520px; height:520px; border-radius:50%;
       background:radial-gradient(circle,rgba(37,99,235,.10),transparent 70%); pointer-events:none;
@@ -113,9 +132,9 @@
     .tag .live-dot { width:7px; height:7px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.25); }
     
     /* Conversion-focused rewritten copy */
-    .hero-content h1 { font-size:3.75rem; font-weight:800; line-height:1.1; margin:12px 0 22px; letter-spacing:-0.03em; }
+    .hero-content h1 { font-size:3.1rem; font-weight:800; line-height:1.15; margin:8px 0 16px; letter-spacing:-0.03em; }
     .hero-content h1 .highlight { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .hero-content p.subhead { font-size:1.2rem; color:#475569; max-width:540px; margin-bottom:34px; line-height:1.7; }
+    .hero-content p.subhead { font-size:1.08rem; color:#475569; max-width:540px; margin-bottom:22px; line-height:1.65; }
     .hero-actions { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:30px; }
     .hero-note { display:flex; align-items:center; gap:10px; color:#475569; font-size:.92rem; font-weight:600; }
     .hero-note i { color:#22c55e; }
@@ -125,7 +144,8 @@
     /* Fixed white spacing - padding set to 0 and border removed as requested */
     .img-wrap {
       background:transparent; border-radius:24px; padding:0; box-shadow:0 40px 90px -20px rgba(15,23,42,.16);
-      border:none; max-width:520px; margin-left:auto; position:relative; z-index:2; overflow:hidden;
+      border:none; max-width:440px; margin-left:auto; position:relative; z-index:2; overflow:hidden;
+      aspect-ratio: 16/10;
     }
     .img-wrap img { width:100%; display:block; object-fit:cover; border-radius:24px; }
     
@@ -485,10 +505,15 @@
         <div class="hero-note"><i class="fas fa-circle-check"></i> Real active publishers with organic Google traffic. 100% indexed backlinks.</div>
       </div>
       <div class="hero-image reveal show">
-        <!-- Fit Edge-to-Edge Image Wrap: eliminated white boundaries inside card -->
-        <div class="img-wrap">
-  <img src="/hero-dashboard.png" alt="SEO analytics dashboard representing search authority growth" loading="eager" />
-</div>
+        <!-- Fit Edge-to-Edge Image Wrap: Automated smooth image slider inside laptop frame -->
+        <div class="img-wrap" id="laptopSlider">
+          <img src="/hero-dashboard.png" class="active" alt="SEO Dashboard 1" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80'" />
+          <img src="/dashboard2.png" alt="SEO Dashboard 2" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80'" />
+          <img src="/dashboard3.png" alt="SEO Dashboard 3" onerror="this.src='https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&q=80'" />
+          <img src="/dashboard4.png" alt="SEO Dashboard 4" onerror="this.src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=900&q=80'" />
+          <img src="/dashboard5.png" alt="SEO Dashboard 5" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=80'" />
+          <img src="/dashboard6.png" alt="SEO Dashboard 6" onerror="this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80'" />
+        </div>
         <!-- Renamed badges: Success Guest Post & Success SEO as requested -->
         <div class="floating-badge b1">
           <span class="dot"></span>
@@ -507,7 +532,7 @@
     <div class="container trust-grid">
       <!-- Changed Confusing "0 PBN" stat to clear high-converting metrics -->
       <div class="trust-item"><div class="num" data-target="250" data-suffix="+">0</div><div class="label">Vetted Publishers</div></div>
-      <div class="trust-item"><div class="num" data-target="1" data-suffix="h">0</div><div class="label">Avg. Turnaround</div></div>
+      <div class="trust-item"><div class="num" data-target="INSTANT" data-suffix="h">0</div><div class="label">Avg. Turnaround</div></div>
       <div class="trust-item"><div class="num" data-target="100" data-suffix="%">0</div><div class="label">Google Indexation</div></div>
       <div class="trust-item"><div class="num" data-target="4.9" data-suffix="/5">0</div><div class="label">Client Rating</div></div>
     </div>
@@ -980,7 +1005,11 @@
       counters.forEach(el => {
         const target = parseFloat(el.dataset.target);
         const suffix = el.dataset.suffix || '';
-        if (isNaN(target)) return;
+        if (isNaN(target)) {
+          // If it's a text word like "INSTANT", just display it directly!
+          el.textContent = el.dataset.target;
+          return;
+        }
         
         let current = 0;
         const isDecimal = el.dataset.target.includes('.');
@@ -1001,6 +1030,17 @@
       entries.forEach(e => { if (e.isIntersecting) runCounters(); });
     }, { threshold: 0.4 });
     if (trustBar) trustIO.observe(trustBar);
+
+    // ---- LAPTOP AUTOMATIC IMAGE SLIDER ----
+    const laptopSlides = document.querySelectorAll('#laptopSlider img');
+    let currentLaptopSlide = 0;
+    function rotateLaptopSlides() {
+      if (laptopSlides.length === 0) return;
+      laptopSlides[currentLaptopSlide].classList.remove('active');
+      currentLaptopSlide = (currentLaptopSlide + 1) % laptopSlides.length;
+      laptopSlides[currentLaptopSlide].classList.add('active');
+    }
+    setInterval(rotateLaptopSlides, 4500); // Rotate every 4.5 seconds
 
     // respect reduced motion
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
