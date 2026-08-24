@@ -138,6 +138,25 @@
     .hero-note { display:flex; align-items:center; gap:10px; color:#475569; font-size:.92rem; font-weight:600; }
     .hero-note i { color:#22c55e; }
 
+    /* Advance payment trust card */
+    .advance-note {
+      display:flex; align-items:flex-start; gap:14px;
+      background:linear-gradient(135deg,#f0fdf4,#ecfdf5);
+      border:1px solid #bbf7d0;
+      padding:16px 18px; border-radius:18px; max-width:520px; margin-top:18px;
+      box-shadow:0 10px 24px rgba(34,197,94,.1);
+      transition:.3s;
+    }
+    .advance-note:hover { transform:translateY(-3px); box-shadow:0 16px 32px rgba(34,197,94,.16); }
+    .advance-note-icon {
+      width:42px; height:42px; border-radius:13px; flex-shrink:0;
+      background:linear-gradient(135deg,#22c55e,#16a34a); color:#fff;
+      display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+      box-shadow:0 8px 16px rgba(22,163,74,.3);
+    }
+    .advance-note strong { display:block; color:#166534; font-size:.98rem; margin-bottom:3px; }
+    .advance-note p { color:#3f6212; font-size:.85rem; margin:0; line-height:1.55; }
+
     .hero-image { position:relative; }
     
     /* Fixed white spacing - padding set to 0 and border removed as requested */
@@ -148,19 +167,24 @@
     }
     .img-wrap img { width:100%; display:block; object-fit:cover; border-radius:24px; }
     
-    /* Renamed badges: Success Guest Post & Success SEO as requested */
+    /* Corner floating badges - compact glass style */
     .floating-badge {
-      display:inline-flex; align-items:center; gap:6px; background:#fff; padding:6px 12px; border-radius:12px;
-      box-shadow:0 12px 24px rgba(15,23,42,.1); border:1px solid #f1f5f9;
+      display:inline-flex; align-items:center; gap:6px;
+      background:rgba(255,255,255,.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+      padding:7px 11px; border-radius:13px;
+      box-shadow:0 10px 22px rgba(15,23,42,.14); border:1px solid rgba(255,255,255,.7);
       position:absolute; z-index:5; animation:floatUpDown 4.5s ease-in-out infinite;
+      max-width:148px; transition:.3s ease;
     }
-    .floating-badge.b1 { bottom:12px; left:12px; }
-    .floating-badge.b2 { top:12px; right:12px; animation-delay:.6s; }
-    .floating-badge .dot { width:7px; height:7px; background:#22c55e; border-radius:50%; animation:pulseDot 1.8s infinite; flex-shrink:0; }
-    .floating-badge strong { display:block; font-size:.78rem; font-weight:700; color:#0f172a; }
-    .floating-badge span.sub { color:#64748b; font-size:.68rem; font-weight:500; }
+    .floating-badge:hover { transform:translateY(-4px) scale(1.05); box-shadow:0 16px 30px rgba(15,23,42,.2); }
+    .floating-badge.b1 { bottom:-10px; left:-10px; }
+    .floating-badge.b2 { top:-10px; right:-10px; animation-delay:.6s; }
+    .floating-badge .dot { width:6px; height:6px; background:#22c55e; border-radius:50%; animation:pulseDot 1.8s infinite; flex-shrink:0; }
+    .floating-badge i { font-size:.82rem; }
+    .floating-badge strong { display:block; font-size:.68rem; font-weight:700; color:#0f172a; white-space:nowrap; }
+    .floating-badge span.sub { color:#64748b; font-size:.6rem; font-weight:500; white-space:nowrap; }
     @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(1.5);} }
-    @keyframes floatUpDown { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+    @keyframes floatUpDown { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
 
     /* ===== TRUST BAR w/ COUNTERS ===== */
     .trust-bar { background:#0f172a; padding:34px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
@@ -406,7 +430,8 @@
       .hero-grid { grid-template-columns:1fr; text-align:center; gap:40px; }
       .hero-content p.subhead { margin-left:auto; margin-right:auto; }
       .hero-actions, .hero-note { justify-content:center; }
-      .img-wrap { margin:0 auto; }
+      .advance-note { margin-left:auto; margin-right:auto; }
+      .img-wrap { margin:0 auto; max-width:460px; }
       .footer-grid { grid-template-columns:1fr 1fr; }
       .why-grid { grid-template-columns:1fr 1fr; }
       .trust-grid { grid-template-columns:1fr 1fr; }
@@ -428,24 +453,33 @@
       .footer-grid { grid-template-columns:1fr; text-align:center; }
       .footer-brand p { margin:14px auto 0; }
       .footer-social { justify-content:center; }
-      
-      /* Floating badges remain absolute on corners but smaller on mobile as requested */
-      .floating-badge { 
-        position: absolute !important; 
-        display: inline-flex !important; 
-        padding: 5px 10px !important; 
-        border-radius: 8px !important; 
-        gap: 5px !important; 
+
+      /* Image fills the full available width on phones - removes the side gap */
+      .img-wrap { max-width:100%; width:100%; }
+
+      .advance-note { max-width:100%; text-align:left; padding:13px 15px; gap:10px; margin-top:14px; }
+      .advance-note-icon { width:36px; height:36px; font-size:.95rem; border-radius:11px; }
+      .advance-note strong { font-size:.88rem; }
+      .advance-note p { font-size:.78rem; }
+
+      /* Floating badges: small, tucked neatly into the image corners */
+      .floating-badge {
+        position: absolute !important;
+        display: inline-flex !important;
+        padding: 5px 9px !important;
+        border-radius: 10px !important;
+        gap: 5px !important;
+        max-width: 118px !important;
         animation: floatUpDown 4.5s ease-in-out infinite !important;
-        box-shadow: 0 6px 16px rgba(15,23,42,0.08) !important;
+        box-shadow: 0 6px 16px rgba(15,23,42,0.12) !important;
       }
-      .floating-badge strong { font-size: 0.68rem !important; }
-      .floating-badge span.sub { font-size: 0.58rem !important; }
-      .floating-badge .dot { width: 6px !important; height: 6px !important; }
-      .floating-badge i { font-size: 0.75rem !important; }
-      .floating-badge.b1 { bottom: 10px !important; left: 10px !important; }
-      .floating-badge.b2 { top: 10px !important; right: 10px !important; }
-      
+      .floating-badge strong { font-size: 0.6rem !important; }
+      .floating-badge span.sub { font-size: 0.52rem !important; }
+      .floating-badge .dot { width: 5px !important; height: 5px !important; }
+      .floating-badge i { font-size: 0.68rem !important; }
+      .floating-badge.b1 { bottom: -8px !important; left: -8px !important; }
+      .floating-badge.b2 { top: -8px !important; right: -8px !important; }
+
       .review-card-marquee {
         padding: 25px 20px;
       }
@@ -508,6 +542,13 @@
           <a id="waHeroBtn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
         </div>
         <div class="hero-note"><i class="fas fa-circle-check"></i> Real active publishers with organic Google traffic. 100% indexed backlinks.</div>
+        <div class="advance-note">
+          <div class="advance-note-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+          <div>
+            <strong>No Advance Payment — Pay After Delivery</strong>
+            <p>We don't take advance payment. Your guest post is provided first, and payment is taken only after that. Not satisfied with the work? We also offer a full refund policy.</p>
+          </div>
+        </div>
       </div>
       <div class="hero-image reveal show">
         <!-- Fit Edge-to-Edge Image Wrap: Automated smooth image slider inside laptop frame -->
