@@ -1,12 +1,13 @@
+---
+// src/pages/blog/index.astro
+---
 <!DOCTYPE html>
 <html lang="ur">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Grouth – Guest Posting, SEO & High-Authority Backlinks</title>
-  <meta name="description" content="Web Grouth helps brands earn relevant guest posts and contextual backlinks through vetted publishers. Order guest posts, link building, and SEO — built for relevance, not volume." />
+  <title>Our Blog | Web Grouth</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <!-- Premium Font Setup: Plus Jakarta Sans for body, Space Grotesk for Headings -->
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style is:inline>
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -16,380 +17,60 @@
       background:#ffffff;
       color:#0f172a;
       line-height:1.65;
-      overflow-x:hidden;
     }
     .container { max-width:1200px; margin:0 auto; padding:0 24px; }
     a { text-decoration:none; color:inherit; }
     h1,h2,h3,h4 { font-family:'Outfit',sans-serif; letter-spacing:-0.03em; font-weight:700; }
-    ::selection { background:#2563eb; color:#fff; }
-
-    /* ===== SCROLL REVEAL ===== */
-    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
-    .reveal.show { opacity:1; transform:none; }
-
+    
     /* ===== HEADER ===== */
     .header {
       position:fixed; top:0; left:0; width:100%; z-index:1000;
       background:rgba(255,255,255,.78); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(15,23,42,.06);
-      padding:14px 0; transition:.3s;
+      border-bottom:1px solid rgba(15,23,42,.06); padding:14px 0;
     }
     .header-inner { display:flex; justify-content:space-between; align-items:center; }
-    .logo { display:flex; align-items:center; gap:10px; font-size:1.55rem; font-weight:800; letter-spacing:-0.03em; color:#0f172a; }
-    
-    /* === STABLE PREMIUM LOGO === */
+    .logo { display:flex; align-items:center; gap:10px; font-size:1.55rem; font-weight:800; color:#0f172a; }
     .logo-mark {
       width:38px; height:38px; border-radius:11px;
       background:linear-gradient(135deg,#2563eb,#1d4ed8);
       display:flex; align-items:center; justify-content:center;
-      box-shadow:0 6px 16px rgba(37,99,235,.35);
-      flex-shrink:0;
-      position:relative;
-      overflow:hidden;
+      box-shadow:0 6px 16px rgba(37,99,235,.35); flex-shrink:0;
     }
-    .logo-mark svg {
-      width:22px; height:22px;
-    }
-    .logo-mark::before {
-      content: '';
-      position: absolute;
-      top: -50%; left: -50%;
-      width: 200%; height: 200%;
-      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
-      transform: rotate(45deg);
-      animation: logoShine 4s infinite linear;
-    }
-    @keyframes logoShine {
-      0% { left: -100%; }
-      50% { left: 100%; }
-      100% { left: 100%; }
-    }
-    
+    .logo-mark svg { width:22px; height:22px; }
     .logo span { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .nav-links { display:flex; align-items:center; gap:32px; }
-    .nav-links a:not(.btn-nav) { font-weight:600; color:#334155; transition:.2s; font-size:.95rem; position:relative; }
+    .nav-links a:not(.btn-nav) { font-weight:600; color:#334155; transition:.2s; font-size:.95rem; }
     .nav-links a:not(.btn-nav):hover { color:#2563eb; }
     .nav-links .btn-nav {
       background:#2563eb; color:#fff !important; padding:11px 28px; border-radius:40px; font-weight:700;
       transition:.3s; box-shadow:0 6px 18px rgba(37,99,235,.25);
     }
-    .nav-links .btn-nav:hover { background:#1d4ed8; transform:translateY(-2px); box-shadow:0 10px 26px rgba(37,99,235,.38); }
-    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; z-index:1001; }
+    .nav-links .btn-nav:hover { background:#1d4ed8; transform:translateY(-2px); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; }
     .hamburger span { width:26px; height:3px; background:#0f172a; border-radius:3px; transition:.3s; }
 
-    /* ===== BUTTONS ===== */
-    .btn {
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:17px 34px; border-radius:60px; font-weight:700; font-size:1rem;
-      transition:.3s cubic-bezier(.2,.8,.2,1); border:none; cursor:pointer; text-align:center;
-      position:relative; overflow:hidden;
-    }
-    .btn-primary { background:#2563eb; color:#fff; box-shadow:0 10px 28px rgba(37,99,235,.28); }
-    .btn-primary:hover { background:#1d4ed8; transform:translateY(-4px); box-shadow:0 18px 36px rgba(37,99,235,.4); }
-    .btn-primary:active { transform:translateY(-1px); }
-    .btn-secondary { background:transparent; color:#0f172a; border:2px solid #e2e8f0; }
-    .btn-secondary:hover { border-color:#2563eb; color:#2563eb; transform:translateY(-4px); }
-    .btn-whatsapp { background:#25d366; color:#fff; box-shadow:0 10px 28px rgba(37,211,102,.28); }
-    .btn-whatsapp:hover { background:#1ebe5c; transform:translateY(-4px); box-shadow:0 18px 36px rgba(37,211,102,.4); }
-    .btn-block { width:100%; }
-    .pulse-ring {
-      position:absolute; inset:0; border-radius:60px; border:2px solid rgba(255,255,255,.6);
-      animation:pulseRing 2.2s infinite;
-    }
-    @keyframes pulseRing { 0%{ transform:scale(1); opacity:.8; } 100%{ transform:scale(1.15); opacity:0; } }
-
     /* ===== HERO ===== */
-    .img-wrap {
-      position: relative;
-    }
-    .img-wrap img {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      border-radius: 24px;
-      opacity: 0;
-      transition: opacity 0.8s ease-in-out;
-      z-index: 1;
-    }
-    .img-wrap img.active {
-      opacity: 1;
-      z-index: 2;
-      position: relative; /* keeps the layout height */
-    }
+    .blog-hero { padding:160px 0 60px; background:linear-gradient(165deg,#f8faff 0%,#ffffff 60%); text-align:center; }
+    .blog-hero h1 { font-size:3.5rem; font-weight:900; line-height:1.1; margin-bottom:20px; }
+    .blog-hero h1 span { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .blog-hero p { font-size:1.2rem; color:#475569; max-width:700px; margin:0 auto; }
 
-    .hero { padding:110px 0 40px; background:linear-gradient(165deg,#f8faff 0%,#ffffff 60%); position:relative; }
-    .hero::before {
-      content:''; position:absolute; top:-120px; right:-160px; width:520px; height:520px; border-radius:50%;
-      background:radial-gradient(circle,rgba(37,99,235,.10),transparent 70%); pointer-events:none;
-    }
-    .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:60px; align-items:center; }
-    .hero-content .tag {
-      display:inline-flex; align-items:center; gap:9px; background:rgba(37,99,235,.09); color:#2563eb;
-      padding:8px 18px; border-radius:40px; font-weight:700; font-size:.85rem; margin-bottom:16px;
-      border:1px solid rgba(37,99,235,.15);
-    }
-    .tag .live-dot { width:7px; height:7px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.25); }
-    
-    /* Conversion-focused rewritten copy */
-    .hero-content h1 { font-size:3.1rem; font-weight:800; line-height:1.15; margin:8px 0 16px; letter-spacing:-0.03em; }
-    .hero-content h1 .highlight { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .hero-content p.subhead { font-size:1.08rem; color:#475569; max-width:540px; margin-bottom:22px; line-height:1.65; }
-    .hero-actions { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:30px; }
-    .hero-note { display:flex; align-items:center; gap:10px; color:#475569; font-size:.92rem; font-weight:600; }
-    .hero-note i { color:#22c55e; }
-
-    .hero-image { position:relative; }
-    
-    /* Fixed white spacing - padding set to 0 and border removed as requested */
-    .img-wrap {
-      background:transparent; border-radius:24px; padding:0; box-shadow:0 40px 90px -20px rgba(15,23,42,.16);
-      border:none; max-width:440px; margin-left:auto; position:relative; z-index:2; overflow:hidden;
-      aspect-ratio: 16/10;
-    }
-    .img-wrap img { width:100%; display:block; object-fit:cover; border-radius:24px; }
-    
-    /* Renamed badges: Success Guest Post & Success SEO as requested */
-    .floating-badge {
-      display:inline-flex; align-items:center; gap:14px; background:#fff; padding:14px 22px; border-radius:20px;
-      box-shadow:0 20px 44px rgba(15,23,42,.14); border:1px solid #f1f5f9;
-      position:absolute; z-index:3; animation:floatUpDown 4.5s ease-in-out infinite;
-    }
-    .floating-badge.b1 { bottom:-22px; left:-10px; }
-    .floating-badge.b2 { top:-18px; right:6px; animation-delay:.6s; }
-    .floating-badge .dot { width:11px; height:11px; background:#22c55e; border-radius:50%; animation:pulseDot 1.8s infinite; flex-shrink:0; }
-    .floating-badge strong { display:block; font-size:.92rem; font-weight:700; color:#0f172a; }
-    .floating-badge span.sub { color:#64748b; font-size:.8rem; font-weight:500; }
-    @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(1.5);} }
-    @keyframes floatUpDown { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
-
-    /* ===== TRUST BAR w/ COUNTERS ===== */
-    .trust-bar { background:#0f172a; padding:34px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
-    .trust-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
-    .trust-item { color:#fff; }
-    .trust-item .num { font-family:'Space Grotesk',sans-serif; font-size:2.5rem; font-weight:800; color:#60a5fa; letter-spacing:-0.02em; }
-    .trust-item .label { color:#94a3b8; font-size:.88rem; font-weight:600; margin-top:4px; text-transform:uppercase; letter-spacing:0.05em; }
-
-    /* ===== INFINITE HIGH-AUTHORITY BRANDS MARQUEE ===== */
-    .brands-marquee-section {
-      background:#f8fafc;
-      padding:28px 0;
-      border-bottom:1px solid #e2e8f0;
-      overflow:hidden;
-    }
-    .brands-marquee-title {
-      text-align:center;
-      font-size:.82rem;
-      font-weight:700;
-      color:#64748b;
-      text-transform:uppercase;
-      letter-spacing:0.1em;
-      margin-bottom:18px;
-    }
-    .brands-wrapper {
-      position:relative;
-      width:100%;
-      overflow:hidden;
-    }
-    .brands-track {
-      display:flex;
-      gap:64px;
-      width:max-content;
-      animation:scrollBrands 28s linear infinite;
-      align-items:center;
-    }
-    @keyframes scrollBrands {
-      0% { transform:translateX(0); }
-      100% { transform:translateX(-50%); }
-    }
-    .brand-item {
-      font-family:'Space Grotesk',sans-serif;
-      font-size:1.45rem;
-      font-weight:800;
-      color:#94a3b8;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      user-select:none;
-      letter-spacing:-0.03em;
-    }
-    .brand-item i {
-      font-size:1.15rem;
-      color:#cbd5e1;
-    }
-
-    /* ===== SECTION HEADERS ===== */
-    .section-header { text-align:center; margin-bottom:54px; }
-    .section-header .eyebrow {
-      display:inline-block; color:#2563eb; font-weight:700; font-size:.82rem; letter-spacing:.08em;
-      text-transform:uppercase; margin-bottom:12px;
-    }
-    .section-header h2 { font-size:2.75rem; font-weight:800; letter-spacing:-0.03em; }
-    .section-header h2 .highlight { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .section-header p { color:#475569; max-width:600px; margin:14px auto 0; font-size:1.1rem; line-height:1.7; }
-
-    /* ===== SERVICE CARDS ===== */
-    .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:28px; }
-    .service-card {
-      background:#fff; border-radius:26px; padding:42px 34px; border:1px solid #f1f5f9; transition:.4s;
-      box-shadow:0 4px 16px rgba(15,23,42,.02); position:relative; overflow:hidden;
-    }
-    .service-card::after {
-      content:''; position:absolute; inset:0; opacity:0; transition:.4s;
-      background:linear-gradient(160deg,rgba(37,99,235,.05),transparent 60%);
-    }
-    .service-card:hover { transform:translateY(-8px); border-color:#2563eb; box-shadow:0 26px 50px -18px rgba(37,99,235,.2); }
-    .service-card:hover::after { opacity:1; }
-    .service-icon {
-      width:60px; height:60px; border-radius:16px; display:flex; align-items:center; justify-content:center;
-      background:linear-gradient(135deg,#eff6ff,#dbeafe); color:#2563eb; font-size:1.6rem; margin-bottom:22px;
-      transition:.4s;
-    }
-    .service-card:hover .service-icon { background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; transform:scale(1.08) rotate(-4deg); }
-    .service-card h3 { font-size:1.45rem; margin-bottom:12px; font-weight:700; }
-    .service-card p { color:#475569; margin-bottom:18px; font-size:0.98rem; }
-    .service-card .learn-more { font-weight:700; color:#2563eb; font-size:.92rem; display:inline-flex; align-items:center; gap:6px; }
-    .service-card .learn-more i { transition:.3s; }
-    .service-card:hover .learn-more i { transform:translateX(4px); }
-
-    /* ===== INFINITE TESTIMONIALS MARQUEE (Continuous 30+ Reviews) ===== */
-    .reviews-section { background:#ffffff; padding:100px 0; border-top:1px solid #f1f5f9; border-bottom:1px solid #f1f5f9; overflow:hidden; }
-    .testimonials-marquee-container {
-      position:relative;
-      width:100%;
-      overflow:hidden;
-      padding:20px 0;
-    }
-    /* Infinite right-to-left linear scroller, pauses perfectly on hover */
-    .testimonials-marquee-track {
-      display:flex;
-      gap:30px;
-      width:max-content;
-      animation:infiniteScrollTestimonials 55s linear infinite;
-    }
-    .testimonials-marquee-track:hover {
-      animation-play-state:paused;
-    }
-    @keyframes infiniteScrollTestimonials {
-      0% { transform:translateX(0); }
-      100% { transform:translateX(-50%); } /* Loops duplicate cards seamlessly */
-    }
-    .review-card-marquee {
-      width:400px;
-      max-width:85vw; /* Perfectly responsive: keeps it inside mobile viewports without breaking layout */
-      background:#ffffff;
-      border:1.5px solid #e2e8f0;
-      border-radius:24px;
-      padding:38px 30px;
-      box-shadow:0 8px 30px rgba(15,23,42,.03);
-      display:flex;
-      flex-direction:column;
-      justify-content:space-between;
-      flex-shrink:0;
-      transition:all 0.3s ease;
-      cursor:pointer;
-    }
-    .review-card-marquee:hover {
-      transform:translateY(-8px);
-      border-color:#2563eb;
-      box-shadow:0 24px 50px rgba(37,99,235,.12);
-    }
-    .review-avatar-container {
-      position:relative;
-      width:64px;
-      height:64px;
-      margin-bottom:16px;
-    }
-    .review-avatar {
-      width:100%;
-      height:100%;
-      border-radius:50%;
-      object-fit:cover;
-      border:3px solid #e2e8f0;
-      box-shadow:0 4px 12px rgba(15,23,42,.05);
-      transition:0.3s;
-    }
-    .review-card-marquee:hover .review-avatar {
-      border-color:#2563eb;
-    }
-    .review-stars {
-      color:#fbbf24;
-      font-size:1.05rem;
-      letter-spacing:2px;
-      margin-bottom:14px;
-    }
-    .review-text {
-      color:#475569;
-      font-size:0.96rem;
-      line-height:1.65;
-      margin-bottom:20px;
-    }
-    .review-author {
-      font-family:'Space Grotesk',sans-serif;
-      font-weight:700;
-      font-size:1.1rem;
-      color:#0f172a;
-    }
-    .review-role {
-      color:#94a3b8;
-      font-size:.8rem;
-      font-weight:600;
-      text-transform:uppercase;
-      letter-spacing:.05em;
-      margin-top:2px;
-    }
-
-    /* ===== PRICING ===== */
-    .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; margin-top:20px; }
-    .pricing-card {
-      background:#fff; border-radius:30px; padding:42px 32px; border:1px solid #f1f5f9; transition:.35s;
-      text-align:left; position:relative; box-shadow:0 4px 16px rgba(15,23,42,.03);
-    }
-    .pricing-card:hover { transform:translateY(-6px); box-shadow:0 24px 50px -18px rgba(15,23,42,.12); }
-    .pricing-card.popular { border:2px solid #2563eb; box-shadow:0 20px 44px -14px rgba(37,99,235,.22); }
-    .pricing-card.popular::before {
-      content:'Most Popular'; position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-      background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; padding:5px 22px; border-radius:40px;
-      font-size:.78rem; font-weight:700; box-shadow:0 6px 14px rgba(37,99,235,.35);
-    }
-    .pricing-card h3 { font-size:1.3rem; margin-bottom:6px; }
-    .pricing-card .plan-desc { color:#94a3b8; font-size:.9rem; margin-bottom:16px; }
-    .pricing-card .price { font-size:2.8rem; font-weight:800; margin:6px 0; font-family:'Space Grotesk',sans-serif; }
-    .pricing-card .price span { font-size:1rem; color:#94a3b8; font-weight:400; }
-    .pricing-card ul { list-style:none; margin:22px 0 30px; }
-    .pricing-card ul li { padding:11px 0; border-bottom:1px solid #f1f5f9; display:flex; align-items:center; gap:12px; font-size:.95rem; }
-    .pricing-card ul li i { color:#22c55e; }
-    .pricing-note { text-align:center; color:#94a3b8; font-size:.88rem; margin-top:22px; }
-
-    /* ===== WHY US ===== */
-    .why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
-    .why-card { text-align:center; padding:10px; }
-    .why-icon {
-      width:64px; height:64px; border-radius:18px; margin:0 auto 18px; display:flex; align-items:center;
-      justify-content:center; background:linear-gradient(135deg,#eff6ff,#dbeafe); color:#2563eb; font-size:1.7rem;
-    }
-    .why-card h4 { font-size:1.1rem; margin-bottom:8px; }
-    .why-card p { color:#64748b; font-size:.92rem; }
-
-    /* ===== CTA ===== */
-    .cta-section { padding:20px 0 90px; }
-    .cta-box {
-      background:linear-gradient(135deg,#0f172a,#1e293b); border-radius:36px; padding:70px 50px; text-align:center;
-      position:relative; overflow:hidden;
-    }
-    .cta-box::before {
-      content:''; position:absolute; top:-100px; left:-100px; width:340px; height:340px; border-radius:50%;
-      background:radial-gradient(circle,rgba(37,99,235,.35),transparent 70%);
-    }
-    .cta-box::after {
-      content:''; position:absolute; bottom:-120px; right:-80px; width:380px; height:380px; border-radius:50%;
-      background:radial-gradient(circle,rgba(37,99,235,.25),transparent 70%);
-    }
-    .cta-box > * { position:relative; z-index:1; }
-    .cta-box h2 { font-size:2.6rem; color:#fff; margin-bottom:16px; }
-    .cta-box h2 .highlight { color:#60a5fa; }
-    .cta-box p { color:#cbd5e1; max-width:520px; margin:0 auto 34px; font-size:1.1rem; }
-    .cta-box .btn-group { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+    /* ===== BLOG GRID ===== */
+    .blog-section { padding:60px 0 100px; }
+    .blog-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:40px; }
+    .blog-card { background:#ffffff; border:1px solid #e2e8f0; border-radius:24px; overflow:hidden; transition:0.3s; display:flex; flex-direction:column; }
+    .blog-card:hover { transform:translateY(-8px); border-color:#2563eb; box-shadow:0 20px 40px rgba(15,23,42,0.06); }
+    .blog-img { width:100%; height:220px; overflow:hidden; position:relative; }
+    .blog-img img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s ease; }
+    .blog-card:hover .blog-img img { transform:scale(1.06); }
+    .blog-badge { position:absolute; top:20px; left:20px; background:#2563eb; color:#fff; padding:6px 14px; border-radius:40px; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.05em; }
+    .blog-content { padding:30px; display:flex; flex-direction:column; justify-content:space-between; flex-grow:1; }
+    .blog-meta { display:flex; gap:16px; color:#64748b; font-size:0.85rem; font-weight:600; margin-bottom:12px; }
+    .blog-content h3 { font-size:1.35rem; margin-bottom:12px; color:#0f172a; line-height:1.4; }
+    .blog-content p { color:#475569; font-size:0.95rem; margin-bottom:20px; line-height:1.6; }
+    .read-more { font-weight:700; color:#2563eb; font-size:0.92rem; display:inline-flex; align-items:center; gap:6px; }
+    .read-more i { transition:0.3s; }
+    .blog-card:hover .read-more i { transform:translateX(4px); }
 
     /* ===== FOOTER ===== */
     .footer { background:#fff; border-top:1px solid #f1f5f9; padding:64px 0 30px; }
@@ -400,510 +81,131 @@
     .footer-col ul li { margin-bottom:10px; }
     .footer-col ul li a { color:#64748b; transition:.2s; font-size:.95rem; }
     .footer-col ul li a:hover { color:#2563eb; }
-    .footer-col ul li a i { margin-right:8px; color:#94a3b8; }
-    .footer-social { display:flex; gap:14px; margin-top:14px; }
-    .footer-social a {
-      display:inline-flex; align-items:center; justify-content:center; width:42px; height:42px; border-radius:50%;
-      background:#f1f5f9; color:#0f172a; transition:.3s;
-    }
-    .footer-social a:hover { background:#2563eb; color:#fff; transform:translateY(-3px); }
     .footer-bottom { border-top:1px solid #f1f5f9; padding-top:24px; text-align:center; color:#94a3b8; font-size:.9rem; }
 
-    /* ===== WHATSAPP FLOATING BUTTON ===== */
-    .wa-float {
-      position:fixed; bottom:26px; right:26px; z-index:900; width:62px; height:62px; border-radius:50%;
-      background:#25d366; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.6rem;
-      box-shadow:0 10px 30px rgba(37,211,102,.45); transition:.3s;
-    }
-    .wa-float:hover { transform:scale(1.08); }
-    .wa-float .pulse-ring { border-color:rgba(37,211,102,.5); }
-
-    /* ===== RESPONSIVE FIXES ===== */
-    @media (max-width:992px) {
-      .hero-grid { grid-template-columns:1fr; text-align:center; gap:40px; }
-      .hero-content p.subhead { margin-left:auto; margin-right:auto; }
-      .hero-actions, .hero-note { justify-content:center; }
-      .img-wrap { margin:0 auto; }
+    @media (max-width: 992px) {
       .footer-grid { grid-template-columns:1fr 1fr; }
-      .why-grid { grid-template-columns:1fr 1fr; }
-      .trust-grid { grid-template-columns:1fr 1fr; }
     }
-    @media (max-width:768px) {
+    @media (max-width: 768px) {
       .nav-links {
         display:none; flex-direction:column; background:rgba(255,255,255,.98); position:absolute; top:70px; left:0;
-        width:100%; padding:30px 24px; gap:20px; border-bottom:1px solid #f1f5f9;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        width:100%; padding:30px 24px; gap:20px; border-bottom:1px solid #f1f5f9; box-shadow:0 10px 30px rgba(0,0,0,0.05);
       }
       .nav-links.open { display:flex; }
       .hamburger { display:flex; }
-      .hero { padding: 120px 0 60px; }
-      .hero-content h1 { font-size:2.5rem; }
-      .section-header h2 { font-size:2.1rem; }
+      .blog-hero h1 { font-size:2.6rem; }
       .footer-grid { grid-template-columns:1fr; text-align:center; }
-      .footer-brand p { margin:14px auto 0; }
-      .footer-social { justify-content:center; }
-      /* Float stack layout fixed for small mobiles - avoids overlap issues */
-      .floating-badge { position:static; display:inline-flex; margin:10px auto; animation:none; }
-      .review-card-marquee {
-        padding: 30px 20px;
-      }
-    }
-    @media (max-width:480px) {
-      .hero-content h1 { font-size:2.1rem; }
-      .pricing-card .price { font-size:2.3rem; }
-      .cta-box { padding:50px 26px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ===== HEADER ===== -->
+  <!-- HEADER -->
   <header class="header" id="header">
     <div class="container header-inner">
       <div class="logo">
-        <div class="logo-mark">
-          <!-- Premium SVG Growth Icon - Stable and elegant -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ffffff" />
-                <stop offset="100%" stop-color="#93c5fd" />
-              </linearGradient>
-            </defs>
-            <path d="M4 20L12 12L16 16L22 8" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M17 8H22V13" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-            <circle cx="4" cy="20" r="2.2" fill="#ffffff" />
-            <circle cx="12" cy="12" r="2.2" fill="#ffffff" />
-            <circle cx="16" cy="16" r="2.2" fill="#ffffff" />
-            <circle cx="22" cy="8" r="2.2" fill="#ffffff" />
-          </svg>
-        </div>
-        Web<span>Grouth</span>
+        <a href="/" style="display:flex; align-items:center; gap:10px;">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#ffffff" /><stop offset="100%" stop-color="#93c5fd" />
+                </linearGradient>
+              </defs>
+              <path d="M4 20L12 12L16 16L22 8" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M17 8H22V13" stroke="url(#logo-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="4" cy="20" r="2.2" fill="#ffffff" /><circle cx="12" cy="12" r="2.2" fill="#ffffff" /><circle cx="16" cy="16" r="2.2" fill="#ffffff" /><circle cx="22" cy="8" r="2.2" fill="#ffffff" />
+            </svg>
+          </div>
+          Web<span>Grouth</span>
+        </a>
       </div>
       <nav class="nav-links" id="navLinks">
-        <a href="#services">Services</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-        <a href="#contact" class="btn-nav">Get Started</a>
+        <a href="/">Home</a>
+        <a href="/#services">Services</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/about">About</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+        <a href="/contact" class="btn-nav">Get Started</a>
       </nav>
       <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     </div>
   </header>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content reveal show">
-        <div class="tag"><span class="live-dot"></span> Secure High-Authority Guest Posts Today</div>
-        <!-- High-converting, extremely persuasive header -->
-        <h1>Drive Massive Search Traffic with <span class="highlight">Real Editorial Backlinks</span></h1>
-        <p class="subhead">Get featured on high-traffic, editorially-vetted websites within your niche. Acquire powerful, contextually embedded links that boost domain authority and rank you for high-value search queries. No PBNs — guaranteed safe SEO growth.</p>
-        <div class="hero-actions">
-          <a href="#pricing" class="btn btn-primary"><i class="fas fa-bolt"></i> Order a Guest Post Now</a>
-          <a id="waHeroBtn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-        </div>
-        <div class="hero-note"><i class="fas fa-circle-check"></i> Real active publishers with organic Google traffic. 100% indexed backlinks.</div>
-      </div>
-      <div class="hero-image reveal show">
-        <!-- Fit Edge-to-Edge Image Wrap: Automated smooth image slider inside laptop frame -->
-        <div class="img-wrap" id="laptopSlider">
-          <img src="/hero-dashboard.png" class="active" alt="SEO Dashboard 1" loading="eager" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80'" />
-          <img src="/dashboard2.png" alt="SEO Dashboard 2" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80'" />
-          <img src="/dashboard3.png" alt="SEO Dashboard 3" onerror="this.src='https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&q=80'" />
-          <img src="/dashboard4.png" alt="SEO Dashboard 4" onerror="this.src='https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=900&q=80'" />
-          <img src="/dashboard5.png" alt="SEO Dashboard 5" onerror="this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=80'" />
-          <img src="/dashboard6.png" alt="SEO Dashboard 6" onerror="this.src='https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&q=80'" />
-        </div>
-        <!-- Renamed badges: Success Guest Post & Success SEO as requested -->
-        <div class="floating-badge b1">
-          <span class="dot"></span>
-          <div><strong>Success Guest Post</strong><br><span class="sub">100% indexed & live</span></div>
-        </div>
-        <div class="floating-badge b2">
-          <i class="fas fa-link" style="color:#2563eb;"></i>
-          <div><strong>Success SEO</strong><br><span class="sub">rankings that stay</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== TRUST BAR (animated counters) ===== -->
-  <div class="trust-bar">
-    <div class="container trust-grid">
-      <!-- Changed Confusing "0 PBN" stat to clear high-converting metrics -->
-      <div class="trust-item"><div class="num" data-target="250" data-suffix="+">0</div><div class="label">Vetted Publishers</div></div>
-      <div class="trust-item"><div class="num" data-target="INSTANT" data-suffix="h">0</div><div class="label">Avg. Turnaround</div></div>
-      <div class="trust-item"><div class="num" data-target="100" data-suffix="%">0</div><div class="label">Google Indexation</div></div>
-      <div class="trust-item"><div class="num" data-target="4.9" data-suffix="/5">0</div><div class="label">Client Rating</div></div>
-    </div>
-  </div>
-
-  <!-- ===== INFINITE HIGH-AUTHORITY BRANDS MARQUEE (Continuous scroller of big sites) ===== -->
-  <section class="brands-marquee-section">
-    <div class="brands-marquee-title">Secure Placements on Premium Sites Like</div>
-    <div class="brands-wrapper">
-      <div class="brands-track">
-        <!-- List of famous publishers -->
-        <div class="brand-item"><i class="fas fa-globe"></i> Forbes</div>
-        <div class="brand-item"><i class="fas fa-newspaper"></i> TechCrunch</div>
-        <div class="brand-item"><i class="fas fa-lightbulb"></i> Entrepreneur</div>
-        <div class="brand-item"><i class="fas fa-chart-bar"></i> HubSpot</div>
-        <div class="brand-item"><i class="fas fa-briefcase"></i> Business Insider</div>
-        <div class="brand-item"><i class="fas fa-laptop-code"></i> Wired</div>
-        <div class="brand-item"><i class="fas fa-chart-line"></i> NY Times</div>
-        <div class="brand-item"><i class="fas fa-microchip"></i> Engadget</div>
-        
-        <!-- Duplicated set for seamless loop -->
-        <div class="brand-item"><i class="fas fa-globe"></i> Forbes</div>
-        <div class="brand-item"><i class="fas fa-newspaper"></i> TechCrunch</div>
-        <div class="brand-item"><i class="fas fa-lightbulb"></i> Entrepreneur</div>
-        <div class="brand-item"><i class="fas fa-chart-bar"></i> HubSpot</div>
-        <div class="brand-item"><i class="fas fa-briefcase"></i> Business Insider</div>
-        <div class="brand-item"><i class="fas fa-laptop-code"></i> Wired</div>
-        <div class="brand-item"><i class="fas fa-chart-line"></i> NY Times</div>
-        <div class="brand-item"><i class="fas fa-microchip"></i> Engadget</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SERVICES ===== -->
-  <section id="services" style="padding:90px 0 70px;">
+  <!-- HERO -->
+  <section class="blog-hero">
     <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Maximize Search Authority</span>
-        <h2>High-Impact Solutions. <span class="highlight">Unrivaled Rankings.</span></h2>
-        <p>Engineered for organic visibility. Acquire contextually relevant placements that build brand trust and dominate search indexes.</p>
-      </div>
-      <div class="card-grid">
-        <div class="service-card reveal">
-          <div class="service-icon"><i class="fas fa-pen-fancy"></i></div>
-          <h3>Strategic Guest Posting</h3>
-          <p>Get featured inside original, reader-first content hosted on high-authority websites. Accelerate organic traffic and earn google trust.</p>
-          <a href="#pricing" class="learn-more">Order now <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon"><i class="fas fa-link"></i></div>
-          <h3>Contextual Links</h3>
-          <p>Secure clean, natural links strategically embedded within niche-relevant articles — entirely free of sidebars or spam networks.</p>
-          <a href="#pricing" class="learn-more">Order now <i class="fas fa-arrow-right"></i></a>
-        </div>
-        <div class="service-card reveal">
-          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
-          <h3>Technical SEO Strategy</h3>
-          <p>On-page code and keyword architecture alignment to squeeze the maximum ranking power out of every single backlink you earn.</p>
-          <a href="#contact" class="learn-more">Talk to us <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
+      <h1>The Web Grouth <span>Knowledge Base</span></h1>
+      <p>Master Google algorithms, high-impact guest posting, and actionable search engine optimization tactics.</p>
     </div>
   </section>
 
-  <!-- ===== INFINITE TESTIMONIALS MARQUEE (Continuous 30+ Reviews) ===== -->
-  <section class="reviews-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Client Success</span>
-        <h2>Continuous <span class="highlight">Client Feedback</span></h2>
-        <p>Read real-time reviews from agencies and SEO specialists scaling search campaigns with us.</p>
-      </div>
+  <!-- BLOG GRID -->
+  <section class="blog-section">
+    <div class="container blog-grid">
       
-      <div class="testimonials-marquee-container reveal">
-        <div class="testimonials-marquee-track">
-          
-          <!-- Review 1: Zainab Fatima -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Zainab Fatima" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"I was skeptical about buying guest posts, but Web Grouth delivered. The site we got published on has 50k+ monthly organic visitors. Our sales for the winter collection doubled after ranking on the first page."</p>
+      <!-- Article 1 -->
+      <div class="blog-card">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?w=600&q=80" alt="Blog Post 1" />
+          <span class="blog-badge">Link Building</span>
+        </div>
+        <div class="blog-content">
+          <div>
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> August 15, 2026</span>
+              <span><i class="far fa-clock"></i> 5 min read</span>
             </div>
-            <div>
-              <h4 class="review-author">Zainab Fatima</h4>
-              <div class="review-role">E-commerce Brand Owner, Lahore</div>
-            </div>
+            <h3>PBNs vs. Editorial Backlinks: Why the Difference Matters</h3>
+            <p>Understand the critical difference between spammy private networks and real contextual placements for Google ranking success.</p>
           </div>
-
-          <!-- Review 2: Aaron Sterling -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Aaron Sterling" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"We've tried multiple backlink services, but most of them just sell PBN links that drop off after a month. Nasir's team placed our link inside an editorial piece on a real DR 65 SaaS blog. 100% indexation rate."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Aaron Sterling</h4>
-              <div class="review-role">Director of Marketing, LeadSync SaaS</div>
-            </div>
-          </div>
-
-          <!-- Review 3: Imran Hashmi -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Imran Hashmi" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"Mera affiliate blog niche competitors se peeche tha. 3 guest posts starter package se start kia, and keywords and backlinks direct index ho gye. Nasir bhai is highly professional and honest."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Imran Hashmi</h4>
-              <div class="review-role">Affiliate Marketer, Karachi</div>
-            </div>
-          </div>
-
-          <!-- Review 4: Claire Dubois -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Claire Dubois" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"What I love about Web Grouth is the absolute transparency. They shared the publisher URLs with us for approval beforehand. Clean anchor text placement, perfect contextual flow."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Claire Dubois</h4>
-              <div class="review-role">SEO Consultant, Paris</div>
-            </div>
-          </div>
-
-          <!-- Review 5: Sarmad Alvi -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="Sarmad Alvi" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"Nasir Haider SEO is our go-to partner for link building. Excellent turnaround time, white-hat tactics, and no spammy networks. Fully satisfied with their customer service."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Sarmad Alvi</h4>
-              <div class="review-role">Founder, Alvi Digital</div>
-            </div>
-          </div>
-
-          <!-- Review 6: Emily Zhao -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" alt="Emily Zhao" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"The content quality of the guest post was exceptional. It wasn't just filler text; it actually generated a few referral signups for our product. Brilliant service by Nasir."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Emily Zhao</h4>
-              <div class="review-role">Growth Lead, FinTech Global</div>
-            </div>
-          </div>
-
-          <!-- Duplicated set of cards for seamless infinite scrolling loop -->
-          <!-- Duplicate 1 -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Zainab Fatima" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"I was skeptical about buying guest posts, but Web Grouth delivered. The site we got published on has 50k+ monthly organic visitors. Our sales for the winter collection doubled after ranking on the first page."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Zainab Fatima</h4>
-              <div class="review-role">E-commerce Brand Owner, Lahore</div>
-            </div>
-          </div>
-
-          <!-- Duplicate 2 -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80" alt="Aaron Sterling" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"We've tried multiple backlink services, but most of them just sell PBN links that drop off after a month. Nasir's team placed our link inside an editorial piece on a real DR 65 SaaS blog. 100% indexation rate."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Aaron Sterling</h4>
-              <div class="review-role">Director of Marketing, LeadSync SaaS</div>
-            </div>
-          </div>
-
-          <!-- Duplicate 3 -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80" alt="Imran Hashmi" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"Mera affiliate blog niche competitors se peeche tha. 3 guest posts starter package se start kia, and keywords and backlinks direct index ho gye. Nasir bhai is highly professional and honest."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Imran Hashmi</h4>
-              <div class="review-role">Affiliate Marketer, Karachi</div>
-            </div>
-          </div>
-
-          <!-- Duplicate 4 -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80" alt="Claire Dubois" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"What I love about Web Grouth is the absolute transparency. They shared the publisher URLs with us for approval beforehand. Clean anchor text placement, perfect contextual flow."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Claire Dubois</h4>
-              <div class="review-role">SEO Consultant, Paris</div>
-            </div>
-          </div>
-
-          <!-- Duplicate 5 -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&auto=format&fit=crop&q=80" alt="Sarmad Alvi" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"Nasir Haider SEO is our go-to partner for link building. Excellent turnaround time, white-hat tactics, and no spammy networks. Fully satisfied with their customer service."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Sarmad Alvi</h4>
-              <div class="review-role">Founder, Alvi Digital</div>
-            </div>
-          </div>
-
-          <!-- Duplicate 6 -->
-          <div class="review-card-marquee">
-            <div>
-              <div class="review-avatar-container">
-                <img class="review-avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&auto=format&fit=crop&q=80" alt="Emily Zhao" />
-              </div>
-              <div class="review-stars">
-                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-              </div>
-              <p class="review-text">"The content quality of the guest post was exceptional. It wasn't just filler text; it actually generated a few referral signups for our product. Brilliant service by Nasir."</p>
-            </div>
-            <div>
-              <h4 class="review-author">Emily Zhao</h4>
-              <div class="review-role">Growth Lead, FinTech Global</div>
-            </div>
-          </div>
-
+          <a href="/blog/pbns-vs-editorial-backlinks" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
+
+      <!-- Article 2 -->
+      <div class="blog-card">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Blog Post 2" />
+          <span class="blog-badge">SEO Strategy</span>
+        </div>
+        <div class="blog-content">
+          <div>
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> August 10, 2026</span>
+              <span><i class="far fa-clock"></i> 7 min read</span>
+            </div>
+            <h3>How to Vette a Guest Posting Site for Real Traffic</h3>
+            <p>Stop paying for dummy metrics. Learn our detailed framework to identify publishers with genuine organic visitors.</p>
+          </div>
+          <a href="/blog/how-to-vette-guest-post-sites" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="blog-card">
+        <div class="blog-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Blog Post 3" />
+          <span class="blog-badge">Case Studies</span>
+        </div>
+        <div class="blog-content">
+          <div>
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> August 05, 2026</span>
+              <span><i class="far fa-clock"></i> 9 min read</span>
+            </div>
+            <h3>The Ultimate Guide to Contextual Link Building</h3>
+            <p>Our complete roadmap to gaining high-impact contextual links that search bots trust and reward instantly.</p>
+          </div>
+          <a href="/blog/ultimate-guide-contextual-links" class="read-more">Read Article <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ===== PRICING ===== -->
-  <section id="pricing" style="padding:90px 0 30px;">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">Maximize Search Value</span>
-        <h2>Flexible Packages, <span class="highlight">Guaranteed Placements</span></h2>
-        <p>100% transparent pricing. You approve every publisher site, traffic volume, and niche context before publication.</p>
-      </div>
-      <div class="pricing-grid">
-        <div class="pricing-card reveal">
-          <h3>Starter</h3>
-          <p class="plan-desc">Perfect to test the system</p>
-          <div class="price">$5 <span>/ post</span></div>
-          <ul>
-            <li><i class="fas fa-circle-check"></i> 1 Guest Post</li>
-            <li><i class="fas fa-circle-check"></i> 1 Contextual Backlink</li>
-            <li><i class="fas fa-circle-check"></i> Manually vetted publisher</li>
-            <li><i class="fas fa-circle-check"></i> Live-link confirmation</li>
-          </ul>
-          <a id="waStarterBtn" href="#" target="_blank" rel="noopener" class="btn btn-secondary btn-block">Order Starter</a>
-        </div>
-        <div class="pricing-card popular reveal">
-          <h3>Growth</h3>
-          <p class="plan-desc">Engineered for scaling brands</p>
-          <div class="price">$30 <span>/ month</span></div>
-          <ul>
-            <li><i class="fas fa-circle-check"></i> 3 Guest Posts</li>
-            <li><i class="fas fa-circle-check"></i> 3 Contextual Backlinks</li>
-            <li><i class="fas fa-circle-check"></i> Manually vetted publishers</li>
-            <li><i class="fas fa-circle-check"></i> Monthly report</li>
-          </ul>
-          <a id="waGrowthBtn" href="#" target="_blank" rel="noopener" class="btn btn-primary btn-block">Choose Growth</a>
-        </div>
-        <div class="pricing-card reveal">
-          <h3>Pro</h3>
-          <p class="plan-desc">For maximum authority scale</p>
-          <div class="price">$100 <span>/ month</span></div>
-          <ul>
-            <li><i class="fas fa-circle-check"></i> 7 Guest Posts</li>
-            <li><i class="fas fa-circle-check"></i> 7 Contextual Backlinks</li>
-            <li><i class="fas fa-circle-check"></i> Manually vetted publishers</li>
-            <li><i class="fas fa-circle-check"></i> Dedicated account manager</li>
-          </ul>
-          <a id="waProBtn" href="#" target="_blank" rel="noopener" class="btn btn-secondary btn-block">Contact Sales</a>
-        </div>
-      </div>
-      <p class="pricing-note">Exact publisher site, niche, and metrics are confirmed with you before any order is finalized.</p>
-    </div>
-  </section>
-
-  <!-- ===== WHY US ===== -->
-  <section style="padding:90px 0;background:#f8fafc;">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="eyebrow">The Web Grouth Standards</span>
-        <h2>Built for Relevance, <span class="highlight">Not Empty Volume</span></h2>
-      </div>
-      <div class="why-grid">
-        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-bullseye"></i></div><h4>Active Niche Vetting</h4><p>Every host site is strictly matched to your market, ensuring maximum SEO relevance.</p></div>
-        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-eye"></i></div><h4>100% Transparency</h4><p>You approve the target publisher site and organic traffic graph before payment is made.</p></div>
-        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-feather-pointed"></i></div><h4>Editorial-First Content</h4><p>Premium copywriting that satisfies reader curiosity, securing a naturally earned backlink.</p></div>
-        <div class="why-card reveal"><div class="why-icon"><i class="fas fa-shield-halved"></i></div><h4>Zero Spam Networks</h4><p>We source backlink placements only from authentic, active business blogs and news outlets.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== CTA ===== -->
-  <section id="contact" class="cta-section">
-    <div class="container">
-      <div class="cta-box reveal">
-        <h2>Ready to Build <span class="highlight">Search Authority?</span></h2>
-        <p>Tell us your niche and goals on WhatsApp right now — we'll match you with a relevant guest posting opportunity today.</p>
-        <div class="btn-group">
-          <a id="waCtaBtn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp">
-            <i class="fab fa-whatsapp"></i> Chat on WhatsApp <span class="pulse-ring"></span>
-          </a>
-          <a href="mailto:nasirhaiderseo@gmail.com" class="btn btn-secondary" style="background:#fff;">
-            <i class="fas fa-envelope"></i> Email Us
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
       <div class="footer-grid">
@@ -912,17 +214,13 @@
             <div class="logo-mark">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <linearGradient id="logo-grad-footer" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stop-color="#ffffff" />
-                    <stop offset="100%" stop-color="#93c5fd" />
+                  <linearGradient id="logo-grad-f" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#ffffff" /><stop offset="100%" stop-color="#93c5fd" />
                   </linearGradient>
                 </defs>
-                <path d="M4 20L12 12L16 16L22 8" stroke="url(#logo-grad-footer)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-                <path d="M17 8H22V13" stroke="url(#logo-grad-footer)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
-                <circle cx="4" cy="20" r="2.2" fill="#ffffff" />
-                <circle cx="12" cy="12" r="2.2" fill="#ffffff" />
-                <circle cx="16" cy="16" r="2.2" fill="#ffffff" />
-                <circle cx="22" cy="8" r="2.2" fill="#ffffff" />
+                <path d="M4 20L12 12L16 16L22 8" stroke="url(#logo-grad-f)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M17 8H22V13" stroke="url(#logo-grad-f)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="4" cy="20" r="2.2" fill="#ffffff" /><circle cx="12" cy="12" r="2.2" fill="#ffffff" /><circle cx="16" cy="16" r="2.2" fill="#ffffff" /><circle cx="22" cy="8" r="2.2" fill="#ffffff" />
               </svg>
             </div>
             Web<span>Grouth</span>
@@ -932,120 +230,34 @@
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a href="#services">Guest Posting</a></li>
-            <li><a href="#services">Backlink Building</a></li>
-            <li><a href="#services">SEO Strategy</a></li>
+            <li><a href="/#services">Guest Posting</a></li>
+            <li><a href="/#services">Backlink Building</a></li>
+            <li><a href="/#services">SEO Strategy</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="/#pricing">Pricing</a></li>
+            <li><a href="/about">About Us</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
           <ul>
             <li><a href="mailto:nasirhaiderseo@gmail.com"><i class="fas fa-envelope"></i> nasirhaiderseo@gmail.com</a></li>
-            <li><a id="waFooterLink" href="#" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> +92 332 7810261</a></li>
+            <li><a href="https://wa.me/923327810261" target="_blank"><i class="fab fa-whatsapp"></i> +92 332 7810261</a></li>
           </ul>
-          <div class="footer-social">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-          </div>
         </div>
       </div>
-      <div class="footer-bottom">&copy; 2026 Web Grouth. All rights reserved. &nbsp;|&nbsp; Built for relevance, not volume.</div>
+      <div class="footer-bottom">&copy; 2026 Web Grouth. All rights reserved.</div>
     </div>
   </footer>
 
-  <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
-  <a id="waFloat" href="#" target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i><span class="pulse-ring"></span></a>
-
   <script is:inline>
-    // ---- real WhatsApp number wired into every CTA on the page ----
-    const WA_NUMBER = '923327810261';
-    function waLink(msg){ return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`; }
-    document.getElementById('waHeroBtn').href = waLink("Hello Web Grouth, I'd like to order a guest post.");
-    document.getElementById('waStarterBtn').href = waLink("Hello Web Grouth, I'd like to order the Starter package.");
-    document.getElementById('waGrowthBtn').href = waLink("Hello Web Grouth, I'd like to order the Growth package.");
-    document.getElementById('waProBtn').href = waLink("Hello Web Grouth, I'd like to discuss the Pro package.");
-    document.getElementById('waCtaBtn').href = waLink("Hello Web Grouth, I'd like to talk about guest posting and SEO.");
-    document.getElementById('waFooterLink').href = waLink("Hello Web Grouth, I'd like more information.");
-    document.getElementById('waFloat').href = waLink("Hello Web Grouth, I have a question.");
-
-    // ---- mobile menu ----
     const hamburger = document.getElementById('hamburger');
     const navLinks = document.getElementById('navLinks');
     hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-
-    // ---- header shadow on scroll ----
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      header.style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(0,0,0,.05)' : 'none';
-    });
-
-    // ---- scroll reveal ----
-    const revealEls = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
-    }, { threshold: 0.15 });
-    revealEls.forEach(el => io.observe(el));
-
-    // ---- animated counters ----
-    const counters = document.querySelectorAll('.trust-bar .num');
-    let countersDone = false;
-    function runCounters() {
-      if (countersDone) return;
-      countersDone = true;
-      counters.forEach(el => {
-        const target = parseFloat(el.dataset.target);
-        const suffix = el.dataset.suffix || '';
-        if (isNaN(target)) {
-          // If it's a text word like "INSTANT", just display it directly!
-          el.textContent = el.dataset.target;
-          return;
-        }
-        
-        let current = 0;
-        const isDecimal = el.dataset.target.includes('.');
-        const step = isDecimal ? 0.1 : Math.max(1, Math.ceil(target / 40));
-        
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          el.textContent = (isDecimal ? current.toFixed(1) : Math.floor(current)) + suffix;
-        }, isDecimal ? 50 : 30);
-      });
-    }
-    const trustBar = document.querySelector('.trust-bar');
-    const trustIO = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) runCounters(); });
-    }, { threshold: 0.4 });
-    if (trustBar) trustIO.observe(trustBar);
-
-    // ---- LAPTOP AUTOMATIC IMAGE SLIDER ----
-    const laptopSlides = document.querySelectorAll('#laptopSlider img');
-    let currentLaptopSlide = 0;
-    function rotateLaptopSlides() {
-      if (laptopSlides.length === 0) return;
-      laptopSlides[currentLaptopSlide].classList.remove('active');
-      currentLaptopSlide = (currentLaptopSlide + 1) % laptopSlides.length;
-      laptopSlides[currentLaptopSlide].classList.add('active');
-    }
-    setInterval(rotateLaptopSlides, 4500); // Rotate every 4.5 seconds
-
-    // respect reduced motion
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.querySelectorAll('.reveal').forEach(el => el.classList.add('show'));
-    }
   </script>
 </body>
 </html>
