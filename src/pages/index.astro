@@ -1,34 +1,41 @@
 <!DOCTYPE html>
-<html lang="ur">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Web Grouth – Guest Posting, SEO & High-Authority Backlinks</title>
-  <meta name="description" content="Web Grouth helps brands earn relevant guest posts and contextual backlinks through vetted publishers." />
+  <title>Web Grouth – Premium Guest Posting & High-Authority SEO Backlinks</title>
+  <meta name="description" content="Scale your search rankings with real editorial backlinks, 100% organic publisher traffic, and zero advance payment. Pay after delivery guarantee!" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
     body {
       font-family:'Plus Jakarta Sans', sans-serif;
-      background:#ffffff; color:#0f172a; line-height:1.65; width:100%; position:relative;
+      background:#ffffff; color:#0f172a; line-height:1.65;
+      overflow-x:hidden; width:100%; position:relative;
     }
     .container { max-width:1200px; margin:0 auto; padding:0 24px; }
     a { text-decoration:none; color:inherit; }
     h1,h2,h3,h4 { font-family:'Outfit',sans-serif; letter-spacing:-0.03em; font-weight:700; }
 
+    /* ===== SCROLL REVEAL ===== */
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+    .reveal.show { opacity:1; transform:none; }
+
     /* ===== HEADER ===== */
     .header {
       position:fixed; top:0; left:0; width:100%; z-index:1000;
-      background:rgba(255,255,255,.95); backdrop-filter:blur(16px);
-      border-bottom:1px solid rgba(15,23,42,.06); padding:14px 0;
+      background:rgba(255,255,255,0.95); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+      border-bottom:1px solid rgba(15,23,42,.06); padding:14px 0; transition:.3s;
     }
     .header-inner { display:flex; justify-content:space-between; align-items:center; }
     .logo { display:flex; align-items:center; gap:10px; font-size:1.55rem; font-weight:800; color:#0f172a; }
     .logo-mark {
-      width:38px; height:38px; border-radius:11px; background:linear-gradient(135deg,#2563eb,#1d4ed8);
-      display:flex; align-items:center; justify-content:center; box-shadow:0 6px 16px rgba(37,99,235,.35);
+      width:38px; height:38px; border-radius:11px;
+      background:linear-gradient(135deg,#2563eb,#1d4ed8);
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 6px 16px rgba(37,99,235,.35); flex-shrink:0; position:relative; overflow:hidden;
     }
     .logo-mark svg { width:22px; height:22px; }
     .logo span { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
@@ -36,83 +43,181 @@
     .nav-links a:not(.btn-nav) { font-weight:600; color:#334155; transition:.2s; font-size:.95rem; }
     .nav-links a:not(.btn-nav):hover { color:#2563eb; }
     .nav-links .btn-nav {
-      background:#2563eb; color:#fff !important; padding:10px 24px; border-radius:40px; font-weight:700;
-      box-shadow:0 6px 18px rgba(37,99,235,.25); transition:.3s;
+      background:#2563eb; color:#fff !important; padding:11px 26px; border-radius:40px; font-weight:700;
+      transition:.3s; box-shadow:0 6px 18px rgba(37,99,235,.25); display:inline-flex; align-items:center; justify-content:center;
     }
-    .nav-links .btn-nav:hover { background:#1d4ed8; transform:translateY(-2px); }
-    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; }
-    .hamburger span { width:26px; height:3px; background:#0f172a; border-radius:3px; }
+    .nav-links .btn-nav:hover { background:#1d4ed8; transform:translateY(-2px); box-shadow:0 10px 26px rgba(37,99,235,.38); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; z-index:1001; }
+    .hamburger span { width:26px; height:3px; background:#0f172a; border-radius:3px; transition:.3s; }
 
     /* ===== BUTTONS ===== */
     .btn {
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:14px 28px; border-radius:40px; font-weight:700; font-size:.95rem;
-      transition:.3s; border:none; cursor:pointer; text-align:center;
+      padding:15px 30px; border-radius:40px; font-weight:700; font-size:.95rem;
+      transition:.3s cubic-bezier(.2,.8,.2,1); border:none; cursor:pointer; text-align:center;
     }
     .btn-primary { background:#2563eb; color:#fff; box-shadow:0 10px 28px rgba(37,99,235,.28); }
-    .btn-primary:hover { background:#1d4ed8; transform:translateY(-2px); }
+    .btn-primary:hover { background:#1d4ed8; transform:translateY(-3px); box-shadow:0 16px 32px rgba(37,99,235,.4); }
     .btn-whatsapp { background:#25d366; color:#fff; box-shadow:0 10px 28px rgba(37,211,102,.28); }
-    .btn-whatsapp:hover { background:#1ebe5c; transform:translateY(-2px); }
+    .btn-whatsapp:hover { background:#1ebe5c; transform:translateY(-3px); box-shadow:0 16px 32px rgba(37,211,102,.4); }
 
     /* ===== HERO ===== */
-    .hero { padding:120px 0 60px; background:linear-gradient(165deg,#f8faff 0%,#ffffff 60%); }
+    .hero { padding:120px 0 60px; background:linear-gradient(165deg,#f8faff 0%,#ffffff 60%); position:relative; }
+    .hero::before {
+      content:''; position:absolute; top:-120px; right:-160px; width:520px; height:520px; border-radius:50%;
+      background:radial-gradient(circle,rgba(37,99,235,.10),transparent 70%); pointer-events:none;
+    }
     .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:50px; align-items:center; }
     .hero-content .tag {
       display:inline-flex; align-items:center; gap:9px; background:rgba(37,99,235,.09); color:#2563eb;
       padding:8px 18px; border-radius:40px; font-weight:700; font-size:.85rem; margin-bottom:16px;
+      border:1px solid rgba(37,99,235,.15);
     }
-    .tag .live-dot { width:7px; height:7px; border-radius:50%; background:#22c55e; }
-    .hero-content h1 { font-size:3rem; font-weight:800; line-height:1.18; margin-bottom:16px; }
+    .tag .live-dot { width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 0 3px rgba(34,197,94,.25); }
+    .hero-content h1 { font-size:3.1rem; font-weight:800; line-height:1.15; margin:8px 0 16px; letter-spacing:-0.03em; }
     .hero-content h1 .highlight { background:linear-gradient(135deg,#2563eb,#1d4ed8); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .hero-content p.subhead { font-size:1.05rem; color:#475569; margin-bottom:24px; }
-    .hero-actions { display:flex; flex-wrap:wrap; gap:14px; margin-bottom:24px; }
+    .hero-content p.subhead { font-size:1.08rem; color:#475569; max-width:520px; margin-bottom:24px; line-height:1.65; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:16px; margin-bottom:28px; }
+    .hero-note { display:flex; align-items:center; gap:10px; color:#475569; font-size:.92rem; font-weight:600; }
+    .hero-note i { color:#22c55e; }
 
-    /* Floating Image Container with Corner Badges */
-    .hero-image { position:relative; width:100%; max-width:460px; margin:0 auto; }
+    /* TRUST/PAYMENT BANNER */
+    .advance-note {
+      display:flex; align-items:center; gap:14px; background:linear-gradient(135deg,#f0fdf4,#ecfdf5);
+      border:1px solid #bbf7d0; padding:14px 18px; border-radius:18px; max-width:520px; margin-top:20px;
+      box-shadow:0 8px 20px rgba(34,197,94,.08); transition:.3s;
+    }
+    .advance-note:hover { transform:translateY(-2px); box-shadow:0 12px 26px rgba(34,197,94,.15); }
+    .advance-note-icon {
+      width:40px; height:40px; border-radius:12px; flex-shrink:0; background:linear-gradient(135deg,#22c55e,#16a34a);
+      color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+      box-shadow:0 6px 14px rgba(22,163,74,.3);
+    }
+    .advance-note strong { display:block; color:#166534; font-size:.95rem; }
+    .advance-note p { color:#3f6212; font-size:.83rem; margin:0; line-height:1.45; }
+
+    /* IMAGE SLIDER & COMPACT BADGES */
+    .hero-image { position:relative; max-width:450px; margin-left:auto; width:100%; }
     .img-wrap {
-      position:relative; width:100%; aspect-ratio:16/10; border-radius:20px;
-      box-shadow:0 20px 50px rgba(15,23,42,.12); overflow:hidden;
+      background:#f8fafc; border-radius:24px; padding:0; box-shadow:0 30px 70px -15px rgba(15,23,42,.15);
+      position:relative; z-index:2; overflow:hidden; aspect-ratio:16/10; border:1px solid #e2e8f0;
     }
     .img-wrap img {
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-      opacity:0; transition:opacity 0.8s ease-in-out;
+      position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover;
+      opacity:0; transition:opacity 0.8s ease-in-out; border-radius:24px;
     }
     .img-wrap img.active { opacity:1; }
 
-    /* Compact Corner Badges */
+    /* COMPACT CORNER BADGES */
     .floating-badge {
-      display:inline-flex; align-items:center; gap:8px;
-      background:rgba(255,255,255,0.95); backdrop-filter:blur(10px);
-      padding:8px 14px; border-radius:30px; border:1px solid #e2e8f0;
-      box-shadow:0 8px 20px rgba(15,23,42,.1); position:absolute; z-index:10;
-      animation:floatUpDown 4s ease-in-out infinite; white-space:nowrap;
+      display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); padding:8px 14px;
+      border-radius:40px; box-shadow:0 10px 25px rgba(15,23,42,0.12); border:1px solid #e2e8f0;
+      position:absolute; z-index:10; animation:floatUpDown 4s ease-in-out infinite; white-space:nowrap;
     }
-    .floating-badge.b1 { bottom:-12px; left:-12px; }
-    .floating-badge.b2 { top:-12px; right:-12px; animation-delay:2s; }
-    .floating-badge .badge-icon {
-      width:22px; height:22px; border-radius:50%; background:#dcfce7; color:#16a34a;
-      display:flex; align-items:center; justify-content:center; font-size:.7rem;
+    .floating-badge.b1 { bottom:-10px; left:-10px; }
+    .floating-badge.b2 { top:-10px; right:-10px; animation-delay:2s; }
+    .badge-icon {
+      width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-size:.65rem; color:#fff; flex-shrink:0;
     }
-    .floating-badge.b2 .badge-icon { background:#dbeafe; color:#2563eb; }
-    .floating-badge strong { font-size:.75rem; color:#0f172a; font-weight:700; line-height:1; }
-    .floating-badge span.sub { font-size:.65rem; color:#64748b; font-weight:500; display:block; margin-top:2px; }
+    .b1 .badge-icon { background:#22c55e; box-shadow:0 4px 10px rgba(34,197,94,.3); }
+    .b2 .badge-icon { background:#2563eb; box-shadow:0 4px 10px rgba(37,99,235,.3); }
+    .floating-badge strong { font-size:.75rem; font-weight:700; color:#0f172a; line-height:1; }
+    .floating-badge span.sub { font-size:.62rem; color:#64748b; font-weight:500; display:block; margin-top:2px; }
 
     @keyframes floatUpDown { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-6px); } }
+
+    /* ===== TRUST BAR ===== */
+    .trust-bar { background:#0f172a; padding:36px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+    .trust-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
+    .trust-item .num { font-family:'Outfit',sans-serif; font-size:2.4rem; font-weight:800; color:#60a5fa; }
+    .trust-item .label { color:#94a3b8; font-size:.85rem; font-weight:600; text-transform:uppercase; letter-spacing:0.05em; margin-top:4px; }
+
+    /* ===== BRANDS MARQUEE ===== */
+    .brands-marquee-section { background:#f8fafc; padding:28px 0; border-bottom:1px solid #e2e8f0; overflow:hidden; }
+    .brands-marquee-title { text-align:center; font-size:.8rem; font-weight:700; color:#64748b; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:18px; }
+    .brands-wrapper { position:relative; width:100%; overflow:hidden; }
+    .brands-track { display:flex; gap:60px; width:max-content; animation:scrollBrands 25s linear infinite; align-items:center; }
+    @keyframes scrollBrands { 0% { transform:translateX(0); } 100% { transform:translateX(-50%); } }
+    .brand-item { font-family:'Outfit',sans-serif; font-size:1.35rem; font-weight:800; color:#94a3b8; display:flex; align-items:center; gap:8px; }
+
+    /* ===== SERVICES SECTION ===== */
+    .services-section { padding:90px 0; background:#fff; }
+    .section-header { text-align:center; margin-bottom:50px; }
+    .section-header .eyebrow { color:#2563eb; font-weight:700; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; margin-bottom:10px; display:block; }
+    .section-header h2 { font-size:2.5rem; font-weight:800; }
+    .section-header p { color:#475569; max-width:580px; margin:12px auto 0; font-size:1.05rem; }
+    .card-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; }
+    .service-card {
+      background:#fff; border-radius:24px; padding:38px 30px; border:1px solid #f1f5f9; transition:.35s;
+      box-shadow:0 4px 16px rgba(15,23,42,.02);
+    }
+    .service-card:hover { transform:translateY(-6px); border-color:#2563eb; box-shadow:0 20px 40px rgba(37,99,235,.12); }
+    .service-icon {
+      width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center;
+      background:#eff6ff; color:#2563eb; font-size:1.5rem; margin-bottom:20px; transition:.3s;
+    }
+    .service-card:hover .service-icon { background:#2563eb; color:#fff; }
+    .service-card h3 { font-size:1.35rem; margin-bottom:10px; }
+    .service-card p { color:#64748b; font-size:.95rem; margin-bottom:16px; }
+
+    /* ===== PRICING ===== */
+    .pricing-section { padding:90px 0; background:#f8fafc; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:28px; margin-top:30px; }
+    .pricing-card {
+      background:#fff; border-radius:28px; padding:40px 32px; border:1px solid #e2e8f0; transition:.35s;
+      position:relative; box-shadow:0 4px 16px rgba(15,23,42,.03);
+    }
+    .pricing-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(15,23,42,.1); }
+    .pricing-card.popular { border:2px solid #2563eb; box-shadow:0 18px 38px rgba(37,99,235,.18); }
+    .pricing-card.popular::before {
+      content:'Most Popular'; position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+      background:#2563eb; color:#fff; padding:4px 18px; border-radius:30px; font-size:.75rem; font-weight:700;
+    }
+    .pricing-card h3 { font-size:1.3rem; margin-bottom:6px; }
+    .pricing-card .price { font-size:2.6rem; font-weight:800; margin:10px 0; color:#0f172a; }
+    .pricing-card ul { list-style:none; margin:20px 0 28px; }
+    .pricing-card ul li { padding:10px 0; border-bottom:1px solid #f1f5f9; display:flex; align-items:center; gap:10px; font-size:.92rem; color:#334155; }
+    .pricing-card ul li i { color:#22c55e; }
+
+    /* ===== CTA ===== */
+    .cta-section { padding:80px 0; }
+    .cta-box {
+      background:linear-gradient(135deg,#0f172a,#1e293b); border-radius:32px; padding:60px 40px; text-align:center;
+      color:#fff; position:relative; overflow:hidden;
+    }
+    .cta-box h2 { font-size:2.4rem; margin-bottom:14px; }
+    .cta-box p { color:#cbd5e1; max-width:500px; margin:0 auto 28px; font-size:1.05rem; }
+    .cta-box .btn-group { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+
+    /* ===== FOOTER ===== */
+    .footer { background:#fff; border-top:1px solid #f1f5f9; padding:50px 0 25px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:30px; margin-bottom:30px; }
+    .footer-bottom { border-top:1px solid #f1f5f9; padding-top:20px; text-align:center; color:#94a3b8; font-size:.88rem; }
 
     /* ===== RESPONSIVE ===== */
     @media (max-width:992px) {
       .hero-grid { grid-template-columns:1fr; text-align:center; }
-      .hero-actions { justify-content:center; }
-      .hero-content h1 { font-size:2.2rem; }
+      .hero-actions, .hero-note { justify-content:center; }
+      .advance-note { margin:20px auto 0; text-align:left; }
+      .hero-image { margin:0 auto; }
+      .trust-grid { grid-template-columns:repeat(2,1fr); }
+      .footer-grid { grid-template-columns:1fr 1fr; }
     }
     @media (max-width:768px) {
-      .nav-links { display:none; }
+      .nav-links {
+        display:none; flex-direction:column; background:rgba(255,255,255,0.98); position:absolute;
+        top:68px; left:0; width:100%; padding:25px; gap:16px; border-bottom:1px solid #f1f5f9;
+        box-shadow:0 10px 25px rgba(0,0,0,0.05);
+      }
+      .nav-links.open { display:flex; }
       .hamburger { display:flex; }
-      .floating-badge { padding:6px 10px; }
+      .hero-content h1 { font-size:2.1rem; }
+      .btn { width:100%; max-width:320px; }
+      .floating-badge { padding:6px 12px; }
       .floating-badge strong { font-size:.68rem; }
-      .floating-badge span.sub { font-size:.58rem; }
-      .floating-badge.b1 { bottom:-8px; left:-8px; }
-      .floating-badge.b2 { top:-8px; right:-8px; }
+      .floating-badge span.sub { font-size:.55rem; }
     }
   </style>
 </head>
@@ -129,35 +234,47 @@
         </div>
         Web<span>Grouth</span>
       </div>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/#services">Services</a>
-        <a href="/#pricing">Pricing</a>
-        <a href="/contact" class="btn-nav">Get Started</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#">Home</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#why-us">Why Us</a>
+        <a href="#contact" class="btn-nav">Get Started</a>
       </nav>
-      <div class="hamburger"><span></span><span></span><span></span></div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="tag"><span class="live-dot"></span> Secure High-Authority Guest Posts Today</div>
-        <h1>Drive Massive Search Traffic with <span class="highlight">Real Editorial Backlinks</span></h1>
-        <p class="subhead">Get featured on high-traffic, editorially-vetted websites within your niche safely.</p>
+      <div class="hero-content reveal show">
+        <div class="tag"><span class="live-dot"></span> Guaranteed High DR Guest Posts</div>
+        <h1>Dominate Search Rankings with <span class="highlight">Real Editorial Backlinks</span></h1>
+        <p class="subhead">Get contextual, high-DR guest posts on real traffic websites. Boost your Google rankings, drive target buyers, and outperform competitors safely with zero risk.</p>
         <div class="hero-actions">
-          <a href="#pricing" class="btn btn-primary"><i class="fas fa-bolt"></i> Order a Guest Post Now</a>
-          <a href="https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20I%20have%20a%20question." target="_blank" rel="noopener" class="btn btn-whatsapp">
+          <a href="#pricing" class="btn btn-primary"><i class="fas fa-bolt"></i> Order Guest Post Now</a>
+          <a href="https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20I%20want%20to%20order%20a%20guest%20post." target="_blank" rel="noopener" class="btn btn-whatsapp">
             <i class="fab fa-whatsapp"></i> Chat on WhatsApp
           </a>
         </div>
+        <div class="hero-note"><i class="fas fa-circle-check"></i> 100% Google Indexed Backlinks | Active Organic Traffic</div>
+        
+        <div class="advance-note">
+          <div class="advance-note-icon"><i class="fas fa-shield-halved"></i></div>
+          <div>
+            <strong>Pay After Work is Complete — 0% Risk</strong>
+            <p>No advance payment required. We deliver your live guest post link first. You inspect it and pay only when fully satisfied!</p>
+          </div>
+        </div>
       </div>
 
-      <!-- HERO IMAGE & COMPACT CORNER BADGES -->
-      <div class="hero-image">
+      <!-- HERO IMAGE & CORNER BADGES -->
+      <div class="hero-image reveal show">
         <div class="img-wrap" id="laptopSlider">
-          <img src="/hero-dashboard.png" class="active" alt="SEO Dashboard" onerror="this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80'" />
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80" class="active" alt="SEO Dashboard 1" />
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=80" alt="SEO Dashboard 2" />
+          <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=900&q=80" alt="SEO Dashboard 3" />
         </div>
         
         <!-- Bottom-Left Badge -->
@@ -171,7 +288,7 @@
 
         <!-- Top-Right Badge -->
         <div class="floating-badge b2">
-          <div class="badge-icon"><i class="fas fa-link"></i></div>
+          <div class="badge-icon"><i class="fas fa-arrow-trend-up"></i></div>
           <div>
             <strong>Success SEO</strong>
             <span class="sub">rankings that stay</span>
@@ -181,5 +298,177 @@
     </div>
   </section>
 
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container trust-grid">
+      <div class="trust-item"><div class="num">500+</div><div class="label">Vetted Publishers</div></div>
+      <div class="trust-item"><div class="num">24h</div><div class="label">Fast Turnaround</div></div>
+      <div class="trust-item"><div class="num">100%</div><div class="label">Google Indexation</div></div>
+      <div class="trust-item"><div class="num">4.9/5</div><div class="label">Client Satisfaction</div></div>
+    </div>
+  </div>
+
+  <!-- MARQUEE -->
+  <section class="brands-marquee-section">
+    <div class="brands-marquee-title">Featured Placements Available On Sites Like</div>
+    <div class="brands-wrapper">
+      <div class="brands-track">
+        <div class="brand-item"><i class="fas fa-globe"></i> Forbes</div>
+        <div class="brand-item"><i class="fas fa-newspaper"></i> TechCrunch</div>
+        <div class="brand-item"><i class="fas fa-lightbulb"></i> Entrepreneur</div>
+        <div class="brand-item"><i class="fas fa-chart-bar"></i> HubSpot</div>
+        <div class="brand-item"><i class="fas fa-briefcase"></i> Business Insider</div>
+        <!-- Loop copy -->
+        <div class="brand-item"><i class="fas fa-globe"></i> Forbes</div>
+        <div class="brand-item"><i class="fas fa-newspaper"></i> TechCrunch</div>
+        <div class="brand-item"><i class="fas fa-lightbulb"></i> Entrepreneur</div>
+        <div class="brand-item"><i class="fas fa-chart-bar"></i> HubSpot</div>
+        <div class="brand-item"><i class="fas fa-briefcase"></i> Business Insider</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Our Core Expertise</span>
+        <h2>High-Impact Guest Posting Services</h2>
+        <p>Drive organic growth with contextual backlinks built for long-term SEO success.</p>
+      </div>
+      <div class="card-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+          <h3>Niche Guest Posting</h3>
+          <p>Get featured on high-authority blogs within your specific industry with naturally placed anchor text.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-link"></i></div>
+          <h3>Contextual Link Insertion</h3>
+          <p>Secure do-follow links inside existing high-ranking, indexed articles with real Google traffic.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+          <h3>Authority SEO Link Building</h3>
+          <p>Comprehensive off-page SEO packages engineered to safely increase your Domain Rating (DR) and traffic.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Transparent Pricing</span>
+        <h2>Choose Your Link Building Plan</h2>
+        <p>No monthly contracts. Pay only for confirmed live placements after work completion.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Starter Growth</h3>
+          <div class="price">$49 <span>/ post</span></div>
+          <ul>
+            <li><i class="fas fa-check"></i> DR 30+ High Authority Site</li>
+            <li><i class="fas fa-check"></i> 1,000+ Organic Monthly Traffic</li>
+            <li><i class="fas fa-check"></i> Do-Follow Permanent Link</li>
+            <li><i class="fas fa-check"></i> 500 Words Custom Article</li>
+            <li><i class="fas fa-check"></i> Pay After Live Report</li>
+          </ul>
+          <a href="https://wa.me/923327810261?text=Hi%2C%20I%20want%20the%20Starter%20Growth%20Guest%20Post%20Package." target="_blank" class="btn btn-primary btn-block">Order Starter</a>
+        </div>
+
+        <div class="pricing-card popular">
+          <h3>Authority Boost</h3>
+          <div class="price">$99 <span>/ post</span></div>
+          <ul>
+            <li><i class="fas fa-check"></i> DR 50+ Premium Authority Site</li>
+            <li><i class="fas fa-check"></i> 10,000+ Real Organic Traffic</li>
+            <li><i class="fas fa-check"></i> 2 Do-Follow Permanent Links</li>
+            <li><i class="fas fa-check"></i> 800 Words SEO Optimization</li>
+            <li><i class="fas fa-check"></i> Pay After Live Report</li>
+          </ul>
+          <a href="https://wa.me/923327810261?text=Hi%2C%20I%20want%20the%20Authority%20Boost%20Guest%20Post%20Package." target="_blank" class="btn btn-primary btn-block">Order Authority</a>
+        </div>
+
+        <div class="pricing-card">
+          <h3>Enterprise Scale</h3>
+          <div class="price">$199 <span>/ post</span></div>
+          <ul>
+            <li><i class="fas fa-check"></i> DR 70+ Elite Publication</li>
+            <li><i class="fas fa-check"></i> 50,000+ Massive Google Traffic</li>
+            <li><i class="fas fa-check"></i> Do-Follow Permanent Link</li>
+            <li><i class="fas fa-check"></i> 1000+ Words High-Level Content</li>
+            <li><i class="fas fa-check"></i> Instant Google Indexing</li>
+          </ul>
+          <a href="https://wa.me/923327810261?text=Hi%2C%20I%20want%20the%20Enterprise%20Guest%20Post%20Package." target="_blank" class="btn btn-primary btn-block">Order Enterprise</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="contact">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Ready to Outrank Your Competitors?</h2>
+        <p>Get a custom list of high-DR sites in your niche today. Chat with our SEO expert on WhatsApp now!</p>
+        <div class="btn-group">
+          <a href="https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20please%20send%20me%20your%20guest%20posting%20site%20list." target="_blank" class="btn btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Get Website List on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">Web<span>Grouth</span></div>
+          <p style="color:#64748b; font-size:.9rem; margin-top:12px;">Helping brands acquire high-authority guest posts and contextual backlinks for safe, sustainable organic growth.</p>
+        </div>
+        <div>
+          <h4 style="margin-bottom:12px;">Quick Links</h4>
+          <p><a href="#" style="color:#64748b; font-size:.9rem;">Home</a></p>
+          <p><a href="#services" style="color:#64748b; font-size:.9rem;">Services</a></p>
+          <p><a href="#pricing" style="color:#64748b; font-size:.9rem;">Pricing</a></p>
+        </div>
+        <div>
+          <h4 style="margin-bottom:12px;">Contact Us</h4>
+          <p style="color:#64748b; font-size:.9rem;">WhatsApp: +92 332 7810261</p>
+          <p style="color:#64748b; font-size:.9rem;">Email: contact@webgrouth.com</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © 2026 Web Grouth. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+    }
+
+    // Smooth Image Slider
+    const images = document.querySelectorAll('#laptopSlider img');
+    let currentIndex = 0;
+    if (images.length > 1) {
+      setInterval(() => {
+        images[currentIndex].classList.remove('active');
+        currentIndex = (currentIndex + 1) % images.length;
+        images[currentIndex].classList.add('active');
+      }, 3500);
+    }
+  </script>
 </body>
 </html>
