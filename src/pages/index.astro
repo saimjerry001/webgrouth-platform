@@ -150,15 +150,15 @@
     
     /* Renamed badges: Success Guest Post & Success SEO as requested */
     .floating-badge {
-      display:inline-flex; align-items:center; gap:8px; background:#fff; padding:8px 14px; border-radius:14px;
-      box-shadow:0 10px 30px rgba(15,23,42,.12); border:1px solid #f1f5f9;
+      display:inline-flex; align-items:center; gap:6px; background:#fff; padding:6px 12px; border-radius:12px;
+      box-shadow:0 12px 24px rgba(15,23,42,.1); border:1px solid #f1f5f9;
       position:absolute; z-index:5; animation:floatUpDown 4.5s ease-in-out infinite;
     }
     .floating-badge.b1 { bottom:12px; left:12px; }
     .floating-badge.b2 { top:12px; right:12px; animation-delay:.6s; }
-    .floating-badge .dot { width:8px; height:8px; background:#22c55e; border-radius:50%; animation:pulseDot 1.8s infinite; flex-shrink:0; }
-    .floating-badge strong { display:block; font-size:.8rem; font-weight:700; color:#0f172a; }
-    .floating-badge span.sub { color:#64748b; font-size:.7rem; font-weight:500; }
+    .floating-badge .dot { width:7px; height:7px; background:#22c55e; border-radius:50%; animation:pulseDot 1.8s infinite; flex-shrink:0; }
+    .floating-badge strong { display:block; font-size:.78rem; font-weight:700; color:#0f172a; }
+    .floating-badge span.sub { color:#64748b; font-size:.68rem; font-weight:500; }
     @keyframes pulseDot { 0%,100%{opacity:1;transform:scale(1);} 50%{opacity:.4;transform:scale(1.5);} }
     @keyframes floatUpDown { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
 
@@ -401,15 +401,6 @@
     .footer-col ul li a:hover { color:#2563eb; }
     .footer-bottom { border-top:1px solid #f1f5f9; padding-top:24px; text-align:center; color:#94a3b8; font-size:.9rem; }
 
-    /* ===== WHATSAPP FLOATING BUTTON ===== */
-    .wa-float {
-      position:fixed; bottom:26px; right:26px; z-index:900; width:62px; height:62px; border-radius:50%;
-      background:#25d366; display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.6rem;
-      box-shadow:0 10px 30px rgba(37,211,102,.45); transition:.3s;
-    }
-    .wa-float:hover { transform:scale(1.08); }
-    .wa-float .pulse-ring { border-color:rgba(37,211,102,.5); }
-
     /* ===== RESPONSIVE FIXES ===== */
     @media (max-width:992px) {
       .hero-grid { grid-template-columns:1fr; text-align:center; gap:40px; }
@@ -442,16 +433,16 @@
       .floating-badge { 
         position: absolute !important; 
         display: inline-flex !important; 
-        padding: 6px 12px !important; 
-        border-radius: 10px !important; 
-        gap: 6px !important; 
+        padding: 5px 10px !important; 
+        border-radius: 8px !important; 
+        gap: 5px !important; 
         animation: floatUpDown 4.5s ease-in-out infinite !important;
-        box-shadow: 0 8px 24px rgba(15,23,42,0.1) !important;
+        box-shadow: 0 6px 16px rgba(15,23,42,0.08) !important;
       }
-      .floating-badge strong { font-size: 0.72rem !important; }
-      .floating-badge span.sub { font-size: 0.62rem !important; }
-      .floating-badge .dot { width: 7px !important; height: 7px !important; }
-      .floating-badge i { font-size: 0.8rem !important; }
+      .floating-badge strong { font-size: 0.68rem !important; }
+      .floating-badge span.sub { font-size: 0.58rem !important; }
+      .floating-badge .dot { width: 6px !important; height: 6px !important; }
+      .floating-badge i { font-size: 0.75rem !important; }
       .floating-badge.b1 { bottom: 10px !important; left: 10px !important; }
       .floating-badge.b2 { top: 10px !important; right: 10px !important; }
       
