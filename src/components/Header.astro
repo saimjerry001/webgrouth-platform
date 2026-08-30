@@ -1,0 +1,48 @@
+---
+const path = Astro.url.pathname;
+const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith(href);
+const nav = [
+  { href: '/guest-posting', label: 'Guest Posting' },
+  { href: '/link-insertion', label: 'Link Insertion' },
+  { href: '/seo-services', label: 'SEO Services' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Insights' },
+];
+---
+
+<header class="site-header" data-header>
+  <div class="shell header-inner">
+    <a class="brand" href="/" aria-label="Web Grouth home">
+      <span class="brand-symbol" aria-hidden="true">
+        <svg viewBox="0 0 40 40" role="img">
+          <path d="M9 28.5 18 19l5.5 5L31 14" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M25.5 14H31v5.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand-word">Web <strong>Grouth</strong></span>
+    </a>
+
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      {nav.map((item) => (
+        <a class:list={{ active: isActive(item.href) }} href={item.href}>{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="header-actions">
+      <a class="header-login" href="/contact">Start a campaign</a>
+      <a class="button button-small button-glow" href="https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20I%27d%20like%20to%20discuss%20a%20guest%20posting%20campaign." target="_blank" rel="noopener">
+        Get site list <span aria-hidden="true">↗</span>
+      </a>
+      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
+    <div class="shell mobile-menu-inner">
+      {nav.map((item) => <a href={item.href}>{item.label}<span>↗</span></a>)}
+      <a href="/contact">Start a campaign <span>↗</span></a>
+    </div>
+  </nav>
+</header>
