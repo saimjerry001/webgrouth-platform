@@ -26,6 +26,19 @@ const databaseRows = [
   { domain: 'fin••••.org', niche: 'Finance', da: 77, dr: 71, traffic: '215K', tat: '3–5 days' },
 ] as const;
 
+const marketplaceSites = [
+  { domain: 'news.guestpostnow.com', da: 57, dr: 71, traffic: '—' },
+  { domain: 'programminginsider.com', da: 59, dr: 72, traffic: '—' },
+  { domain: 'blogsandnews.com', da: 57, dr: 37, traffic: '—' },
+  { domain: 'storifygo.com', da: 54, dr: 53, traffic: '—' },
+  { domain: 'substack.com', da: 92, dr: 92, traffic: '—' },
+  { domain: 'livepositively.com', da: 61, dr: 72, traffic: '—' },
+  { domain: 'outdoorproject.com', da: 59, dr: 71, traffic: '—' },
+  { domain: 'theomnibuzz.com', da: 59, dr: 62, traffic: '—' },
+  { domain: 'bignewsnetwork.com', da: 66, dr: 76, traffic: '—' },
+  { domain: 'fundly.com', da: 70, dr: 80, traffic: '—' },
+] as const;
+
 const reviewPlaceholders = [
   { focus: 'Agency fulfilment', copy: 'Add an approved client quote about campaign communication, turnaround and bulk delivery.' },
   { focus: 'Placement quality', copy: 'Add an approved client quote about niche relevance, traffic quality and live-link verification.' },
@@ -79,18 +92,23 @@ const faqs = [
                 <span><UiIcon name="layers" size={16} /></span>
               </aside>
               <div class="app-main">
-                <div class="app-heading"><div><small>Website database</small><strong>Find your next placement</strong></div><span>40,000+ sites</span></div>
-                <div class="app-search"><UiIcon name="search" size={15} /><span>Search by niche, DR or traffic...</span><kbd>⌘ K</kbd></div>
-                <div class="filter-row"><span>All niches</span><span>DR 50+</span><span>10K+ traffic</span><span>Dofollow</span></div>
-                <div class="mini-table">
-                  <div class="mini-head"><span>Website</span><span>DR</span><span>Traffic</span><span>Status</span></div>
-                  {databaseRows.slice(0, 4).map((row, index) => <div class="mini-row"><span><i class={`site-icon icon-${index + 1}`}>{row.niche.charAt(0)}</i><b>{row.domain}</b></span><strong>{row.dr}</strong><strong>{row.traffic}</strong><em>Available</em></div>)}
+                <div class="market-feed-heading"><div><small>Live publisher inventory</small><strong>Recently available websites</strong></div><span><i></i> Updating</span></div>
+                <div class="market-feed-summary"><div><span>Marketplace inventory</span><strong>40,000+</strong></div><div><span>Metrics shown</span><strong>DA · DR · Traffic</strong></div></div>
+                <div class="live-market-table" aria-label="Live marketplace website updates">
+                  <div class="live-market-head"><span>Website</span><span>DA</span><span>DR</span><span>Traffic</span></div>
+                  <div class="live-market-viewport">
+                    <div class="live-market-track">
+                      {[...marketplaceSites, ...marketplaceSites].map((site, index) => <div class="live-market-row" aria-hidden={index >= marketplaceSites.length ? 'true' : undefined}>
+                        <span class="live-domain"><i class={`feed-icon feed-icon-${(index % 5) + 1}`}>{site.domain.charAt(0).toUpperCase()}</i><b>{site.domain}</b></span>
+                        <strong>{site.da}</strong><strong>{site.dr}</strong><em>{site.traffic}</em>
+                      </div>)}
+                    </div>
+                  </div>
+                  <div class="market-feed-footer"><span><i></i> Live inventory feed</span><small>New sites move into view automatically</small></div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="floating-card float-payment"><span><UiIcon name="badge" size={17} /></span><div><small>Payment due</small><strong>$0.00</strong></div></div>
-          <div class="floating-card float-link"><span><UiIcon name="check" size={17} /></span><div><small>Placement status</small><strong>Live & verified</strong></div></div>
         </div>
       </div>
     </section>
@@ -294,6 +312,40 @@ const faqs = [
   .review-author strong { color:#334155; }.review-author small { color:#94a3b8; }
   .case-strip { background:#f8fafc; }.case-inner { border-color:#dbe3ef; background:#fff; }.case-inner span,.case-inner a { color:#2563eb; }.case-inner h2 { color:#1e293b; }
   .final-card { background:#0f172a; box-shadow:0 24px 55px rgba(15,23,42,.18); }.final-card p { color:#cbd5e1; }
+  .hero-product .app-window { overflow:hidden; border-color:rgba(113,139,205,.27); background:#071025; box-shadow:0 28px 70px rgba(15,23,42,.2); }
+  .hero-product .app-content { min-height:408px; }
+  .hero-product .app-main { padding:20px 18px 16px; overflow:hidden; }
+  .market-feed-heading { display:flex; align-items:flex-start; justify-content:space-between; gap:14px; }
+  .market-feed-heading>div { display:flex; flex-direction:column; gap:4px; min-width:0; }
+  .market-feed-heading small { color:#647493; font-size:.55rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; }
+  .market-feed-heading strong { overflow:hidden; color:#f1f5ff; font-size:.92rem; text-overflow:ellipsis; white-space:nowrap; }
+  .market-feed-heading>span { display:flex; align-items:center; gap:6px; padding:5px 8px; color:#69daa4; border:1px solid rgba(77,217,151,.17); border-radius:999px; background:rgba(48,191,123,.08); font-size:.52rem; font-weight:700; }
+  .market-feed-heading>span i,.market-feed-footer span i { width:6px; height:6px; border-radius:50%; background:#52d596; box-shadow:0 0 9px rgba(82,213,150,.75); animation:market-live-pulse 1.8s ease-in-out infinite; }
+  .market-feed-summary { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:15px; }
+  .market-feed-summary>div { display:flex; align-items:center; justify-content:space-between; gap:8px; min-width:0; padding:10px 11px; border:1px solid rgba(139,160,216,.12); border-radius:9px; background:rgba(255,255,255,.025); }
+  .market-feed-summary span { overflow:hidden; color:#687797; font-size:.52rem; text-overflow:ellipsis; white-space:nowrap; }
+  .market-feed-summary strong { color:#dce5fb; font-size:.61rem; white-space:nowrap; }
+  .live-market-table { margin-top:12px; overflow:hidden; border:1px solid rgba(139,160,216,.14); border-radius:11px; background:#070d1d; }
+  .live-market-head,.live-market-row { display:grid; grid-template-columns:minmax(0,1.85fr) .35fr .35fr .55fr; gap:8px; align-items:center; padding:0 11px; }
+  .live-market-head { height:31px; color:#5c6a87; background:#091126; font-size:.47rem; font-weight:750; letter-spacing:.08em; text-transform:uppercase; }
+  .live-market-viewport { position:relative; height:214px; overflow:hidden; }
+  .live-market-viewport::before,.live-market-viewport::after { content:""; position:absolute; z-index:2; right:0; left:0; height:24px; pointer-events:none; }
+  .live-market-viewport::before { top:0; background:linear-gradient(#070d1d,transparent); }
+  .live-market-viewport::after { bottom:0; background:linear-gradient(transparent,#070d1d); }
+  .live-market-track { will-change:transform; animation:market-feed-up 34s linear infinite; }
+  .live-market-table:hover .live-market-track { animation-play-state:paused; }
+  .live-market-row { height:46px; color:#9eabc4; border-bottom:1px solid rgba(139,160,216,.09); font-size:.57rem; }
+  .live-domain { display:flex; align-items:center; gap:8px; min-width:0; }
+  .live-domain b { overflow:hidden; color:#cbd6eb; font-size:.57rem; font-weight:650; text-overflow:ellipsis; white-space:nowrap; }
+  .feed-icon { display:grid; place-items:center; flex:0 0 auto; width:24px; height:24px; color:#fff; border-radius:7px; background:#2563eb; font-style:normal; font-size:.55rem; font-weight:800; }
+  .feed-icon-2 { background:#7c3aed; }.feed-icon-3 { background:#0f9f83; }.feed-icon-4 { background:#c24173; }.feed-icon-5 { background:#b7791f; }
+  .live-market-row>strong { color:#e3e9f6; font-size:.58rem; }
+  .live-market-row>em { color:#7f8da9; font-style:normal; }
+  .market-feed-footer { min-height:35px; display:flex; align-items:center; justify-content:space-between; gap:10px; padding:0 11px; color:#657492; border-top:1px solid rgba(139,160,216,.1); background:#091126; font-size:.48rem; }
+  .market-feed-footer span { display:flex; align-items:center; gap:6px; color:#75cfa3; font-weight:700; }.market-feed-footer small { color:#596986; font-size:inherit; }
+  @keyframes market-feed-up { from { transform:translateY(0); } to { transform:translateY(-50%); } }
+  @keyframes market-live-pulse { 50% { opacity:.42; transform:scale(.78); } }
   @media(max-width:1050px){.guarantee-grid > a:nth-child(2){border-right:0}.guarantee-grid > a:nth-child(-n+2){border-bottom:1px solid #e2e8f0}}
-  @media(max-width:540px){.guarantee-grid > a{min-height:92px;border-right:0!important;border-bottom:1px solid #e2e8f0!important}.guarantee-grid > a:last-child{border-bottom:0!important}}
+  @media(max-width:540px){.guarantee-grid > a{min-height:92px;border-right:0!important;border-bottom:1px solid #e2e8f0!important}.guarantee-grid > a:last-child{border-bottom:0!important}.hero-product .app-content{grid-template-columns:1fr}.hero-product .app-sidebar{display:none}.hero-product .app-main{padding:16px 11px}.market-feed-summary{grid-template-columns:1fr}.live-market-head,.live-market-row{grid-template-columns:minmax(0,1.65fr) .32fr .32fr .46fr;padding-inline:8px}.market-feed-footer small{display:none}}
+  @media(prefers-reduced-motion:reduce){.live-market-track{animation:none!important}.market-feed-heading>span i,.market-feed-footer span i{animation:none!important}}
 </style>
