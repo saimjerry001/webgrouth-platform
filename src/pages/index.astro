@@ -1,115 +1,246 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import UiIcon from '../components/UiIcon.astro';
 
-const networkRows = [
-  ['Technology & SaaS', '8,400+'],
-  ['Business & Finance', '7,200+'],
-  ['Home & Lifestyle', '6,100+'],
-  ['Health & Fitness', '5,600+'],
-  ['Marketing & Media', '4,800+'],
-  ['Other Categories', '17,900+'],
-];
-const categories = [
-  ['Technology', 'Software, AI, apps and digital products'],
-  ['Business', 'Startups, leadership, B2B and operations'],
-  ['Finance', 'Personal finance, fintech and investing'],
-  ['Health', 'Wellness, fitness and medical publications'],
-  ['Home', 'Interior, property, DIY and home improvement'],
-  ['Lifestyle', 'Fashion, travel, food and everyday living'],
-  ['Automotive', 'Cars, transport, EV and mobility websites'],
-  ['Education', 'Learning, careers, schools and student resources'],
-  ['Marketing', 'SEO, content, social media and advertising'],
-  ['News & Media', 'Editorial, local news and general publications'],
-  ['Gaming', 'Games, esports, entertainment and technology'],
-  ['More niches', 'Legal, pets, sports, environment and more'],
-];
+const orderUrl = "https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20I%27d%20like%20to%20place%20a%20%240-upfront%20risk-free%20guest%20post%20order.";
+const databaseUrl = "https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20please%20unlock%20the%2040%2C000%2B%20website%20database%20for%20me.";
+
+const guarantees = [
+  { icon: 'wallet', title: '$0 Advance Payment', text: 'Pay when your link is live & verified' },
+  { icon: 'badge', title: 'Indexation Guarantee', text: '30-day index or no charge' },
+  { icon: 'database', title: '40,000+ Websites', text: 'Publisher inventory across all niches' },
+  { icon: 'refresh', title: '6-Month Replacement', text: 'Free replacement if an eligible link is removed' },
+] as const;
+
 const services = [
-  { number: '01', title: 'Guest Post Placement', text: 'Choose websites from our network, approve the site and content, then receive your permanent live placement.', points: ['Dofollow links', 'Permanent placement', 'Content available'], href: '/guest-posting' },
-  { number: '02', title: 'Link Insertion', text: 'Add your backlink naturally inside an existing relevant article that is already published and indexed.', points: ['Existing articles', 'Relevant context', 'Faster turnaround'], href: '/link-insertion' },
-  { number: '03', title: 'Agency & Bulk Orders', text: 'A reliable fulfilment workflow for SEO agencies and resellers managing multiple clients, niches and target pages.', points: ['Reseller pricing', 'Bulk order support', 'Organised reporting'], href: '/contact' },
-];
-const process = [
-  ['Send your requirements', 'Share the niche, target URL, anchor text, preferred metrics and budget.'],
-  ['Get a relevant site list', 'We shortlist matching websites from our 50,000+ publisher network.'],
-  ['Approve sites & content', 'Nothing moves forward until you are satisfied with the websites and placement terms.'],
-  ['Receive live links', 'We publish, verify and send a clear report with every completed placement.'],
-];
-const trustItems = [
-  ['50,000+', 'websites available across major categories'],
-  ['5,000+', 'clients and agency partners served'],
-  ['Worldwide', 'publisher coverage for global campaigns'],
-  ['Human support', 'from requirements to final live report'],
-];
-const clientPriorities = [
-  'Fast communication', 'Relevant websites', 'Clear pricing', 'Permanent links', 'Bulk order support',
-  'Real traffic options', 'Dofollow placements', 'Easy reporting', 'Reseller friendly', 'Multiple categories',
-  'Content support', 'Quick turnaround', 'Manual site matching', 'Country targeting', 'Metric filters',
-  'No hidden steps', 'Single orders', 'Monthly campaigns', 'Direct assistance', 'Long-term partnership',
-];
+  { icon: 'wallet', tag: 'Most popular', title: 'Pay-After-Live Offer', text: 'Launch placements without tying up your budget. Review the live URL first, then pay after verification.', points: ['$0 upfront payment', 'Pay only after live URL', 'Fast turnaround time'], cta: 'Start risk-free order' },
+  { icon: 'building', tag: 'For agencies', title: 'Bulk Guest Posting', text: 'A scalable fulfilment workflow for multi-client campaigns, repeat orders and monthly link targets.', points: ['Discounted agency rates', 'Dedicated campaign manager', 'Live portal tracking'], cta: 'Discuss bulk pricing' },
+  { icon: 'target', tag: 'Quality focused', title: 'Handpicked Niche Outreach', text: 'Manual site selection around your topic, audience and quality thresholds—not a random spreadsheet dump.', points: ['High DR 60+ options', 'Real organic traffic', 'Content included'], cta: 'Build my shortlist' },
+] as const;
+
+const databaseRows = [
+  { domain: 'tech••••.com', niche: 'Technology', da: 72, dr: 68, traffic: '84.2K', tat: '24–48h' },
+  { domain: 'busi••••.co', niche: 'Business', da: 64, dr: 61, traffic: '43.8K', tat: '2–3 days' },
+  { domain: 'heal••••.com', niche: 'Health', da: 58, dr: 63, traffic: '128K', tat: '3–4 days' },
+  { domain: 'life••••.net', niche: 'Lifestyle', da: 69, dr: 66, traffic: '76.4K', tat: '48–72h' },
+  { domain: 'fin••••.org', niche: 'Finance', da: 77, dr: 71, traffic: '215K', tat: '3–5 days' },
+] as const;
+
+const reviewPlaceholders = [
+  { focus: 'Agency fulfilment', copy: 'Add an approved client quote about campaign communication, turnaround and bulk delivery.' },
+  { focus: 'Placement quality', copy: 'Add an approved client quote about niche relevance, traffic quality and live-link verification.' },
+  { focus: 'Risk-free ordering', copy: 'Add an approved client quote about the pay-after-live experience and repeat orders.' },
+] as const;
+
+const faqs = [
+  { q: 'How does the $0 advance payment process work?', a: 'Send your niche, target URL, anchor text and quality requirements. We confirm suitable sites and placement terms, publish the approved order, and request payment only after the live URL has been delivered and verified.' },
+  { q: 'Is every order eligible for pay-after-live?', a: 'Eligibility and final terms are confirmed in writing before work begins. Standard approved guest-post placements are designed around the $0-upfront model; unusual publisher requirements will always be disclosed before you approve the site.' },
+  { q: 'What happens if the page does not get indexed?', a: 'Eligible orders include a 30-day indexation commitment. If the agreed page is not indexed within that period, the placement is not charged under the confirmed campaign terms.' },
+  { q: 'What if a publisher removes my link?', a: 'Eligible placements include a six-month replacement window. If the publisher removes the agreed link during that period, Web Grouth will arrange a replacement under the campaign terms.' },
+] as const;
 ---
 
-<BaseLayout title="Web Grouth | 50,000+ Guest Posting Websites" description="Order guest posts and link insertions from a network of 50,000+ websites across every major category. Built for brands, SEO teams and agencies.">
-  <section class="homev3-hero">
-    <div class="shell homev3-hero-grid">
-      <div class="homev3-hero-copy" data-reveal>
-        <p class="homev3-overline">Guest posting for brands, SEO teams and agencies</p>
-        <h1><span>50,000+ websites.</span> One reliable guest posting partner.</h1>
-        <p class="homev3-lead">Get permanent guest posts and contextual link insertions on relevant websites in almost every category. Share your requirements, approve the sites, and let our team handle the rest.</p>
-        <div class="homev3-actions">
-          <a class="homev3-button homev3-button-primary" href="https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20please%20send%20me%20your%20guest%20posting%20website%20list." target="_blank" rel="noopener">Get the website list <span>↗</span></a>
-          <a class="homev3-button homev3-button-secondary" href="/contact">Discuss a campaign</a>
+<BaseLayout title="Web Grouth | 40,000+ Guest Post Websites — $0 Upfront" description="Scale authority with 40,000+ verified guest posting websites. Pay only after your live link is delivered and verified.">
+  <div class="wg-home">
+    <section class="hero relative overflow-hidden">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+      <div class="shell hero-shell">
+        <div class="hero-copy" data-reveal>
+          <div class="offer-pill"><span></span> Guest posting with zero upfront risk <b>New</b></div>
+          <h1>Scale Your Authority with <em>40,000+ Verified Websites</em> — Pay Only After Live Links!</h1>
+          <p class="hero-sub">$0 Advance Payment. Instant TAT. High DA/DR Backlinks Built for Real ROI.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href={orderUrl} target="_blank" rel="noopener">Order Risk-Free — $0 Upfront <UiIcon name="arrow" size={18} /></a>
+            <a class="secondary-button" href="#database"><UiIcon name="database" size={18} /> Browse 40,000+ Sites</a>
+          </div>
+          <div class="micro-proof">
+            <span><UiIcon name="check" size={14} /> No card required</span>
+            <span><UiIcon name="check" size={14} /> Human-verified delivery</span>
+            <span><UiIcon name="check" size={14} /> Single & bulk orders</span>
+          </div>
         </div>
-        <div class="homev3-assurance"><span><i>✓</i> Permanent placements</span><span><i>✓</i> Dofollow options</span><span><i>✓</i> Single & bulk orders</span></div>
-      </div>
 
-      <div class="homev3-network" data-reveal data-reveal-delay="1">
-        <div class="homev3-network-top"><div><span class="homev3-live"></span><strong>Web Grouth Publisher Network</strong></div><span>Updated regularly</span></div>
-        <div class="homev3-network-summary"><div><span>Available websites</span><strong>50,000+</strong></div><div><span>Categories</span><strong>All major niches</strong></div></div>
-        <div class="homev3-network-table">
-          <div class="homev3-network-head"><span>Category</span><span>Websites</span><span>Status</span></div>
-          {networkRows.map(([category, count]) => <div class="homev3-network-row"><span>{category}</span><strong>{count}</strong><em>Available</em></div>)}
+        <div class="hero-product" data-reveal data-reveal-delay="1">
+          <div class="product-glow"></div>
+          <div class="app-window">
+            <div class="app-topbar">
+              <div class="window-dots"><span></span><span></span><span></span></div>
+              <div class="app-title"><UiIcon name="database" size={15} /> Publisher Marketplace</div>
+              <div class="live-chip"><span></span> Live</div>
+            </div>
+            <div class="app-content">
+              <aside class="app-sidebar" aria-hidden="true">
+                <div class="side-logo">W</div>
+                <span class="active"><UiIcon name="database" size={16} /></span>
+                <span><UiIcon name="search" size={16} /></span>
+                <span><UiIcon name="chart" size={16} /></span>
+                <span><UiIcon name="layers" size={16} /></span>
+              </aside>
+              <div class="app-main">
+                <div class="app-heading"><div><small>Website database</small><strong>Find your next placement</strong></div><span>40,000+ sites</span></div>
+                <div class="app-search"><UiIcon name="search" size={15} /><span>Search by niche, DR or traffic...</span><kbd>⌘ K</kbd></div>
+                <div class="filter-row"><span>All niches</span><span>DR 50+</span><span>10K+ traffic</span><span>Dofollow</span></div>
+                <div class="mini-table">
+                  <div class="mini-head"><span>Website</span><span>DR</span><span>Traffic</span><span>Status</span></div>
+                  {databaseRows.slice(0, 4).map((row, index) => <div class="mini-row"><span><i class={`site-icon icon-${index + 1}`}>{row.niche.charAt(0)}</i><b>{row.domain}</b></span><strong>{row.dr}</strong><strong>{row.traffic}</strong><em>Available</em></div>)}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="floating-card float-payment"><span><UiIcon name="badge" size={17} /></span><div><small>Payment due</small><strong>$0.00</strong></div></div>
+          <div class="floating-card float-link"><span><UiIcon name="check" size={17} /></span><div><small>Placement status</small><strong>Live & verified</strong></div></div>
         </div>
-        <div class="homev3-network-filters"><span>Filter by DR</span><span>Traffic</span><span>Country</span><span>Budget</span><span>Niche</span></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="homev3-proof"><div class="shell homev3-proof-grid">{trustItems.map(([value, label], index) => <div class="homev3-proof-item" data-reveal data-reveal-delay={String(index)}><strong>{value}</strong><span>{label}</span></div>)}</div></section>
+    <section class="guarantee-wrap" aria-label="Web Grouth order guarantees">
+      <div class="shell guarantee-grid">
+        {guarantees.map((item, index) => <article data-reveal data-reveal-delay={String(index)}><span class="guarantee-icon"><UiIcon name={item.icon} size={22} /></span><div><h2>{item.title}</h2><p>{item.text}</p></div></article>)}
+      </div>
+    </section>
 
-  <section class="homev3-section homev3-intro">
-    <div class="shell homev3-intro-grid">
-      <div class="homev3-section-title" data-reveal><p class="homev3-overline">A guest posting service built for real campaigns</p><h2>Stop searching through random lists. Get websites that match the brief.</h2></div>
-      <div class="homev3-intro-copy" data-reveal data-reveal-delay="1"><p>Web Grouth helps you find and publish on websites that fit your niche, budget and SEO requirements. Our team checks the important details before you order—so you can spend less time chasing publishers and more time growing client results.</p><div class="homev3-checks"><span>Category and country matching</span><span>DR, traffic and budget filters</span><span>Link type and placement terms confirmed</span><span>Content writing available when needed</span></div></div>
-    </div>
-  </section>
+    <section class="section services" id="services">
+      <div class="shell">
+        <div class="section-heading" data-reveal><div class="eyebrow"><UiIcon name="sparkles" size={14} /> Built for serious link building</div><h2>Choose the workflow that fits your campaign.</h2><p>From a single placement to high-volume agency delivery, every order starts with clear approval and ends with a verified live link.</p></div>
+        <div class="service-grid" id="pricing">
+          {services.map((service, index) => <article class:list={['service-card', { featured: index === 0 }]} data-reveal data-reveal-delay={String(index)}>
+            <div class="card-top"><span class="card-icon"><UiIcon name={service.icon} size={23} /></span><span class="card-tag">{service.tag}</span></div>
+            <h3>{service.title}</h3><p>{service.text}</p>
+            <ul>{service.points.map((point) => <li><span><UiIcon name="check" size={13} /></span>{point}</li>)}</ul>
+            <a href={orderUrl} target="_blank" rel="noopener">{service.cta} <UiIcon name="arrow" size={17} /></a>
+          </article>)}
+        </div>
+      </div>
+    </section>
 
-  <section class="homev3-section homev3-services-section">
-    <div class="shell">
-      <div class="homev3-heading-row" data-reveal><div><p class="homev3-overline">Services</p><h2>Everything you need to place the right backlink.</h2></div><a href="/contact">Request custom pricing <span>↗</span></a></div>
-      <div class="homev3-service-grid">{services.map((service, index) => <article class="homev3-service-card" data-reveal data-reveal-delay={String(index)}><span class="homev3-service-number">{service.number}</span><h3>{service.title}</h3><p>{service.text}</p><ul>{service.points.map((point) => <li><i>✓</i>{point}</li>)}</ul><a href={service.href}>Learn more <span>↗</span></a></article>)}</div>
-    </div>
-  </section>
+    <section class="section database-section" id="database">
+      <div class="shell">
+        <div class="database-heading" data-reveal>
+          <div><div class="eyebrow"><UiIcon name="database" size={14} /> Live inventory preview</div><h2>Your link-building marketplace,<br/>without the spreadsheet chaos.</h2></div>
+          <a class="primary-button compact" href={databaseUrl} target="_blank" rel="noopener">Unlock Full 40,000+ Database <UiIcon name="external" size={16} /></a>
+        </div>
+        <div class="database-panel" data-reveal>
+          <div class="database-toolbar">
+            <div class="database-search"><UiIcon name="search" size={17} /><span>Search publishers...</span></div>
+            <div class="toolbar-filters"><button type="button">All niches⌄</button><button type="button">DR 50+⌄</button><button type="button">Traffic 10K+⌄</button></div>
+            <span class="result-count">40,000+ results</span>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Website</th><th>Niche</th><th>DA</th><th>DR</th><th>Organic traffic</th><th>TAT</th><th></th></tr></thead>
+              <tbody>{databaseRows.map((row, index) => <tr>
+                <td><div class="domain-cell"><span class={`site-icon icon-${index + 1}`}>{row.niche.charAt(0)}</span><div><strong class="blurred-domain">{row.domain}</strong><small>Demo inventory</small></div></div></td>
+                <td><span class="niche-pill">{row.niche}</span></td><td>{row.da}</td><td><b>{row.dr}</b></td><td><span class="traffic-dot"></span>{row.traffic}</td><td>{row.tat}</td>
+                <td><a href={databaseUrl} target="_blank" rel="noopener">View site <UiIcon name="chevron" size={14} /></a></td>
+              </tr>)}</tbody>
+            </table>
+          </div>
+          <div class="database-footer"><span><UiIcon name="badge" size={15} /> Publisher details are revealed after access approval.</span><a href={databaseUrl} target="_blank" rel="noopener">Request access <UiIcon name="arrow" size={15} /></a></div>
+        </div>
+      </div>
+    </section>
 
-  <section class="homev3-section homev3-categories-section">
-    <div class="shell">
-      <div class="homev3-section-title homev3-centered" data-reveal><p class="homev3-overline">Every major category covered</p><h2>Your client’s niche is probably already in our network.</h2><p>From specialist B2B publications to high-traffic lifestyle websites, campaigns can be filtered around the audience you need.</p></div>
-      <div class="homev3-category-grid">{categories.map(([title, text], index) => <article class="homev3-category" data-reveal data-reveal-delay={String(index % 4)}><span>{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
-    </div>
-  </section>
+    <section class="section workflow-section">
+      <div class="shell workflow-grid">
+        <div class="workflow-copy" data-reveal><div class="eyebrow"><UiIcon name="badge" size={14} /> Zero-risk workflow</div><h2>Approve first.<br/>Pay after it’s live.</h2><p>A cleaner ordering model for brands and agencies that need control, transparency and predictable delivery.</p><a class="text-link" href={orderUrl} target="_blank" rel="noopener">Place a risk-free order <UiIcon name="arrow" size={17} /></a></div>
+        <div class="timeline" data-reveal data-reveal-delay="1">
+          {[['01','Send your brief','Share niche, URL, anchor and target metrics.'],['02','Approve matched sites','Review the shortlist and confirm placement terms.'],['03','We publish & verify','The approved content is published and checked.'],['04','Pay after live link','Receive the live URL first; payment follows.']].map(([num,title,text]) => <article><span>{num}</span><div><h3>{title}</h3><p>{text}</p></div><i><UiIcon name="check" size={14} /></i></article>)}
+        </div>
+      </div>
+    </section>
 
-  <section class="homev3-section homev3-process-section">
-    <div class="shell homev3-process-layout">
-      <div class="homev3-process-copy" data-reveal><p class="homev3-overline">A simple order process</p><h2>From requirements to live links—without the usual back-and-forth.</h2><p>Whether you need one placement or a bulk monthly campaign, you always know what has been approved, what is in progress and what is live.</p><a class="homev3-button homev3-button-primary" href="/contact">Start your first order <span>↗</span></a></div>
-      <div class="homev3-process-list">{process.map(([title, text], index) => <article class="homev3-process-step" data-reveal data-reveal-delay={String(index)}><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{text}</p></div></article>)}</div>
-    </div>
-  </section>
+    <section class="section tools-section" id="tools">
+      <div class="shell">
+        <div class="section-heading row-heading" data-reveal><div><div class="eyebrow"><UiIcon name="sparkles" size={14} /> Free SEO utilities</div><h2>Useful tools, built into the platform.</h2></div><span class="soon-pill">Rolling out soon</span></div>
+        <div class="tool-grid">
+          {[['Domain Metrics Snapshot','Check the important SEO metrics before shortlisting a site.','chart'],['Guest Post Cost Planner','Build a fast campaign estimate across niches and volumes.','wallet'],['Link Requirement Builder','Turn your campaign goals into a clean publisher brief.','layers']].map(([title,text,icon], index) => <article data-reveal data-reveal-delay={String(index)}><span><UiIcon name={icon as any} size={20} /></span><div><h3>{title}</h3><p>{text}</p></div><b>Coming soon</b></article>)}
+        </div>
+      </div>
+    </section>
 
-  <section class="homev3-experience">
-    <div class="shell homev3-experience-head" data-reveal><div><p class="homev3-overline">What campaign teams care about</p><h2>A service designed around repeat orders.</h2></div><p>These are the standards we build every Web Grouth campaign around.</p></div>
-    <div class="homev3-marquee" aria-label="Web Grouth service standards"><div class="homev3-marquee-track homev3-marquee-left">{[...clientPriorities, ...clientPriorities].map((item) => <div class="homev3-standard-card"><div class="homev3-stars" aria-hidden="true">★★★★★</div><strong>{item}</strong><span>Web Grouth service standard</span></div>)}</div></div>
-    <div class="homev3-marquee" aria-hidden="true"><div class="homev3-marquee-track homev3-marquee-right">{[...clientPriorities.slice().reverse(), ...clientPriorities.slice().reverse()].map((item) => <div class="homev3-standard-card"><div class="homev3-stars">★★★★★</div><strong>{item}</strong><span>Built for brands & agencies</span></div>)}</div></div>
-    <div class="shell homev3-review-note">The moving cards above describe our service standards, not fabricated customer quotations. Send verified client reviews and we will replace these cards with genuine feedback.</div>
-  </section>
+    <section class="section reviews-section">
+      <div class="shell">
+        <div class="section-heading" data-reveal><div class="eyebrow"><UiIcon name="star" size={14} /> Client feedback</div><h2>Designed for proof—not made-up praise.</h2><p>This section is production-ready for verified reviews. Client names and quotes remain intentionally unpublished until approval is provided.</p></div>
+        <div class="review-grid">
+          {reviewPlaceholders.map((review, index) => <article data-reveal data-reveal-delay={String(index)}><div class="review-stars" aria-label="Five star review layout">★★★★★</div><blockquote>“{review.copy}”</blockquote><div class="review-author"><span>{String(index + 1).padStart(2,'0')}</span><div><strong>{review.focus}</strong><small>Verified testimonial placeholder</small></div></div></article>)}
+        </div>
+      </div>
+    </section>
 
-  <section class="homev3-final"><div class="shell homev3-final-inner" data-reveal><div><p class="homev3-overline">Ready to see the network?</p><h2>Tell us the niche. We’ll send the right websites.</h2><p>Get a filtered list based on your category, traffic, DR, country and budget requirements.</p></div><div class="homev3-final-actions"><a class="homev3-button homev3-button-white" href="https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20please%20send%20me%20a%20filtered%20guest%20posting%20website%20list." target="_blank" rel="noopener">Get website list <span>↗</span></a><a href="mailto:contact@webgrouth.com">contact@webgrouth.com</a></div></div></section>
+    <section class="case-strip" id="case-studies">
+      <div class="shell case-inner" data-reveal><div><span>CASE STUDIES</span><h2>Real campaign breakdowns will be published with client approval.</h2></div><a href="/contact">Discuss your campaign <UiIcon name="arrow" size={17} /></a></div>
+    </section>
+
+    <section class="section faq-section">
+      <div class="shell faq-grid">
+        <div class="faq-copy" data-reveal><div class="eyebrow"><UiIcon name="badge" size={14} /> Clear terms, no surprises</div><h2>Questions about paying after delivery?</h2><p>Everything important is confirmed before your order moves forward.</p><a class="secondary-button dark-outline" href="/contact">Ask another question <UiIcon name="arrow" size={17} /></a></div>
+        <div class="faq-list" data-reveal data-reveal-delay="1">
+          {faqs.map((faq, index) => <details open={index === 0}><summary><span>{faq.q}</span><i>+</i></summary><p>{faq.a}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="shell final-card" data-reveal><div class="final-grid" aria-hidden="true"></div><div><span><i></i> Ready when you are</span><h2>Get the live link first.<br/>Pay when it’s verified.</h2><p>Send your requirements and get a relevant shortlist from 40,000+ publisher websites.</p></div><div class="final-actions"><a class="white-button" href={orderUrl} target="_blank" rel="noopener">Start $0 Upfront Order <UiIcon name="arrow" size={18} /></a><a href="#database">Explore database</a></div></div>
+    </section>
+  </div>
 </BaseLayout>
+
+<style is:global>
+  html { scroll-behavior: smooth; }
+  body { background: #050817; }
+  .wg-home { --bg:#050817; --surface:#0a1025; --surface-2:#0d1530; --line:rgba(148,163,184,.14); --text:#f7f9ff; --muted:#98a6c5; --blue:#5b7cff; --cyan:#38bdf8; color: var(--text); background: var(--bg); overflow: hidden; }
+  .wg-home .shell { width: min(1180px, calc(100% - 40px)); margin-inline: auto; }
+  .wg-home h1,.wg-home h2,.wg-home h3,.wg-home p { margin: 0; }
+  .wg-home .hero { min-height: auto; padding: 155px 0 80px; border-bottom: 0; isolation: isolate; background: radial-gradient(circle at 50% -20%,#162660 0,rgba(13,20,49,.32) 40%,transparent 68%),#050817; }
+  .hero-grid-bg,.final-grid { position:absolute; inset:0; background-image:linear-gradient(rgba(116,140,212,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(116,140,212,.055) 1px,transparent 1px); background-size:48px 48px; mask-image:linear-gradient(to bottom,black,transparent 88%); z-index:-1; }
+  .hero-orb { position:absolute; z-index:-1; border-radius:999px; filter:blur(2px); pointer-events:none; }
+  .hero-orb-one { width:430px; height:430px; right:-180px; top:60px; background:rgba(91,124,255,.1); box-shadow:0 0 100px 40px rgba(91,124,255,.07); }
+  .hero-orb-two { width:260px; height:260px; left:-140px; top:240px; background:rgba(56,189,248,.08); box-shadow:0 0 90px 30px rgba(56,189,248,.06); }
+  .hero-shell { display:grid; grid-template-columns:minmax(0,1.03fr) minmax(520px,.97fr); gap:62px; align-items:center; }
+  .offer-pill,.eyebrow { display:inline-flex; align-items:center; gap:8px; color:#9fb1d8; font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+  .offer-pill { min-height:34px; padding:0 7px 0 11px; border:1px solid rgba(124,149,222,.2); border-radius:999px; background:rgba(10,18,46,.72); text-transform:none; letter-spacing:0; font-size:.76rem; }
+  .offer-pill > span { width:7px; height:7px; border-radius:50%; background:#67e8a8; box-shadow:0 0 14px #67e8a8; animation:pulse 2s ease infinite; }
+  .offer-pill b { padding:4px 7px; color:#dce5ff; border-radius:999px; background:rgba(91,124,255,.18); font-size:.62rem; letter-spacing:.06em; text-transform:uppercase; }
+  .hero-copy h1 { max-width:680px; margin-top:24px; color:#f7f9ff; font:800 clamp(2.65rem,5.2vw,4.75rem)/.99 'Plus Jakarta Sans',sans-serif; letter-spacing:-.065em; }
+  .hero-copy h1 em { color:transparent; background:linear-gradient(100deg,#fff 0%,#9fafff 42%,#65c7ff 100%); -webkit-background-clip:text; background-clip:text; font-style:normal; }
+  .hero-sub { max-width:600px; margin-top:25px!important; color:#a7b4cf; font-size:clamp(1rem,1.6vw,1.18rem); line-height:1.7; }
+  .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+  .primary-button,.secondary-button,.white-button { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:54px; padding:0 20px; border-radius:13px; font-size:.86rem; font-weight:750; transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease; }
+  .primary-button { color:white; border:1px solid rgba(255,255,255,.14); background:linear-gradient(135deg,#5b7cff,#6849e8); box-shadow:0 14px 38px rgba(91,124,255,.28),inset 0 1px rgba(255,255,255,.18); }
+  .primary-button:hover,.white-button:hover { transform:translateY(-3px); box-shadow:0 20px 48px rgba(91,124,255,.4); }
+  .secondary-button { color:#e8edff; border:1px solid rgba(151,169,218,.22); background:rgba(10,16,37,.66); }
+  .secondary-button:hover { transform:translateY(-3px); border-color:rgba(125,150,255,.6); background:rgba(19,29,66,.82); }
+  .micro-proof { display:flex; flex-wrap:wrap; gap:16px; margin-top:22px; color:#7483a5; font-size:.69rem; }
+  .micro-proof span { display:flex; align-items:center; gap:5px; } .micro-proof svg { color:#6ee7b7; }
+  .hero-product { position:relative; perspective:1200px; }
+  .product-glow { position:absolute; inset:13% 7%; background:linear-gradient(135deg,rgba(91,124,255,.36),rgba(56,189,248,.12)); filter:blur(55px); }
+  .app-window { position:relative; z-index:1; overflow:hidden; border:1px solid rgba(158,176,230,.2); border-radius:18px; background:rgba(7,12,29,.88); box-shadow:0 40px 100px rgba(0,0,0,.46),inset 0 1px rgba(255,255,255,.06); transform:rotateY(-3deg) rotateX(1deg); backdrop-filter:blur(20px); }
+  .app-topbar { height:47px; display:flex; align-items:center; justify-content:space-between; padding:0 16px; border-bottom:1px solid var(--line); color:#8493b7; font-size:.67rem; }
+  .window-dots { display:flex; gap:5px; }.window-dots span{width:7px;height:7px;border-radius:50%;background:#303b59}.window-dots span:first-child{background:#fc7284}.window-dots span:nth-child(2){background:#e9b949}.window-dots span:last-child{background:#54d78f}
+  .app-title,.live-chip { display:flex; align-items:center; gap:7px; }.live-chip { color:#70e6ac; }.live-chip span { width:6px;height:6px;border-radius:50%;background:#54d78f;box-shadow:0 0 10px #54d78f; }
+  .app-content { display:grid; grid-template-columns:52px 1fr; min-height:390px; }
+  .app-sidebar { display:flex; align-items:center; flex-direction:column; gap:13px; padding:14px 0; border-right:1px solid var(--line); color:#526181; }
+  .side-logo { display:grid;place-items:center;width:28px;height:28px;margin-bottom:7px;border-radius:8px;color:#fff;background:linear-gradient(135deg,#5b7cff,#714be9);font-size:.68rem;font-weight:800}.app-sidebar>span{display:grid;place-items:center;width:30px;height:30px;border-radius:8px}.app-sidebar>span.active{color:#9cb0ff;background:rgba(91,124,255,.13)}
+  .app-main { padding:21px 19px; min-width:0; }.app-heading{display:flex;justify-content:space-between;align-items:flex-start}.app-heading div{display:flex;flex-direction:column;gap:4px}.app-heading small{color:#6e7b9d;font-size:.58rem;text-transform:uppercase;letter-spacing:.08em}.app-heading strong{color:#eaf0ff;font-size:.95rem}.app-heading>span{padding:6px 8px;border:1px solid rgba(91,124,255,.2);border-radius:7px;color:#9dafed;background:rgba(91,124,255,.08);font-size:.57rem}
+  .app-search { display:flex;align-items:center;gap:8px;height:36px;margin-top:18px;padding:0 10px;color:#596887;border:1px solid var(--line);border-radius:9px;background:#080e21;font-size:.62rem}.app-search kbd{margin-left:auto;padding:2px 5px;border:1px solid #29344f;border-radius:4px;color:#61708f;font:inherit}.filter-row{display:flex;gap:6px;margin-top:10px}.filter-row span{padding:5px 7px;color:#7e8cad;border:1px solid var(--line);border-radius:6px;font-size:.55rem}
+  .mini-table { margin-top:16px;border:1px solid var(--line);border-radius:10px;overflow:hidden}.mini-head,.mini-row{display:grid;grid-template-columns:1.7fr .4fr .7fr .65fr;align-items:center;gap:7px;padding:0 10px}.mini-head{height:30px;color:#5e6c8b;background:#091126;font-size:.5rem;text-transform:uppercase;letter-spacing:.07em}.mini-row{height:51px;border-top:1px solid rgba(148,163,184,.09);font-size:.58rem;color:#9eabc7}.mini-row>span{display:flex;align-items:center;gap:7px;min-width:0}.mini-row b{color:#bdc8df;filter:blur(2.5px)}.mini-row strong{color:#d7def0;font-size:.6rem}.mini-row em{color:#65dda4;font-style:normal}.site-icon{display:grid;place-items:center;flex:0 0 auto;width:25px;height:25px;border-radius:7px;color:white;font-style:normal;font-size:.58rem;font-weight:800}.icon-1{background:#446fe8}.icon-2{background:#8b5cf6}.icon-3{background:#06b6a8}.icon-4{background:#e05e87}.icon-5{background:#e29a34}
+  .floating-card { position:absolute;z-index:2;display:flex;align-items:center;gap:9px;padding:10px 13px;border:1px solid rgba(183,197,236,.18);border-radius:12px;background:rgba(12,19,42,.92);box-shadow:0 18px 38px rgba(0,0,0,.38);backdrop-filter:blur(16px);animation:float 4s ease-in-out infinite}.floating-card>span{display:grid;place-items:center;width:31px;height:31px;border-radius:9px;color:#87a0ff;background:rgba(91,124,255,.14)}.floating-card div{display:flex;flex-direction:column;gap:2px}.floating-card small{color:#71809f;font-size:.55rem}.floating-card strong{color:#eff3ff;font-size:.72rem}.float-payment{left:-26px;bottom:48px}.float-link{right:-24px;top:82px;animation-delay:-1.7s}.float-link>span{color:#5de0a0;background:rgba(61,209,141,.12)}
+  .guarantee-wrap { position:relative;z-index:3;padding-bottom:22px;background:linear-gradient(#050817,#070b1b); }.guarantee-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:17px;background:linear-gradient(135deg,rgba(14,23,52,.92),rgba(8,14,32,.96));box-shadow:0 26px 70px rgba(0,0,0,.23);overflow:hidden}.guarantee-grid article{display:flex;align-items:center;gap:12px;min-height:108px;padding:20px;border-right:1px solid var(--line)}.guarantee-grid article:last-child{border:0}.guarantee-icon{display:grid;place-items:center;flex:0 0 auto;width:40px;height:40px;border-radius:11px;color:#94a8ff;background:rgba(91,124,255,.1);box-shadow:inset 0 0 0 1px rgba(91,124,255,.1)}.guarantee-grid h2{color:#eef2ff;font-size:.8rem;letter-spacing:-.02em}.guarantee-grid p{margin-top:5px!important;color:#7583a3;font-size:.64rem;line-height:1.45}
+  .section { padding:112px 0; }.section-heading{max-width:700px;margin:0 auto 46px;text-align:center}.eyebrow{color:#7892ed}.section-heading h2,.database-heading h2,.workflow-copy h2,.faq-copy h2{margin-top:14px!important;color:#f4f7ff;font:750 clamp(2rem,4vw,3.25rem)/1.08 'Plus Jakarta Sans',sans-serif;letter-spacing:-.055em}.section-heading>p{max-width:610px;margin:16px auto 0!important;color:#8d9ab7;line-height:1.75;font-size:.92rem}
+  .services{background:linear-gradient(180deg,#070b1b,#090e21)}.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.service-card{position:relative;padding:26px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,rgba(17,26,57,.75),rgba(8,14,32,.94));transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}.service-card:hover{transform:translateY(-7px);border-color:rgba(112,137,255,.42);box-shadow:0 25px 55px rgba(0,0,0,.27)}.service-card.featured{border-color:rgba(97,126,255,.38);background:linear-gradient(145deg,rgba(27,41,88,.85),rgba(10,17,38,.96));box-shadow:inset 0 1px rgba(255,255,255,.05)}.service-card.featured:before{content:"";position:absolute;inset:-1px;border-radius:18px;padding:1px;background:linear-gradient(135deg,#718bff,transparent 40%,#38bdf8);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}.card-top{display:flex;justify-content:space-between;align-items:center}.card-icon{display:grid;place-items:center;width:45px;height:45px;border-radius:12px;color:#92a7ff;background:rgba(91,124,255,.12)}.card-tag{padding:6px 8px;border:1px solid rgba(148,163,184,.14);border-radius:999px;color:#71809f;background:rgba(255,255,255,.025);font-size:.56rem;text-transform:uppercase;letter-spacing:.07em}.service-card h3{margin-top:25px;color:#eef2ff;font:700 1.18rem 'Plus Jakarta Sans',sans-serif;letter-spacing:-.035em}.service-card>p{min-height:74px;margin-top:12px!important;color:#8794b0;font-size:.79rem;line-height:1.65}.service-card ul{display:grid;gap:10px;margin:20px 0 25px;padding:19px 0 0;border-top:1px solid var(--line);list-style:none}.service-card li{display:flex;align-items:center;gap:9px;color:#bac4da;font-size:.72rem}.service-card li span{display:grid;place-items:center;width:18px;height:18px;border-radius:50%;color:#5fe0a2;background:rgba(61,209,141,.1)}.service-card>a{display:flex;align-items:center;justify-content:space-between;color:#9eb0ff;font-size:.74rem;font-weight:700}.service-card>a:hover{color:#fff}
+  .database-section{background:#050817}.database-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:35px}.database-heading h2{font-size:clamp(2rem,3.7vw,3rem)}.primary-button.compact{min-height:48px;padding:0 16px;font-size:.75rem;white-space:nowrap}.database-panel{overflow:hidden;border:1px solid rgba(140,160,216,.2);border-radius:18px;background:#080e20;box-shadow:0 35px 90px rgba(0,0,0,.3)}.database-toolbar{display:flex;align-items:center;gap:10px;padding:15px;border-bottom:1px solid var(--line);background:rgba(15,23,50,.6)}.database-search{display:flex;align-items:center;gap:8px;width:240px;height:38px;padding:0 11px;color:#697898;border:1px solid var(--line);border-radius:9px;background:#060b19;font-size:.67rem}.toolbar-filters{display:flex;gap:7px}.toolbar-filters button{height:38px;padding:0 11px;color:#91a0be;border:1px solid var(--line);border-radius:9px;background:#0a1125;font:600 .64rem Inter,sans-serif;cursor:pointer}.result-count{margin-left:auto;color:#667696;font-size:.63rem}.table-scroll{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:830px}th{height:42px;padding:0 15px;color:#5f6e8d;background:#070c1b;text-align:left;font-size:.56rem;text-transform:uppercase;letter-spacing:.08em;font-weight:650}td{height:71px;padding:0 15px;color:#a6b2cb;border-top:1px solid rgba(148,163,184,.1);font-size:.69rem}tbody tr{transition:background .2s}tbody tr:hover{background:rgba(91,124,255,.045)}td b{color:#dce4f7}.domain-cell{display:flex;align-items:center;gap:10px}.domain-cell>div{display:flex;flex-direction:column;gap:3px}.domain-cell small{color:#596785;font-size:.54rem}.blurred-domain{filter:blur(2.4px);user-select:none}.niche-pill{padding:5px 7px;border:1px solid var(--line);border-radius:6px;color:#aab5cc;background:#0c1429;font-size:.59rem}.traffic-dot{display:inline-block;width:6px;height:6px;margin-right:6px;border-radius:50%;background:#4fd597;box-shadow:0 0 8px rgba(79,213,151,.4)}td>a{display:inline-flex;align-items:center;gap:4px;color:#8da4ff;font-weight:650;white-space:nowrap}.database-footer{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:52px;padding:0 16px;color:#647391;border-top:1px solid var(--line);background:#090f21;font-size:.6rem}.database-footer span,.database-footer a{display:flex;align-items:center;gap:6px}.database-footer a{color:#98aaff;font-weight:700}
+  .workflow-section{background:linear-gradient(135deg,#0c1533,#080d20)}.workflow-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:100px;align-items:center}.workflow-copy>p{max-width:430px;margin-top:18px!important;color:#8f9cb8;line-height:1.7;font-size:.85rem}.text-link{display:inline-flex;align-items:center;gap:8px;margin-top:28px;color:#9bb0ff;font-size:.78rem;font-weight:700}.timeline{position:relative}.timeline:before{content:"";position:absolute;left:21px;top:24px;bottom:24px;width:1px;background:linear-gradient(#5b7cff,rgba(91,124,255,.05))}.timeline article{position:relative;display:grid;grid-template-columns:44px 1fr 28px;gap:16px;align-items:center;min-height:98px;padding:13px 0}.timeline article>span{z-index:1;display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(91,124,255,.3);border-radius:12px;color:#9cb0ff;background:#111b3d;font-size:.68rem;font-weight:800}.timeline h3{color:#e8edfb;font-size:.91rem}.timeline p{margin-top:6px!important;color:#7684a2;font-size:.7rem}.timeline i{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;color:#5fe0a2;background:rgba(61,209,141,.1)}
+  .tools-section{background:#070b1b}.row-heading{display:flex;max-width:none;align-items:flex-end;justify-content:space-between;text-align:left}.row-heading h2{font-size:clamp(2rem,3.7vw,3rem)}.soon-pill{padding:7px 10px;border:1px solid rgba(91,124,255,.2);border-radius:999px;color:#8299ee;background:rgba(91,124,255,.07);font-size:.61rem;text-transform:uppercase;letter-spacing:.07em}.tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.tool-grid article{display:grid;grid-template-columns:42px 1fr;gap:13px;align-items:start;padding:20px;border:1px solid var(--line);border-radius:15px;background:#0a1023}.tool-grid article>span{display:grid;place-items:center;width:42px;height:42px;border-radius:11px;color:#8fa6ff;background:rgba(91,124,255,.1)}.tool-grid h3{color:#e6ebf8;font-size:.83rem}.tool-grid p{margin-top:6px!important;color:#71809e;font-size:.67rem;line-height:1.55}.tool-grid b{grid-column:2;color:#596a91;font-size:.56rem;text-transform:uppercase;letter-spacing:.08em}
+  .reviews-section{background:#050817}.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.review-grid article{padding:23px;border:1px dashed rgba(139,158,212,.23);border-radius:16px;background:rgba(10,16,37,.68)}.review-stars{color:#6482f7;font-size:.77rem;letter-spacing:.12em}.review-grid blockquote{min-height:102px;margin:16px 0 21px;color:#8d9ab7;font-size:.76rem;line-height:1.7;font-style:normal}.review-author{display:flex;align-items:center;gap:10px;padding-top:15px;border-top:1px solid var(--line)}.review-author>span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;color:#7892ed;background:rgba(91,124,255,.09);font-size:.64rem;font-weight:800}.review-author div{display:flex;flex-direction:column;gap:3px}.review-author strong{color:#cbd4e8;font-size:.68rem}.review-author small{color:#5f6d8a;font-size:.56rem}
+  .case-strip{padding:0 0 70px;background:#050817}.case-inner{display:flex;align-items:center;justify-content:space-between;gap:28px;padding:30px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,rgba(91,124,255,.09),rgba(15,23,52,.7))}.case-inner span{color:#7892ed;font-size:.59rem;letter-spacing:.11em}.case-inner h2{max-width:650px;margin-top:8px!important;color:#dfe6f7;font:700 1.2rem/1.4 'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em}.case-inner a{display:flex;align-items:center;gap:7px;color:#9db0ff;font-size:.72rem;font-weight:700;white-space:nowrap}
+  .faq-section{background:#f5f7fc;color:#10182c}.faq-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:90px;align-items:start}.faq-copy h2{color:#111a30}.faq-copy>p{max-width:370px;margin-top:17px!important;color:#67728b;font-size:.83rem;line-height:1.7}.dark-outline{margin-top:25px;color:#273555;border-color:rgba(23,37,72,.14);background:#fff}.faq-list{border-top:1px solid rgba(29,45,80,.12)}.faq-list details{border-bottom:1px solid rgba(29,45,80,.12)}.faq-list summary{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:72px;color:#17223c;font-size:.83rem;font-weight:700;cursor:pointer;list-style:none}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary i{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;color:#4363d1;background:#e9edfb;font-style:normal;font-size:1rem;transition:transform .2s}.faq-list details[open] summary i{transform:rotate(45deg)}.faq-list details p{max-width:700px;padding:0 42px 23px 0;color:#68748c;font-size:.76rem;line-height:1.72}
+  .final-cta{padding:90px 0 100px;background:#f5f7fc}.final-card{position:relative;isolation:isolate;overflow:hidden;display:flex;align-items:flex-end;justify-content:space-between;gap:35px;padding:55px;border:1px solid rgba(149,166,230,.2);border-radius:24px;background:linear-gradient(125deg,#203fa9,#5134c9 58%,#165aab);box-shadow:0 30px 70px rgba(31,61,158,.22)}.final-grid{z-index:-1;opacity:.5}.final-card>div:first-of-type:not(.final-grid)>span{display:flex;align-items:center;gap:7px;color:#cdd7ff;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em}.final-card>div>span i{width:7px;height:7px;border-radius:50%;background:#6cf0ac;box-shadow:0 0 12px #6cf0ac}.final-card h2{margin-top:16px!important;color:white;font:750 clamp(2.2rem,4.3vw,3.8rem)/1.05 'Plus Jakarta Sans',sans-serif;letter-spacing:-.06em}.final-card p{max-width:600px;margin-top:16px!important;color:#c8d4f8;font-size:.85rem;line-height:1.65}.final-actions{display:flex;flex-direction:column;align-items:center;gap:13px;flex:0 0 auto}.white-button{color:#263a98;background:#fff;box-shadow:0 15px 36px rgba(3,10,45,.18)}.final-actions>a:last-child{color:#dbe3ff;font-size:.68rem;text-decoration:underline;text-underline-offset:4px}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes pulse{50%{opacity:.5;transform:scale(.75)}}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.floating-card,.offer-pill>span{animation:none!important}.wg-home *{transition-duration:.01ms!important}}
+  @media(max-width:1050px){.hero-shell{grid-template-columns:1fr;max-width:800px}.hero-copy{text-align:center}.hero-copy h1,.hero-sub{margin-inline:auto}.hero-actions,.micro-proof{justify-content:center}.hero-product{margin-top:14px}.guarantee-grid{grid-template-columns:repeat(2,1fr)}.guarantee-grid article:nth-child(2){border-right:0}.guarantee-grid article:nth-child(-n+2){border-bottom:1px solid var(--line)}.workflow-grid{gap:50px}.faq-grid{gap:50px}}
+  @media(max-width:780px){.wg-home .shell{width:min(100% - 28px,1180px)}.wg-home .hero{padding:125px 0 65px}.hero-copy h1{font-size:clamp(2.5rem,12vw,3.9rem)}.app-window{transform:none}.float-payment{left:-7px}.float-link{right:-7px}.section{padding:82px 0}.service-grid,.tool-grid,.review-grid{grid-template-columns:1fr}.service-card>p{min-height:auto}.database-heading,.row-heading,.case-inner{align-items:flex-start;flex-direction:column}.workflow-grid,.faq-grid{grid-template-columns:1fr}.workflow-grid{gap:40px}.database-toolbar{flex-wrap:wrap}.result-count{margin-left:0}.database-search{width:100%}.case-inner{padding:25px}.final-card{align-items:flex-start;flex-direction:column;padding:35px}.final-actions{align-items:flex-start}}
+  @media(max-width:540px){.guarantee-grid{grid-template-columns:1fr}.guarantee-grid article{min-height:92px;border-right:0!important;border-bottom:1px solid var(--line)!important}.guarantee-grid article:last-child{border-bottom:0!important}.hero-actions{flex-direction:column}.hero-actions a{width:100%}.micro-proof{display:grid;grid-template-columns:1fr 1fr;text-align:left}.hero-product{margin-inline:-14px}.app-content{grid-template-columns:42px 1fr}.app-sidebar{overflow:hidden}.app-main{padding:17px 11px}.mini-head,.mini-row{grid-template-columns:1.55fr .4fr .7fr}.mini-head span:last-child,.mini-row em{display:none}.float-payment{bottom:-18px}.float-link{top:58px}.database-toolbar{display:grid}.toolbar-filters{overflow-x:auto}.toolbar-filters button{white-space:nowrap}.database-footer{align-items:flex-start;flex-direction:column;padding:13px 16px}.final-card{padding:27px}.white-button{width:100%}.faq-list summary{font-size:.77rem}}
+</style>

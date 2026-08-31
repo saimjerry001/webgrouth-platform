@@ -1,48 +1,53 @@
 ---
-const path = Astro.url.pathname;
-const isActive = (href: string) => href === '/' ? path === '/' : path.startsWith(href);
+const home = Astro.url.pathname === '/';
+const anchor = (id: string) => `${home ? '' : '/'}#${id}`;
 const nav = [
-  { href: '/guest-posting', label: 'Guest Posting' },
-  { href: '/link-insertion', label: 'Link Insertion' },
-  { href: '/seo-services', label: 'SEO Services' },
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Insights' },
+  { href: anchor('services'), label: 'Services' },
+  { href: anchor('database'), label: '40k Database' },
+  { href: anchor('pricing'), label: 'Pricing' },
+  { href: anchor('tools'), label: 'Free SEO Tools' },
+  { href: anchor('case-studies'), label: 'Case Studies' },
 ];
+const orderUrl = "https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20I%27d%20like%20to%20place%20a%20%240-upfront%20risk-free%20guest%20post%20order.";
 ---
 
-<header class="site-header" data-header>
+<header class="site-header wg-header" data-header>
   <div class="shell header-inner">
     <a class="brand" href="/" aria-label="Web Grouth home">
-      <span class="brand-symbol" aria-hidden="true">
-        <svg viewBox="0 0 40 40" role="img">
-          <path d="M9 28.5 18 19l5.5 5L31 14" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-          <path d="M25.5 14H31v5.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </span>
-      <span class="brand-word">Web <strong>Grouth</strong></span>
+      <span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 40 40" role="img"><path d="M9 28.5 18 19l5.5 5L31 14" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M25.5 14H31v5.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="brand-word">Web<span>grouth</span></span>
     </a>
-
     <nav class="desktop-nav" aria-label="Primary navigation">
-      {nav.map((item) => (
-        <a class:list={{ active: isActive(item.href) }} href={item.href}>{item.label}</a>
-      ))}
+      {nav.map((item) => <a href={item.href}>{item.label}</a>)}
     </nav>
-
     <div class="header-actions">
-      <a class="header-login" href="/contact">Start a campaign</a>
-      <a class="button button-small button-glow" href="https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20I%27d%20like%20to%20discuss%20a%20guest%20posting%20campaign." target="_blank" rel="noopener">
-        Get site list <span aria-hidden="true">↗</span>
-      </a>
-      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-button>
-        <span></span><span></span>
-      </button>
+      <a class="header-login" href={anchor('database')}>Explore Database</a>
+      <a class="wg-header-cta" href={orderUrl} target="_blank" rel="noopener">Get $0 Risk-Free Order <span>↗</span></a>
+      <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-button><span></span><span></span></button>
     </div>
   </div>
-
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
     <div class="shell mobile-menu-inner">
       {nav.map((item) => <a href={item.href}>{item.label}<span>↗</span></a>)}
-      <a href="/contact">Start a campaign <span>↗</span></a>
+      <a href={orderUrl} target="_blank" rel="noopener">Get $0 Risk-Free Order <span>↗</span></a>
     </div>
   </nav>
 </header>
+
+<style>
+  .wg-header { background: rgba(4,8,23,.82); border-bottom: 1px solid rgba(148,163,184,.12); backdrop-filter: blur(20px); }
+  .wg-header.scrolled { background: rgba(4,8,23,.94); box-shadow: 0 18px 50px rgba(0,0,0,.22); }
+  .wg-header .brand-symbol { color: white; background: linear-gradient(135deg,#4f7cff,#7656ff); box-shadow: 0 0 0 5px rgba(99,102,241,.1),0 10px 28px rgba(79,124,255,.28); }
+  .wg-header .brand-word { color: #f8fafc; letter-spacing: -.045em; }
+  .wg-header .brand-word span { color: #8da6ff; }
+  .wg-header .desktop-nav a { color: #aeb9d3; font-size: .82rem; }
+  .wg-header .desktop-nav a:hover { color: white; }
+  .wg-header .header-login { color: #d9e2f7; font-size: .8rem; }
+  .wg-header-cta { display: inline-flex; align-items: center; gap: .45rem; min-height: 42px; padding: 0 1rem; color: white; border: 1px solid rgba(255,255,255,.16); border-radius: 11px; background: linear-gradient(135deg,#4f7cff,#6547eb); font-size: .78rem; font-weight: 750; box-shadow: 0 8px 26px rgba(79,124,255,.24); transition: transform .2s ease, box-shadow .2s ease; }
+  .wg-header-cta:hover { transform: translateY(-2px); box-shadow: 0 13px 35px rgba(79,124,255,.36); }
+  .wg-header .menu-button span { background: #fff; }
+  .wg-header .mobile-menu { background: rgba(4,8,23,.98); border-bottom-color: rgba(148,163,184,.14); }
+  .wg-header .mobile-menu a { color: #eef2ff; border-bottom-color: rgba(148,163,184,.12); }
+  @media (max-width: 1180px) { .wg-header .desktop-nav { gap: 1rem; } .wg-header .header-login { display: none; } }
+  @media (max-width: 980px) { .wg-header-cta { display: none; } }
+</style>
