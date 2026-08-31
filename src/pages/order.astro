@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactLinks from '../components/ContactLinks.astro';
+---
+
+<BaseLayout title="$0 Upfront Guest Post Order | Web Grouth" description="Submit your guest posting brief to Web Grouth. Pay only after your approved placement is live and verified.">
+  <div class="saas-page">
+    <section class="saas-hero">
+      <div class="shell saas-hero-grid">
+        <div class="saas-hero-copy" data-reveal>
+          <div class="saas-breadcrumbs"><a href="/">Home</a><span>/</span><span>Risk-Free Order</span></div>
+          <span class="saas-kicker">$0 advance payment</span>
+          <h1>Submit your brief.<br/><span>Pay after the link is live.</span></h1>
+          <p>Tell us exactly what you need. We will review your niche, match suitable publishers and confirm every placement term before moving forward.</p>
+        </div>
+        <aside class="saas-hero-panel" data-reveal data-reveal-delay="1">
+          <span>How your order works</span>
+          <ul>
+            <li>01 · Submit requirements <span>No payment details needed</span></li>
+            <li>02 · Review matched sites <span>You approve before publishing</span></li>
+            <li>03 · Receive live URL <span>Link is checked and verified</span></li>
+            <li>04 · Complete payment <span>Only after agreed delivery</span></li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="saas-section">
+      <div class="shell form-layout">
+        <form class="premium-form" action="https://formsubmit.co/nasirhaiderseo@gmail.com" method="POST" enctype="multipart/form-data" data-order-form data-reveal>
+          <input type="hidden" name="_subject" value="New $0 Upfront Guest Post Order — Web Grouth" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://webgrouth.com/order-success" />
+          <input type="hidden" name="_autoresponse" value="Thank you for your guest post order. Web Grouth has received your brief and will contact you by email after reviewing the details." />
+          <input type="hidden" name="Source Offer" value="$0 Upfront Guest Post" data-source-offer />
+          <label class="honeypot-field">Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
+
+          <div class="form-section-heading"><span>01</span><h2>Client information</h2></div>
+          <div class="form-row">
+            <div class="field"><label for="client-name">Full name *</label><input id="client-name" name="Client Name" autocomplete="name" required placeholder="Your full name" /></div>
+            <div class="field"><label for="client-email">Email address *</label><input id="client-email" name="email" type="email" autocomplete="email" required placeholder="name@company.com" /></div>
+          </div>
+          <div class="field"><label for="client-whatsapp">WhatsApp number <span>(optional)</span></label><input id="client-whatsapp" name="WhatsApp Number" type="tel" autocomplete="tel" placeholder="Include country code, e.g. +1..." /></div>
+
+          <div class="form-divider"></div>
+          <div class="form-section-heading"><span>02</span><h2>Project details</h2></div>
+          <div class="form-row">
+            <div class="field"><label for="client-website">Client website URL *</label><input id="client-website" name="Client Website" type="url" required placeholder="https://example.com" /></div>
+            <div class="field"><label for="required-niche">Required niche / category *</label><input id="required-niche" name="Required Niche" required placeholder="e.g. SaaS, Finance, Health" /></div>
+          </div>
+          <div class="field"><label for="order-service">Order type *</label><select id="order-service" name="Order Type" required data-order-service><option value="Risk-Free Guest Post">Risk-Free Guest Post</option><option value="Pay-After-Live Offer">Pay-After-Live Offer</option><option value="Bulk Guest Posting">Bulk Guest Posting</option><option value="Handpicked Niche Outreach">Handpicked Niche Outreach</option><option value="Link Insertion">Link Insertion</option><option value="Custom Campaign">Custom Campaign</option></select></div>
+          <div class="field"><label for="publisher-site">Requested publisher website / site URL</label><input id="publisher-site" name="Requested Publisher Website" placeholder="Enter the selected site/domain, if you already have one" /><small class="field-help">Leave this empty if you want Web Grouth to recommend suitable websites.</small></div>
+
+          <div class="form-divider"></div>
+          <div class="form-section-heading"><span>03</span><h2>Guest post brief</h2></div>
+          <div class="form-row">
+            <div class="field"><label for="anchor-text">Target anchor text *</label><input id="anchor-text" name="Target Anchor Text" required placeholder="Exact or suggested anchor" /></div>
+            <div class="field"><label for="target-url">Target URL *</label><input id="target-url" name="Target URL" type="url" required placeholder="https://example.com/target-page" /></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="article-topic">Article topic / title</label><input id="article-topic" name="Article Topic or Title" placeholder="Suggested article topic or title" /></div>
+            <div class="field"><label for="target-keywords">Target keyword(s) *</label><input id="target-keywords" name="Target Keywords" required placeholder="Primary and secondary keywords" /></div>
+          </div>
+          <div class="field"><label for="article-source">Article option *</label><select id="article-source" name="Article Option" required><option value="I will upload the article">I will upload the article</option><option value="Article pasted below">Article pasted below</option><option value="Web Grouth should write the article">Web Grouth should write the article</option><option value="I will provide it later">I will provide it later</option></select></div>
+          <div class="field"><label for="article-content">Paste article <span>(optional)</span></label><textarea id="article-content" name="Provided Article Text" class="article-area" placeholder="If the article is ready, paste it here—or upload the document below."></textarea></div>
+          <div class="field"><label for="article-file">Upload article file <span>(optional)</span></label><input id="article-file" name="Article Attachment" type="file" accept=".doc,.docx,.pdf,.txt,.rtf" data-article-file /><small class="field-help" data-file-help>Accepted: DOC, DOCX, PDF, TXT or RTF — maximum 10 MB.</small></div>
+
+          <div class="form-divider"></div>
+          <div class="form-section-heading"><span>04</span><h2>Placement preferences</h2></div>
+          <div class="form-row">
+            <div class="field"><label for="preferred-metrics">Preferred DR / DA range</label><select id="preferred-metrics" name="Preferred DR or DA Range"><option value="Flexible">Flexible — recommend the best fit</option><option>DR/DA 20–39</option><option>DR/DA 40–59</option><option>DR/DA 60–79</option><option>DR/DA 80+</option></select></div>
+            <div class="field"><label for="budget">Budget</label><input id="budget" name="Budget" placeholder="Per site or total campaign budget" /></div>
+          </div>
+          <div class="field"><label for="requirements">Specific requirements</label><textarea id="requirements" name="Specific Requirements" placeholder="Traffic, country, link type, TAT, word count, quantity or publisher requirements..."></textarea><small class="field-help">Avoid sharing passwords or sensitive account information.</small></div>
+
+          <label class="consent-row"><input type="checkbox" name="Terms Accepted" value="Yes" required /><span>I confirm the submitted information is accurate and agree that final pricing, publisher eligibility and guarantee terms will be confirmed before work begins.</span></label>
+          <button class="saas-button primary form-submit" type="submit">Submit Risk-Free Order <span>↗</span></button>
+          <div class="form-security"><span>No advance payment</span><span>Sent securely to Web Grouth</span><span>Human review</span></div>
+        </form>
+
+        <aside class="form-aside" data-reveal data-reveal-delay="1">
+          <div class="aside-card blue"><span>$0 due today</span><h3>No card. No checkout. No payment before delivery.</h3><p>Your brief is reviewed by a person. Eligible placement terms are confirmed before publishing begins.</p></div>
+          <div class="aside-card"><span>Order protection</span><h3>Clear terms before work starts</h3><ul class="aside-list"><li>30-day indexation policy</li><li>Six-month eligible replacement window</li><li>Publisher and pricing approval</li><li>Live URL verification</li></ul></div>
+          <ContactLinks compact={true} />
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <script is:inline>
+    const params = new URLSearchParams(window.location.search);
+    const selected = params.get('service') || params.get('offer');
+    const select = document.querySelector('[data-order-service]');
+    const source = document.querySelector('[data-source-offer]');
+    if (selected && select) {
+      const option = [...select.options].find((item) => item.value.toLowerCase() === selected.toLowerCase());
+      if (option) select.value = option.value;
+      if (source) source.value = selected;
+    }
+    const articleFile = document.querySelector('[data-article-file]');
+    const fileHelp = document.querySelector('[data-file-help]');
+    articleFile?.addEventListener('change', () => {
+      const file = articleFile.files?.[0];
+      const tooLarge = file && file.size > 10 * 1024 * 1024;
+      articleFile.setCustomValidity(tooLarge ? 'Please upload an article file smaller than 10 MB.' : '');
+      if (fileHelp) fileHelp.textContent = tooLarge ? 'This file is too large. Please choose a file under 10 MB.' : (file ? `Selected: ${file.name}` : 'Accepted: DOC, DOCX, PDF, TXT or RTF — maximum 10 MB.');
+    });
+  </script>
+</BaseLayout>
+
+<style>.article-area { min-height:180px!important; }</style>

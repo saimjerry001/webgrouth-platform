@@ -1,45 +1,75 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContactLinks from '../components/ContactLinks.astro';
 ---
-<BaseLayout title="Contact Web Grouth | Start a Guest Posting Campaign" description="Tell Web Grouth about your guest posting, link insertion or SEO campaign and get a focused response.">
-  <section class="page-hero">
-    <div class="shell page-hero-grid">
-      <div class="page-hero-copy" data-reveal>
-        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><span>Contact</span></div>
-        <div class="eyebrow"><span class="eyebrow-dot"></span> Start a conversation</div>
-        <h1>Tell us where you want to <span class="gradient-text">grow.</span></h1>
-        <p>Share your niche, target URL and campaign size. We’ll respond with relevant questions, publisher options or a clear recommended next step.</p>
-      </div>
-      <aside class="page-hero-aside" data-reveal data-reveal-delay="1"><span>What helps us respond faster</span><ul><li><span>Your niche</span>Required</li><li><span>Target market</span>Helpful</li><li><span>Campaign size</span>1 or 100+</li><li><span>Preferred contact</span>Email / WhatsApp</li></ul></aside>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="shell contact-grid">
-      <div class="contact-copy" data-reveal>
-        <span class="kicker">Direct access</span><h2>No ticket maze. Talk to a real person.</h2>
-        <p>Use the campaign form or contact Web Grouth directly. Your form details open securely in WhatsApp so you can review the message before sending.</p>
-        <div class="contact-options">
-          <a class="contact-option" href="https://wa.me/923327810261" target="_blank" rel="noopener"><div><span>WhatsApp</span><strong>+92 332 7810261</strong></div><i>↗</i></a>
-          <a class="contact-option" href="https://wa.me/923327810261" target="_blank" rel="noopener"><div><span>WhatsApp</span><strong>+92 332 7810261</strong></div><i>↗</i></a>
+<BaseLayout title="Contact Web Grouth | Guest Posting Support" description="Contact Web Grouth by form, email, WhatsApp or phone for guest posting, link insertion and agency campaign support.">
+  <div class="saas-page">
+    <section class="saas-hero">
+      <div class="shell saas-hero-grid">
+        <div class="saas-hero-copy" data-reveal>
+          <div class="saas-breadcrumbs"><a href="/">Home</a><span>/</span><span>Contact</span></div>
+          <span class="saas-kicker">Direct human support</span>
+          <h1>Tell us what you need.<br/><span>Get a useful next step.</span></h1>
+          <p>Share your niche, target page and campaign requirements. Use the structured form for a detailed brief or contact Web Grouth directly by WhatsApp, email or phone.</p>
+        </div>
+        <div data-reveal data-reveal-delay="1"><ContactLinks compact={true} /></div>
+      </div>
+    </section>
+
+    <section class="saas-section white">
+      <div class="shell">
+        <div class="saas-heading"><span class="saas-kicker">Support response tracker</span><h2>A clear path from enquiry to reply.</h2><p>The form keeps your requirements organised so the first response can focus on suitable sites, terms and next actions.</p></div>
+        <div class="support-status" data-reveal>
+          <div><span class="support-dot"></span><div><small>Support desk</small><strong>Accepting campaign enquiries</strong></div></div>
+          <time data-pakistan-time>Pakistan time</time>
+        </div>
+        <div class="response-track" data-reveal>
+          <article><span>STEP 01</span><h3>Brief received</h3><p>Your contact details and requirements arrive in the Web Grouth inbox.</p></article>
+          <article><span>STEP 02</span><h3>Human review</h3><p>We check campaign fit, missing details and the right publisher route.</p></article>
+          <article><span>RESPONSE TARGET</span><h3>Within 24 hours</h3><p>Most complete enquiries receive a response within one business day.</p></article>
         </div>
       </div>
-      <form class="contact-form" id="campaign-form" data-reveal data-reveal-delay="1">
-        <div class="form-row"><div class="field"><label for="name">Your name</label><input id="name" name="name" required placeholder="Your full name" /></div><div class="field"><label for="email">Business email</label><input id="email" name="email" type="email" required placeholder="name@company.com" /></div></div>
-        <div class="form-row"><div class="field"><label for="website">Website</label><input id="website" name="website" type="url" placeholder="https://example.com" /></div><div class="field"><label for="service">Service</label><select id="service" name="service"><option>Guest posting</option><option>Link insertion</option><option>Off-page SEO campaign</option><option>Content + placement</option><option>Agency fulfilment</option></select></div></div>
-        <div class="field"><label for="message">Campaign brief</label><textarea id="message" name="message" required placeholder="Tell us your niche, target countries, preferred metrics and approximate number of placements..."></textarea></div>
-        <button class="button button-primary" type="submit" style="width:100%">Continue on WhatsApp <span>↗</span></button>
-        <p class="form-note">Nothing is sent automatically. You will review the prepared message in WhatsApp before sending.</p>
-      </form>
-    </div>
-  </section>
-  <section class="section section-soft"><div class="shell stats-grid" data-reveal><div class="stat-intro"><span class="kicker">What happens next</span><p>We keep the first response practical and focused on what your campaign actually needs.</p></div><div class="stat"><strong>01</strong><span>We review your niche and targets</span></div><div class="stat"><strong>02</strong><span>We clarify fit, terms and priorities</span></div><div class="stat"><strong>03</strong><span>You receive relevant next steps</span></div></div></section>
+    </section>
+
+    <section class="saas-section slate">
+      <div class="shell form-layout">
+        <form class="premium-form" action="https://formsubmit.co/nasirhaiderseo@gmail.com" method="POST" data-reveal>
+          <input type="hidden" name="_subject" value="New Website Enquiry — Web Grouth" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_next" value="https://webgrouth.com/order-success" />
+          <label class="honeypot-field">Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
+          <div class="form-section-heading"><span>01</span><h2>Contact details</h2></div>
+          <div class="form-row"><div class="field"><label for="contact-name">Full name *</label><input id="contact-name" name="Name" autocomplete="name" required placeholder="Your full name" /></div><div class="field"><label for="contact-email">Email address *</label><input id="contact-email" name="email" type="email" autocomplete="email" required placeholder="name@company.com" /></div></div>
+          <div class="form-row"><div class="field"><label for="contact-phone">WhatsApp / phone</label><input id="contact-phone" name="WhatsApp or Phone" type="tel" autocomplete="tel" placeholder="Include country code" /></div><div class="field"><label for="contact-website">Website</label><input id="contact-website" name="Website" type="url" placeholder="https://example.com" /></div></div>
+          <div class="form-divider"></div>
+          <div class="form-section-heading"><span>02</span><h2>Campaign enquiry</h2></div>
+          <div class="form-row"><div class="field"><label for="contact-service">Service *</label><select id="contact-service" name="Service" required><option>Guest posting</option><option>Link insertion</option><option>Bulk agency fulfilment</option><option>Niche outreach</option><option>Database access</option><option>Other SEO support</option></select></div><div class="field"><label for="contact-niche">Niche / category</label><input id="contact-niche" name="Niche" placeholder="e.g. SaaS, Finance, Health" /></div></div>
+          <div class="field"><label for="contact-message">How can we help? *</label><textarea id="contact-message" name="Message" required placeholder="Include your target URL, preferred metrics, quantity, budget or any important requirements..."></textarea></div>
+          <label class="consent-row"><input type="checkbox" name="Contact Consent" value="Yes" required /><span>I agree that Web Grouth may use these details to respond to this enquiry under the Privacy Policy.</span></label>
+          <button class="saas-button primary form-submit" type="submit">Send Enquiry <span>↗</span></button>
+          <div class="form-security"><span>Direct inbox delivery</span><span>No account required</span><span>Human reply</span></div>
+        </form>
+        <aside class="form-aside" data-reveal data-reveal-delay="1">
+          <div class="aside-card"><span>For a faster answer</span><h3>Include these four details</h3><ul class="aside-list"><li>Your niche and target country</li><li>Target URL and anchor text</li><li>Preferred DR, traffic or budget</li><li>Single or bulk order quantity</li></ul></div>
+          <div class="aside-card blue"><span>Ready to order?</span><h3>Use the structured $0 upfront brief.</h3><p>The dedicated order page captures everything required to start matching publishers.</p><a class="saas-button secondary contact-order-link" href="/order">Open order form ↗</a></div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
   <script is:inline>
-    document.getElementById('campaign-form')?.addEventListener('submit', function (event) {
-      event.preventDefault();
-      const data = new FormData(event.currentTarget);
-      const message = `Hello Web Grouth, I'd like to discuss a campaign.\n\nName: ${data.get('name')}\nEmail: ${data.get('email')}\nWebsite: ${data.get('website') || 'Not provided'}\nService: ${data.get('service')}\n\nCampaign brief:\n${data.get('message')}`;
-      window.open(`https://wa.me/923327810261?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
-    });
+    const timeNode = document.querySelector('[data-pakistan-time]');
+    const updateSupportTime = () => {
+      if (!timeNode) return;
+      timeNode.textContent = new Intl.DateTimeFormat('en-GB', { timeZone:'Asia/Karachi', hour:'2-digit', minute:'2-digit', weekday:'short' }).format(new Date()) + ' PKT';
+    };
+    updateSupportTime();
+    setInterval(updateSupportTime, 60000);
   </script>
 </BaseLayout>
+
+<style>
+  .contact-order-link { width:100%; margin-top:18px; color:#1d4ed8!important; background:#fff!important; }
+</style>

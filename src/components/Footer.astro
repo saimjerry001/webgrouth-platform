@@ -1,40 +1,63 @@
-<footer class="site-footer">
+<footer class="site-footer wg-footer">
   <div class="shell footer-top">
     <div class="footer-intro">
       <a class="brand" href="/" aria-label="Web Grouth home">
-        <span class="brand-symbol" aria-hidden="true">
-          <svg viewBox="0 0 40 40"><path d="M9 28.5 18 19l5.5 5L31 14" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M25.5 14H31v5.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </span>
+        <span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 28.5 18 19l5.5 5L31 14" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M25.5 14H31v5.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
         <span class="brand-word">Web <strong>Grouth</strong></span>
       </a>
-      <p>Editorial backlinks for brands that care about relevance, real traffic and long-term search growth.</p>
-      <div class="footer-status"><span></span> Accepting new campaigns</div>
+      <p>Risk-free guest posting and contextual link placements across a 40,000+ website publisher network.</p>
+      <a class="footer-order" href="/order">Start a $0 upfront order <span>↗</span></a>
     </div>
 
     <div class="footer-column">
       <h2>Services</h2>
       <a href="/guest-posting">Guest posting</a>
       <a href="/link-insertion">Link insertion</a>
-      <a href="/seo-services">SEO services</a>
-      <a href="/contact">Custom campaign</a>
+      <a href="/#database">40k database</a>
+      <a href="/order">Risk-free order</a>
     </div>
     <div class="footer-column">
       <h2>Company</h2>
       <a href="/about">About Web Grouth</a>
+      <a href="/contact">Contact us</a>
       <a href="/blog">SEO insights</a>
-      <a href="/contact">Contact</a>
-      <a href="/privacy">Privacy</a>
+      <a href="/#case-studies">Case studies</a>
+    </div>
+    <div class="footer-column">
+      <h2>Policies</h2>
+      <a href="/terms">Terms of service</a>
+      <a href="/privacy">Privacy policy</a>
+      <a href="/guarantee-policy">Indexation guarantee</a>
+      <a href="/guarantee-policy#replacement">Replacement policy</a>
     </div>
     <div class="footer-column footer-contact">
-      <h2>Let’s talk growth</h2>
-      <a href="https://wa.me/923327810261" target="_blank" rel="noopener">WhatsApp: +92 332 7810261</a>
-      <a href="/contact">Send campaign requirements</a>
-      <p>Available worldwide · Remote-first</p>
+      <h2>Direct contact</h2>
+      <a href="https://wa.me/923327810261" target="_blank" rel="noopener">WhatsApp <span>+92 332 7810261</span></a>
+      <a href="mailto:nasirhaiderseo@gmail.com">Email <span>nasirhaiderseo@gmail.com</span></a>
+      <a href="tel:+923327810261">Call <span>+92 332 7810261</span></a>
+      <p>Worldwide service · Remote-first</p>
     </div>
   </div>
   <div class="shell footer-bottom">
     <span>© {new Date().getFullYear()} Web Grouth. All rights reserved.</span>
-    <span>Built for authority, not vanity metrics.</span>
-    <a href="/terms">Terms</a>
+    <span>Pay after live link · Terms apply</span>
+    <a href="/privacy">Privacy</a>
   </div>
 </footer>
+
+<style>
+  .wg-footer { color:#fff; background:#0f172a; border-top:1px solid rgba(255,255,255,.08); }
+  .wg-footer .footer-top { grid-template-columns:1.35fr repeat(4,1fr); gap:38px; }
+  .wg-footer .brand-symbol { background:#2563eb; box-shadow:none; }
+  .wg-footer .footer-intro p { color:#94a3b8; }
+  .footer-order { display:inline-flex; align-items:center; gap:7px; margin-top:19px; color:#bfdbfe; font-size:.72rem; font-weight:700; }
+  .wg-footer .footer-column h2 { color:#64748b; }
+  .wg-footer .footer-column a { color:#cbd5e1; }
+  .wg-footer .footer-column a:hover { color:#fff; }
+  .wg-footer .footer-contact a { display:flex; flex-direction:column; gap:2px; }
+  .wg-footer .footer-contact a span { color:#71809b; font-size:.61rem; }
+  .wg-footer .footer-contact p { color:#64748b; }
+  .wg-footer .footer-bottom { color:#64748b; border-top-color:rgba(255,255,255,.08); }
+  @media(max-width:1100px){.wg-footer .footer-top{grid-template-columns:1.3fr repeat(2,1fr)}.wg-footer .footer-intro{grid-row:span 2}}
+  @media(max-width:700px){.wg-footer .footer-top{grid-template-columns:1fr 1fr}.wg-footer .footer-intro{grid-column:1/-1;grid-row:auto}.wg-footer .footer-contact{grid-column:1/-1}}
+</style>
