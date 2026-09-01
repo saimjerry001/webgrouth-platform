@@ -1106,3 +1106,74 @@ p { color: var(--wg-copy); }
 @media (prefers-reduced-motion: reduce) {
   .publisher-feed-track { animation: none !important; }
 }
+
+/* Readability pass — stronger type, darker copy and comfortable text sizes */
+body {
+  color: #111827;
+  font-weight: 500;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4 {
+  font-weight: 800;
+  letter-spacing: -.038em;
+}
+p { color: #444b56; font-weight: 500; }
+
+.homev3-lead,
+.homev3-intro-copy > p,
+.homev3-centered > p:last-child,
+.homev3-process-copy > p:not(.homev3-overline),
+.homev3-experience-head > p,
+.homev3-final p {
+  font-weight: 500;
+}
+.homev3-lead { color: #3f4650; font-size: 1.1rem; }
+.homev3-assurance { color: #3f4650; font-size: 13px; font-weight: 600; }
+.homev3-proof-item span { color: #4d535d; font-size: 13px; font-weight: 500; }
+.homev3-checks span { font-size: 13px; font-weight: 600; }
+.homev3-service-card > p { color: #c0c6d0; font-size: .98rem; font-weight: 500; line-height: 1.7; }
+.homev3-service-card ul { font-size: 13px; font-weight: 500; }
+.homev3-category p { color: #4d535d; font-size: 13px; font-weight: 500; line-height: 1.65; }
+.homev3-process-step p { color: #4d535d; font-size: 14px; font-weight: 500; line-height: 1.65; }
+.homev3-standard-card p { color: #4d535d; font-size: 14px; font-weight: 500; line-height: 1.65; }
+.homev3-faq-list details p { color: #444b56; font-size: .9rem; font-weight: 500; }
+
+.page-hero-copy > p,
+.saas-hero-copy > p { color: #444b56; font-weight: 500; line-height: 1.75; }
+.page-hero-aside li,
+.saas-hero-panel li { font-size: .79rem; font-weight: 700; }
+.page-hero-aside li span,
+.saas-hero-panel li span { color: #5e6672; font-size: .72rem; font-weight: 500; }
+.content-sticky > p,
+.trust-copy > p,
+.section-heading > p,
+.cta-card > p,
+.article-header > p,
+.saas-heading > p { color: #4b535e; font-size: .95rem; font-weight: 500; line-height: 1.75; }
+.detail-card p,
+.process-step p { color: #4b535e; font-size: .84rem; font-weight: 500; line-height: 1.7; }
+.tag { font-size: 12px; font-weight: 600; }
+.story-copy > p { color: #424954; font-size: 1rem; font-weight: 500; line-height: 1.8; }
+.metric-row span { color: #4d5560; font-size: .78rem; font-weight: 500; line-height: 1.55; }
+.value-card p,
+.trust-card p { font-size: .82rem; font-weight: 500; line-height: 1.7; }
+
+.form-section-heading h2 { font-size: 1rem; font-weight: 800; }
+.premium-form .field label { color: #273244; font-size: .75rem; font-weight: 700; }
+.premium-form .field input,
+.premium-form .field select,
+.premium-form .field textarea { color: #111827; font-size: .84rem; font-weight: 500; }
+.field-help { color: #667085; font-size: .66rem; font-weight: 500; }
+.aside-card > span { font-size: .65rem; }
+.aside-card h3 { font-size: 1.08rem; font-weight: 800; }
+.aside-card p { font-size: .8rem; font-weight: 500; line-height: 1.7; }
+.aside-list li { color: #46505e; font-size: .75rem; font-weight: 500; }
+.form-security { color: #667085; font-size: .64rem; font-weight: 600; }
+.success-card p { color: #444b56; font-size: 1rem; font-weight: 500; }
+
+@media (max-width: 760px) {
+  .homev3-lead { font-size: 1rem; }
+  .homev3-faq-list summary { font-size: .9rem; }
+  .page-hero-copy > p,.saas-hero-copy > p { font-size: .98rem; }
+}

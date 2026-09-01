@@ -9,17 +9,16 @@ import ContactLinks from '../components/ContactLinks.astro';
       <div class="shell saas-hero-grid">
         <div class="saas-hero-copy" data-reveal>
           <div class="saas-breadcrumbs"><a href="/">Home</a><span>/</span><span>Place an Order</span></div>
-          <span class="saas-kicker">Guest post order form</span>
-          <h1>Everything we need to prepare the right placement.</h1>
-          <p>Add your target page, anchor, article and publisher preferences below. A campaign manager will review the brief and reply with the next practical step.</p>
+          <span class="saas-kicker">Quick order form</span>
+          <h1>Tell us what link you need.</h1>
+          <p>Only your email is required. Add the details you know and leave the rest blank. We will review your order and reply by email.</p>
         </div>
         <aside class="saas-hero-panel" data-reveal data-reveal-delay="1">
-          <span>How your order works</span>
+          <span>What happens next</span>
           <ul>
-            <li>01 · Submit the brief <span>Website, anchor and article details</span></li>
-            <li>02 · Review matched sites <span>Choose the right publisher</span></li>
-            <li>03 · Approve the placement <span>Confirm price and terms</span></li>
-            <li>04 · Receive the live URL <span>Delivery is checked and reported</span></li>
+            <li>01 · Send your order <span>Add only what you know</span></li>
+            <li>02 · We review it <span>We check your needs</span></li>
+            <li>03 · Get our reply <span>We contact you by email</span></li>
           </ul>
         </aside>
       </div>
@@ -32,56 +31,53 @@ import ContactLinks from '../components/ContactLinks.astro';
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_next" value="https://webgrouth.com/order-success" />
-          <input type="hidden" name="_autoresponse" value="Thank you for your guest post order. Web Grouth has received your brief and will contact you by email after reviewing the details." />
+          <input type="hidden" name="_autoresponse" value="Thank you. Web Grouth has received your order and will contact you by email after reviewing the details." />
           <input type="hidden" name="Source Offer" value="Web Grouth Order Form" data-source-offer />
           <label class="honeypot-field">Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
 
-          <div class="form-section-heading"><span>01</span><h2>Client information</h2></div>
+          <div class="form-section-heading"><span>01</span><h2>Your contact</h2></div>
           <div class="form-row">
-            <div class="field"><label for="client-name">Full name *</label><input id="client-name" name="Client Name" autocomplete="name" required placeholder="Your full name" /></div>
+            <div class="field"><label for="client-name">Full name <span>(optional)</span></label><input id="client-name" name="Client Name" autocomplete="name" placeholder="Your full name" /></div>
             <div class="field"><label for="client-email">Email address *</label><input id="client-email" name="email" type="email" autocomplete="email" required placeholder="name@company.com" /></div>
           </div>
-          <div class="field"><label for="client-whatsapp">WhatsApp number <span>(optional)</span></label><input id="client-whatsapp" name="WhatsApp Number" type="tel" autocomplete="tel" placeholder="Include country code, e.g. +1..." /></div>
+          <div class="field"><label for="client-whatsapp">WhatsApp number <span>(optional)</span></label><input id="client-whatsapp" name="WhatsApp Number" type="tel" autocomplete="tel" placeholder="Include country code" /></div>
 
           <div class="form-divider"></div>
-          <div class="form-section-heading"><span>02</span><h2>Project details</h2></div>
+          <div class="form-section-heading"><span>02</span><h2>Order details <small>All fields below are optional</small></h2></div>
           <div class="form-row">
-            <div class="field"><label for="client-website">Client website URL *</label><input id="client-website" name="Client Website" type="url" required placeholder="https://example.com" /></div>
-            <div class="field"><label for="required-niche">Required niche / category *</label><input id="required-niche" name="Required Niche" required placeholder="e.g. SaaS, Finance, Health" /></div>
+            <div class="field"><label for="order-service">Order type</label><select id="order-service" name="Order Type" data-order-service><option value="Guest Posting">Guest Posting</option><option value="Link Insertion">Link Insertion</option><option value="Bulk Guest Posting">Bulk Guest Posting</option><option value="Handpicked Niche Outreach">Handpicked Niche Outreach</option><option value="SEO Campaign">Off-Page SEO Campaign</option><option value="Custom Campaign">Custom Campaign</option></select></div>
+            <div class="field"><label for="required-niche">Niche / category</label><input id="required-niche" name="Required Niche" placeholder="e.g. SaaS, Finance, Health" /></div>
           </div>
-          <div class="field"><label for="order-service">Order type *</label><select id="order-service" name="Order Type" required data-order-service><option value="Guest Posting">Guest Posting</option><option value="Link Insertion">Link Insertion</option><option value="Bulk Guest Posting">Bulk Guest Posting</option><option value="Handpicked Niche Outreach">Handpicked Niche Outreach</option><option value="SEO Campaign">Off-Page SEO Campaign</option><option value="Custom Campaign">Custom Campaign</option></select></div>
-          <div class="field"><label for="publisher-site">Requested publisher website / site URL</label><input id="publisher-site" name="Requested Publisher Website" placeholder="Enter the selected site/domain, if you already have one" /><small class="field-help">Leave this empty if you want Web Grouth to recommend suitable websites.</small></div>
+          <div class="form-row">
+            <div class="field"><label for="target-url">Target URL or website</label><input id="target-url" name="Target URL or Website" type="url" placeholder="https://example.com/page" /></div>
+            <div class="field"><label for="anchor-text">Anchor text</label><input id="anchor-text" name="Target Anchor Text" placeholder="Your preferred anchor text" /></div>
+          </div>
+          <details class="order-more">
+            <summary><span>Add article, budget or more details</span><small>Optional</small></summary>
+            <div class="order-more-body">
+              <div class="field"><label for="publisher-site">Requested publisher website</label><input id="publisher-site" name="Requested Publisher Website" placeholder="Enter a site or domain if you have selected one" /></div>
+              <div class="form-row">
+                <div class="field"><label for="article-topic">Article topic or keywords</label><input id="article-topic" name="Article Topic or Keywords" placeholder="Topic, title or target keywords" /></div>
+                <div class="field"><label for="article-source">Article option</label><select id="article-source" name="Article Option"><option value="Not decided yet">Not decided yet</option><option value="I will upload the article">I will upload the article</option><option value="Article pasted below">Article pasted below</option><option value="Web Grouth should write the article">Web Grouth should write the article</option><option value="I will provide it later">I will provide it later</option></select></div>
+              </div>
+              <div class="field"><label for="article-content">Paste your article</label><textarea id="article-content" name="Provided Article Text" class="article-area" placeholder="Paste the article here if it is ready."></textarea></div>
+              <div class="field"><label for="article-file">Upload article</label><input id="article-file" name="Article Attachment" type="file" accept=".doc,.docx,.pdf,.txt,.rtf" data-article-file /><small class="field-help" data-file-help>DOC, DOCX, PDF, TXT or RTF — maximum 10 MB.</small></div>
+              <div class="form-row">
+                <div class="field"><label for="preferred-metrics">Preferred DR / DA</label><select id="preferred-metrics" name="Preferred DR or DA Range"><option value="Flexible">Flexible — recommend a good fit</option><option>DR/DA 20–39</option><option>DR/DA 40–59</option><option>DR/DA 60–79</option><option>DR/DA 80+</option></select></div>
+                <div class="field"><label for="budget">Budget</label><input id="budget" name="Budget" placeholder="Per site or total budget" /></div>
+              </div>
+              <div class="field"><label for="requirements">Other requirements</label><textarea id="requirements" name="Specific Requirements" placeholder="Country, traffic, link type, quantity or anything else..."></textarea><small class="field-help">Do not share passwords or private account information.</small></div>
+            </div>
+          </details>
 
-          <div class="form-divider"></div>
-          <div class="form-section-heading"><span>03</span><h2>Guest post brief</h2></div>
-          <div class="form-row">
-            <div class="field"><label for="anchor-text">Target anchor text *</label><input id="anchor-text" name="Target Anchor Text" required placeholder="Exact or suggested anchor" /></div>
-            <div class="field"><label for="target-url">Target URL *</label><input id="target-url" name="Target URL" type="url" required placeholder="https://example.com/target-page" /></div>
-          </div>
-          <div class="form-row">
-            <div class="field"><label for="article-topic">Article topic / title</label><input id="article-topic" name="Article Topic or Title" placeholder="Suggested article topic or title" /></div>
-            <div class="field"><label for="target-keywords">Target keyword(s) *</label><input id="target-keywords" name="Target Keywords" required placeholder="Primary and secondary keywords" /></div>
-          </div>
-          <div class="field"><label for="article-source">Article option *</label><select id="article-source" name="Article Option" required><option value="I will upload the article">I will upload the article</option><option value="Article pasted below">Article pasted below</option><option value="Web Grouth should write the article">Web Grouth should write the article</option><option value="I will provide it later">I will provide it later</option></select></div>
-          <div class="field"><label for="article-content">Paste article <span>(optional)</span></label><textarea id="article-content" name="Provided Article Text" class="article-area" placeholder="If the article is ready, paste it here—or upload the document below."></textarea></div>
-          <div class="field"><label for="article-file">Upload article file <span>(optional)</span></label><input id="article-file" name="Article Attachment" type="file" accept=".doc,.docx,.pdf,.txt,.rtf" data-article-file /><small class="field-help" data-file-help>Accepted: DOC, DOCX, PDF, TXT or RTF — maximum 10 MB.</small></div>
-
-          <div class="form-divider"></div>
-          <div class="form-section-heading"><span>04</span><h2>Placement preferences</h2></div>
-          <div class="form-row">
-            <div class="field"><label for="preferred-metrics">Preferred DR / DA range</label><select id="preferred-metrics" name="Preferred DR or DA Range"><option value="Flexible">Flexible — recommend the best fit</option><option>DR/DA 20–39</option><option>DR/DA 40–59</option><option>DR/DA 60–79</option><option>DR/DA 80+</option></select></div>
-            <div class="field"><label for="budget">Budget</label><input id="budget" name="Budget" placeholder="Per site or total campaign budget" /></div>
-          </div>
-          <div class="field"><label for="requirements">Specific requirements</label><textarea id="requirements" name="Specific Requirements" placeholder="Traffic, country, link type, TAT, word count, quantity or publisher requirements..."></textarea><small class="field-help">Avoid sharing passwords or sensitive account information.</small></div>
-
-          <label class="consent-row"><input type="checkbox" name="Terms Accepted" value="Yes" required /><span>I confirm the submitted information is accurate and agree that final pricing, publisher eligibility and guarantee terms will be confirmed before work begins.</span></label>
-          <button class="saas-button primary form-submit" type="submit">Send Order Brief <span>↗</span></button>
-          <div class="form-security"><span>No card details</span><span>Sent securely to Web Grouth</span><span>Human review</span></div>
+          <p class="form-terms">By submitting, you agree that price, publisher and final terms will be confirmed before work starts.</p>
+          <button class="saas-button primary form-submit" type="submit">Submit Order <span>↗</span></button>
+          <div class="form-security"><span>Only email is required</span><span>No payment now</span><span>Human reply</span></div>
         </form>
 
         <aside class="form-aside" data-reveal data-reveal-delay="1">
-          <div class="aside-card blue"><span>Payment terms</span><h3>Eligible campaigns can be paid after live-link verification.</h3><p>The publisher, price and applicable terms are confirmed with you before the work begins.</p></div>
-          <div class="aside-card"><span>Order protection</span><h3>Clear terms before work starts</h3><ul class="aside-list"><li>30-day indexation policy</li><li>Six-month eligible replacement window</li><li>Publisher and pricing approval</li><li>Live URL verification</li></ul></div>
+          <div class="aside-card blue"><span>Easy to submit</span><h3>You can order with only your email.</h3><p>If any details are missing, we will ask you in our email reply.</p></div>
+          <div class="aside-card"><span>Simple process</span><h3>You stay in control</h3><ul class="aside-list"><li>Review the suggested websites</li><li>Confirm the site and price</li><li>Approve before work starts</li><li>Receive the live URL</li></ul></div>
           <ContactLinks compact={true} />
         </aside>
       </div>
@@ -112,4 +108,16 @@ import ContactLinks from '../components/ContactLinks.astro';
   </script>
 </BaseLayout>
 
-<style>.article-area { min-height:180px!important; }</style>
+<style>
+  .form-section-heading h2 { display:flex; align-items:baseline; flex-wrap:wrap; gap:8px; }
+  .form-section-heading h2 small { color:#64748b; font:600 .66rem Inter,sans-serif; letter-spacing:0; }
+  .order-more { margin:4px 0 18px; overflow:hidden; border:1px solid #d8d5ce; border-radius:8px; background:#fff; }
+  .order-more summary { min-height:56px; display:flex; align-items:center; justify-content:space-between; gap:15px; padding:0 16px; color:#111827; font:700 .82rem Manrope,sans-serif; cursor:pointer; list-style:none; }
+  .order-more summary::-webkit-details-marker { display:none; }
+  .order-more summary::after { content:'+'; display:grid; place-items:center; width:24px; height:24px; margin-left:auto; color:#2563eb; border:1px solid #cbd5e1; border-radius:50%; font:700 1rem Inter,sans-serif; }
+  .order-more[open] summary::after { content:'−'; }
+  .order-more summary small { color:#64748b; font:600 .64rem Inter,sans-serif; }
+  .order-more-body { padding:18px 16px 2px; border-top:1px solid #e7e4de; }
+  .article-area { min-height:120px!important; }
+  .form-terms { margin:0 0 15px; color:#64748b!important; font-size:.69rem; line-height:1.55; }
+</style>
