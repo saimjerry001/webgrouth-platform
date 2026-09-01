@@ -32,6 +32,7 @@ import ContactLinks from '../components/ContactLinks.astro';
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_next" value="https://webgrouth.com/order-success" />
           <input type="hidden" name="_autoresponse" value="Thank you. Web Grouth has received your order and will contact you by email after reviewing the details." />
+          <input type="hidden" name="_url" value="https://www.webgrouth.com/order" />
           <input type="hidden" name="Source Offer" value="Web Grouth Order Form" data-source-offer />
           <label class="honeypot-field">Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
 
@@ -71,6 +72,7 @@ import ContactLinks from '../components/ContactLinks.astro';
           </details>
 
           <p class="form-terms">By submitting, you agree that price, publisher and final terms will be confirmed before work starts.</p>
+          <p class="form-message" data-form-message role="alert" aria-live="polite"></p>
           <button class="saas-button primary form-submit" type="submit">Submit Order <span>↗</span></button>
           <div class="form-security"><span>Only email is required</span><span>No payment now</span><span>Human reply</span></div>
         </form>
@@ -105,6 +107,46 @@ import ContactLinks from '../components/ContactLinks.astro';
       articleFile.setCustomValidity(tooLarge ? 'Please upload an article file smaller than 10 MB.' : '');
       if (fileHelp) fileHelp.textContent = tooLarge ? 'This file is too large. Please choose a file under 10 MB.' : (file ? `Selected: ${file.name}` : 'Accepted: DOC, DOCX, PDF, TXT or RTF — maximum 10 MB.');
     });
+
+    const orderForm = document.querySelector('[data-order-form]');
+    const submitButton = orderForm?.querySelector('[type="submit"]');
+    const formMessage = orderForm?.querySelector('[data-form-message]');
+    const buttonContent = submitButton?.innerHTML;
+    orderForm?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!orderForm.reportValidity()) return;
+      if (formMessage) {
+        formMessage.textContent = '';
+        formMessage.classList.remove('show');
+      }
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending your order…';
+      }
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/nasirhaiderseo@gmail.com', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(orderForm),
+        });
+        const result = await response.json().catch(() => ({}));
+        const sent = response.ok && (result.success === true || result.success === 'true');
+        if (!sent) throw new Error(result.message || 'Your order could not be sent.');
+        const email = orderForm.querySelector('[name="email"]')?.value?.trim();
+        if (email) sessionStorage.setItem('webgrouth-order-email', email);
+        window.location.assign('/order-success');
+      } catch (error) {
+        if (formMessage) {
+          formMessage.textContent = 'We could not send your order right now. Please try again or contact us on WhatsApp.';
+          formMessage.classList.add('show');
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = buttonContent || 'Submit Order <span>↗</span>';
+        }
+      }
+    });
   </script>
 </BaseLayout>
 
@@ -120,4 +162,7 @@ import ContactLinks from '../components/ContactLinks.astro';
   .order-more-body { padding:18px 16px 2px; border-top:1px solid #e7e4de; }
   .article-area { min-height:120px!important; }
   .form-terms { margin:0 0 15px; color:#64748b!important; font-size:.69rem; line-height:1.55; }
+  .form-message { display:none; margin:0 0 14px; padding:12px 14px; color:#991b1b!important; border:1px solid #fecaca; border-radius:7px; background:#fef2f2; font-size:.75rem; font-weight:600; line-height:1.55; }
+  .form-message.show { display:block; }
+  .form-submit:disabled { cursor:wait; opacity:.72; }
 </style>

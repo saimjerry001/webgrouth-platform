@@ -1171,6 +1171,10 @@ p { color: #444b56; font-weight: 500; }
 .aside-list li { color: #46505e; font-size: .75rem; font-weight: 500; }
 .form-security { color: #667085; font-size: .64rem; font-weight: 600; }
 .success-card p { color: #444b56; font-size: 1rem; font-weight: 500; }
+.success-card p strong { color: #111827; font-weight: 700; }
+.success-note { margin:0 auto 25px; padding:18px 20px; border:1px solid #dbe5f7; border-radius:8px; background:#f4f7fc; text-align:left; }
+.success-note span { display:block; margin-bottom:6px; color:#2563eb; font:800 .7rem Manrope,sans-serif; letter-spacing:.08em; text-transform:uppercase; }
+.success-note p { margin:0; color:#404958; font-size:.84rem; line-height:1.65; }
 
 @media (max-width: 760px) {
   .homev3-lead { font-size: 1rem; }

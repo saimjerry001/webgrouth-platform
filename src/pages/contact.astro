@@ -34,12 +34,13 @@ import ContactLinks from '../components/ContactLinks.astro';
 
     <section class="saas-section slate">
       <div class="shell form-layout">
-        <form class="premium-form" action="https://formsubmit.co/nasirhaiderseo@gmail.com" method="POST" data-reveal>
+        <form class="premium-form" action="https://formsubmit.co/nasirhaiderseo@gmail.com" method="POST" data-contact-form data-reveal>
           <input type="hidden" name="_subject" value="New Website Enquiry — Web Grouth" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_next" value="https://webgrouth.com/contact-success" />
           <input type="hidden" name="_autoresponse" value="Thank you for contacting Web Grouth. We have received your enquiry and will reply by email after reviewing the details." />
+          <input type="hidden" name="_url" value="https://www.webgrouth.com/contact" />
           <label class="honeypot-field">Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
           <div class="form-section-heading"><span>01</span><h2>Contact details</h2></div>
           <div class="form-row"><div class="field"><label for="contact-name">Full name *</label><input id="contact-name" name="Name" autocomplete="name" required placeholder="Your full name" /></div><div class="field"><label for="contact-email">Email address *</label><input id="contact-email" name="email" type="email" autocomplete="email" required placeholder="name@company.com" /></div></div>
@@ -49,6 +50,7 @@ import ContactLinks from '../components/ContactLinks.astro';
           <div class="form-row"><div class="field"><label for="contact-service">Service *</label><select id="contact-service" name="Service" required><option>Guest posting</option><option>Link insertion</option><option>Bulk agency fulfilment</option><option>Niche outreach</option><option>Database access</option><option>Other SEO support</option></select></div><div class="field"><label for="contact-niche">Niche / category</label><input id="contact-niche" name="Niche" placeholder="e.g. SaaS, Finance, Health" /></div></div>
           <div class="field"><label for="contact-message">How can we help? *</label><textarea id="contact-message" name="Message" required placeholder="Include your target URL, preferred metrics, quantity, budget or any important requirements..."></textarea></div>
           <label class="consent-row"><input type="checkbox" name="Contact Consent" value="Yes" required /><span>I agree that Web Grouth may use these details to respond to this enquiry under the Privacy Policy.</span></label>
+          <p class="form-message" data-form-message role="alert" aria-live="polite"></p>
           <button class="saas-button primary form-submit" type="submit">Send Enquiry <span>↗</span></button>
           <div class="form-security"><span>Direct inbox delivery</span><span>No account required</span><span>Human reply</span></div>
         </form>
@@ -68,9 +70,52 @@ import ContactLinks from '../components/ContactLinks.astro';
     };
     updateSupportTime();
     setInterval(updateSupportTime, 60000);
+
+    const contactForm = document.querySelector('[data-contact-form]');
+    const submitButton = contactForm?.querySelector('[type="submit"]');
+    const formMessage = contactForm?.querySelector('[data-form-message]');
+    const buttonContent = submitButton?.innerHTML;
+    contactForm?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      if (!contactForm.reportValidity()) return;
+      if (formMessage) {
+        formMessage.textContent = '';
+        formMessage.classList.remove('show');
+      }
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending your message…';
+      }
+      try {
+        const response = await fetch('https://formsubmit.co/ajax/nasirhaiderseo@gmail.com', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(contactForm),
+        });
+        const result = await response.json().catch(() => ({}));
+        const sent = response.ok && (result.success === true || result.success === 'true');
+        if (!sent) throw new Error(result.message || 'Your message could not be sent.');
+        const email = contactForm.querySelector('[name="email"]')?.value?.trim();
+        if (email) sessionStorage.setItem('webgrouth-contact-email', email);
+        window.location.assign('/contact-success');
+      } catch (error) {
+        if (formMessage) {
+          formMessage.textContent = 'We could not send your message right now. Please try again or contact us on WhatsApp.';
+          formMessage.classList.add('show');
+        }
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.innerHTML = buttonContent || 'Send Enquiry <span>↗</span>';
+        }
+      }
+    });
   </script>
 </BaseLayout>
 
 <style>
   .contact-order-link { width:100%; margin-top:18px; color:#1d4ed8!important; background:#fff!important; }
+  .form-message { display:none; margin:0 0 14px; padding:12px 14px; color:#991b1b!important; border:1px solid #fecaca; border-radius:7px; background:#fef2f2; font-size:.75rem; font-weight:600; line-height:1.55; }
+  .form-message.show { display:block; }
+  .form-submit:disabled { cursor:wait; opacity:.72; }
 </style>

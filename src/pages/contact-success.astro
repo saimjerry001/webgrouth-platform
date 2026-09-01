@@ -6,9 +6,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="success-card" data-reveal>
       <div class="success-icon">✓</div>
       <span class="saas-kicker">Message received</span>
-      <h1>Thank you. We’ll contact you by email.</h1>
-      <p>We have received your message. A campaign manager will review it and reply to your email.</p>
+      <h1>Thank you. Your message is with our team.</h1>
+      <p>We will review your message and reply to <strong data-confirmation-email>the email address you provided</strong>.</p>
+      <div class="success-note"><span>What happens next</span><p>A campaign manager will check your message and send you a clear reply by email.</p></div>
       <div class="success-actions"><a class="saas-button primary" href="https://wa.me/923327810261?text=Hello%20Web%20Grouth%2C%20I%20have%20just%20sent%20an%20enquiry%20through%20the%20website." target="_blank" rel="noopener">Continue on WhatsApp ↗</a><a class="saas-button secondary" href="/">Return home</a></div>
     </section>
   </div>
+  <script is:inline>
+    const savedEmail = sessionStorage.getItem('webgrouth-contact-email');
+    const emailNode = document.querySelector('[data-confirmation-email]');
+    if (savedEmail && emailNode) emailNode.textContent = savedEmail;
+    sessionStorage.removeItem('webgrouth-contact-email');
+  </script>
 </BaseLayout>
