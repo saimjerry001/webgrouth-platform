@@ -1,11 +1,9 @@
 ---
-const home = Astro.url.pathname === '/';
-const anchor = (id: string) => `${home ? '' : '/'}#${id}`;
 const nav = [
-  { href: anchor('services'), label: 'Services' },
-  { href: anchor('database'), label: '40k Database' },
-  { href: anchor('pricing'), label: 'Pricing' },
-  { href: anchor('tools'), label: 'Free SEO Tools' },
+  { href: '/guest-posting', label: 'Guest Posting' },
+  { href: '/link-insertion', label: 'Link Insertion' },
+  { href: '/#database', label: 'Publisher Network' },
+  { href: '/seo-services', label: 'SEO Services' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -35,7 +33,7 @@ const contacts = [
           {item.icon === 'phone' && <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/></svg>}
         </a>)}
       </div>
-      <a class="wg-header-cta" href="/order">Get $0 Risk-Free Order <span>↗</span></a>
+      <a class="wg-header-cta" href="/order">Place an Order <span>↗</span></a>
       <button class="menu-button" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu" data-menu-button><span></span><span></span></button>
     </div>
   </div>
@@ -43,7 +41,7 @@ const contacts = [
   <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" data-mobile-menu>
     <div class="shell mobile-menu-inner">
       {nav.map((item) => <a href={item.href}>{item.label}<span>↗</span></a>)}
-      <a class="mobile-order" href="/order">Get $0 Risk-Free Order <span>↗</span></a>
+      <a class="mobile-order" href="/order">Place an Order <span>↗</span></a>
       <div class="mobile-contact-row">
         <a href="https://wa.me/923327810261" target="_blank" rel="noopener">WhatsApp</a>
         <a href="mailto:nasirhaiderseo@gmail.com">Email</a>
@@ -54,23 +52,23 @@ const contacts = [
 </header>
 
 <style>
-  .wg-header { background: rgba(255,255,255,.92); border-bottom: 1px solid #e2e8f0; backdrop-filter: blur(16px); }
-  .wg-header.scrolled { background: rgba(255,255,255,.98); box-shadow: 0 8px 30px rgba(15,23,42,.07); }
+  .wg-header { background: rgba(250,249,246,.94); border-bottom: 1px solid #dedbd4; backdrop-filter: blur(16px); }
+  .wg-header.scrolled { background: rgba(250,249,246,.98); box-shadow: 0 8px 30px rgba(15,23,42,.06); }
   .wg-header .brand-symbol { color: white; background: #2563eb; box-shadow: none; }
   .wg-header .brand-word { color: #0f172a; letter-spacing: -.045em; }
   .wg-header .brand-word span { color: #2563eb; }
-  .wg-header .desktop-nav { gap: 1.25rem; }
-  .wg-header .desktop-nav a { color: #526078; font-size: .79rem; font-weight: 600; }
-  .wg-header .desktop-nav a:hover { color: #0f172a; }
+  .wg-header .desktop-nav { gap: 1.15rem; }
+  .wg-header .desktop-nav a { color: #565d69; font-size: .76rem; font-weight: 650; }
+  .wg-header .desktop-nav a:hover { color: #111827; }
   .wg-header .desktop-nav a::after { background: #2563eb; }
   .quick-contacts { display: flex; align-items: center; gap: 4px; padding-right: 5px; }
   .quick-contacts a { width: 34px; height: 34px; display: grid; place-items: center; color: #64748b; border-radius: 9px; transition: color .2s ease, background .2s ease; }
   .quick-contacts a:hover { color: #2563eb; background: #eff6ff; }
   .quick-contacts svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-  .wg-header-cta { display: inline-flex; align-items: center; gap: .45rem; min-height: 42px; padding: 0 1rem; color: white; border-radius: 10px; background: #2563eb; font-size: .76rem; font-weight: 750; box-shadow: 0 8px 20px rgba(37,99,235,.18); transition: transform .2s ease, background .2s ease; }
+  .wg-header-cta { display: inline-flex; align-items: center; gap: .45rem; min-height: 43px; padding: 0 1.05rem; color: white; border-radius: 8px; background: #2563eb; font-size: .76rem; font-weight: 750; box-shadow: 0 8px 20px rgba(37,99,235,.16); transition: transform .2s ease, background .2s ease; }
   .wg-header-cta:hover { transform: translateY(-2px); background: #1d4ed8; }
   .wg-header .menu-button span { background: #0f172a; }
-  .wg-header .mobile-menu { background: rgba(255,255,255,.99); border-bottom-color: #e2e8f0; }
+  .wg-header .mobile-menu { background: rgba(250,249,246,.99); border-bottom-color: #dedbd4; }
   .wg-header .mobile-menu a { color: #1e293b; border-bottom-color: #e2e8f0; }
   .wg-header .mobile-menu .mobile-order { color: #1d4ed8; font-weight: 750; }
   .mobile-contact-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; padding: 15px 0 5px; }

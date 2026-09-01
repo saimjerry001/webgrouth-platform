@@ -9,9 +9,9 @@ import ContactLinks from '../components/ContactLinks.astro';
       <div class="shell saas-hero-grid">
         <div class="saas-hero-copy" data-reveal>
           <div class="saas-breadcrumbs"><a href="/">Home</a><span>/</span><span>Contact</span></div>
-          <span class="saas-kicker">Direct human support</span>
-          <h1>Tell us what you need.<br/><span>Get a useful next step.</span></h1>
-          <p>Share your niche, target page and campaign requirements. Use the structured form for a detailed brief or contact Web Grouth directly by WhatsApp, email or phone.</p>
+          <span class="saas-kicker">Direct campaign support</span>
+          <h1>Talk to someone who understands the brief.</h1>
+          <p>Share your niche, target page or campaign question. Use the form for a detailed enquiry, or contact Web Grouth directly by WhatsApp, email or phone.</p>
         </div>
         <div data-reveal data-reveal-delay="1"><ContactLinks compact={true} /></div>
       </div>
@@ -38,7 +38,8 @@ import ContactLinks from '../components/ContactLinks.astro';
           <input type="hidden" name="_subject" value="New Website Enquiry — Web Grouth" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
-          <input type="hidden" name="_next" value="https://webgrouth.com/order-success" />
+          <input type="hidden" name="_next" value="https://webgrouth.com/contact-success" />
+          <input type="hidden" name="_autoresponse" value="Thank you for contacting Web Grouth. We have received your enquiry and will reply by email after reviewing the details." />
           <label class="honeypot-field">Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
           <div class="form-section-heading"><span>01</span><h2>Contact details</h2></div>
           <div class="form-row"><div class="field"><label for="contact-name">Full name *</label><input id="contact-name" name="Name" autocomplete="name" required placeholder="Your full name" /></div><div class="field"><label for="contact-email">Email address *</label><input id="contact-email" name="email" type="email" autocomplete="email" required placeholder="name@company.com" /></div></div>
@@ -53,7 +54,7 @@ import ContactLinks from '../components/ContactLinks.astro';
         </form>
         <aside class="form-aside" data-reveal data-reveal-delay="1">
           <div class="aside-card"><span>For a faster answer</span><h3>Include these four details</h3><ul class="aside-list"><li>Your niche and target country</li><li>Target URL and anchor text</li><li>Preferred DR, traffic or budget</li><li>Single or bulk order quantity</li></ul></div>
-          <div class="aside-card blue"><span>Ready to order?</span><h3>Use the structured $0 upfront brief.</h3><p>The dedicated order page captures everything required to start matching publishers.</p><a class="saas-button secondary contact-order-link" href="/order">Open order form ↗</a></div>
+          <div class="aside-card blue"><span>Ready to order?</span><h3>Use the complete guest post brief.</h3><p>The dedicated order page captures your site, anchor, article and publisher requirements in one place.</p><a class="saas-button secondary contact-order-link" href="/order">Open order form ↗</a></div>
         </aside>
       </div>
     </section>

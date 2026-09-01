@@ -3,23 +3,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactLinks from '../components/ContactLinks.astro';
 ---
 
-<BaseLayout title="$0 Upfront Guest Post Order | Web Grouth" description="Submit your guest posting brief to Web Grouth. Pay only after your approved placement is live and verified.">
+<BaseLayout title="Place a Guest Post Order | Web Grouth" description="Submit your guest posting or link insertion brief, article, target URL and publisher requirements to Web Grouth.">
   <div class="saas-page">
     <section class="saas-hero">
       <div class="shell saas-hero-grid">
         <div class="saas-hero-copy" data-reveal>
-          <div class="saas-breadcrumbs"><a href="/">Home</a><span>/</span><span>Risk-Free Order</span></div>
-          <span class="saas-kicker">$0 advance payment</span>
-          <h1>Submit your brief.<br/><span>Pay after the link is live.</span></h1>
-          <p>Tell us exactly what you need. We will review your niche, match suitable publishers and confirm every placement term before moving forward.</p>
+          <div class="saas-breadcrumbs"><a href="/">Home</a><span>/</span><span>Place an Order</span></div>
+          <span class="saas-kicker">Guest post order form</span>
+          <h1>Everything we need to prepare the right placement.</h1>
+          <p>Add your target page, anchor, article and publisher preferences below. A campaign manager will review the brief and reply with the next practical step.</p>
         </div>
         <aside class="saas-hero-panel" data-reveal data-reveal-delay="1">
           <span>How your order works</span>
           <ul>
-            <li>01 · Submit requirements <span>No payment details needed</span></li>
-            <li>02 · Review matched sites <span>You approve before publishing</span></li>
-            <li>03 · Receive live URL <span>Link is checked and verified</span></li>
-            <li>04 · Complete payment <span>Only after agreed delivery</span></li>
+            <li>01 · Submit the brief <span>Website, anchor and article details</span></li>
+            <li>02 · Review matched sites <span>Choose the right publisher</span></li>
+            <li>03 · Approve the placement <span>Confirm price and terms</span></li>
+            <li>04 · Receive the live URL <span>Delivery is checked and reported</span></li>
           </ul>
         </aside>
       </div>
@@ -28,12 +28,12 @@ import ContactLinks from '../components/ContactLinks.astro';
     <section class="saas-section">
       <div class="shell form-layout">
         <form class="premium-form" action="https://formsubmit.co/nasirhaiderseo@gmail.com" method="POST" enctype="multipart/form-data" data-order-form data-reveal>
-          <input type="hidden" name="_subject" value="New $0 Upfront Guest Post Order — Web Grouth" />
+          <input type="hidden" name="_subject" value="New Guest Post Order — Web Grouth" />
           <input type="hidden" name="_template" value="table" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_next" value="https://webgrouth.com/order-success" />
           <input type="hidden" name="_autoresponse" value="Thank you for your guest post order. Web Grouth has received your brief and will contact you by email after reviewing the details." />
-          <input type="hidden" name="Source Offer" value="$0 Upfront Guest Post" data-source-offer />
+          <input type="hidden" name="Source Offer" value="Web Grouth Order Form" data-source-offer />
           <label class="honeypot-field">Leave this empty<input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
 
           <div class="form-section-heading"><span>01</span><h2>Client information</h2></div>
@@ -49,7 +49,7 @@ import ContactLinks from '../components/ContactLinks.astro';
             <div class="field"><label for="client-website">Client website URL *</label><input id="client-website" name="Client Website" type="url" required placeholder="https://example.com" /></div>
             <div class="field"><label for="required-niche">Required niche / category *</label><input id="required-niche" name="Required Niche" required placeholder="e.g. SaaS, Finance, Health" /></div>
           </div>
-          <div class="field"><label for="order-service">Order type *</label><select id="order-service" name="Order Type" required data-order-service><option value="Risk-Free Guest Post">Risk-Free Guest Post</option><option value="Pay-After-Live Offer">Pay-After-Live Offer</option><option value="Bulk Guest Posting">Bulk Guest Posting</option><option value="Handpicked Niche Outreach">Handpicked Niche Outreach</option><option value="Link Insertion">Link Insertion</option><option value="Custom Campaign">Custom Campaign</option></select></div>
+          <div class="field"><label for="order-service">Order type *</label><select id="order-service" name="Order Type" required data-order-service><option value="Guest Posting">Guest Posting</option><option value="Link Insertion">Link Insertion</option><option value="Bulk Guest Posting">Bulk Guest Posting</option><option value="Handpicked Niche Outreach">Handpicked Niche Outreach</option><option value="SEO Campaign">Off-Page SEO Campaign</option><option value="Custom Campaign">Custom Campaign</option></select></div>
           <div class="field"><label for="publisher-site">Requested publisher website / site URL</label><input id="publisher-site" name="Requested Publisher Website" placeholder="Enter the selected site/domain, if you already have one" /><small class="field-help">Leave this empty if you want Web Grouth to recommend suitable websites.</small></div>
 
           <div class="form-divider"></div>
@@ -75,12 +75,12 @@ import ContactLinks from '../components/ContactLinks.astro';
           <div class="field"><label for="requirements">Specific requirements</label><textarea id="requirements" name="Specific Requirements" placeholder="Traffic, country, link type, TAT, word count, quantity or publisher requirements..."></textarea><small class="field-help">Avoid sharing passwords or sensitive account information.</small></div>
 
           <label class="consent-row"><input type="checkbox" name="Terms Accepted" value="Yes" required /><span>I confirm the submitted information is accurate and agree that final pricing, publisher eligibility and guarantee terms will be confirmed before work begins.</span></label>
-          <button class="saas-button primary form-submit" type="submit">Submit Risk-Free Order <span>↗</span></button>
-          <div class="form-security"><span>No advance payment</span><span>Sent securely to Web Grouth</span><span>Human review</span></div>
+          <button class="saas-button primary form-submit" type="submit">Send Order Brief <span>↗</span></button>
+          <div class="form-security"><span>No card details</span><span>Sent securely to Web Grouth</span><span>Human review</span></div>
         </form>
 
         <aside class="form-aside" data-reveal data-reveal-delay="1">
-          <div class="aside-card blue"><span>$0 due today</span><h3>No card. No checkout. No payment before delivery.</h3><p>Your brief is reviewed by a person. Eligible placement terms are confirmed before publishing begins.</p></div>
+          <div class="aside-card blue"><span>Payment terms</span><h3>Eligible campaigns can be paid after live-link verification.</h3><p>The publisher, price and applicable terms are confirmed with you before the work begins.</p></div>
           <div class="aside-card"><span>Order protection</span><h3>Clear terms before work starts</h3><ul class="aside-list"><li>30-day indexation policy</li><li>Six-month eligible replacement window</li><li>Publisher and pricing approval</li><li>Live URL verification</li></ul></div>
           <ContactLinks compact={true} />
         </aside>
@@ -91,6 +91,7 @@ import ContactLinks from '../components/ContactLinks.astro';
   <script is:inline>
     const params = new URLSearchParams(window.location.search);
     const selected = params.get('service') || params.get('offer');
+    const selectedNiche = params.get('niche');
     const select = document.querySelector('[data-order-service]');
     const source = document.querySelector('[data-source-offer]');
     if (selected && select) {
@@ -98,6 +99,8 @@ import ContactLinks from '../components/ContactLinks.astro';
       if (option) select.value = option.value;
       if (source) source.value = selected;
     }
+    const nicheField = document.querySelector('#required-niche');
+    if (selectedNiche && nicheField) nicheField.value = selectedNiche;
     const articleFile = document.querySelector('[data-article-file]');
     const fileHelp = document.querySelector('[data-file-help]');
     articleFile?.addEventListener('change', () => {
