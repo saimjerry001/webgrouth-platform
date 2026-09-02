@@ -10,8 +10,35 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 const formattedDate = post.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+const articleUrl = `https://www.webgrouth.com/blog/${post.id}`;
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  '@id': `${articleUrl}#article`,
+  headline: post.data.title,
+  description: post.data.description,
+  url: articleUrl,
+  mainEntityOfPage: { '@id': `${articleUrl}#webpage` },
+  datePublished: post.data.date.toISOString(),
+  articleSection: post.data.category,
+  image: new URL(post.data.image, 'https://www.webgrouth.com').toString(),
+  author: post.data.author === 'Web Grouth'
+    ? { '@id': 'https://www.webgrouth.com/#organization' }
+    : { '@type': 'Person', name: post.data.author },
+  publisher: { '@id': 'https://www.webgrouth.com/#organization' },
+  inLanguage: 'en',
+};
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.webgrouth.com/' },
+    { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://www.webgrouth.com/blog' },
+    { '@type': 'ListItem', position: 3, name: post.data.title, item: articleUrl },
+  ],
+};
 ---
-<BaseLayout title={`${post.data.title} | Web Grouth`} description={post.data.description} article={true}>
+<BaseLayout title={`${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} structuredData={[articleSchema, breadcrumbSchema]}>
   <section class="page-hero"><div class="shell article-header" data-reveal><div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/blog">Insights</a><span>/</span><span>{post.data.category}</span></div><div class="eyebrow"><span class="eyebrow-dot"></span>{post.data.category}</div><h1>{post.data.title}</h1><p>{post.data.description}</p><div class="article-meta-line"><span>{formattedDate}</span><span>·</span><span>{post.data.readTime}</span><span>·</span><span>By {post.data.author}</span></div></div></section>
   <article class="article-prose"><Content /></article>
   <section class="cta-block"><div class="shell cta-card" data-reveal><div class="eyebrow"><span class="eyebrow-dot"></span> Need placements, not just theory?</div><h2>Turn the next idea into a live campaign.</h2><p>Share your niche and targets. We’ll help you map relevant publisher opportunities.</p><a class="button" href="/order">Place an order <span>↗</span></a></div></section>

@@ -6,9 +6,23 @@ const items = [
   ['Clear terms', 'We confirm the link type, delivery time, permanence and content rules before you approve.'],
   ['Simple reporting', 'Receive the live URL and order details in an easy-to-read report.'],
 ];
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  '@id': 'https://www.webgrouth.com/guest-posting#service',
+  name: 'Guest Posting Services for USA and UK',
+  serviceType: 'Guest posting',
+  url: 'https://www.webgrouth.com/guest-posting',
+  description: 'Relevant editorial guest posts on vetted websites for brands and SEO agencies targeting the USA and UK.',
+  provider: { '@id': 'https://www.webgrouth.com/#organization' },
+  areaServed: [
+    { '@type': 'Country', name: 'United States' },
+    { '@type': 'Country', name: 'United Kingdom' },
+  ],
+};
 ---
-<BaseLayout title="Guest Posting Services | Web Grouth" description="Relevant editorial guest posts on vetted websites, supported by human outreach, content and clear reporting.">
-  <section class="page-hero"><div class="shell page-hero-grid"><div class="page-hero-copy" data-reveal><div class="breadcrumbs"><a href="/">Home</a><span>/</span><span>Guest Posting</span></div><div class="eyebrow"><span class="eyebrow-dot"></span> Guest posting service</div><h1>Guest posts on websites that fit your niche.</h1><p>Choose from relevant websites with clear prices, simple approval and articles written for the selected site.</p><div class="hero-actions"><a class="button button-primary" href="/order?service=Guest%20Posting">Place a guest post order <span>↗</span></a><a class="button button-secondary" href="#process">See how it works</a></div></div><aside class="page-hero-aside" data-reveal data-reveal-delay="1"><span>Order options</span><ul><li><span>Order size</span>Single or bulk</li><li><span>Article</span>Yours or ours</li><li><span>Categories</span>30+ niches</li><li><span>Report</span>Live URL + details</li></ul></aside></div></section>
+<BaseLayout title="Guest Posting Services for USA & UK | Web Grouth" description="Get relevant guest posts on vetted USA and UK websites with human publisher matching, site approval, content support and clear live-link reporting." structuredData={serviceSchema}>
+  <section class="page-hero"><div class="shell page-hero-grid"><div class="page-hero-copy" data-reveal><div class="breadcrumbs"><a href="/">Home</a><span>/</span><span>Guest Posting</span></div><div class="eyebrow"><span class="eyebrow-dot"></span> Guest posting service</div><h1>Guest posts on websites that fit your niche.</h1><p>Choose relevant websites for USA and UK campaigns with clear prices, simple approval and articles written for the selected site.</p><div class="hero-actions"><a class="button button-primary" href="/order?service=Guest%20Posting">Place a guest post order <span>↗</span></a><a class="button button-secondary" href="#process">See how it works</a></div></div><aside class="page-hero-aside" data-reveal data-reveal-delay="1"><span>Order options</span><ul><li><span>Order size</span>Single or bulk</li><li><span>Article</span>Yours or ours</li><li><span>Target markets</span>USA and UK</li><li><span>Report</span>Live URL + details</li></ul></aside></div></section>
   <section class="section"><div class="shell content-grid"><div class="content-sticky" data-reveal><span class="kicker">What you receive</span><h2>Everything needed to publish your guest post.</h2><p>We manage the work from your order to the final live link.</p></div><div class="content-stack">{items.map(([title,text],i)=><article class="detail-card" data-reveal data-reveal-delay={String(i%3)}><div class="detail-card-head"><span class="detail-card-icon">✓</span><div><h3>{title}</h3><p>{text}</p></div></div></article>)}</div></div></section>
   <section class="section section-soft" id="process"><div class="shell"><div class="section-heading center" data-reveal><div class="eyebrow"><span class="eyebrow-dot"></span> From brief to live URL</div><h2>A process designed for <span class="gradient-text">control and speed.</span></h2></div><div class="process-grid">{[['01','Brief','Share targets, niche, anchors and priorities.'],['02','Shortlist','Review relevant publisher opportunities and terms.'],['03','Content','Approve your draft or our content direction.'],['04','Publish','Receive the live link and placement report.']].map(([n,t,x],i)=><article class="process-step" data-reveal data-reveal-delay={String(i)}><span class="step-number">STEP {n}</span><h3>{t}</h3><p>{x}</p></article>)}</div></div></section>
   <section class="section"><div class="shell trust-panel" data-reveal><div class="trust-panel-inner"><div><span class="kicker">For every order size</span><h2>Built for direct clients and SEO agencies.</h2></div><div class="trust-copy"><p>Order one guest post, a bulk campaign or regular monthly links. We keep every order clear and easy to track.</p><div class="tag-row"><span class="tag">Single orders</span><span class="tag">Bulk campaigns</span><span class="tag">Reseller support</span><span class="tag">Multiple countries</span></div></div></div></div></section>

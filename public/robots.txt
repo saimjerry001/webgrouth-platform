@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://webgrouth.com/sitemap.xml
+Sitemap: https://www.webgrouth.com/sitemap.xml
+Host: www.webgrouth.com

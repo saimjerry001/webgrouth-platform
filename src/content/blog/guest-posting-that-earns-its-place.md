@@ -45,3 +45,5 @@ The goal is not to find the largest number. It is to choose a credible page on a
 A good campaign records more than the live URL. Keep the publisher, topic, target page, anchor, link type, publication date and any agreed terms. That record makes future decisions faster and helps your team avoid repeating weak patterns.
 
 Guest posting becomes scalable when the standards are clear—not when the review disappears.
+
+If you want help applying this process, review our [guest posting service](/guest-posting) or send a [guest post order](/order?service=Guest%20Posting) for a USA or UK campaign.
