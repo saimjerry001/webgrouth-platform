@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const checks = [
+  ['Check the audience country', 'Make sure the website attracts readers from the country you want to reach. For USA or UK campaigns, country fit matters more than a large global traffic number.'],
+  ['Review real organic traffic', 'Look for steady, relevant search traffic and recent ranking pages. Do not choose a website only because its DA or DR looks high.'],
+  ['Confirm niche relevance', 'The website, article topic and your target page should make sense together. A relevant link is easier for readers and search engines to understand.'],
+  ['Check recent indexation', 'Search for several recent articles in Google. If new posts are regularly missing from the index, ask the publisher before ordering.'],
+  ['Inspect editorial quality', 'Read recent posts. Avoid websites filled with thin articles, copied content, poor formatting or unrelated commercial links.'],
+  ['Confirm every link term', 'Get the link type, sponsored attribute, turnaround time, word count, permanence and replacement terms in writing before approval.'],
+  ['Use a natural anchor', 'Choose an anchor that fits the sentence and helps the reader. Do not force the same commercial keyword into every placement.'],
+  ['Verify and monitor the live page', 'Check the final URL, article, link destination and link attributes. Keep the live URL and monitor it for removal or changes.'],
+];
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Guest Post Quality Checklist for USA and UK Campaigns',
+  description: 'Eight practical checks for reviewing a guest post website before ordering a placement.',
+  numberOfItems: checks.length,
+  itemListElement: checks.map(([name, description], index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name,
+    description,
+  })),
+};
+---
+
+<BaseLayout title="Guest Post Quality Checklist for USA & UK | Web Grouth" description="Use this simple guest post checklist to review audience country, organic traffic, niche relevance, indexation, link terms and content quality before ordering." pageType="Article" structuredData={pageSchema}>
+  <section class="page-hero">
+    <div class="shell">
+      <div class="article-header" data-reveal>
+        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/guest-posting">Guest Posting</a><span>/</span><span>Quality Checklist</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free guest post checklist</div>
+        <h1>Check a guest post website before you order.</h1>
+        <p>Use these eight simple checks to choose better placements for USA and UK campaigns. You can use the same process for one order or a large campaign.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#checklist">Start the checklist <span>↓</span></a><a class="button button-secondary" href="/guest-posting">View guest posting service</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="checklist">
+    <div class="shell content-grid">
+      <div class="content-sticky" data-reveal>
+        <span class="kicker">8 checks before approval</span>
+        <h2>Quality is more than DA or DR.</h2>
+        <p>Review the audience, traffic, content and publishing terms together. One strong metric cannot make a poor website relevant.</p>
+      </div>
+      <div class="content-stack">
+        {checks.map(([title, text], index) => (
+          <article class="detail-card" data-reveal data-reveal-delay={String(index % 3)}>
+            <div class="detail-card-head">
+              <span class="detail-card-icon">{String(index + 1).padStart(2, '0')}</span>
+              <div><h3>{title}</h3><p>{text}</p></div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="shell trust-panel" data-reveal>
+      <div class="trust-panel-inner">
+        <div><span class="kicker">Keep a clear record</span><h2>Save the details you approved.</h2></div>
+        <div class="trust-copy"><p>Record the domain, target page, anchor, agreed terms and live URL. This makes reporting easier and helps you check the placement later.</p><div class="tag-row"><span class="tag">Domain</span><span class="tag">Target URL</span><span class="tag">Anchor text</span><span class="tag">Live URL</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <div class="shell cta-card" data-reveal>
+      <div class="eyebrow"><span class="eyebrow-dot"></span> Need help with the shortlist?</div>
+      <h2>Send your niche and target market.</h2>
+      <p>Web Grouth will prepare relevant website options for you to review before publication.</p>
+      <a class="button" href="/order?service=Guest%20Posting">Place a guest post order <span>↗</span></a>
+    </div>
+  </section>
+</BaseLayout>

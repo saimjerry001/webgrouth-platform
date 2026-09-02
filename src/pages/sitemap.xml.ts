@@ -7,6 +7,7 @@ const siteUrl = 'https://www.webgrouth.com';
 const staticPages = [
   '',
   'guest-posting',
+  'guest-post-quality-checklist',
   'link-insertion',
   'seo-services',
   'about',
