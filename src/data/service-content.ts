@@ -59,7 +59,7 @@ export const serviceContent = {
       ['Do you work with SEO agencies?', 'Yes. We support agencies handling multiple clients, countries and niches. Share the campaign structure and reporting requirements when requesting options.'],
       ['Can you guarantee a first-place Google ranking?', 'No. Search results depend on many factors outside a placement provider’s control. We commit to the work and delivery terms agreed with you and keep the results easy to review.'],
       ['How soon should I review progress?', 'Check deliveries as they happen and review visibility and enquiries over comparable periods. Search changes can take time; the right review period depends on the website and campaign.'],
-      ['Do you provide services outside the USA and UK?', 'Yes. Web Grouth works worldwide. Your campaign can target one country or several markets, depending on your customers and publisher availability.'],
+      ['Which countries can a campaign target?', 'Yes. Web Grouth works worldwide. Your campaign can target one country or several markets, depending on your customers and publisher availability.'],
     ],
     links: [
       ['/guest-posting', 'Guest posting service'],

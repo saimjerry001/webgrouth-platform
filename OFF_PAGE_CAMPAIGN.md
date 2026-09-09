@@ -1,5 +1,7 @@
 # Web Grouth Worldwide Off-Page SEO Campaign
 
+Current status (9 September 2026): use the [off-page execution pack](reports/off-page-execution-pack.md) for checked routes, owner information needed and unsent drafts. This is a plan; no listed publication or external backlink has been completed in this release.
+
 ## Goal
 
 Build Web Grouth's worldwide authority through real business profiles, expert contributions, useful resources and relevant editorial mentions. Prioritize organic acquisition in the USA and UK while making it clear that services are available for every country, niche and category. Success is measured by qualified enquiries, branded searches, referral visits and earned links—not by link count alone.
@@ -30,7 +32,7 @@ Official route: https://www.goodfirms.co/get-listed
 
 ### Asset to create now
 
-**USA & UK Guest Post Quality Checklist**
+**Guest Post Quality Checklist**
 
 This practical resource will help a buyer check a publisher before ordering a guest post. It can become a dedicated website page and a downloadable one-page checklist.
 
@@ -47,7 +49,7 @@ The checklist should cover:
 
 Primary internal destination: `/guest-posting`
 
-Suggested title: **Guest Post Quality Checklist for USA & UK Campaigns**
+Suggested title: **Guest Post Quality Checklist for Worldwide Campaigns**
 
 Suggested description: **Use this simple checklist to review traffic, relevance, indexation, link terms, and content quality before you order a guest post.**
 
@@ -168,3 +170,4 @@ Before any profile is submitted or any pitch is sent, confirm:
 3. Which genuine clients may be asked for a review.
 4. Which email account will send editorial outreach.
 5. Whether a sanitized USA/UK database export can be used for the benchmark.
+

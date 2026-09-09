@@ -3,7 +3,11 @@
 Service coverage: Worldwide  
 Priority organic-acquisition markets: United States and United Kingdom  
 Primary conversion: qualified guest post, link insertion and off-page SEO enquiries  
-Baseline date: 2 September 2026
+Implementation reviewed: 9 September 2026. Search traffic and ranking baseline: not yet available.
+
+## Current delivery status
+
+The technical and on-page release, validation scope and unresolved account tasks are recorded in [the delivery report](reports/seo-status-2026-09-09.md). The [keyword map](SEO_KEYWORD_MAP.csv) contains proposed page topics, not measured volumes or positions. The [off-page execution pack](reports/off-page-execution-pack.md) records checked routes and unsent drafts; no new external backlinks are claimed.
 
 ## Target-page map
 
@@ -32,7 +36,7 @@ Use the phrases as topics, not as repeated exact-match wording. Copy must stay c
 
 ### Weeks 1–2: measurement and brand trust
 
-1. Verify the `www` domain property in Google Search Console and connect analytics.
+1. Verify the `webgrouth.com` Domain property or the exact `https://www.webgrouth.com/` URL-prefix property in Google Search Console and connect analytics.
 2. Record the starting position for each target page: clicks, impressions, indexed status, referring domains and qualified worldwide enquiries, with USA/UK segmented as priority acquisition markets.
 3. Complete real company profiles on relevant business and agency platforms. Use the same brand name, description, domain and contact details everywhere.
 4. Find unlinked mentions of Web Grouth and request a link only where it helps the reader.
@@ -74,3 +78,4 @@ Use the phrases as topics, not as repeated exact-match wording. Copy must stay c
 - Analytics access, if installed.
 - Approved client results that can become case studies.
 - Permission boundaries for using the existing publisher database in Web Grouth's own outreach campaign.
+
