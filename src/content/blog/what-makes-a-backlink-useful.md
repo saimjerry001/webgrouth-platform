@@ -51,4 +51,4 @@ Before approving a backlink, review:
 
 No single item makes a link valuable. The combination is what turns a placement into a credible recommendation.
 
-Learn how Web Grouth handles [contextual link insertions](/link-insertion), or see our complete [off-page SEO and link building service](/seo-services) for USA and UK campaigns.
+Learn how Web Grouth handles [contextual link insertions](/link-insertion), or see our complete [off-page SEO and link building service](/seo-services) for campaigns worldwide.

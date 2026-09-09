@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogOfferPopup from '../../components/BlogOfferPopup.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -8,7 +9,11 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const allPosts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const relatedPosts = allPosts.filter((item) => item.id !== post.id).slice(0, 3);
+const movingPosts = [...relatedPosts, ...relatedPosts];
+const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 const formattedDate = post.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 const articleUrl = `https://www.webgrouth.com/blog/${post.id}`;
 const articleSchema = {
@@ -38,8 +43,86 @@ const breadcrumbSchema = {
   ],
 };
 ---
+
 <BaseLayout title={`${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} structuredData={[articleSchema, breadcrumbSchema]}>
-  <section class="page-hero"><div class="shell article-header" data-reveal><div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/blog">Insights</a><span>/</span><span>{post.data.category}</span></div><div class="eyebrow"><span class="eyebrow-dot"></span>{post.data.category}</div><h1>{post.data.title}</h1><p>{post.data.description}</p><div class="article-meta-line"><span>{formattedDate}</span><span>·</span><span>{post.data.readTime}</span><span>·</span><span>By {post.data.author}</span></div></div></section>
-  <article class="article-prose"><Content /></article>
-  <section class="cta-block"><div class="shell cta-card" data-reveal><div class="eyebrow"><span class="eyebrow-dot"></span> Need placements, not just theory?</div><h2>Turn the next idea into a live campaign.</h2><p>Share your niche and targets. We’ll help you map relevant publisher opportunities.</p><a class="button" href="/order">Place an order <span>↗</span></a></div></section>
+  <div class="article-page">
+    <header class="article-masthead">
+      <div class="shell article-masthead-inner" data-reveal>
+        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/blog">Journal</a><span>/</span><span>{post.data.category}</span></div>
+        <span class="article-category">{post.data.category}</span>
+        <h1>{post.data.title}</h1>
+        <p>{post.data.description}</p>
+        <div class="article-byline">
+          <span class="article-author-mark">WG</span>
+          <span><strong>{post.data.author}</strong><small>{formattedDate} · {post.data.readTime}</small></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="shell article-cover-wrap" data-reveal>
+      <figure class="article-cover">
+        <img src={post.data.image} alt={`Cover image for ${post.data.title}`} width="1400" height="790" decoding="async" />
+        <figcaption>Web Grouth Journal · Practical SEO guidance for worldwide campaigns</figcaption>
+      </figure>
+    </div>
+
+    <div class="shell article-reading-layout">
+      <article class="article-prose article-prose-new">
+        <Content />
+      </article>
+
+      <aside class="article-sidebar" aria-label="Article sidebar">
+        <div class="article-sidebar-inner">
+          {sectionHeadings.length > 0 && (
+            <nav class="article-toc" aria-label="On this page">
+              <span>On this page</span>
+              <ol>{sectionHeadings.map((heading) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol>
+            </nav>
+          )}
+
+          <section class="article-side-offer">
+            <span>New client offer</span>
+            <strong>$1 first guest post</strong>
+            <p>Choose from selected websites. Approve the site first and pay after the link is live.</p>
+            <a href="/order?service=First%20Guest%20Post&offer=1-dollar">Check availability <span>↗</span></a>
+            <small>Selected websites only. Subject to approval and availability.</small>
+          </section>
+
+          <section class="article-side-latest">
+            <span>Latest articles</span>
+            {relatedPosts.map((item) => (
+              <a href={`/blog/${item.id}`}>
+                <img src={item.data.image} alt="" width="72" height="56" loading="lazy" decoding="async" />
+                <span><strong>{item.data.title}</strong><small>{item.data.readTime}</small></span>
+              </a>
+            ))}
+          </section>
+        </div>
+      </aside>
+    </div>
+
+    {relatedPosts.length > 0 && (
+      <section class="article-related">
+        <div class="shell journal-moving-head"><span>Read next</span><h2>More useful guides</h2></div>
+        <div class="journal-moving-window">
+          <div class="journal-moving-track">
+            {movingPosts.map((item, index) => (
+              <a class="journal-moving-card" href={`/blog/${item.id}`} aria-hidden={index >= relatedPosts.length ? 'true' : undefined} tabindex={index >= relatedPosts.length ? '-1' : undefined}>
+                <img src={item.data.image} alt="" width="180" height="120" loading="lazy" decoding="async" />
+                <span><small>{item.data.category}</small><strong>{item.data.title}</strong><em>{item.data.readTime}</em></span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="article-final-cta">
+      <div class="shell article-final-inner" data-reveal>
+        <div><span>Ready to build your campaign?</span><h2>Send the brief. Review the websites. Pay after the link is live.</h2></div>
+        <a href="/order">Place an order <span>↗</span></a>
+      </div>
+    </section>
+  </div>
+  <BlogOfferPopup />
 </BaseLayout>

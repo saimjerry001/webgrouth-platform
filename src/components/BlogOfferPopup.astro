@@ -1,0 +1,43 @@
+<dialog class="journal-popup" data-journal-popup aria-labelledby="journal-popup-title">
+  <button class="journal-popup-close" type="button" data-journal-popup-close aria-label="Close offer">×</button>
+  <span class="journal-popup-kicker">A simple first step</span>
+  <strong id="journal-popup-title">Try your first guest post for $1.</strong>
+  <p>Tell us your niche. We will share selected website options before you approve the order.</p>
+  <div class="journal-popup-actions">
+    <a href="/order?service=First%20Guest%20Post&offer=1-dollar">See available websites <span>↗</span></a>
+    <button type="button" data-journal-popup-close>Not now</button>
+  </div>
+  <small>New clients · Selected websites · Subject to availability</small>
+</dialog>
+
+<script is:inline>
+  (() => {
+    const popup = document.querySelector('[data-journal-popup]');
+    if (!(popup instanceof HTMLDialogElement)) return;
+    let alreadySeen = false;
+    try { alreadySeen = sessionStorage.getItem('wg-journal-offer-seen') === '1'; } catch {}
+    if (alreadySeen) return;
+
+    let shown = false;
+    const showOffer = () => {
+      if (shown || popup.open) return;
+      shown = true;
+      try { sessionStorage.setItem('wg-journal-offer-seen', '1'); } catch {}
+      popup.showModal();
+    };
+    const closeOffer = () => popup.close();
+    popup.querySelectorAll('[data-journal-popup-close]').forEach((button) => button.addEventListener('click', closeOffer));
+    popup.addEventListener('click', (event) => {
+      if (event.target === popup) closeOffer();
+    });
+    const onScroll = () => {
+      const remaining = document.documentElement.scrollHeight - window.innerHeight;
+      if (remaining > 0 && window.scrollY / remaining > .32) {
+        showOffer();
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.setTimeout(showOffer, 12000);
+  })();
+</script>

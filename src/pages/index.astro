@@ -73,12 +73,9 @@ const homeSchema = [
     name: 'Guest Posting and Link Building Services',
     serviceType: ['Guest posting', 'Contextual link insertion', 'Off-page SEO'],
     url: 'https://www.webgrouth.com/',
-    description: 'Relevant guest posts and contextual link placements for brands and SEO agencies targeting audiences in the United States and United Kingdom.',
+    description: 'Relevant guest posts and contextual link placements for brands and SEO agencies targeting audiences worldwide.',
     provider: { '@id': 'https://www.webgrouth.com/#organization' },
-    areaServed: [
-      { '@type': 'Country', name: 'United States' },
-      { '@type': 'Country', name: 'United Kingdom' },
-    ],
+    areaServed: 'Worldwide',
     audience: [
       { '@type': 'BusinessAudience', audienceType: 'Brands' },
       { '@type': 'BusinessAudience', audienceType: 'SEO agencies' },
@@ -96,14 +93,14 @@ const homeSchema = [
 ];
 ---
 
-<BaseLayout title="Guest Posting & Link Building for USA & UK | Web Grouth" description="Get guest posts and link insertions on relevant USA and UK websites. Review publisher options, prices and terms before we deliver your live link." structuredData={homeSchema}>
+<BaseLayout title="Worldwide Guest Posting & Link Building | Web Grouth" description="Get guest posts and link insertions on relevant websites worldwide. Review publisher options, prices and terms before we deliver your live link." structuredData={homeSchema}>
   <div class="homev3">
     <section class="homev3-hero">
       <div class="shell homev3-hero-grid">
         <div class="homev3-hero-copy" data-reveal>
           <p class="homev3-overline">Guest posting for brands and SEO agencies</p>
           <h1>Guest posting on <span>websites that matter.</span></h1>
-          <p class="homev3-lead">Choose from 40,000+ publisher websites, including options for USA and UK campaigns. We help you find the right sites, confirm every detail and deliver your live link.</p>
+          <p class="homev3-lead">Choose from 40,000+ publisher websites across countries, niches and categories. We help you find the right sites, confirm every detail and deliver your live link.</p>
           <div class="homev3-actions">
             <a class="homev3-button homev3-button-primary" href="/order">Place Your Order <span>↗</span></a>
             <a class="homev3-button homev3-button-secondary" href="#database">View Website Network</a>

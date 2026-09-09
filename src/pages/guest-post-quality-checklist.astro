@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const checks = [
-  ['Check the audience country', 'Make sure the website attracts readers from the country you want to reach. For USA or UK campaigns, country fit matters more than a large global traffic number.'],
+  ['Check the audience country', 'Make sure the website attracts readers from the country you want to reach. Country fit matters more than a large worldwide traffic number.'],
   ['Review real organic traffic', 'Look for steady, relevant search traffic and recent ranking pages. Do not choose a website only because its DA or DR looks high.'],
   ['Confirm niche relevance', 'The website, article topic and your target page should make sense together. A relevant link is easier for readers and search engines to understand.'],
   ['Check recent indexation', 'Search for several recent articles in Google. If new posts are regularly missing from the index, ask the publisher before ordering.'],
@@ -15,7 +15,7 @@ const checks = [
 const pageSchema = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'Guest Post Quality Checklist for USA and UK Campaigns',
+  name: 'Guest Post Quality Checklist for Worldwide Campaigns',
   description: 'Eight practical checks for reviewing a guest post website before ordering a placement.',
   numberOfItems: checks.length,
   itemListElement: checks.map(([name, description], index) => ({
@@ -27,14 +27,14 @@ const pageSchema = {
 };
 ---
 
-<BaseLayout title="Guest Post Quality Checklist for USA & UK | Web Grouth" description="Use this simple guest post checklist to review audience country, organic traffic, niche relevance, indexation, link terms and content quality before ordering." pageType="Article" structuredData={pageSchema}>
+<BaseLayout title="Guest Post Quality Checklist | Web Grouth" description="Use this simple guest post checklist to review audience country, organic traffic, niche relevance, indexation, link terms and content quality before ordering." pageType="Article" structuredData={pageSchema}>
   <section class="page-hero">
     <div class="shell">
       <div class="article-header" data-reveal>
         <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/guest-posting">Guest Posting</a><span>/</span><span>Quality Checklist</span></div>
         <div class="eyebrow"><span class="eyebrow-dot"></span> Free guest post checklist</div>
         <h1>Check a guest post website before you order.</h1>
-        <p>Use these eight simple checks to choose better placements for USA and UK campaigns. You can use the same process for one order or a large campaign.</p>
+        <p>Use these eight simple checks to choose better placements in any country or niche. The same process works for one order or a large worldwide campaign.</p>
         <div class="hero-actions"><a class="button button-primary" href="#checklist">Start the checklist <span>↓</span></a><a class="button button-secondary" href="/guest-posting">View guest posting service</a></div>
       </div>
     </div>

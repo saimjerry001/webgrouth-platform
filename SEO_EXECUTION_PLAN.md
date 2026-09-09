@@ -1,6 +1,7 @@
 # Web Grouth SEO Execution Plan
 
-Target markets: United States and United Kingdom  
+Service coverage: Worldwide  
+Priority organic-acquisition markets: United States and United Kingdom  
 Primary conversion: qualified guest post, link insertion and off-page SEO enquiries  
 Baseline date: 2 September 2026
 
@@ -8,10 +9,10 @@ Baseline date: 2 September 2026
 
 | Page | Main search intent | Supporting themes |
 | --- | --- | --- |
-| `/` | Guest posting and link building for USA and UK | publisher network, agency fulfilment, backlink services |
-| `/guest-posting` | Guest posting services for USA and UK | editorial guest posts, niche guest posting, bulk guest posts |
-| `/link-insertion` | Link insertion services for USA and UK | contextual backlinks, niche edits, existing article links |
-| `/seo-services` | Off-page SEO and link building for USA and UK | outreach, authority building, campaign reporting |
+| `/` | Worldwide guest posting and link building | publisher network, agency fulfilment, backlink services |
+| `/guest-posting` | Worldwide guest posting services | editorial guest posts, niche guest posting, bulk guest posts |
+| `/link-insertion` | Worldwide link insertion services | contextual backlinks, niche edits, existing article links |
+| `/seo-services` | Worldwide off-page SEO and link building | outreach, authority building, campaign reporting |
 | `/order` | Order guest posts and link insertions | campaign brief, publisher requirements, target URL |
 | `/blog` | Guest posting and link building guidance | publisher quality, anchor context, editorial standards |
 
@@ -32,7 +33,7 @@ Use the phrases as topics, not as repeated exact-match wording. Copy must stay c
 ### Weeks 1–2: measurement and brand trust
 
 1. Verify the `www` domain property in Google Search Console and connect analytics.
-2. Record the starting position for each target page: clicks, impressions, indexed status, referring domains and USA/UK enquiries.
+2. Record the starting position for each target page: clicks, impressions, indexed status, referring domains and qualified worldwide enquiries, with USA/UK segmented as priority acquisition markets.
 3. Complete real company profiles on relevant business and agency platforms. Use the same brand name, description, domain and contact details everywhere.
 4. Find unlinked mentions of Web Grouth and request a link only where it helps the reader.
 
@@ -65,7 +66,7 @@ Use the phrases as topics, not as repeated exact-match wording. Copy must stay c
 - No fabricated reviews, traffic claims, case studies or client names.
 - No ranking guarantees.
 - Paid promotion must be disclosed and correctly qualified.
-- Measure qualified enquiries and useful USA/UK visibility, not link count alone.
+- Measure qualified worldwide enquiries and useful visibility, with USA/UK reported as priority acquisition markets—not as the limit of service coverage.
 
 ## Access needed for measurement and execution
 

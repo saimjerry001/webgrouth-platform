@@ -46,4 +46,4 @@ A good campaign records more than the live URL. Keep the publisher, topic, targe
 
 Guest posting becomes scalable when the standards are clear—not when the review disappears.
 
-If you want help applying this process, review our [guest posting service](/guest-posting) or send a [guest post order](/order?service=Guest%20Posting) for a USA or UK campaign.
+If you want help applying this process, review our [guest posting service](/guest-posting) or send a [guest post order](/order?service=Guest%20Posting) for a campaign in any country or niche.
