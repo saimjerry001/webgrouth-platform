@@ -27,7 +27,7 @@ const pageSchema = {
 };
 ---
 
-<BaseLayout title="Guest Post Quality Checklist | Web Grouth" description="Use this simple guest post checklist to review audience country, organic traffic, niche relevance, indexation, link terms and content quality before ordering." pageType="Article" structuredData={pageSchema}>
+<BaseLayout title="Guest Post Quality Checklist | Web Grouth" description="Use this simple guest post checklist to review audience country, organic traffic, niche relevance, indexation, link terms and content quality before ordering." article={true} structuredData={pageSchema}>
   <section class="page-hero">
     <div class="shell">
       <div class="article-header" data-reveal>
@@ -69,6 +69,12 @@ const pageSchema = {
     </div>
   </section>
 
+  <section class="section section-soft">
+    <div class="shell content-grid">
+      <div><span class="kicker">Free worksheet</span><h2>Keep your shortlist in one place.</h2><p>Use this blank CSV template to record each website, the evidence you checked and the terms you approved. Open it in Excel or import it into Google Sheets.</p></div>
+      <div><a class="button button-primary" href="/downloads/guest-post-review-template.csv" download>Download the review template</a><p>One row per website. Leave unknown metrics blank until they have been checked.</p></div>
+    </div>
+  </section>
   <section class="cta-block">
     <div class="shell cta-card" data-reveal>
       <div class="eyebrow"><span class="eyebrow-dot"></span> Need help with the shortlist?</div>
@@ -78,3 +84,4 @@ const pageSchema = {
     </div>
   </section>
 </BaseLayout>
+

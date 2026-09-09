@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogOfferPopup from '../components/BlogOfferPopup.astro';
+import BlogImage from '../components/BlogImage.astro';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
@@ -36,7 +37,7 @@ const blogSchema = {
         {featured && (
           <article class="journal-feature" data-reveal>
             <a class="journal-feature-image" href={`/blog/${featured.id}`} aria-label={`Read ${featured.data.title}`}>
-              <img src={featured.data.image} alt={`Cover image for ${featured.data.title}`} width="1200" height="760" decoding="async" />
+              <BlogImage src={featured.data.image} alt={`Cover image for ${featured.data.title}`} sizes="(max-width: 800px) 100vw, 60vw" priority />
             </a>
             <div class="journal-feature-copy">
               <div class="journal-label-row"><span>Featured</span><span>{featured.data.category}</span></div>
@@ -63,7 +64,7 @@ const blogSchema = {
           {morePosts.map((post, index) => (
             <article class="journal-card" data-reveal data-reveal-delay={String(index % 3)}>
               <a class="journal-card-image" href={`/blog/${post.id}`}>
-                <img src={post.data.image} alt={`Cover image for ${post.data.title}`} width="720" height="450" loading="lazy" decoding="async" />
+                <BlogImage src={post.data.image} alt={`Cover image for ${post.data.title}`} maxWidth={960} sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />
               </a>
               <div class="journal-card-copy">
                 <div class="journal-card-meta"><span>{post.data.category}</span><span>{formatDate(post.data.date)}</span></div>
@@ -91,7 +92,7 @@ const blogSchema = {
       <div class="shell journal-offer-inner">
         <div><span>New client introduction</span><h2>Try your first guest post for $1.</h2></div>
         <p>Available on selected websites. Approve the option first and pay after the link is live.</p>
-        <a href="/order?service=First%20Guest%20Post&offer=1-dollar">Check available websites <span>↗</span></a>
+        <a href="/order?service=First%20Guest%20Post&offer=1-dollar" data-journal-popup-open>Check available websites <span>↗</span></a>
       </div>
     </section>
 
@@ -101,7 +102,7 @@ const blogSchema = {
         <div class="journal-moving-track">
           {movingPosts.map((post, index) => (
             <a class="journal-moving-card" href={`/blog/${post.id}`} aria-hidden={index >= posts.length ? 'true' : undefined} tabindex={index >= posts.length ? '-1' : undefined}>
-              <img src={post.data.image} alt="" width="180" height="120" loading="lazy" decoding="async" />
+              <BlogImage src={post.data.image} alt="" maxWidth={640} sizes="180px" />
               <span><small>{post.data.category}</small><strong>{post.data.title}</strong><em>{post.data.readTime}</em></span>
             </a>
           ))}
@@ -111,3 +112,4 @@ const blogSchema = {
   </div>
   <BlogOfferPopup />
 </BaseLayout>
+

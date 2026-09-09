@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogOfferPopup from '../../components/BlogOfferPopup.astro';
+import BlogImage from '../../components/BlogImage.astro';
+import images from '../../generated/images.json';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
@@ -16,6 +18,8 @@ const movingPosts = [...relatedPosts, ...relatedPosts];
 const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 const formattedDate = post.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 const articleUrl = `https://www.webgrouth.com/blog/${post.id}`;
+const cover = images[post.data.image as keyof typeof images].fallback;
+const modifiedDate = post.data.updatedDate ?? post.data.date;
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -25,12 +29,13 @@ const articleSchema = {
   url: articleUrl,
   mainEntityOfPage: { '@id': `${articleUrl}#webpage` },
   datePublished: post.data.date.toISOString(),
+  dateModified: modifiedDate.toISOString(),
   articleSection: post.data.category,
-  image: new URL(post.data.image, 'https://www.webgrouth.com').toString(),
+  image: new URL(cover.src, 'https://www.webgrouth.com').toString(),
   author: post.data.author === 'Web Grouth'
-    ? { '@id': 'https://www.webgrouth.com/#organization' }
+    ? { '@type': 'Organization', '@id': 'https://www.webgrouth.com/#organization', name: 'Web Grouth', url: 'https://www.webgrouth.com/about' }
     : { '@type': 'Person', name: post.data.author },
-  publisher: { '@id': 'https://www.webgrouth.com/#organization' },
+  publisher: { '@type': 'Organization', '@id': 'https://www.webgrouth.com/#organization', name: 'Web Grouth', url: 'https://www.webgrouth.com/' },
   inLanguage: 'en',
 };
 const breadcrumbSchema = {
@@ -44,7 +49,7 @@ const breadcrumbSchema = {
 };
 ---
 
-<BaseLayout title={`${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} structuredData={[articleSchema, breadcrumbSchema]}>
+<BaseLayout title={`${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} modifiedTime={modifiedDate.toISOString()} image={post.data.image} imageAlt={`Cover image for ${post.data.title}`} structuredData={[articleSchema, breadcrumbSchema]}>
   <div class="article-page">
     <header class="article-masthead">
       <div class="shell article-masthead-inner" data-reveal>
@@ -54,14 +59,14 @@ const breadcrumbSchema = {
         <p>{post.data.description}</p>
         <div class="article-byline">
           <span class="article-author-mark">WG</span>
-          <span><strong>{post.data.author}</strong><small>{formattedDate} · {post.data.readTime}</small></span>
+          <span><strong><a href="/about">{post.data.author}</a></strong><small><time datetime={post.data.date.toISOString()}>{formattedDate}</time> · {post.data.readTime}</small>{post.data.updatedDate && <small>Updated <time datetime={modifiedDate.toISOString()}>{modifiedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time></small>}</span>
         </div>
       </div>
     </header>
 
     <div class="shell article-cover-wrap" data-reveal>
       <figure class="article-cover">
-        <img src={post.data.image} alt={`Cover image for ${post.data.title}`} width="1400" height="790" decoding="async" />
+        <BlogImage src={post.data.image} alt={`Cover image for ${post.data.title}`} sizes="(max-width: 1200px) 100vw, 1200px" priority />
         <figcaption>Web Grouth Journal · Practical SEO guidance for worldwide campaigns</figcaption>
       </figure>
     </div>
@@ -84,7 +89,7 @@ const breadcrumbSchema = {
             <span>New client offer</span>
             <strong>$1 first guest post</strong>
             <p>Choose from selected websites. Approve the site first and pay after the link is live.</p>
-            <a href="/order?service=First%20Guest%20Post&offer=1-dollar">Check availability <span>↗</span></a>
+            <a href="/order?service=First%20Guest%20Post&offer=1-dollar" data-journal-popup-open>Check availability <span>↗</span></a>
             <small>Selected websites only. Subject to approval and availability.</small>
           </section>
 
@@ -92,7 +97,7 @@ const breadcrumbSchema = {
             <span>Latest articles</span>
             {relatedPosts.map((item) => (
               <a href={`/blog/${item.id}`}>
-                <img src={item.data.image} alt="" width="72" height="56" loading="lazy" decoding="async" />
+                <BlogImage src={item.data.image} alt="" maxWidth={320} sizes="72px" />
                 <span><strong>{item.data.title}</strong><small>{item.data.readTime}</small></span>
               </a>
             ))}
@@ -108,7 +113,7 @@ const breadcrumbSchema = {
           <div class="journal-moving-track">
             {movingPosts.map((item, index) => (
               <a class="journal-moving-card" href={`/blog/${item.id}`} aria-hidden={index >= relatedPosts.length ? 'true' : undefined} tabindex={index >= relatedPosts.length ? '-1' : undefined}>
-                <img src={item.data.image} alt="" width="180" height="120" loading="lazy" decoding="async" />
+                <BlogImage src={item.data.image} alt="" maxWidth={640} sizes="180px" />
                 <span><small>{item.data.category}</small><strong>{item.data.title}</strong><em>{item.data.readTime}</em></span>
               </a>
             ))}
@@ -126,3 +131,4 @@ const breadcrumbSchema = {
   </div>
   <BlogOfferPopup />
 </BaseLayout>
+

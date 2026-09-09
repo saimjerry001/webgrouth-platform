@@ -10,34 +10,25 @@
   <small>New clients · Selected websites · Subject to availability</small>
 </dialog>
 
-<script is:inline>
-  (() => {
-    const popup = document.querySelector('[data-journal-popup]');
-    if (!(popup instanceof HTMLDialogElement)) return;
-    let alreadySeen = false;
-    try { alreadySeen = sessionStorage.getItem('wg-journal-offer-seen') === '1'; } catch {}
-    if (alreadySeen) return;
-
-    let shown = false;
-    const showOffer = () => {
-      if (shown || popup.open) return;
-      shown = true;
-      try { sessionStorage.setItem('wg-journal-offer-seen', '1'); } catch {}
-      popup.showModal();
-    };
-    const closeOffer = () => popup.close();
-    popup.querySelectorAll('[data-journal-popup-close]').forEach((button) => button.addEventListener('click', closeOffer));
-    popup.addEventListener('click', (event) => {
-      if (event.target === popup) closeOffer();
+<script>
+  const popup = document.querySelector<HTMLDialogElement>('[data-journal-popup]');
+  if (popup && typeof popup.showModal === 'function') {
+    let trigger: HTMLElement | null = null;
+    document.querySelectorAll<HTMLAnchorElement>('[data-journal-popup-open]').forEach(link => {
+      link.setAttribute('aria-haspopup', 'dialog');
+      link.addEventListener('click', event => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        event.preventDefault();
+        trigger = link;
+        popup.showModal();
+      });
     });
-    const onScroll = () => {
-      const remaining = document.documentElement.scrollHeight - window.innerHeight;
-      if (remaining > 0 && window.scrollY / remaining > .32) {
-        showOffer();
-        window.removeEventListener('scroll', onScroll);
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.setTimeout(showOffer, 12000);
-  })();
+    popup.querySelectorAll('[data-journal-popup-close]').forEach(button => button.addEventListener('click', () => popup.close()));
+    popup.addEventListener('click', event => {
+      if (event.target !== popup) return;
+      const box = popup.getBoundingClientRect();
+      if (event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom) popup.close();
+    });
+    popup.addEventListener('close', () => trigger?.focus());
+  }
 </script>

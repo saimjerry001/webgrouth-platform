@@ -8,6 +8,7 @@ const blog = defineCollection({
     description: z.string(),
     category: z.string(),
     date: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
     author: z.string().default('Web Grouth'),
     readTime: z.string(),
     image: z.string(),
@@ -15,3 +16,4 @@ const blog = defineCollection({
 });
 
 export const collections = { blog };
+

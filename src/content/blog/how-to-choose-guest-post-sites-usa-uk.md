@@ -3,6 +3,7 @@ title: "How to Choose Guest Post Websites for USA and UK Campaigns"
 description: "A clear process for finding guest post websites with the right audience, traffic, niche and publishing terms."
 category: "Guest Posting"
 date: 2026-08-22
+updatedDate: 2026-09-09
 author: "Web Grouth"
 readTime: "8 min read"
 image: "/images/webgrouth-strategy.png"
@@ -88,3 +89,11 @@ The destination link should support the discussion. Use a natural brand or descr
 Save the approved domain, article title, target URL, anchor, live URL, publication date and agreed terms. Review the link after it goes live and check it again during the replacement period.
 
 You can use Web Grouth's free [guest post quality checklist](/guest-post-quality-checklist) for every shortlist. If you want suitable options for the USA, UK or any other market, send a [guest post order](/order?service=Guest%20Posting).
+
+
+
+## Record the evidence behind your decision
+
+Use the [free website review worksheet](/downloads/guest-post-review-template.csv) to keep the traffic source, date checked, proposed topic and agreed terms together. Record estimates as estimates and leave unknown values blank. This makes a shortlist easier to compare across markets.
+
+For paid placements, confirm the sponsorship label and link attributes before approval. Google explains how to use `rel="sponsored"` or `rel="nofollow"` in its [outbound-link guidance](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links).

@@ -5,3 +5,8 @@ dist/
 .env
 .env.*
 !.env.example
+
+
+/src/generated/
+/public/images/responsive/
+/reports/build-seo.json

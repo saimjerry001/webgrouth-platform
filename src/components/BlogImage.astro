@@ -1,0 +1,26 @@
+---
+import images from '../generated/images.json';
+interface Props {
+  src: string;
+  alt: string;
+  sizes: string;
+  maxWidth?: number;
+  priority?: boolean;
+}
+const { src, alt, sizes, maxWidth = 1600, priority = false } = Astro.props;
+const image = images[src as keyof typeof images];
+if (!image) throw new Error(`Blog image is missing from the build manifest: ${src}`);
+const variants = image.variants.filter(item => item.width <= maxWidth);
+const fallback = variants.at(-1) ?? image.fallback;
+---
+<img
+  src={fallback.src}
+  srcset={variants.map(item => `${item.src} ${item.width}w`).join(', ')}
+  sizes={sizes}
+  alt={alt}
+  width={fallback.width}
+  height={fallback.height}
+  loading={priority ? 'eager' : 'lazy'}
+  fetchpriority={priority ? 'high' : undefined}
+  decoding="async"
+/>

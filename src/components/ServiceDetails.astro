@@ -1,0 +1,33 @@
+---
+import { serviceContent } from '../data/service-content';
+interface Props { service: keyof typeof serviceContent; }
+const content = serviceContent[Astro.props.service];
+---
+<section class="service-guide section section-soft" aria-labelledby="service-guide-heading">
+  <div class="shell">
+    <div class="section-heading"><h2 id="service-guide-heading">{content.heading}</h2><p>{content.intro}</p></div>
+    <div class="service-guide-grid">
+      {content.sections.map(([heading, text]) => <article><h3>{heading}</h3><p>{text}</p></article>)}
+    </div>
+    <nav class="service-guide-links" aria-label="Related service guides">
+      {content.links.map(([href, label]) => <a href={href}>{label} <span aria-hidden="true">↗</span></a>)}
+    </nav>
+  </div>
+</section>
+<section class="service-guide section" aria-labelledby="service-faq-heading">
+  <div class="shell homev3-faq-layout">
+    <div><span class="kicker">Before you order</span><h2 id="service-faq-heading">Your questions, answered.</h2><p>Need help with a specific brief? <a class="text-link" href="/contact">Contact our team.</a></p></div>
+    <div class="homev3-faq-list">{content.faqs.map(([question, answer]) => <details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
+  </div>
+</section>
+<style>
+  .service-guide .section-heading { max-width: 760px; }
+  .service-guide h2 { font-size: clamp(1.65rem, 3vw, 2.3rem); line-height: 1.25; }
+  .service-guide h3 { font-size: 1.16rem; margin-bottom: .65rem; }
+  .service-guide p { color: #475569; font-size: 1rem; line-height: 1.8; }
+  .service-guide-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 2rem 3rem; }
+  .service-guide-links { display: flex; flex-wrap: wrap; gap: .8rem 1.5rem; border-top: 1px solid #dbe1e8; padding-top: 1.5rem; margin-top: 2rem; }
+  .service-guide-links a { color: #1d4ed8; font-size: .94rem; font-weight: 650; }
+  .service-guide-links a:hover { text-decoration: underline; }
+  @media(max-width:700px) { .service-guide-grid { grid-template-columns:1fr; gap:1.5rem; } }
+</style>

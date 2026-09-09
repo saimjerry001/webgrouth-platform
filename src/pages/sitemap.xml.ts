@@ -1,50 +1,20 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { seoPages } from '../data/seo-pages';
+import { canonicalUrl, SITE_URL } from '../lib/seo';
+import { escapeXml } from '../lib/xml';
+import images from '../generated/images.json';
 
 export const prerender = true;
-
-const siteUrl = 'https://www.webgrouth.com';
-const staticPages = [
-  '',
-  'guest-posting',
-  'guest-post-quality-checklist',
-  'link-insertion',
-  'seo-services',
-  'about',
-  'contact',
-  'order',
-  'blog',
-  'guarantee-policy',
-  'privacy',
-  'terms',
-] as const;
-
-const escapeXml = (value: string) => value
-  .replaceAll('&', '&amp;')
-  .replaceAll('<', '&lt;')
-  .replaceAll('>', '&gt;')
-  .replaceAll('"', '&quot;')
-  .replaceAll("'", '&apos;');
-
 export const GET: APIRoute = async () => {
   const posts = await getCollection('blog');
-  const urls = [
-    ...staticPages.map((path) => ({
-      loc: path ? `${siteUrl}/${path}` : `${siteUrl}/`,
-      lastmod: '2026-09-02',
-    })),
-    ...posts.map((post) => ({
-      loc: `${siteUrl}/blog/${post.id}`,
-      lastmod: post.data.date.toISOString().slice(0, 10),
-    })),
-  ];
-
-  const body = urls
-    .map(({ loc, lastmod }) => `  <url><loc>${escapeXml(loc)}</loc><lastmod>${lastmod}</lastmod></url>`)
-    .join('\n');
-
-  return new Response(
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${body}\n</urlset>\n`,
-    { headers: { 'Content-Type': 'application/xml; charset=utf-8' } },
-  );
+  const staticUrls = seoPages.map(page => `<url><loc>${escapeXml(canonicalUrl(page.path))}</loc>${'lastmod' in page ? `<lastmod>${page.lastmod}</lastmod>` : ''}</url>`);
+  const articleUrls = posts.map(post => {
+    const image = images[post.data.image as keyof typeof images].fallback;
+    const modified = (post.data.updatedDate ?? post.data.date).toISOString().slice(0, 10);
+    return `<url><loc>${escapeXml(canonicalUrl(`/blog/${post.id}`))}</loc><lastmod>${modified}</lastmod><image:image><image:loc>${escapeXml(new URL(image.src, SITE_URL).toString())}</image:loc></image:image></url>`;
+  });
+  return new Response(`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${[...staticUrls, ...articleUrls].join('\n')}\n</urlset>\n`, {
+    headers: { 'Content-Type': 'application/xml; charset=utf-8' },
+  });
 };

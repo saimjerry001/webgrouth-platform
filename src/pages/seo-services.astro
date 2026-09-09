@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceDetails from '../components/ServiceDetails.astro';
 const services = [
   ['Off-page SEO plan', 'We build a clear link plan around your target pages, competitors and goals.'],
   ['Backlink profile support', 'We balance relevant websites, link types, target pages and anchor text.'],
@@ -22,5 +23,7 @@ const serviceSchema = {
   <section class="page-hero"><div class="shell page-hero-grid"><div class="page-hero-copy" data-reveal><div class="breadcrumbs"><a href="/">Home</a><span>/</span><span>SEO Services</span></div><div class="eyebrow"><span class="eyebrow-dot"></span> Complete link building</div><h1>Off-page SEO built around your real goals.</h1><p>We bring website research, outreach, content and backlinks into one clear campaign for the countries and pages that matter to you.</p><div class="hero-actions"><a class="button button-primary" href="/order?service=SEO%20Campaign">Send your campaign details <span>↗</span></a></div></div><aside class="page-hero-aside" data-reveal data-reveal-delay="1"><span>What we manage</span><ul><li><span>Coverage</span>Worldwide</li><li><span>Links</span>Relevant websites</li><li><span>Content</span>Article support</li><li><span>Reports</span>Clear updates</li></ul></aside></div></section>
   <section class="section"><div class="shell content-grid"><div class="content-sticky" data-reveal><span class="kicker">One clear campaign</span><h2>Better links start with better choices.</h2><p>We focus the work on your real business goals instead of chasing numbers alone.</p></div><div class="content-stack">{services.map(([title,text],i)=><article class="detail-card" data-reveal data-reveal-delay={String(i%3)}><div class="detail-card-head"><span class="detail-card-icon">{String(i+1).padStart(2,'0')}</span><div><h3>{title}</h3><p>{text}</p></div></div></article>)}</div></div></section>
   <section class="section section-soft"><div class="shell trust-panel" data-reveal><div class="trust-panel-inner"><div><span class="kicker">What we check</span><h2>Quality links—not just high metrics.</h2></div><div class="trust-copy"><p>We review relevance, traffic, page fit, anchor text and website quality together.</p><div class="tag-row"><span class="tag">Relevance</span><span class="tag">Organic traffic</span><span class="tag">Anchor text</span><span class="tag">Website quality</span><span class="tag">Clear reports</span></div></div></div></div></section>
+  <ServiceDetails service="seo-services" />
   <section class="cta-block"><div class="shell cta-card" data-reveal><div class="eyebrow"><span class="eyebrow-dot"></span> Start your plan</div><h2>Turn your target pages into a clear link plan.</h2><p>Send the pages you want to grow and the countries you want to reach.</p><a class="button" href="/order?service=SEO%20Campaign">Send your details <span>↗</span></a></div></section>
 </BaseLayout>
+

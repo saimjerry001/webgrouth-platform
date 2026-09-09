@@ -12,5 +12,6 @@
       "destination": "/",
       "permanent": true
     }
-  ]
+  ],
+  "buildCommand": "npm run build"
 }
