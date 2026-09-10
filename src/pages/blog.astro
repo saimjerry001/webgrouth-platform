@@ -2,12 +2,11 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogOfferPopup from '../components/BlogOfferPopup.astro';
 import BlogImage from '../components/BlogImage.astro';
+import BlogPostRail from '../components/BlogPostRail.astro';
+import '../styles/journal.css';
 import { getCollection } from 'astro:content';
 
 const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const featured = posts[0];
-const morePosts = posts.slice(1);
-const movingPosts = [...posts, ...posts];
 const formatDate = (date: Date) => date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 const blogSchema = {
   '@context': 'https://schema.org',
@@ -23,93 +22,58 @@ const blogSchema = {
 ---
 
 <BaseLayout title="Guest Posting & Link Building Guides | Web Grouth" description="Clear, practical guides about guest posting, link insertion, website quality and off-page SEO for worldwide campaigns." pageType="CollectionPage" structuredData={blogSchema}>
-  <div class="journal-page">
-    <section class="journal-masthead">
-      <div class="shell">
-        <div class="journal-masthead-top" data-reveal>
-          <div>
-            <span class="journal-edition">Web Grouth Journal</span>
-            <h1>Clear thinking for better backlinks.</h1>
+  <div class="wg-blog-theme wg-blog-index">
+    <div class="shell wg-blog-shell">
+      <header class="wg-blog-intro">
+        <span class="wg-blog-eyebrow">Web Grouth Journal</span>
+        <h1>Guest posting &amp; SEO guides</h1>
+        <p>Practical advice on choosing websites, planning content and building better links.</p>
+      </header>
+
+      <div class="wg-blog-layout">
+        <section aria-labelledby="latest-articles">
+          <div class="wg-blog-section-heading">
+            <h2 id="latest-articles">Latest articles</h2>
+            <span>{posts.length} articles</span>
           </div>
-          <p>Practical guest posting and link-building advice for agencies, marketers and business owners working worldwide.</p>
-        </div>
+          <div class="wg-blog-grid">
+            {posts.map((post, index) => (
+              <article class="wg-blog-card">
+                <a class="wg-blog-card-image" href={`/blog/${post.id}`} aria-label={`Read ${post.data.title}`}>
+                  <BlogImage src={post.data.image} alt={`Cover image for ${post.data.title}`} maxWidth={960} sizes="(max-width: 620px) calc(100vw - 40px), (max-width: 960px) calc((100vw - 64px) / 2), 392px" priority={index === 0} />
+                </a>
+                <div class="wg-blog-card-copy">
+                  <div class="wg-blog-card-meta"><span class="wg-blog-category">{post.data.category}</span><span>{post.data.readTime}</span></div>
+                  <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
+                  <p>{post.data.description}</p>
+                  <div class="wg-blog-card-footer">
+                    <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+                    <a href={`/blog/${post.id}`}>Read article <span aria-hidden="true">→</span></a>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
-        {featured && (
-          <article class="journal-feature" data-reveal>
-            <a class="journal-feature-image" href={`/blog/${featured.id}`} aria-label={`Read ${featured.data.title}`}>
-              <BlogImage src={featured.data.image} alt={`Cover image for ${featured.data.title}`} sizes="(max-width: 800px) 100vw, 60vw" priority />
-            </a>
-            <div class="journal-feature-copy">
-              <div class="journal-label-row"><span>Featured</span><span>{featured.data.category}</span></div>
-              <h2><a href={`/blog/${featured.id}`}>{featured.data.title}</a></h2>
-              <p>{featured.data.description}</p>
-              <div class="journal-story-footer">
-                <span>{formatDate(featured.data.date)} · {featured.data.readTime}</span>
-                <a href={`/blog/${featured.id}`}>Read the article <span>↗</span></a>
-              </div>
-            </div>
-          </article>
-        )}
+        <aside class="wg-blog-sidebar" aria-label="Resources and guest posting offer">
+          <section class="wg-blog-resource">
+            <span class="wg-blog-eyebrow">Free resource</span>
+            <h2>Choose your next website with confidence.</h2>
+            <p>Check relevance, traffic and publishing terms before you approve a guest post.</p>
+            <a class="wg-blog-text-link" href="/guest-post-quality-checklist">Open the checklist <span aria-hidden="true">→</span></a>
+          </section>
+          <section class="wg-blog-offer">
+            <span class="wg-blog-eyebrow">New client offer</span>
+            <h2>Your first guest post for $1.</h2>
+            <p>Review selected website options and pay after your link is live.</p>
+            <a class="wg-blog-button" href="/order?service=First%20Guest%20Post&offer=1-dollar" data-journal-popup-open>Check availability</a>
+            <small>Selected websites only. Subject to approval and availability.</small>
+          </section>
+        </aside>
       </div>
-    </section>
-
-    <section class="journal-library">
-      <div class="shell">
-        <div class="journal-section-head" data-reveal>
-          <div><span>Latest insights</span><h2>Useful advice, without the noise.</h2></div>
-          <a href="/guest-post-quality-checklist">Open the free checklist <span>↗</span></a>
-        </div>
-
-        <div class="journal-card-grid">
-          {morePosts.map((post, index) => (
-            <article class="journal-card" data-reveal data-reveal-delay={String(index % 3)}>
-              <a class="journal-card-image" href={`/blog/${post.id}`}>
-                <BlogImage src={post.data.image} alt={`Cover image for ${post.data.title}`} maxWidth={960} sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw" />
-              </a>
-              <div class="journal-card-copy">
-                <div class="journal-card-meta"><span>{post.data.category}</span><span>{formatDate(post.data.date)}</span></div>
-                <h3><a href={`/blog/${post.id}`}>{post.data.title}</a></h3>
-                <p>{post.data.description}</p>
-                <a class="journal-read-link" href={`/blog/${post.id}`}>Read in {post.data.readTime.replace(' read', '')} <span>↗</span></a>
-              </div>
-            </article>
-          ))}
-
-          <article class="journal-guide-card" data-reveal>
-            <span class="journal-guide-number">Free resource / 01</span>
-            <div>
-              <span class="journal-guide-kicker">Keep beside your shortlist</span>
-              <h3>Guest Post Quality Checklist</h3>
-              <p>Eight simple checks for traffic, relevance, indexation, content and link terms before you approve a website.</p>
-              <a href="/guest-post-quality-checklist">Use the checklist <span>↗</span></a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="journal-offer-band" aria-label="New client guest post offer">
-      <div class="shell journal-offer-inner">
-        <div><span>New client introduction</span><h2>Try your first guest post for $1.</h2></div>
-        <p>Available on selected websites. Approve the option first and pay after the link is live.</p>
-        <a href="/order?service=First%20Guest%20Post&offer=1-dollar" data-journal-popup-open>Check available websites <span>↗</span></a>
-      </div>
-    </section>
-
-    <section class="journal-moving-section">
-      <div class="shell journal-moving-head"><span>Continue reading</span><h2>Latest from the journal</h2></div>
-      <div class="journal-moving-window">
-        <div class="journal-moving-track">
-          {movingPosts.map((post, index) => (
-            <a class="journal-moving-card" href={`/blog/${post.id}`} aria-hidden={index >= posts.length ? 'true' : undefined} tabindex={index >= posts.length ? '-1' : undefined}>
-              <BlogImage src={post.data.image} alt="" maxWidth={640} sizes="180px" />
-              <span><small>{post.data.category}</small><strong>{post.data.title}</strong><em>{post.data.readTime}</em></span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
+    </div>
+    <BlogPostRail posts={posts} title="More from the blog" id="blog-reading-rail" />
   </div>
   <BlogOfferPopup />
 </BaseLayout>
-

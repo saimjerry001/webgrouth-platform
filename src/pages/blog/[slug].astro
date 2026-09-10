@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogOfferPopup from '../../components/BlogOfferPopup.astro';
 import BlogImage from '../../components/BlogImage.astro';
+import BlogPostRail from '../../components/BlogPostRail.astro';
+import '../../styles/journal.css';
 import images from '../../generated/images.json';
 import { getCollection, render } from 'astro:content';
 
@@ -14,7 +16,6 @@ const { post } = Astro.props;
 const { Content, headings } = await render(post);
 const allPosts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const relatedPosts = allPosts.filter((item) => item.id !== post.id).slice(0, 3);
-const movingPosts = [...relatedPosts, ...relatedPosts];
 const sectionHeadings = headings.filter((heading) => heading.depth === 2);
 const formattedDate = post.data.date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
 const articleUrl = `https://www.webgrouth.com/blog/${post.id}`;
@@ -50,85 +51,79 @@ const breadcrumbSchema = {
 ---
 
 <BaseLayout title={`${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} modifiedTime={modifiedDate.toISOString()} image={post.data.image} imageAlt={`Cover image for ${post.data.title}`} structuredData={[articleSchema, breadcrumbSchema]}>
-  <div class="article-page">
-    <header class="article-masthead">
-      <div class="shell article-masthead-inner" data-reveal>
-        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/blog">Journal</a><span>/</span><span>{post.data.category}</span></div>
-        <span class="article-category">{post.data.category}</span>
-        <h1>{post.data.title}</h1>
-        <p>{post.data.description}</p>
-        <div class="article-byline">
-          <span class="article-author-mark">WG</span>
-          <span><strong><a href="/about">{post.data.author}</a></strong><small><time datetime={post.data.date.toISOString()}>{formattedDate}</time> · {post.data.readTime}</small>{post.data.updatedDate && <small>Updated <time datetime={modifiedDate.toISOString()}>{modifiedDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</time></small>}</span>
-        </div>
-      </div>
-    </header>
+  <div class="wg-blog-theme wg-blog-article">
+    <div class="shell wg-blog-shell">
+      <nav class="wg-blog-breadcrumbs" aria-label="Breadcrumbs">
+        <a href="/">Home</a><span aria-hidden="true">/</span><a href="/blog">Blog</a><span aria-hidden="true">/</span><span>{post.data.category}</span>
+      </nav>
 
-    <div class="shell article-cover-wrap" data-reveal>
-      <figure class="article-cover">
-        <BlogImage src={post.data.image} alt={`Cover image for ${post.data.title}`} sizes="(max-width: 1200px) 100vw, 1200px" priority />
-        <figcaption>Web Grouth Journal · Practical SEO guidance for worldwide campaigns</figcaption>
-      </figure>
-    </div>
+      <div class="wg-article-layout">
+        <article class="wg-article-main">
+          <header class="wg-article-heading">
+            <span class="wg-blog-category">{post.data.category}</span>
+            <h1>{post.data.title}</h1>
+            <p>{post.data.description}</p>
+            <div class="wg-article-byline">
+              <span class="wg-article-author-mark" aria-hidden="true">WG</span>
+              <div>
+                <a href="/about">{post.data.author}</a>
+                <div class="wg-article-dates">
+                  <time datetime={post.data.date.toISOString()}>{formattedDate}</time>
+                  <span aria-hidden="true">·</span><span>{post.data.readTime}</span>
+                </div>
+                {post.data.updatedDate && <small>Updated <time datetime={modifiedDate.toISOString()}>{modifiedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</time></small>}
+              </div>
+            </div>
+          </header>
 
-    <div class="shell article-reading-layout">
-      <article class="article-prose article-prose-new">
-        <Content />
-      </article>
+          <figure class="wg-article-cover">
+            <BlogImage src={post.data.image} alt={`Cover image for ${post.data.title}`} maxWidth={1280} sizes="(max-width: 960px) calc(100vw - 40px), (max-width: 1160px) calc(100vw - 352px), 808px" priority />
+          </figure>
 
-      <aside class="article-sidebar" aria-label="Article sidebar">
-        <div class="article-sidebar-inner">
+          <div class="wg-article-body">
+            <Content />
+          </div>
+        </article>
+
+        <aside class="wg-blog-sidebar wg-article-sidebar" aria-label="Article navigation and resources">
           {sectionHeadings.length > 0 && (
-            <nav class="article-toc" aria-label="On this page">
-              <span>On this page</span>
-              <ol>{sectionHeadings.map((heading) => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol>
+            <nav class="wg-article-toc" aria-labelledby="article-contents-heading">
+              <h2 id="article-contents-heading">On this page</h2>
+              <ol>{sectionHeadings.map(heading => <li><a href={`#${heading.slug}`}>{heading.text}</a></li>)}</ol>
             </nav>
           )}
 
-          <section class="article-side-offer">
-            <span>New client offer</span>
-            <strong>$1 first guest post</strong>
-            <p>Choose from selected websites. Approve the site first and pay after the link is live.</p>
-            <a href="/order?service=First%20Guest%20Post&offer=1-dollar" data-journal-popup-open>Check availability <span>↗</span></a>
+          <section class="wg-blog-offer">
+            <span class="wg-blog-eyebrow">New client offer</span>
+            <h2>Your first guest post for $1.</h2>
+            <p>Review selected website options and pay after your link is live.</p>
+            <a class="wg-blog-button" href="/order?service=First%20Guest%20Post&offer=1-dollar" data-journal-popup-open>Check availability</a>
             <small>Selected websites only. Subject to approval and availability.</small>
           </section>
 
-          <section class="article-side-latest">
-            <span>Latest articles</span>
-            {relatedPosts.map((item) => (
-              <a href={`/blog/${item.id}`}>
-                <BlogImage src={item.data.image} alt="" maxWidth={320} sizes="72px" />
-                <span><strong>{item.data.title}</strong><small>{item.data.readTime}</small></span>
-              </a>
-            ))}
-          </section>
-        </div>
-      </aside>
+          {relatedPosts.length > 0 && (
+            <section class="wg-article-latest">
+              <h2>Latest articles</h2>
+              {relatedPosts.map(item => (
+                <a href={`/blog/${item.id}`}>
+                  <BlogImage src={item.data.image} alt="" maxWidth={320} sizes="72px" />
+                  <span><strong>{item.data.title}</strong><small>{item.data.readTime}</small></span>
+                </a>
+              ))}
+            </section>
+          )}
+        </aside>
+      </div>
     </div>
 
-    {relatedPosts.length > 0 && (
-      <section class="article-related">
-        <div class="shell journal-moving-head"><span>Read next</span><h2>More useful guides</h2></div>
-        <div class="journal-moving-window">
-          <div class="journal-moving-track">
-            {movingPosts.map((item, index) => (
-              <a class="journal-moving-card" href={`/blog/${item.id}`} aria-hidden={index >= relatedPosts.length ? 'true' : undefined} tabindex={index >= relatedPosts.length ? '-1' : undefined}>
-                <BlogImage src={item.data.image} alt="" maxWidth={640} sizes="180px" />
-                <span><small>{item.data.category}</small><strong>{item.data.title}</strong><em>{item.data.readTime}</em></span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-    )}
+    <BlogPostRail posts={relatedPosts} title="Related articles" id="article-reading-rail" />
 
-    <section class="article-final-cta">
-      <div class="shell article-final-inner" data-reveal>
-        <div><span>Ready to build your campaign?</span><h2>Send the brief. Review the websites. Pay after the link is live.</h2></div>
-        <a href="/order">Place an order <span>↗</span></a>
+    <section class="wg-blog-cta" aria-labelledby="article-order-heading">
+      <div class="shell wg-blog-shell wg-blog-cta-inner">
+        <div><h2 id="article-order-heading">Need help choosing a website?</h2><p>Share your niche and budget. We’ll send you relevant options.</p></div>
+        <a class="wg-blog-button" href="/order">Place an order</a>
       </div>
     </section>
   </div>
   <BlogOfferPopup />
 </BaseLayout>
-

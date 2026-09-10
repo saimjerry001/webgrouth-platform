@@ -1,0 +1,55 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogImage from './BlogImage.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  title: string;
+  id: string;
+}
+const { posts, title, id } = Astro.props;
+---
+
+{posts.length > 0 && (
+  <section class="wg-blog-rail" data-blog-rail aria-labelledby={`${id}-title`}>
+    <div class="shell wg-blog-shell">
+      <div class="wg-blog-section-heading">
+        <h2 id={`${id}-title`}>{title}</h2>
+        <button type="button" class="wg-blog-rail-toggle" data-rail-toggle aria-controls={id} aria-pressed="false" hidden>Pause movement</button>
+      </div>
+      <div class="wg-blog-rail-window" id={id}>
+        <div class="wg-blog-rail-track">
+          {[false, true].map(duplicate => (
+            <div class="wg-blog-rail-group" data-rail-duplicate={duplicate || undefined} aria-hidden={duplicate ? 'true' : undefined}>
+              {posts.map(post => (
+                <a class="wg-blog-rail-card" href={`/blog/${post.id}`} tabindex={duplicate ? -1 : undefined}>
+                  <BlogImage src={post.data.image} alt="" maxWidth={320} sizes="88px" />
+                  <span>
+                    <small>{post.data.category}</small>
+                    <strong>{post.data.title}</strong>
+                    <em>{post.data.readTime}</em>
+                  </span>
+                </a>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-blog-rail]').forEach(rail => {
+    const toggle = rail.querySelector<HTMLButtonElement>('[data-rail-toggle]');
+    if (!toggle) return;
+    rail.dataset.motion = 'running';
+    toggle.hidden = false;
+    toggle.addEventListener('click', () => {
+      const paused = rail.dataset.motion !== 'paused';
+      rail.dataset.motion = paused ? 'paused' : 'running';
+      toggle.setAttribute('aria-pressed', String(paused));
+      toggle.textContent = paused ? 'Resume movement' : 'Pause movement';
+    });
+  });
+</script>
