@@ -125,6 +125,26 @@
 .wg-blog-cta p { margin: 0; }
 .wg-blog-cta .wg-blog-button { flex-shrink: 0; }
 
+@media (min-width: 961px) {
+  /* Clip horizontal overflow without creating a scroll ancestor for sticky. */
+  body:has(.wg-blog-article):not(.menu-open) { overflow-x: clip; }
+  .wg-article-sidebar {
+    position: sticky;
+    top: 7rem;
+    align-self: start;
+    max-height: calc(100vh - 8rem);
+    max-height: calc(100dvh - 8rem);
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #cbd5e1 transparent;
+    padding: .25rem;
+    scroll-padding-block: .5rem;
+  }
+  .wg-article-sidebar:focus-visible { outline: 2px solid var(--blog-blue); outline-offset: 4px; }
+}
+
 @media (max-width: 960px) {
   .wg-blog-layout, .wg-article-layout { grid-template-columns: minmax(0, 1fr); }
   .wg-blog-layout > .wg-blog-sidebar, .wg-article-sidebar { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-top: 0; }
