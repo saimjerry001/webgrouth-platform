@@ -34,13 +34,13 @@ const blogSchema = {
         <section aria-labelledby="latest-articles">
           <div class="wg-blog-section-heading">
             <h2 id="latest-articles">Latest articles</h2>
-            <span>{posts.length} articles</span>
+            <span>{posts.length} {posts.length === 1 ? 'article' : 'articles'}</span>
           </div>
           <div class="wg-blog-grid">
             {posts.map((post, index) => (
               <article class="wg-blog-card">
                 <a class="wg-blog-card-image" href={`/blog/${post.id}`} aria-label={`Read ${post.data.title}`}>
-                  <BlogImage src={post.data.image} alt={`Cover image for ${post.data.title}`} maxWidth={960} sizes="(max-width: 620px) calc(100vw - 40px), (max-width: 960px) calc((100vw - 64px) / 2), 392px" priority={index === 0} />
+                  <BlogImage src={post.data.image} alt={post.data.imageAlt ?? `Cover image for ${post.data.title}`} maxWidth={960} sizes="(max-width: 620px) calc(100vw - 40px), (max-width: 960px) calc((100vw - 64px) / 2), 392px" priority={index === 0} />
                 </a>
                 <div class="wg-blog-card-copy">
                   <div class="wg-blog-card-meta"><span class="wg-blog-category">{post.data.category}</span><span>{post.data.readTime}</span></div>
@@ -73,7 +73,7 @@ const blogSchema = {
         </aside>
       </div>
     </div>
-    <BlogPostRail posts={posts} title="More from the blog" id="blog-reading-rail" />
+    {posts.length > 1 && <BlogPostRail posts={posts} title="More from the blog" id="blog-reading-rail" />}
   </div>
   <BlogOfferPopup />
 </BaseLayout>

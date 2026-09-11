@@ -17,8 +17,8 @@ export const serviceContent = {
     ],
     links: [
       ['/guest-post-quality-checklist', 'Check a website before ordering'],
-      ['/blog/guest-posting-vs-link-insertion', 'Compare guest posts and link insertions'],
-      ['/blog/how-to-choose-guest-post-sites-usa-uk', 'Choose sites for USA and UK audiences'],
+      ['/link-insertion', 'Explore placements in existing articles'],
+      ['/blog/pbns-vs-editorial-backlinks', 'Understand PBNs and editorial backlinks'],
       ['/guarantee-policy', 'Read indexation and replacement terms'],
     ],
   },
@@ -40,8 +40,8 @@ export const serviceContent = {
     ],
     links: [
       ['/guest-posting', 'Explore new article placements'],
-      ['/blog/guest-posting-vs-link-insertion', 'Compare the two placement formats'],
-      ['/blog/what-makes-a-backlink-useful', 'Understand backlink quality'],
+      ['/blog/pbns-vs-editorial-backlinks', 'Read about PBNs and editorial backlinks'],
+      ['/guest-post-quality-checklist', 'Check a publisher before ordering'],
       ['/guarantee-policy', 'Review placement protection terms'],
     ],
   },

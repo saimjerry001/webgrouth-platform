@@ -12,8 +12,8 @@ const blog = defineCollection({
     author: z.string().default('Web Grouth'),
     readTime: z.string(),
     image: z.string(),
+    imageAlt: z.string().optional(),
   }),
 });
 
 export const collections = { blog };
-

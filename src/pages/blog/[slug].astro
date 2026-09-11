@@ -50,7 +50,7 @@ const breadcrumbSchema = {
 };
 ---
 
-<BaseLayout title={`${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} modifiedTime={modifiedDate.toISOString()} image={post.data.image} imageAlt={`Cover image for ${post.data.title}`} structuredData={[articleSchema, breadcrumbSchema]}>
+<BaseLayout title={`${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} modifiedTime={modifiedDate.toISOString()} image={post.data.image} imageAlt={post.data.imageAlt ?? `Cover image for ${post.data.title}`} structuredData={[articleSchema, breadcrumbSchema]}>
   <div class="wg-blog-theme wg-blog-article">
     <div class="shell wg-blog-shell">
       <nav class="wg-blog-breadcrumbs" aria-label="Breadcrumbs">
@@ -77,7 +77,7 @@ const breadcrumbSchema = {
           </header>
 
           <figure class="wg-article-cover">
-            <BlogImage src={post.data.image} alt={`Cover image for ${post.data.title}`} maxWidth={1280} sizes="(max-width: 960px) calc(100vw - 40px), (max-width: 1160px) calc(100vw - 352px), 808px" priority />
+            <BlogImage src={post.data.image} alt={post.data.imageAlt ?? `Cover image for ${post.data.title}`} maxWidth={1280} sizes="(max-width: 960px) calc(100vw - 40px), (max-width: 1160px) calc(100vw - 352px), 808px" priority />
           </figure>
 
           <div class="wg-article-body">
