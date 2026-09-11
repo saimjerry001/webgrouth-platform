@@ -50,7 +50,7 @@ const breadcrumbSchema = {
 };
 ---
 
-<BaseLayout title={`${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} modifiedTime={modifiedDate.toISOString()} image={post.data.image} imageAlt={post.data.imageAlt ?? `Cover image for ${post.data.title}`} structuredData={[articleSchema, breadcrumbSchema]}>
+<BaseLayout title={post.data.seoTitle ?? `${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} modifiedTime={modifiedDate.toISOString()} image={post.data.image} imageAlt={post.data.imageAlt ?? `Cover image for ${post.data.title}`} structuredData={[articleSchema, breadcrumbSchema]}>
   <div class="wg-blog-theme wg-blog-article">
     <div class="shell wg-blog-shell">
       <nav class="wg-blog-breadcrumbs" aria-label="Breadcrumbs">

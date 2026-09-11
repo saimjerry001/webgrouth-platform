@@ -34,6 +34,10 @@ editorial notes into the body. Use the actual publication date; add
 `updatedDate` only for a later substantive update. Estimate reading time from
 the article's word count at approximately 200 words per minute.
 
+If the search title should differ from the visible article heading, add the
+optional `seoTitle` field to the metadata. Its exact text becomes the page's
+search and social title; the article heading continues to use `title`.
+
 The article sidebar, cover position, typography, offer, and mobile layout are
 shared across posts. Related articles appear as more posts are published; with
 one article, empty related sections and repeated listing carousels stay hidden.
