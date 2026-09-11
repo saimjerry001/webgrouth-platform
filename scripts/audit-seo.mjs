@@ -41,6 +41,8 @@ for (const file of (await files(root)).filter(file => file.endsWith('.html'))) {
   if (!find('html').some(n => attrs(n).lang === 'en')) fail(path, 'Missing document language');
   if (!meta('viewport')) fail(path, 'Missing mobile viewport');
   for (const name of ['og:title', 'og:description', 'og:image', 'twitter:image']) if (!meta(name)) fail(path, `Missing ${name}`);
+  for (const name of ['og:title', 'twitter:title']) if (meta(name) !== title) fail(path, `${name} differs from the page title`);
+  for (const name of ['og:description', 'twitter:description']) if (meta(name) !== description) fail(path, `${name} differs from the page description`);
   if (meta('og:url') !== canonical[0]) fail(path, 'Open Graph URL differs from canonical');
   const imageUrl = new URL(meta('og:image') ?? '/', SITE);
   if (imageUrl.origin === SITE && !(await exists(join(root, decodeURIComponent(imageUrl.pathname))))) fail(path, 'Social image is missing');
@@ -58,6 +60,13 @@ for (const file of (await files(root)).filter(file => file.endsWith('.html'))) {
       for (const key of ['headline', 'datePublished', 'dateModified', 'image', 'author']) if (!article[key]) fail(path, `Article missing ${key}`);
       if (!article.author?.name || !article.author?.url || !article.author?.['@type']) fail(path, 'Article author is incomplete');
       if (new Date(article.dateModified) < new Date(article.datePublished)) fail(path, 'Article modification date precedes publication');
+      if (article.headline !== clean(textOf(h1[0] ?? {}))) fail(path, 'Article headline differs from the visible heading');
+      if (article.description !== description) fail(path, 'Article schema description differs from the page description');
+      const articleTags = find('meta').filter(n => attrs(n).property === 'article:tag').map(n => attrs(n).content);
+      const visibleTags = nodes.filter(n => Object.hasOwn(attrs(n), 'data-article-tag')).map(n => clean(textOf(n)));
+      if (new Set(articleTags).size !== articleTags.length) fail(path, 'Duplicate article tags');
+      if (JSON.stringify(articleTags) !== JSON.stringify(visibleTags)) fail(path, 'Article tags differ from visible topics');
+      if (articleTags.length && article.keywords !== articleTags.join(', ')) fail(path, 'Article schema keywords differ from the tags');
     }
   }
   if (shouldIndex && path !== '/' && !entities.some(s => s['@type'] === 'BreadcrumbList')) fail(path, 'Missing breadcrumb structured data');

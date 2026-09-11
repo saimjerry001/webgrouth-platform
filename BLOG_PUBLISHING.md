@@ -21,6 +21,7 @@ RSS feed, and XML sitemap. Do not create a separate Astro page for each post.
 title: "Your article title"
 description: "A short, accurate summary of the article."
 category: "Link Building"
+tags: ["Link Building", "Publisher Quality"]
 date: 2026-09-11
 author: "Web Grouth"
 readTime: "8 min read"
@@ -37,6 +38,10 @@ the article's word count at approximately 200 words per minute.
 If the search title should differ from the visible article heading, add the
 optional `seoTitle` field to the metadata. Its exact text becomes the page's
 search and social title; the article heading continues to use `title`.
+
+Add a short list of relevant `tags` (up to six) for each article. These appear
+as reader topics and populate its Open Graph article tags and BlogPosting
+keywords. Search and social descriptions both use the `description` field.
 
 The article sidebar, cover position, typography, offer, and mobile layout are
 shared across posts. Related articles appear as more posts are published; with

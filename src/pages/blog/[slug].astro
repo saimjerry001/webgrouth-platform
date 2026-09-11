@@ -32,7 +32,13 @@ const articleSchema = {
   datePublished: post.data.date.toISOString(),
   dateModified: modifiedDate.toISOString(),
   articleSection: post.data.category,
-  image: new URL(cover.src, 'https://www.webgrouth.com').toString(),
+  keywords: post.data.tags.length ? post.data.tags.join(', ') : undefined,
+  image: {
+    '@type': 'ImageObject',
+    url: new URL(cover.src, 'https://www.webgrouth.com').toString(),
+    width: cover.width,
+    height: cover.height,
+  },
   author: post.data.author === 'Web Grouth'
     ? { '@type': 'Organization', '@id': 'https://www.webgrouth.com/#organization', name: 'Web Grouth', url: 'https://www.webgrouth.com/about' }
     : { '@type': 'Person', name: post.data.author },
@@ -50,7 +56,7 @@ const breadcrumbSchema = {
 };
 ---
 
-<BaseLayout title={post.data.seoTitle ?? `${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} modifiedTime={modifiedDate.toISOString()} image={post.data.image} imageAlt={post.data.imageAlt ?? `Cover image for ${post.data.title}`} structuredData={[articleSchema, breadcrumbSchema]}>
+<BaseLayout title={post.data.seoTitle ?? `${post.data.title} | Web Grouth`} description={post.data.description} article={true} publishedTime={post.data.date.toISOString()} articleSection={post.data.category} articleTags={post.data.tags} modifiedTime={modifiedDate.toISOString()} image={post.data.image} imageAlt={post.data.imageAlt ?? `Cover image for ${post.data.title}`} structuredData={[articleSchema, breadcrumbSchema]}>
   <div class="wg-blog-theme wg-blog-article">
     <div class="shell wg-blog-shell">
       <nav class="wg-blog-breadcrumbs" aria-label="Breadcrumbs">
@@ -83,6 +89,14 @@ const breadcrumbSchema = {
           <div class="wg-article-body">
             <Content />
           </div>
+          {post.data.tags.length > 0 && (
+            <div class="wg-article-topics">
+              <span>Topics</span>
+              <ul aria-label="Article topics">
+                {post.data.tags.map(tag => <li data-article-tag>{tag}</li>)}
+              </ul>
+            </div>
+          )}
         </article>
 
         <aside class="wg-blog-sidebar wg-article-sidebar" aria-label="Article navigation and resources" tabindex="0">
