@@ -15,16 +15,22 @@ date-sorted display. All four earlier articles share the same publication date.
 | 4 | How to Vet Guest Post Sites: 10 Checks Before You Publish | https://www.webgrouth.com/blog/how-to-vet-guest-post-sites | 2026-09-11 |
 | 5 | Guest Posting vs Link Insertion: Which Should You Choose? | https://www.webgrouth.com/blog/guest-posting-vs-link-insertion | 2026-09-14 |
 | 6 | Guest Post Outreach: How to Pitch Editors | https://www.webgrouth.com/blog/guest-post-outreach | 2026-09-14 |
+| 7 | Anchor Text: How to Choose Words That Fit the Link | https://www.webgrouth.com/blog/anchor-text | 2026-09-14 |
 
 Article five resumed a previously saved draft and cover image. Its deployment,
 live page, image, schema, blog listing, sitemap and five-entry RSS feed were
 verified on 14 September 2026, at commit
 `a3d0186e53f5c2353e9d4b4b5c873e2f6d637e8c`.
 
-After the user's next continuation, this release adds article six, a practical
-outreach guide with three original email examples. It adds a contextual incoming
-link from the format-comparison guide and a new compressed cover image.
-After deployment, the collection contains six articles; 14 more are needed
+Article six was published and verified on 14 September 2026, at commit
+`f272fde1477238b34844731548547dd828dde301`. Its live page, image, metadata,
+article schema, sitemap and six-entry RSS feed passed the publication checks.
+
+This release adds article seven, a practical anchor-text guide with original
+examples and Google, MDN and W3C references. The contextual-links guide links
+to it and has clearer anchor definitions without the unsupported claim that
+exact-match wording always carries the strongest topical signal.
+After deployment, the collection contains seven articles; 13 more are needed
 for the 20-article goal.
 
 ## Working rules to preserve
@@ -42,14 +48,24 @@ for the 20-article goal.
 ## Verification at preparation
 
 The production build and existing SEO audit passed on 14 September 2026:
-21 HTML pages, 18 indexable pages, zero failures, and zero warnings. Article six
-is present in the blog, sitemap and six-entry RSS output. The cover is served
+22 HTML pages, 19 indexable pages, zero failures, and zero warnings. Article seven
+is present in the blog, sitemap and seven-entry RSS output. The cover is served
 as responsive WebP images with descriptive alt text. These are build checks,
 not Google indexing results.
 
 For the next continuation, check the latest repository revision and live blog
-before adding article seven. Google Search Console submission and indexing have
+before adding article eight. Google Search Console submission and indexing have
 not been verified in this release.
+
+## Article-seven image record
+
+Final repository asset: `public/images/blog/anchor-text.webp`.
+Created with the built-in image-generation tool, then compressed for the website.
+The default 1280-pixel responsive cover is 37776 bytes.
+
+Generation prompt:
+
+Use case: photorealistic-natural. Asset type: a compact panoramic cover photograph for an educational article about choosing anchor text in links. Create one natural editorial photograph: close side-angle view of an editor's paper proof on a light oak table, with a few short phrases neatly underlined in blue and subtle pencil editing marks. One blue-underlined phrase may read 'project checklist'; other body text should fall gently out of focus and need not be readable. Reading glasses and a navy pen rest beside the paper, with the softly blurred edge of an open laptop in the background. No person or hand is needed. Quiet daylight from the side, tactile paper grain, believable minor creases, subdued ivory, navy and warm wood colors. A candid magazine photograph rather than a staged advertisement. Very wide 2.8:1 composition, with the paper and underlined phrase visible in the center band for a compact website banner. No title overlay, no logos, no icons, no charts or infographic, no neon, gradients or watermarks.
 
 ## Article-six image record
 

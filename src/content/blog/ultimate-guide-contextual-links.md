@@ -58,15 +58,17 @@ These four checks are really the same evaluation behind [our guest post quality 
 
 ## Anchor Text: Getting the Details Right
 
-The anchor is the visible, clickable text of a link, and it's the fastest way to tell a natural contextual link from an engineered one.
+The anchor is the visible, clickable text of a link. It should help readers understand the destination and fit the surrounding sentence.
 
-- **Exact-match** anchors use your target keyword word-for-word ("best running shoes"). They carry the strongest topical signal, which is exactly why overusing them is risky.
+- **Exact-match** anchors use your target keyword word-for-word ("best running shoes"). Check that the phrase accurately describes the destination and reads naturally in the sentence.
 - **Partial-match** anchors work a variation into the sentence ("shoes built for daily training runs") — descriptive without being mechanical.
 - **Branded** anchors use your company or product name ("Web Grouth").
-- **Natural/descriptive** anchors describe the destination without matching a keyword exactly ("this guide," "their pricing page").
+- **Descriptive** anchors identify the resource or task ("publisher review checklist," "compare publishing options"). They can also contain a target phrase when it fits.
 - **Naked URL** anchors are just the link itself, unstyled.
 
 Review anchor text in context instead of relying on a fixed percentage. Repeated keyword-rich anchors used to manipulate rankings can fall under Google's [spam policies](https://developers.google.com/search/docs/essentials/spam-policies). For each placement, write the sentence first, then see if a link fits it. Never start with the anchor and build a sentence around it just to justify the keyword.
+
+For worked examples and a review process covering internal links, publisher references, and image links, read our [guide to choosing clear anchor text](/blog/anchor-text).
 
 ## How to Build Contextual Links
 
