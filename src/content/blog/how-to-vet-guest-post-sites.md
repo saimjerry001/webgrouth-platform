@@ -17,6 +17,8 @@ A publisher can look impressive in a spreadsheet and still be a poor fit for you
 
 This guide gives you a practical way to review guest posting opportunities and decide which publishers deserve a closer look.
 
+Once a publisher passes your review, compare [guest posting and link insertion](/blog/guest-posting-vs-link-insertion) to decide whether your contribution needs a new article or fits an existing one.
+
 ## What should you check before choosing a guest post site?
 
 Start with the evidence you can collect. Use this checklist to keep your review consistent.
