@@ -127,7 +127,7 @@ Inspect recent and older article URLs from the same section where your post woul
 
 A search such as `site:example.com relevant-topic` can help you locate sample pages. However, Google says `site:` results are not exhaustive. A missing result does not conclusively establish that a page is unindexed. [Google's explanation of the site search operator](https://developers.google.com/search/docs/monitor-debug/search-operators/all-search-site).
 
-For an important uncertainty, ask the publisher to check the exact URL in its Search Console account and share the relevant result. You cannot inspect another owner's private property without access.
+For an important uncertainty, ask the publisher to check the exact URL in its Search Console account and share the relevant result. You cannot inspect another owner's private property without access. Follow our guide to [checking guest post indexing](/blog/check-guest-post-indexing) for the inspection steps and a publisher request template.
 
 Review whether the sample page works, is accessible to crawlers, and has indexable content. Google makes clear that meeting its technical requirements does not guarantee indexing. [Google's Search technical requirements](https://developers.google.com/search/docs/essentials/technical).
 

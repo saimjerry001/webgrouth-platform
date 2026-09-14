@@ -16,6 +16,7 @@ date-sorted display. All four earlier articles share the same publication date.
 | 5 | Guest Posting vs Link Insertion: Which Should You Choose? | https://www.webgrouth.com/blog/guest-posting-vs-link-insertion | 2026-09-14 |
 | 6 | Guest Post Outreach: How to Pitch Editors | https://www.webgrouth.com/blog/guest-post-outreach | 2026-09-14 |
 | 7 | Anchor Text: How to Choose Words That Fit the Link | https://www.webgrouth.com/blog/anchor-text | 2026-09-14 |
+| 8 | How to Check If a Guest Post Is Indexed in Google | https://www.webgrouth.com/blog/check-guest-post-indexing | 2026-09-14 |
 
 Article five resumed a previously saved draft and cover image. Its deployment,
 live page, image, schema, blog listing, sitemap and five-entry RSS feed were
@@ -26,11 +27,17 @@ Article six was published and verified on 14 September 2026, at commit
 `f272fde1477238b34844731548547dd828dde301`. Its live page, image, metadata,
 article schema, sitemap and six-entry RSS feed passed the publication checks.
 
-This release adds article seven, a practical anchor-text guide with original
-examples and Google, MDN and W3C references. The contextual-links guide links
-to it and has clearer anchor definitions without the unsupported claim that
-exact-match wording always carries the strongest topical signal.
-After deployment, the collection contains seven articles; 13 more are needed
+Article seven was published and verified on 14 September 2026, at commit
+`d675865d01c42f6b7757e23ea4bb01b016fe051e`. Its live page, image, metadata,
+article schema, blog listing, sitemap and seven-entry RSS feed passed the
+publication checks. The contextual-links guide now links to the anchor-text guide.
+
+This release adds article eight, a practical guide to checking guest post
+indexing, with primary Google documentation, an original publisher request
+template and an evidence log. It distinguishes a live page, a successful live
+inspection, public search observations and an indexed-page report. The publisher
+vetting guide links to the new article. Its body is approximately 1,766 words.
+After deployment, the collection contains eight articles; 12 more are needed
 for the 20-article goal.
 
 ## Working rules to preserve
@@ -48,14 +55,25 @@ for the 20-article goal.
 ## Verification at preparation
 
 The production build and existing SEO audit passed on 14 September 2026:
-22 HTML pages, 19 indexable pages, zero failures, and zero warnings. Article seven
-is present in the blog, sitemap and seven-entry RSS output. The cover is served
+23 HTML pages, 20 indexable pages, zero failures, and zero warnings. Article eight
+is present in the blog, sitemap and eight-entry RSS output. The cover is served
 as responsive WebP images with descriptive alt text. These are build checks,
 not Google indexing results.
 
 For the next continuation, check the latest repository revision and live blog
-before adding article eight. Google Search Console submission and indexing have
+before adding article nine. Google Search Console submission and indexing have
 not been verified in this release.
+
+## Article-eight image record
+
+Final repository asset: `public/images/blog/check-guest-post-indexing.webp`.
+Created with the built-in image-generation tool, then compressed for the website.
+The default 1280-pixel responsive cover is 37,644 bytes. It is an illustrative
+editor-at-work scene, not an actual Search Console report or indexing evidence.
+
+Generation prompt:
+
+Use case: photorealistic-natural. Asset type: a very wide editorial photograph for an educational article titled How to Check If a Guest Post Is Indexed in Google. Create one believable candid photograph of a fictional website editor viewed from behind and slightly to the side at a modest bright home office, studying an ordinary article page and a generic search page in two windows on a large monitor. The monitor and naturally seated editor are on the right half, with a softly lit window and a small plant on the left, a charcoal desk and compact keyboard below. No visible face needed. The screen is softly out of focus and has no readable text, no logos, no recognizable Google or Search Console interface, no invented metrics, no ticks or graphs. This is an illustrative everyday research scene, not a screenshot or evidence of indexing. Soft overcast daylight, natural navy and stone-gray tones, subtle warm skin and wood, realistic material imperfections and photographic depth of field. Panoramic 2.8:1 composition for a compact website banner; keep important content within the central horizontal band. No title overlay, icons, gradients, watermarks or staged corporate poses. Make one finished image.
 
 ## Article-seven image record
 
