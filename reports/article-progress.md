@@ -17,6 +17,7 @@ date-sorted display. All four earlier articles share the same publication date.
 | 6 | Guest Post Outreach: How to Pitch Editors | https://www.webgrouth.com/blog/guest-post-outreach | 2026-09-14 |
 | 7 | Anchor Text: How to Choose Words That Fit the Link | https://www.webgrouth.com/blog/anchor-text | 2026-09-14 |
 | 8 | How to Check If a Guest Post Is Indexed in Google | https://www.webgrouth.com/blog/check-guest-post-indexing | 2026-09-14 |
+| 9 | How to Measure Guest Posting Results | https://www.webgrouth.com/blog/measure-guest-posting-results | 2026-09-14 |
 
 Article five resumed a previously saved draft and cover image. Its deployment,
 live page, image, schema, blog listing, sitemap and five-entry RSS feed were
@@ -37,7 +38,7 @@ indexing, with primary Google documentation, an original publisher request
 template and an evidence log. It distinguishes a live page, a successful live
 inspection, public search observations and an indexed-page report. The publisher
 vetting guide links to the new article. Its body is approximately 1,766 words.
-After deployment, the collection contains eight articles; 12 more are needed
+After deployment, the collection contains nine articles; 11 more are needed
 for the 20-article goal.
 
 ## Working rules to preserve
@@ -55,13 +56,11 @@ for the 20-article goal.
 ## Verification at preparation
 
 The production build and existing SEO audit passed on 14 September 2026:
-23 HTML pages, 20 indexable pages, zero failures, and zero warnings. Article eight
-is present in the blog, sitemap and eight-entry RSS output. The cover is served
+23 HTML pages, 20 indexable pages, zero failures, and zero warnings. Article nine will be present in the blog, sitemap and nine-entry RSS output. The cover is served
 as responsive WebP images with descriptive alt text. These are build checks,
 not Google indexing results.
 
-For the next continuation, check the latest repository revision and live blog
-before adding article nine. Google Search Console submission and indexing have
+For the next continuation, check the latest repository revision and live blog before adding article ten. Google Search Console submission and indexing have
 not been verified in this release.
 
 ## Article-eight image record
