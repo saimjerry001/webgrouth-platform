@@ -49,6 +49,8 @@ The contribution should work as a useful article even for a reader who never cli
 
 Before commissioning a draft, agree on the audience, topic, outline, author attribution, link terms, and who handles revisions. Publishers retain editorial control, so an accepted pitch does not give you unlimited control over the finished page.
 
+For the initial approach, our [guest post outreach guide](/blog/guest-post-outreach) explains how to research the publication, propose an angle, and respond to the editor's requirements.
+
 Our [guest posting service](/guest-posting) supports both supplied articles and writing requests. The selected publisher's requirements should shape the brief in either case.
 
 ## When a link insertion makes sense
