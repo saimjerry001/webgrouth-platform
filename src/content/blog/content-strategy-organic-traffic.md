@@ -68,6 +68,8 @@ Use concrete decisions, examples from actual workflows, and clear explanations o
 
 ### 5. Design internal links before publishing
 
+Use our [internal linking guide](/blog/internal-linking-seo) to map each reader’s next question, find pages without incoming links and verify the final destinations.
+
 Internal links should help both readers and search engines understand the site. Link from broad educational pages to more specific resources, and use descriptive anchor text that tells the reader what they will find.
 
 A reader planning an outreach campaign may need to understand [contextual links](https://www.webgrouth.com/blog/ultimate-guide-contextual-links), learn [how to vet guest post sites](https://www.webgrouth.com/blog/how-to-vet-guest-post-sites), and then compare [guest posting options](https://www.webgrouth.com/guest-posting). Connect those resources where they answer the reader's next question.

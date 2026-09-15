@@ -21,6 +21,7 @@ date-sorted display. All four earlier articles share the same publication date.
 | 10 | How to Build a Guest Posting Strategy That Scales | https://www.webgrouth.com/blog/guest-posting-strategy-scales | 2026-09-14 |
 | 11 | How to Write a Guest Post Editors Want to Publish | https://www.webgrouth.com/blog/write-guest-post-editors-publish | 2026-09-15 |
 | 12 | Dofollow, Nofollow, Sponsored and UGC Links Explained | https://www.webgrouth.com/blog/dofollow-nofollow-sponsored-ugc-links | 2026-09-15 |
+| 13 | Internal Linking for SEO: How to Connect Your Pages | https://www.webgrouth.com/blog/internal-linking-seo | 2026-09-15 |
 
 Article five resumed a previously saved draft and cover image. Its deployment,
 live page, image, schema, blog listing, sitemap and five-entry RSS feed were
@@ -42,13 +43,18 @@ commits `2f44311be29a12901a9ad198e1a4102e4f746ea7`,
 `8a8a0dc6a997b5f18cd46d814d28e39277c35a19` and
 `a54801f299f6b13a921131701aa1a295deb12741`, respectively.
 
-This release adds article twelve: a practical explanation of link attributes,
-paid-placement qualification, page indexing and browser inspection. It includes
-primary Google and browser documentation, original hypothetical scenarios, a
-placement-record template and an original compressed cover. The publisher-vetting
-guide links to it. The body is approximately 1,667 words, with a nine-minute read time.
-After deployment, the collection contains twelve articles; eight remain for the
-20-article goal. This is a newly selected topic, not a recovered historical topic plan.
+Article twelve was published at commit `b675c7a3ff5c9f8b8da649fbf2ba9a5de4c90376`.
+Vercel succeeded, and its live page, cover, canonical, metadata, schema, internal
+incoming link, blog listing, sitemap and twelve-item RSS feed were verified.
+
+This release adds article thirteen: a practical internal-linking guide covering
+page inventories, reader-question maps, orphan-page reviews, anchors, crawlable
+markup, destination checks and a publication checklist. It includes primary Google
+sources, an original example map and a new photographic cover. The existing content
+strategy guide now links to it. Its body is approximately 1788 words,
+with a 9-minute reading time. After deployment, thirteen articles are published;
+seven remain for the 20-article goal. This topic was selected for the current series;
+no earlier unverified topic plan is being claimed.
 
 ## Working rules to preserve
 
@@ -64,22 +70,41 @@ After deployment, the collection contains twelve articles; eight remain for the
 
 ## Verification at preparation
 
-The production build and SEO audit were run on 15 September 2026 against a snapshot
-matching the current production source plus the article-twelve changes:
-27 HTML pages, 24 indexable pages, zero failures. One pre-existing advisory remains:
-article ten has a 72-character search title; this is a display-length warning, not a
-ranking threshold. Article twelve has no audit warnings. The generated blog listing,
-sitemap and twelve-entry RSS feed contain the new article. Its single H1, canonical,
-metadata, internal links, image references, BlogPosting and breadcrumb schema pass.
+The production build and SEO audit ran on 15 September 2026 against production
+source plus the article-thirteen changes: 28 HTML pages, 25 indexable pages,
+and 0 failures. The pre-existing article-ten title-length advisory remains
+(72 characters; a display-length warning, not a ranking threshold). Article thirteen
+has no SEO audit warnings. A cached-content duplicate-ID warning appeared for the
+edited content-strategy article; the generated output contains one route for it,
+and the intended new incoming link was verified in the rendered page.
 
-The new default responsive cover is 52,706 bytes at 1280 x 457 pixels. These are local
-build checks, not proof of deployment or Google indexing. Confirm the new Vercel
-commit status and live page separately after publication.
+The targeted article checks passed: one H1, the clean canonical, indexable robots
+metadata, matching BlogPosting and breadcrumb data, working internal references,
+cover alt text and dimensions, and presence in the blog, sitemap and thirteen-item
+RSS feed. The responsive cover is 53,084 bytes at 1280 x 457 pixels.
+These are build checks; confirm deployment and live output separately after publishing.
+They do not establish Google indexing or rankings.
 
-For the next continuation, verify the latest repository revision and live blog before
-adding article thirteen. Google Search Console submission and indexing are not
-verified by this report. Earlier release numbers in this section were stale; the
-figures above come from the current build rather than extrapolation.
+For the next continuation, verify the latest repository revision and live blog
+before adding article fourteen. Search Console submission and indexing remain
+unverified. Keep actual checks distinct from expected article counts.
+
+## Article-thirteen image record
+
+Final repository asset: `public/images/blog/internal-linking-seo.webp`
+(1600 x 571 pixels, 106,318 bytes).
+Created with the built-in image-generation tool and compressed with Sharp for the
+existing responsive-image pipeline. The photo illustrates organising website
+content; it is not a real client document or a technical diagram.
+
+Generation prompt:
+
+Use case: photorealistic-natural
+Asset type: panoramic cover photograph for an educational article titled 'Internal Linking for SEO: How to Connect Your Pages'.
+Primary request: a natural overhead editorial photograph of a website content review in progress: several printed website article pages arranged into two small groups on a quiet oak desk, an open navy document binder with blue section tabs, and a pencil resting across a sheet. The printed pages show soft blocks of ordinary article text and subtle blue underlined references, with no readable wording. The scene should suggest organising related pages into a useful reading path, without attempting to show a precise technical diagram.
+Style: photorealistic documentary still life, soft overcast daylight, believable paper edges and slight creases, tactile matte textures, restrained ivory, navy and warm wood colours. No person is needed.
+Composition: very wide 2.8:1 landscape banner; all important paper groups and binder within the central horizontal band, uncluttered, natural perspective, no text overlay.
+Avoid: readable labels, charts, rankings, metrics, chain icons, screens full of code, logos, watermarks, neon, gradients, glossy staged advertising. One finished image.
 
 ## Article-twelve image record
 
