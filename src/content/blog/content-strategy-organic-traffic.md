@@ -90,6 +90,8 @@ Review performance at page and topic level. Track impressions, clicks, click-thr
 
 Set a review date when each page is published. Refresh facts, examples, screenshots, internal links, and calls to action when the page loses relevance. Consolidate overlapping pages instead of allowing several weak URLs to compete for the same search.
 
+Use our [content refresh guide](/blog/content-refresh-seo) to choose which old articles need attention, define the changes and compare results after publication.
+
 A simple monthly review asks:
 
 - Which pages gained qualified traffic?

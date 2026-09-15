@@ -22,6 +22,7 @@ date-sorted display. All four earlier articles share the same publication date.
 | 11 | How to Write a Guest Post Editors Want to Publish | https://www.webgrouth.com/blog/write-guest-post-editors-publish | 2026-09-15 |
 | 12 | Dofollow, Nofollow, Sponsored and UGC Links Explained | https://www.webgrouth.com/blog/dofollow-nofollow-sponsored-ugc-links | 2026-09-15 |
 | 13 | Internal Linking for SEO: How to Connect Your Pages | https://www.webgrouth.com/blog/internal-linking-seo | 2026-09-15 |
+| 14 | Content Refresh for SEO: How to Update Old Blog Posts | https://www.webgrouth.com/blog/content-refresh-seo | 2026-09-15 |
 
 Article five resumed a previously saved draft and cover image. Its deployment,
 live page, image, schema, blog listing, sitemap and five-entry RSS feed were
@@ -47,14 +48,20 @@ Article twelve was published at commit `b675c7a3ff5c9f8b8da649fbf2ba9a5de4c90376
 Vercel succeeded, and its live page, cover, canonical, metadata, schema, internal
 incoming link, blog listing, sitemap and twelve-item RSS feed were verified.
 
-This release adds article thirteen: a practical internal-linking guide covering
-page inventories, reader-question maps, orphan-page reviews, anchors, crawlable
-markup, destination checks and a publication checklist. It includes primary Google
-sources, an original example map and a new photographic cover. The existing content
-strategy guide now links to it. Its body is approximately 1788 words,
-with a 9-minute reading time. After deployment, thirteen articles are published;
-seven remain for the 20-article goal. This topic was selected for the current series;
-no earlier unverified topic plan is being claimed.
+Article thirteen was published at commit `19c53b6e5b64713dec0cfff50bb752637d8e7de3`.
+Vercel succeeded, and its live page, cover, canonical, metadata, schema, internal
+incoming link, blog listing, sitemap and thirteen-item RSS feed were verified.
+
+This release adds article fourteen: a practical content-refresh guide covering
+page selection, diagnosing problems, refresh briefs, factual checks, useful
+examples, titles and links, URL preservation, accurate dates and measurement.
+It includes primary Google sources, an explicitly hypothetical worked example,
+a change-log table and a new photographic cover. The existing content-strategy
+guide now links to it. Its body is approximately 1,800 words, with a 9-minute
+reading time. This prepares the fourteenth article; confirm live publication
+after deployment. Six articles then remain for the 20-article goal.
+This topic was selected for the current series; no earlier unverified topic
+plan is being claimed.
 
 ## Working rules to preserve
 
@@ -71,23 +78,38 @@ no earlier unverified topic plan is being claimed.
 ## Verification at preparation
 
 The production build and SEO audit ran on 15 September 2026 against production
-source plus the article-thirteen changes: 28 HTML pages, 25 indexable pages,
+source plus the article-fourteen changes: 29 HTML pages, 26 indexable pages,
 and 0 failures. The pre-existing article-ten title-length advisory remains
-(72 characters; a display-length warning, not a ranking threshold). Article thirteen
+(72 characters; a display-length warning, not a ranking threshold). Article fourteen
 has no SEO audit warnings. A cached-content duplicate-ID warning appeared for the
 edited content-strategy article; the generated output contains one route for it,
 and the intended new incoming link was verified in the rendered page.
 
-The targeted article checks passed: one H1, the clean canonical, indexable robots
-metadata, matching BlogPosting and breadcrumb data, working internal references,
-cover alt text and dimensions, and presence in the blog, sitemap and thirteen-item
-RSS feed. The responsive cover is 53,084 bytes at 1280 x 457 pixels.
-These are build checks; confirm deployment and live output separately after publishing.
-They do not establish Google indexing or rankings.
+The targeted article checks passed: one matching H1, the clean canonical,
+indexable robots metadata, accurate publication date, matching BlogPosting and
+breadcrumb data, title and social metadata, working internal references, cover
+alt text and dimensions, the rendered review checklist, and presence in the blog,
+sitemap and fourteen-item RSS feed. The responsive cover is 36,592 bytes at
+1280 x 458 pixels. These are build checks; confirm deployment and live output
+separately after publishing. They do not establish Google indexing or rankings.
 
 For the next continuation, verify the latest repository revision and live blog
-before adding article fourteen. Search Console submission and indexing remain
+before adding article fifteen. Search Console submission and indexing remain
 unverified. Keep actual checks distinct from expected article counts.
+
+## Article-fourteen image record
+
+Final repository asset: `public/images/blog/content-refresh-seo.webp`
+(1600 x 572 pixels, 69,916 bytes).
+Mode: generate, one new image, using the built-in image-generation tool.
+Use case: photorealistic-natural.
+Compressed with Sharp for the existing responsive-image pipeline.
+The photo illustrates an editorial revision; it is not a real client document
+or evidence of a measured result.
+
+Generation prompt:
+
+Create an original, photorealistic editorial cover photograph for a professional English article titled 'Content Refresh for SEO: How to Update Old Blog Posts'. The image must communicate careful revision of existing content, not analytics results. A natural side-angle view of an oak desk in soft window daylight: in the foreground an older printed article proof with subtle, illegible gray text lines and a few red pencil editing marks; beside it a clean revised page with orderly, illegible text lines. A hand holds a graphite pencil over one meaningful annotation, while the other hand gently steadies the clean paper. Include one closed navy notebook and a small ceramic cup in the background, restrained and uncluttered. Show realistic human hand anatomy, tactile paper, soft shadows, and subtle depth of field. Premium documentary-style business photography in muted navy, warm stone, and natural oak; genuine everyday workspace, not a futuristic dashboard or glossy advertisement. Compose a very wide landscape, about 2.8:1, with the key papers and hands well within the central safe area and generous breathing room around them. No readable text, no titles, no letters or numbers made prominent, no branding, no logos, no watermarks, no fabricated charts, no performance metrics, no icon overlays.
 
 ## Article-thirteen image record
 
