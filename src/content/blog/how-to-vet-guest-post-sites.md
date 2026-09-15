@@ -119,6 +119,8 @@ Google identifies buying or selling links for ranking purposes as link spam. Tha
 
 For paid placements, Google prefers `rel="sponsored"`; `rel="nofollow"` is also acceptable. Confirm the agreed treatment before ordering. A paid placement can still be evaluated for relevant exposure and referral visits. [Google's guidance on paid link attributes](https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links).
 
+Our guide to [dofollow, nofollow, sponsored and UGC links](/blog/dofollow-nofollow-sponsored-ugc-links) shows how to inspect the actual markup and keep link type separate from indexing.
+
 For the article itself, choose link wording that clearly describes the destination. Our guide to [contextual links](https://www.webgrouth.com/blog/ultimate-guide-contextual-links) explains how links can fit naturally within useful content.
 
 ## 7. Check the proposed section's search visibility
