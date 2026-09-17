@@ -5,7 +5,7 @@ description: "Build a content strategy for organic traffic with seven steps cove
 category: "Content Strategy"
 tags: ["Content Strategy", "Organic Traffic", "Internal Linking"]
 date: "2026-09-11"
-author: "Web Grouth"
+author: "Nasir Haider"
 readTime: "9 min read"
 image: "/images/blog/content-strategy-organic-traffic.webp"
 imageAlt: "A person planning content in a notebook beside a laptop showing a content calendar and analytics"

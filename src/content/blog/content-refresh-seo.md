@@ -3,7 +3,7 @@ title: "Content Refresh for SEO: How to Update Old Blog Posts"
 seoTitle: "Content Refresh for SEO: How to Update Old Blog Posts"
 description: "Learn how to refresh old blog posts for SEO: choose the right pages, fix outdated content, preserve useful URLs and measure results with a clear review process."
 category: "Content Strategy"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Content Refresh", "On-Page SEO", "Content Strategy", "SEO Reporting"]
 date: "2026-09-15"
 readTime: "9 min read"

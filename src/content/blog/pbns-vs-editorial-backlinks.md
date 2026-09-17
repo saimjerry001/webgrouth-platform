@@ -5,7 +5,7 @@ description: "Compare PBNs and editorial backlinks, understand the risks, and le
 category: "Link Building"
 tags: ["PBNs", "Editorial Backlinks", "Link Building", "Publisher Quality"]
 date: "2026-09-11"
-author: "Web Grouth"
+author: "Nasir Haider"
 readTime: "12 min read"
 image: "/images/blog/pbns-vs-editorial-backlinks.jpg"
 imageAlt: "SEO dashboard illustration with charts, a search bar and a rocket"

@@ -5,7 +5,7 @@ description: "Learn what contextual links are, where they belong, and how to ass
 category: "Link Building"
 tags: ["Contextual Links", "Link Building", "Anchor Text"]
 date: "2026-09-11"
-author: "Web Grouth"
+author: "Nasir Haider"
 readTime: "11 min read"
 image: "/images/blog/ultimate-guide-contextual-links.jpg"
 imageAlt: "The word Backlinks typed on paper in a vintage typewriter"

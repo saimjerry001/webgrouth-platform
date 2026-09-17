@@ -11,7 +11,7 @@ const blog = defineCollection({
     tags: z.array(z.string().trim().min(1)).max(6).default([]),
     date: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    author: z.string().default('Web Grouth'),
+    author: z.string().default('Nasir Haider'),
     readTime: z.string(),
     image: z.string(),
     imageAlt: z.string().optional(),

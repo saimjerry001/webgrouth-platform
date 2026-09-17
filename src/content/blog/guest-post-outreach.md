@@ -3,7 +3,7 @@ title: "Guest Post Outreach: How to Pitch Editors"
 seoTitle: "Guest Post Outreach: How to Pitch Editors"
 description: "Learn how to research publishers, choose a useful angle, write a guest post pitch, follow up respectfully, and track replies through to publication."
 category: "Guest Posting"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Guest Posting", "Outreach", "Content Strategy"]
 date: "2026-09-14"
 readTime: "10 min read"

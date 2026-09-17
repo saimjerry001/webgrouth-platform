@@ -3,7 +3,7 @@ title: "How to Vet Guest Post Sites: 10 Checks Before You Publish"
 seoTitle: "How to Vet Guest Post Sites: 10 Checks Before You Publish"
 description: "Learn how to vet guest post sites with 10 practical checks for relevance, traffic, editorial quality, indexing, and link terms before you choose a publisher."
 category: "Guest Posting"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Guest Posting", "Publisher Quality", "Link Building"]
 date: "2026-09-11"
 readTime: "12 min read"

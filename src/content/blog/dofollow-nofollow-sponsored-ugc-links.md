@@ -3,7 +3,7 @@ title: "Dofollow, Nofollow, Sponsored and UGC Links Explained"
 seoTitle: "Dofollow, Nofollow, Sponsored and UGC Links Explained"
 description: "Understand dofollow, nofollow, sponsored and UGC links, inspect their HTML, separate link types from indexing, and confirm guest post terms before publishing."
 category: "Link Building"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Link Building", "Guest Posting", "Link Attributes", "Technical SEO"]
 date: "2026-09-15"
 readTime: "9 min read"

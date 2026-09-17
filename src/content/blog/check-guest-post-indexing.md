@@ -3,7 +3,7 @@ title: "How to Check If a Guest Post Is Indexed in Google"
 seoTitle: "How to Check If a Guest Post Is Indexed in Google"
 description: "Check guest post indexing with Search Console, understand the limits of site searches, and ask publishers for clear evidence when a page is missing from Google."
 category: "Guest Posting"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Guest Posting", "Google Indexing", "Search Console", "Publisher Quality"]
 date: "2026-09-14"
 readTime: "9 min read"

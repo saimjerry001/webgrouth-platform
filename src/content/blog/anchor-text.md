@@ -3,7 +3,7 @@ title: "Anchor Text: How to Choose Words That Fit the Link"
 seoTitle: "Anchor Text: How to Choose Words That Fit the Link"
 description: "Learn how to choose clear anchor text for internal links and backlinks, fix common mistakes, and review real examples without forcing keywords into sentences."
 category: "Link Building"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Anchor Text", "Internal Linking", "Link Building"]
 date: "2026-09-14"
 readTime: "10 min read"
