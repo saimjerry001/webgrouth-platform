@@ -11,9 +11,30 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'Readability Score Checker', item: canonicalUrl('/tools/readability-checker') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Readability Score Checker',
+  url: canonicalUrl('/tools/readability-checker'),
+  description: "Paste an article to get a Flesch reading ease score, average sentence length and a plain-language grade before you submit it to a publisher.",
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free Readability Score Checker | Web Grouth" description="Paste an article to get a Flesch reading ease score, average sentence length and a plain-language grade before you submit it to a publisher." structuredData={pageSchema}>
+<BaseLayout title="Free Readability Score Checker | Web Grouth" description="Paste an article to get a Flesch reading ease score, average sentence length and a plain-language grade before you submit it to a publisher." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>

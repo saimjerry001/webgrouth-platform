@@ -25,9 +25,24 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'Guest Post Campaign Tracker Template', item: canonicalUrl('/tools/guest-post-tracker-template') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CreativeWork',
+  name: 'Guest Post Campaign Tracker Template',
+  url: canonicalUrl('/tools/guest-post-tracker-template'),
+  description: 'Download a free spreadsheet template for tracking guest posting outreach, placement status, link attributes and post-publication results.',
+  encodingFormat: 'text/csv',
+  isAccessibleForFree: true,
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free Guest Post Campaign Tracker Template | Web Grouth" description="Download a free spreadsheet template for tracking guest posting outreach, placement status, link attributes and post-publication results." structuredData={pageSchema}>
+<BaseLayout title="Free Guest Post Campaign Tracker Template | Web Grouth" description="Download a free spreadsheet template for tracking guest posting outreach, placement status, link attributes and post-publication results." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>

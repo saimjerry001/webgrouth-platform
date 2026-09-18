@@ -11,9 +11,30 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'Link Attribute (rel) Generator', item: canonicalUrl('/tools/link-attribute-generator') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Link Attribute (rel) Generator',
+  url: canonicalUrl('/tools/link-attribute-generator'),
+  description: "Generate the correct HTML link tag with a sponsored, nofollow or UGC rel attribute for a guest post or link insertion placement.",
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free Link Attribute (rel) Generator | Web Grouth" description="Generate the correct HTML link tag with a sponsored, nofollow or UGC rel attribute for a guest post or link insertion placement." structuredData={pageSchema}>
+<BaseLayout title="Free Link Attribute (rel) Generator | Web Grouth" description="Generate the correct HTML link tag with a sponsored, nofollow or UGC rel attribute for a guest post or link insertion placement." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>
