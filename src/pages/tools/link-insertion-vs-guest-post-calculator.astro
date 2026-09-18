@@ -11,9 +11,30 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'Link Insertion vs Guest Post Cost Comparison', item: canonicalUrl('/tools/link-insertion-vs-guest-post-calculator') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Link Insertion vs Guest Post Cost Calculator',
+  url: canonicalUrl('/tools/link-insertion-vs-guest-post-calculator'),
+  description: "Compare the complete cost of a new guest post against an existing-article link insertion, including writing and editorial fees.",
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free Link Insertion vs Guest Post Cost Calculator | Web Grouth" description="Compare the complete cost of a new guest post against an existing-article link insertion, including writing and editorial fees." structuredData={pageSchema}>
+<BaseLayout title="Free Link Insertion vs Guest Post Cost Calculator | Web Grouth" description="Compare the complete cost of a new guest post against an existing-article link insertion, including writing and editorial fees." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>

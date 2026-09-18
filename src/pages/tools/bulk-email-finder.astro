@@ -11,9 +11,30 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'Bulk Website Email Finder', item: canonicalUrl('/tools/bulk-email-finder') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Bulk Website Email Finder',
+  url: canonicalUrl('/tools/bulk-email-finder'),
+  description: "Paste a list of websites to find publicly listed contact emails on each homepage, then download the results as a CSV file.",
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free Bulk Website Email Finder | Web Grouth" description="Paste a list of websites to find publicly listed contact emails on each homepage, then download the results as a CSV file." structuredData={pageSchema}>
+<BaseLayout title="Free Bulk Website Email Finder | Web Grouth" description="Paste a list of websites to find publicly listed contact emails on each homepage, then download the results as a CSV file." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>

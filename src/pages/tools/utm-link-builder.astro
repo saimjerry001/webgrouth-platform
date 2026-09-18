@@ -11,9 +11,30 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'UTM Campaign Link Builder', item: canonicalUrl('/tools/utm-link-builder') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'UTM Campaign Link Builder',
+  url: canonicalUrl('/tools/utm-link-builder'),
+  description: "Build a clean, consistently tagged UTM link for a guest post or link insertion placement so referral traffic is easy to measure in analytics.",
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free UTM Campaign Link Builder | Web Grouth" description="Build a clean, consistently tagged UTM link for a guest post or link insertion placement so referral traffic is easy to measure in analytics." structuredData={pageSchema}>
+<BaseLayout title="Free UTM Campaign Link Builder | Web Grouth" description="Build a clean, consistently tagged UTM link for a guest post or link insertion placement so referral traffic is easy to measure in analytics." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>
