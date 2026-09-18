@@ -107,7 +107,7 @@ A change in ownership or subject does not explain itself. Ask what changed and w
 
 Google's expired domain abuse policy addresses domains repurposed primarily to manipulate rankings with content that offers little value. Domain age alone therefore cannot establish the quality of today's publication. [Google's expired domain abuse policy](https://developers.google.com/search/docs/essentials/spam-policies#expired-domain-abuse).
 
-Record the evidence behind any concern. A shared layout or hosting provider is insufficient on its own to label a site a private blog network. Look for a broader pattern, and read our explanation of [PBNs and editorial backlinks](https://www.webgrouth.com/blog/pbns-vs-editorial-backlinks) if you need more context.
+Record the evidence behind any concern. A shared layout or hosting provider is insufficient on its own to label a site a private blog network. Look for a broader pattern, and read our explanation of [PBNs and editorial backlinks](/blog/pbns-vs-editorial-backlinks) if you need more context.
 
 ## 6. Inspect outbound links and sponsorship practices
 
@@ -121,7 +121,7 @@ For paid placements, Google prefers `rel="sponsored"`; `rel="nofollow"` is also 
 
 Our guide to [dofollow, nofollow, sponsored and UGC links](/blog/dofollow-nofollow-sponsored-ugc-links) shows how to inspect the actual markup and keep link type separate from indexing.
 
-For the article itself, choose link wording that clearly describes the destination. Our guide to [contextual links](https://www.webgrouth.com/blog/ultimate-guide-contextual-links) explains how links can fit naturally within useful content.
+For the article itself, choose link wording that clearly describes the destination. Our guide to [contextual links](/blog/ultimate-guide-contextual-links) explains how links can fit naturally within useful content.
 
 ## 7. Check the proposed section's search visibility
 
@@ -233,4 +233,4 @@ A publisher can agree to deliver an article and offer contractual remedies. It c
 
 Before choosing a guest post site, be able to explain who it reaches, what your article will contribute, and which terms you have verified. Keep that evidence alongside the price and metrics.
 
-Need help finding publications for your niche? [Contact Web Grouth](https://www.webgrouth.com/contact) with your website, intended audience, and topic. Share the markets you serve so the shortlist can reflect your business.
+Need help finding publications for your niche? [Contact Web Grouth](/contact) with your website, intended audience, and topic. Share the markets you serve so the shortlist can reflect your business.
