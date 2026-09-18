@@ -11,9 +11,30 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'Word Count & Read Time Calculator', item: canonicalUrl('/tools/word-counter') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Word Count & Read Time Calculator',
+  url: canonicalUrl('/tools/word-counter'),
+  description: "Paste any article to instantly count words, characters and sentences, and estimate its reading time before submitting it to a publisher.",
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free Word Count & Read Time Calculator | Web Grouth" description="Paste any article to instantly count words, characters and sentences, and estimate its reading time before submitting it to a publisher." structuredData={pageSchema}>
+<BaseLayout title="Free Word Count & Read Time Calculator | Web Grouth" description="Paste any article to instantly count words, characters and sentences, and estimate its reading time before submitting it to a publisher." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>
