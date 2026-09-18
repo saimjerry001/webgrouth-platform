@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, canonicalUrl } from '../../lib/seo';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Free Tools', item: canonicalUrl('/tools') },
+    { '@type': 'ListItem', position: 3, name: 'Link Attribute (rel) Generator', item: canonicalUrl('/tools/link-attribute-generator') },
+  ],
+};
+---
+
+<BaseLayout title="Free Link Attribute (rel) Generator | Web Grouth" description="Generate the correct HTML link tag with a sponsored, nofollow or UGC rel attribute for a guest post or link insertion placement." structuredData={pageSchema}>
+  <div class="homev3">
+    <section class="tool-hero-v3">
+      <div class="shell tool-hero-v3-inner" data-reveal>
+        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools">Free Tools</a><span>/</span><span>Link Attribute Generator</span></div>
+        <span class="tool-icon-badge" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg>`} />
+        <h1>Link attribute (rel) generator.</h1>
+        <p>Build the correct HTML for a paid, sponsored or user-generated link. See our full <a href="/blog/dofollow-nofollow-sponsored-ugc-links">guide to dofollow, nofollow, sponsored and UGC links</a> for what each value means.</p>
+      </div>
+    </section>
+
+    <section class="homev3-section" style="padding-top: 50px;">
+      <div class="shell tool-layout">
+        <div>
+          <div class="field"><label for="rg-anchor">Anchor text</label><input id="rg-anchor" type="text" placeholder="e.g. publisher review checklist" /></div>
+          <div class="field"><label for="rg-url">Destination URL</label><input id="rg-url" type="text" placeholder="https://example.com/checklist" /></div>
+          <div class="field">
+            <label>Relationship</label>
+            <div class="radio-group">
+              <label class="radio-option"><input type="radio" name="rg-rel" value="none" checked /> Ordinary editorial link</label>
+              <label class="radio-option"><input type="radio" name="rg-rel" value="sponsored" /> Paid / sponsored placement</label>
+              <label class="radio-option"><input type="radio" name="rg-rel" value="nofollow" /> Nofollow only</label>
+              <label class="radio-option"><input type="radio" name="rg-rel" value="sponsored nofollow" /> Sponsored + nofollow</label>
+              <label class="radio-option"><input type="radio" name="rg-rel" value="ugc" /> User-generated content</label>
+            </div>
+          </div>
+          <div class="field-row" style="display:flex; gap:16px;">
+            <label class="radio-option"><input type="checkbox" id="rg-newtab" /> Open in a new tab (adds noopener)</label>
+          </div>
+        </div>
+        <div class="tool-result-v3" data-reveal>
+          <span class="live-label"><span class="live-dot"></span> Generated HTML</span>
+          <pre class="code-box" id="rg-output">&lt;a href="#"&gt;anchor text&lt;/a&gt;</pre>
+          <button class="button button-secondary button-small" id="rg-copy" type="button">Copy to clipboard</button>
+          <p id="rg-note" class="form-note" style="margin-top: 16px; margin-bottom: 0;"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-block">
+      <div class="shell cta-card" data-reveal>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Placing a paid link?</div>
+        <h2>Get the terms confirmed for you.</h2>
+        <a class="button" href="/link-insertion">View link insertion service <span>&#8599;</span></a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+  .radio-group { display: grid; gap: 10px; }
+  .radio-option { display: flex; align-items: center; gap: 9px; color: var(--wg-ink); font-size: 14px; font-weight: 500; }
+  .radio-option input { accent-color: var(--wg-blue); }
+  .code-box { padding: 22px; overflow-x: auto; border-radius: 12px; background: rgba(255,255,255,.06); color: #93c5fd; font-family: 'Courier New', monospace; font-size: 14px; white-space: pre-wrap; word-break: break-all; }
+  @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  const anchorInput = document.getElementById('rg-anchor') as HTMLInputElement;
+  const urlInput = document.getElementById('rg-url') as HTMLInputElement;
+  const newTabInput = document.getElementById('rg-newtab') as HTMLInputElement;
+  const output = document.getElementById('rg-output')!;
+  const note = document.getElementById('rg-note')!;
+  const copyBtn = document.getElementById('rg-copy')!;
+
+  function escapeHtml(value: string) {
+    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function getRel(): string {
+    const checked = document.querySelector<HTMLInputElement>('input[name="rg-rel"]:checked');
+    return checked ? checked.value : 'none';
+  }
+
+  function update() {
+    const anchor = anchorInput.value.trim() || 'anchor text';
+    const url = urlInput.value.trim() || '#';
+    const rel = getRel();
+    const newTab = newTabInput.checked;
+
+    const relValues: string[] = [];
+    if (rel !== 'none') relValues.push(...rel.split(' '));
+    if (newTab) relValues.push('noopener');
+
+    const relAttr = relValues.length ? ` rel="${relValues.join(' ')}"` : '';
+    const targetAttr = newTab ? ' target="_blank"' : '';
+
+    const html = `<a href="${escapeHtml(url)}"${targetAttr}${relAttr}>${escapeHtml(anchor)}</a>`;
+    output.textContent = html;
+
+    if (rel === 'sponsored' || rel === 'sponsored nofollow') {
+      note.textContent = 'Google recommends rel="sponsored" for paid links. Also add a visible disclosure near the link.';
+    } else if (rel === 'nofollow') {
+      note.textContent = 'Nofollow is also accepted for paid links, and suitable for links you do not want to vouch for.';
+    } else if (rel === 'ugc') {
+      note.textContent = 'Use ugc for links inside user-generated content, such as forum posts or comments.';
+    } else {
+      note.textContent = 'An ordinary link needs no rel attribute at all.';
+    }
+  }
+
+  copyBtn.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(output.textContent ?? '');
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => { copyBtn.textContent = 'Copy to clipboard'; }, 1800);
+  });
+
+  [anchorInput, urlInput, newTabInput].forEach((el) => el.addEventListener('input', update));
+  document.querySelectorAll('input[name="rg-rel"]').forEach((el) => el.addEventListener('change', update));
+  update();
+</script>

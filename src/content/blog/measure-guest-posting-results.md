@@ -3,7 +3,7 @@ title: "How to Measure Guest Posting Results"
 seoTitle: "How to Measure Guest Posting Results: Traffic, Leads and SEO Signals"
 description: "Measure guest posting results with referral traffic, engaged visits, enquiries, UTM tracking and a simple reporting system that avoids ranking guarantees."
 category: "Guest Posting"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Guest Posting", "Link Building", "Referral Traffic", "SEO Reporting"]
 date: "2026-09-14"
 readTime: "9 min read"

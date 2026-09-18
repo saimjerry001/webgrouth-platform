@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, canonicalUrl } from '../../lib/seo';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Free Tools', item: canonicalUrl('/tools') },
+    { '@type': 'ListItem', position: 3, name: 'Readability Score Checker', item: canonicalUrl('/tools/readability-checker') },
+  ],
+};
+---
+
+<BaseLayout title="Free Readability Score Checker | Web Grouth" description="Paste an article to get a Flesch reading ease score, average sentence length and a plain-language grade before you submit it to a publisher." structuredData={pageSchema}>
+  <div class="homev3">
+    <section class="tool-hero-v3">
+      <div class="shell tool-hero-v3-inner" data-reveal>
+        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools">Free Tools</a><span>/</span><span>Readability Checker</span></div>
+        <span class="tool-icon-badge" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a9 9 0 1 0-9-9M12 12l4-3"/><path d="M12 12v.01"/></svg>`} />
+        <h1>Readability score checker.</h1>
+        <p>Paste your draft to see its Flesch reading ease score. Runs entirely in your browser &mdash; nothing is uploaded.</p>
+      </div>
+    </section>
+
+    <section class="homev3-section" style="padding-top: 50px;">
+      <div class="shell tool-layout">
+        <div class="field" style="margin-bottom: 0;">
+          <label for="rd-input">Your article text</label>
+          <textarea id="rd-input" placeholder="Paste your article here..." style="min-height: 340px;"></textarea>
+        </div>
+        <div class="tool-result-v3" data-reveal>
+          <span class="live-label"><span class="live-dot"></span> Updates as you type</span>
+          <div class="result-figure accent" id="rd-score">&mdash;</div>
+          <p id="rd-label" class="form-note" style="margin-bottom: 18px;">Enter text to see a score</p>
+          <div class="tool-stats-v3">
+            <div class="tool-stat-v3"><span id="rd-sentence-len">0</span><label>Avg words / sentence</label></div>
+            <div class="tool-stat-v3"><span id="rd-syllable-len">0</span><label>Avg syllables / word</label></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="homev3-section homev3-intro">
+      <div class="shell content-grid">
+        <div><span class="kicker">How to read the score</span><h2>Higher is easier to read.</h2></div>
+        <div>
+          <p>The Flesch reading ease score runs roughly 0&ndash;100. 60&ndash;70 is considered plain English that most adults find easy to follow; below 30 is often described as difficult, academic writing. This is a structural estimate based on sentence and word length &mdash; it does not judge accuracy, tone or whether the content is genuinely useful.</p>
+          <p>For the wider editorial standard publishers look for, see our <a href="/blog/write-guest-post-editors-publish">guide to writing a guest post editors want to publish</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-block">
+      <div class="shell cta-card" data-reveal>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Ready to pitch this article?</div>
+        <h2>Find a relevant publisher for it.</h2>
+        <a class="button" href="/guest-posting">View guest posting service <span>&#8599;</span></a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .tool-layout { display: grid; grid-template-columns: 1.3fr .9fr; gap: 40px; align-items: start; }
+  .tool-stats-v3 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .result-figure { transition: transform .18s ease; }
+  .result-figure.pop { transform: scale(1.08); }
+  @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  const input = document.getElementById('rd-input') as HTMLTextAreaElement;
+  const scoreEl = document.getElementById('rd-score')!;
+  const labelEl = document.getElementById('rd-label')!;
+  const sentenceLenEl = document.getElementById('rd-sentence-len')!;
+  const syllableLenEl = document.getElementById('rd-syllable-len')!;
+
+  function pop(el: HTMLElement) {
+    el.classList.remove('pop');
+    void el.offsetWidth;
+    el.classList.add('pop');
+    setTimeout(() => el.classList.remove('pop'), 200);
+  }
+
+  function countSyllables(word: string): number {
+    const w = word.toLowerCase().replace(/[^a-z]/g, '');
+    if (!w) return 0;
+    const matches = w.match(/[aeiouy]+/g);
+    let count = matches ? matches.length : 1;
+    if (w.endsWith('e') && count > 1) count -= 1;
+    return Math.max(1, count);
+  }
+
+  function update() {
+    const text = input.value.trim();
+    if (!text) {
+      scoreEl.textContent = '—';
+      labelEl.textContent = 'Enter text to see a score';
+      sentenceLenEl.textContent = '0';
+      syllableLenEl.textContent = '0';
+      return;
+    }
+
+    const words = text.match(/\S+/g) ?? [];
+    const sentences = text.match(/[^.!?]+[.!?]+/g) ?? [text];
+    const syllables = words.reduce((sum, w) => sum + countSyllables(w), 0);
+
+    const wordCount = Math.max(words.length, 1);
+    const sentenceCount = Math.max(sentences.length, 1);
+
+    const avgSentenceLen = wordCount / sentenceCount;
+    const avgSyllablesPerWord = syllables / wordCount;
+
+    const score = 206.835 - 1.015 * avgSentenceLen - 84.6 * avgSyllablesPerWord;
+    const clamped = Math.max(0, Math.min(100, Math.round(score)));
+
+    let label = 'Very difficult, academic';
+    if (clamped >= 90) label = 'Very easy';
+    else if (clamped >= 80) label = 'Easy';
+    else if (clamped >= 70) label = 'Fairly easy';
+    else if (clamped >= 60) label = 'Plain English';
+    else if (clamped >= 50) label = 'Fairly difficult';
+    else if (clamped >= 30) label = 'Difficult';
+
+    if (scoreEl.textContent !== String(clamped)) pop(scoreEl);
+    scoreEl.textContent = String(clamped);
+    labelEl.textContent = label;
+    sentenceLenEl.textContent = avgSentenceLen.toFixed(1);
+    syllableLenEl.textContent = avgSyllablesPerWord.toFixed(2);
+  }
+
+  input.addEventListener('input', update);
+  update();
+</script>

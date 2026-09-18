@@ -3,7 +3,7 @@ title: "How to Write a Guest Post Editors Want to Publish"
 seoTitle: "How to Write a Guest Post Editors Want to Publish"
 description: "Learn how to write a guest post editors want to publish with a focused angle, useful structure, original examples, natural links and a reliable editorial checklist."
 category: "Guest Posting"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Guest Posting", "Content Writing", "Outreach", "Link Building"]
 date: "2026-09-15"
 readTime: "8 min read"

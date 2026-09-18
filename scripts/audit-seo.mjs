@@ -1,8 +1,12 @@
 import { readdir, readFile, writeFile, mkdir, access } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import { join, relative, resolve } from 'node:path';
 import { parse } from 'parse5';
 
-const root = resolve('dist');
+// The Vercel adapter nests the static output under dist/client (with the
+// server bundle in a sibling dist/server); a plain static build writes
+// straight into dist. Support both so this script works either way.
+const root = existsSync(resolve('dist/client')) ? resolve('dist/client') : resolve('dist');
 const SITE = 'https://www.webgrouth.com';
 const failures = [];
 const warnings = [];

@@ -3,7 +3,7 @@ title: "Internal Linking for SEO: How to Connect Your Pages"
 seoTitle: "Internal Linking for SEO: How to Connect Your Pages"
 description: "Build an internal linking strategy for SEO: connect related pages, find orphan content, improve anchors, fix broken links and review useful next steps."
 category: "Technical SEO"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Internal Linking", "On-Page SEO", "Site Structure", "Content Strategy"]
 date: "2026-09-15"
 readTime: "9 min read"

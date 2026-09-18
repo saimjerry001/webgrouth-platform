@@ -23,7 +23,7 @@ description: "A short, accurate summary of the article."
 category: "Link Building"
 tags: ["Link Building", "Publisher Quality"]
 date: 2026-09-11
-author: "Web Grouth"
+author: "Nasir Haider"
 readTime: "8 min read"
 image: "/images/blog/article-topic.jpg"
 imageAlt: "Describe the cover image."

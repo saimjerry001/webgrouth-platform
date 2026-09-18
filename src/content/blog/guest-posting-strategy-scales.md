@@ -1,9 +1,9 @@
 ---
 title: "How to Build a Guest Posting Strategy That Scales"
-seoTitle: "How to Build a Guest Posting Strategy That Scales Without Losing Quality"
+seoTitle: "Guest Posting Strategy That Scales Without Losing Quality"
 description: "Build a scalable guest posting strategy with clear goals, relevant publishers, editorial standards, anchor-text variety, tracking and review checkpoints."
 category: "Guest Posting"
-author: "Web Grouth"
+author: "Nasir Haider"
 tags: ["Guest Posting", "Link Building", "SEO Strategy", "Content Marketing"]
 date: "2026-09-14"
 readTime: "8 min read"

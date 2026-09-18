@@ -5,7 +5,7 @@ description: "Build a content strategy for organic traffic with seven steps cove
 category: "Content Strategy"
 tags: ["Content Strategy", "Organic Traffic", "Internal Linking"]
 date: "2026-09-11"
-author: "Web Grouth"
+author: "Nasir Haider"
 readTime: "9 min read"
 image: "/images/blog/content-strategy-organic-traffic.webp"
 imageAlt: "A person planning content in a notebook beside a laptop showing a content calendar and analytics"
@@ -72,7 +72,7 @@ Use our [internal linking guide](/blog/internal-linking-seo) to map each reader�
 
 Internal links should help both readers and search engines understand the site. Link from broad educational pages to more specific resources, and use descriptive anchor text that tells the reader what they will find.
 
-A reader planning an outreach campaign may need to understand [contextual links](https://www.webgrouth.com/blog/ultimate-guide-contextual-links), learn [how to vet guest post sites](https://www.webgrouth.com/blog/how-to-vet-guest-post-sites), and then compare [guest posting options](https://www.webgrouth.com/guest-posting). Connect those resources where they answer the reader's next question.
+A reader planning an outreach campaign may need to understand [contextual links](/blog/ultimate-guide-contextual-links), learn [how to vet guest post sites](/blog/how-to-vet-guest-post-sites), and then compare [guest posting options](/guest-posting). Connect those resources where they answer the reader's next question.
 
 Avoid forcing links into every paragraph. A smaller number of relevant links is easier to navigate and more credible than a dense block of exact-match anchors.
 
@@ -80,7 +80,7 @@ Avoid forcing links into every paragraph. A smaller number of relevant links is 
 
 Publishing is not distribution. After a page goes live, repurpose its strongest insight into an email, a LinkedIn post, a short checklist, or a useful contribution to an industry discussion.
 
-For pages that deserve authority, pursue links from relevant publications and communities. Editorial guest posts and contextual link insertions can support discovery when the host page, audience, and destination are genuinely related. Quality matters more than volume. Web Grouth’s [publisher network](https://www.webgrouth.com/#database) and [link-insertion service](https://www.webgrouth.com/link-insertion) can be evaluated against those criteria: relevance, editorial fit, transparency, and a clear live-link report.
+For pages that deserve authority, pursue links from relevant publications and communities. Editorial guest posts and contextual link insertions can support discovery when the host page, audience, and destination are genuinely related. Quality matters more than volume. Web Grouth’s [publisher network](/#database) and [link-insertion service](/link-insertion) can be evaluated against those criteria: relevance, editorial fit, transparency, and a clear live-link report.
 
 External links should support a strong page, not compensate for a weak one. If the target article does not answer the searcher’s question, more links will not fix the underlying problem.
 
@@ -110,7 +110,7 @@ The strategy becomes durable when it is managed like an operating process. Every
 
 The strongest content strategy for organic traffic is not the one with the most articles. It is the one that consistently connects audience problems, search intent, useful information, internal navigation, credible distribution, and measurable business outcomes. Start with one topic where your business has real experience. Build the page system around it. Then improve the system using evidence rather than publishing volume alone.
 
-When you are ready to extend the strategy beyond on-page work, review Web Grouth’s [SEO services](https://www.webgrouth.com/seo-services), [guest posting](https://www.webgrouth.com/guest-posting), and [guest post quality checklist](https://www.webgrouth.com/guest-post-quality-checklist) pages.
+When you are ready to extend the strategy beyond on-page work, review Web Grouth’s [SEO services](/seo-services), [guest posting](/guest-posting), and [guest post quality checklist](/guest-post-quality-checklist) pages.
 
 ## FAQs
 
