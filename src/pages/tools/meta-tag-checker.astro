@@ -11,9 +11,30 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'Meta Title & Description Checker', item: canonicalUrl('/tools/meta-tag-checker') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Meta Title & Description Checker',
+  url: canonicalUrl('/tools/meta-tag-checker'),
+  description: "Check your title and meta description length and preview how the page will look in Google search results before you publish.",
+  applicationCategory: 'UtilitiesApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free Meta Title & Description Checker | Web Grouth" description="Check your title and meta description length and preview how the page will look in Google search results before you publish." structuredData={pageSchema}>
+<BaseLayout title="Free Meta Title & Description Checker | Web Grouth" description="Check your title and meta description length and preview how the page will look in Google search results before you publish." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>

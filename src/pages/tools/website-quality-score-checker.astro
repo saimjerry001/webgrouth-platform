@@ -11,9 +11,30 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'Website Quality Score Checker', item: canonicalUrl('/tools/website-quality-score-checker') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Website Quality Score Checker',
+  url: canonicalUrl('/tools/website-quality-score-checker'),
+  description: "Enter a website's DA, PA, DR, traffic and price to get a quick Premium, Standard or Budget quality tier for shortlisting guest post opportunities.",
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free Website Quality Score Checker | Web Grouth" description="Enter a website's DA, PA, DR, traffic and price to get a quick Premium, Standard or Budget quality tier for shortlisting guest post opportunities." structuredData={pageSchema}>
+<BaseLayout title="Free Website Quality Score Checker | Web Grouth" description="Enter a website's DA, PA, DR, traffic and price to get a quick Premium, Standard or Budget quality tier for shortlisting guest post opportunities." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>

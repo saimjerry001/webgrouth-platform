@@ -11,9 +11,30 @@ const pageSchema = {
     { '@type': 'ListItem', position: 3, name: 'Guest Post Price Calculator', item: canonicalUrl('/tools/guest-post-price-calculator') },
   ],
 };
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Guest Post Price Calculator',
+  url: canonicalUrl('/tools/guest-post-price-calculator'),
+  description: "Enter a website's DA, DR and estimated traffic to get a ballpark guest post price range, based on common market patterns.",
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
 ---
 
-<BaseLayout title="Free Guest Post Price Calculator | Web Grouth" description="Enter a website's DA, DR and estimated traffic to get a ballpark guest post price range, based on common market patterns." structuredData={pageSchema}>
+<BaseLayout title="Free Guest Post Price Calculator | Web Grouth" description="Enter a website's DA, DR and estimated traffic to get a ballpark guest post price range, based on common market patterns." structuredData={[pageSchema, toolSchema]}>
   <div class="homev3">
     <section class="tool-hero-v3">
       <div class="shell tool-hero-v3-inner" data-reveal>
