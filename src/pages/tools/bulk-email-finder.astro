@@ -1,0 +1,186 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, canonicalUrl } from '../../lib/seo';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Free Tools', item: canonicalUrl('/tools') },
+    { '@type': 'ListItem', position: 3, name: 'Bulk Website Email Finder', item: canonicalUrl('/tools/bulk-email-finder') },
+  ],
+};
+---
+
+<BaseLayout title="Free Bulk Website Email Finder | Web Grouth" description="Paste a list of websites to find publicly listed contact emails on each homepage, then download the results as a CSV file." structuredData={pageSchema}>
+  <section class="page-hero section-tight">
+    <div class="shell">
+      <div class="article-header" data-reveal>
+        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools">Free Tools</a><span>/</span><span>Bulk Email Finder</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free tool &middot; up to 20 sites per search</div>
+        <h1>Bulk website email finder.</h1>
+        <p>Paste a list of websites (one per line) to find publicly listed contact emails on each homepage, then download the results as a CSV.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="shell tool-layout">
+      <div>
+        <div class="field" style="margin-bottom: 14px;">
+          <label for="ef-input">Websites (one per line, up to 20)</label>
+          <textarea id="ef-input" placeholder={"example.com\nanother-site.com\nathirdsite.org"} style="min-height: 220px;"></textarea>
+        </div>
+        <button class="button button-primary" id="ef-submit" type="button">Find emails</button>
+        <button class="button button-secondary" id="ef-download" type="button" style="display:none; margin-left: 10px;">Download CSV</button>
+        <p id="ef-status" class="form-note" style="margin-top: 14px;"></p>
+      </div>
+      <div data-reveal>
+        <span class="kicker">How this works</span>
+        <ul class="info-list">
+          <li>Checks only the public homepage of each site &mdash; the same page any visitor can open.</li>
+          <li>Finds emails that are already written on the page, such as in a footer or contact link.</li>
+          <li>Skips sites that time out, block automated requests, or list no email.</li>
+          <li>Nothing is stored on our server; results only exist in your browser.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="ef-results-section" style="display:none;">
+    <div class="shell">
+      <span class="kicker">Results</span>
+      <div class="results-table-wrap">
+        <table class="results-table" id="ef-results-table">
+          <thead><tr><th>Website</th><th>Emails found</th><th>Status</th></tr></thead>
+          <tbody id="ef-results-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <div class="shell cta-card" data-reveal>
+      <div class="eyebrow"><span class="eyebrow-dot"></span> Reaching out to publishers?</div>
+      <h2>Let us run the outreach for you.</h2>
+      <a class="button" href="/guest-posting">View guest posting service <span>&#8599;</span></a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: start; }
+  .info-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+  .info-list li { position: relative; padding-left: 22px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+  .info-list li::before { content: '\2713'; position: absolute; left: 0; color: var(--lime); font-weight: 800; }
+  .results-table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+  .results-table { width: 100%; border-collapse: collapse; }
+  .results-table th, .results-table td { padding: 14px 18px; border-bottom: 1px solid var(--line); text-align: left; font-size: 14px; }
+  .results-table th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+  .results-table tr:last-child td { border-bottom: none; }
+  .status-ok { color: var(--lime); }
+  .status-error { color: #ff9d6b; }
+  @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  interface EmailResult {
+    domain: string;
+    emails: string[];
+    status: 'ok' | 'error';
+    error?: string;
+  }
+
+  const input = document.getElementById('ef-input') as HTMLTextAreaElement;
+  const submitBtn = document.getElementById('ef-submit') as HTMLButtonElement;
+  const downloadBtn = document.getElementById('ef-download') as HTMLButtonElement;
+  const statusEl = document.getElementById('ef-status')!;
+  const resultsSection = document.getElementById('ef-results-section')!;
+  const resultsBody = document.getElementById('ef-results-body')!;
+
+  let lastResults: EmailResult[] = [];
+
+  function parseDomains(): string[] {
+    return input.value
+      .split(/[\n,]/)
+      .map((line) => line.trim())
+      .filter((line) => line.length > 0);
+  }
+
+  function renderResults(results: EmailResult[]) {
+    resultsBody.innerHTML = '';
+    for (const row of results) {
+      const tr = document.createElement('tr');
+      const emailsText = row.emails.length ? row.emails.join(', ') : '—';
+      const statusText = row.status === 'ok'
+        ? (row.emails.length ? 'Found' : 'No email found')
+        : `Error: ${row.error ?? 'unknown'}`;
+      const statusClass = row.status === 'ok' && row.emails.length ? 'status-ok' : 'status-error';
+      tr.innerHTML = `<td>${row.domain}</td><td>${emailsText}</td><td class="${statusClass}">${statusText}</td>`;
+      resultsBody.appendChild(tr);
+    }
+    resultsSection.style.display = results.length ? 'block' : 'none';
+  }
+
+  function toCsv(results: EmailResult[]): string {
+    const header = 'Website,Emails Found,Status\n';
+    const rows = results.map((r) => {
+      const emails = r.emails.join('; ').replace(/"/g, '""');
+      const status = r.status === 'ok' ? (r.emails.length ? 'Found' : 'No email found') : `Error: ${r.error ?? ''}`;
+      return `"${r.domain}","${emails}","${status.replace(/"/g, '""')}"`;
+    });
+    return header + rows.join('\n');
+  }
+
+  submitBtn.addEventListener('click', async () => {
+    const domains = parseDomains();
+    if (domains.length === 0) {
+      statusEl.textContent = 'Enter at least one website.';
+      return;
+    }
+    if (domains.length > 20) {
+      statusEl.textContent = `Only the first 20 of your ${domains.length} sites will be checked in this search.`;
+    } else {
+      statusEl.textContent = '';
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Searching...';
+    downloadBtn.style.display = 'none';
+
+    try {
+      const res = await fetch('/api/find-emails', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ domains }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        statusEl.textContent = data.error ?? 'Something went wrong. Try again.';
+        return;
+      }
+      lastResults = data.results as EmailResult[];
+      renderResults(lastResults);
+      const foundCount = lastResults.filter((r) => r.emails.length > 0).length;
+      statusEl.textContent = `Checked ${lastResults.length} site${lastResults.length === 1 ? '' : 's'} — found emails on ${foundCount}.`;
+      downloadBtn.style.display = lastResults.length ? 'inline-flex' : 'none';
+    } catch {
+      statusEl.textContent = 'Network error. Check your connection and try again.';
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Find emails';
+    }
+  });
+
+  downloadBtn.addEventListener('click', () => {
+    const csv = toCsv(lastResults);
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'website-emails.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+</script>

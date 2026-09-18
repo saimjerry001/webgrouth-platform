@@ -19,6 +19,7 @@ export const seoPages = [
   { path: '/tools/utm-link-builder', name: 'UTM Campaign Link Builder', lastmod: '2026-09-18' },
   { path: '/tools/readability-checker', name: 'Readability Score Checker', lastmod: '2026-09-18' },
   { path: '/tools/website-quality-score-checker', name: 'Website Quality Score Checker', lastmod: '2026-09-18' },
+  { path: '/tools/bulk-email-finder', name: 'Bulk Website Email Finder', lastmod: '2026-09-18' },
   { path: '/guarantee-policy', name: 'Indexation & Replacement Policy' },
   { path: '/privacy', name: 'Privacy Policy' },
   { path: '/terms', name: 'Terms of Service' },
