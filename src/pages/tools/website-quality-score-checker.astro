@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, canonicalUrl } from '../../lib/seo';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Free Tools', item: canonicalUrl('/tools') },
+    { '@type': 'ListItem', position: 3, name: 'Website Quality Score Checker', item: canonicalUrl('/tools/website-quality-score-checker') },
+  ],
+};
+---
+
+<BaseLayout title="Free Website Quality Score Checker | Web Grouth" description="Enter a website's DA, PA, DR, traffic and price to get a quick Premium, Standard or Budget quality tier for shortlisting guest post opportunities." structuredData={pageSchema}>
+  <section class="page-hero section-tight">
+    <div class="shell">
+      <div class="article-header" data-reveal>
+        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools">Free Tools</a><span>/</span><span>Website Quality Score</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free tool</div>
+        <h1>Website quality score checker.</h1>
+        <p>A quick way to sort a shortlist into tiers before a full review. See our <a href="/blog/how-to-vet-guest-post-sites">complete site-vetting guide</a> for the checks a score cannot replace.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-tight">
+    <div class="shell tool-layout">
+      <div>
+        <div class="form-row">
+          <div class="field"><label for="qs-da">DA</label><input id="qs-da" type="number" min="0" max="100" placeholder="e.g. 55" /></div>
+          <div class="field"><label for="qs-pa">PA</label><input id="qs-pa" type="number" min="0" max="100" placeholder="e.g. 48" /></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="qs-dr">DR</label><input id="qs-dr" type="number" min="0" max="100" placeholder="e.g. 50" /></div>
+          <div class="field"><label for="qs-traffic">Monthly traffic</label><input id="qs-traffic" type="number" min="0" placeholder="e.g. 6000" /></div>
+        </div>
+        <div class="field" style="margin-bottom:0;"><label for="qs-price">Asking price ($)</label><input id="qs-price" type="number" min="0" placeholder="e.g. 60" /></div>
+      </div>
+      <div class="tool-result" data-reveal>
+        <span class="kicker">Quality tier</span>
+        <div class="tier-badge" id="qs-tier">&mdash;</div>
+        <p id="qs-explain" class="form-note">Enter DA, PA, DR and traffic to see a tier.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="shell content-grid">
+      <div><span class="kicker">Use this as a first filter only</span><h2>A tier sorts a list. It does not approve a site.</h2></div>
+      <div><p>This score combines authority and traffic signals to help you triage a long list quickly. Before ordering, still review the audience, recent articles, indexing and publishing terms &mdash; use our <a href="/guest-post-quality-checklist">free quality checklist</a> for that step.</p></div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <div class="shell cta-card" data-reveal>
+      <div class="eyebrow"><span class="eyebrow-dot"></span> Want a pre-vetted shortlist?</div>
+      <h2>Skip the manual triage.</h2>
+      <a class="button" href="/guest-posting">View guest posting service <span>&#8599;</span></a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tool-layout { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; align-items: start; }
+  .tool-result { padding: 32px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.03); position: sticky; top: 120px; text-align: center; }
+  .tier-badge { margin: 14px 0; font-family: 'Manrope', sans-serif; font-size: 2.2rem; font-weight: 800; }
+  .tier-badge.premium { color: var(--lime); }
+  .tier-badge.standard { color: var(--cyan); }
+  .tier-badge.budget { color: #ff9d6b; }
+  @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } .tool-result { position: static; } }
+</style>
+
+<script>
+  const daInput = document.getElementById('qs-da') as HTMLInputElement;
+  const paInput = document.getElementById('qs-pa') as HTMLInputElement;
+  const drInput = document.getElementById('qs-dr') as HTMLInputElement;
+  const trafficInput = document.getElementById('qs-traffic') as HTMLInputElement;
+  const priceInput = document.getElementById('qs-price') as HTMLInputElement;
+  const tierEl = document.getElementById('qs-tier')!;
+  const explainEl = document.getElementById('qs-explain')!;
+
+  function update() {
+    const da = Number(daInput.value);
+    const pa = Number(paInput.value);
+    const dr = Number(drInput.value);
+    const traffic = Number(trafficInput.value) || 0;
+    const price = Number(priceInput.value) || 0;
+
+    if (!daInput.value && !paInput.value && !drInput.value) {
+      tierEl.textContent = '—';
+      tierEl.className = 'tier-badge';
+      explainEl.textContent = 'Enter DA, PA, DR and traffic to see a tier.';
+      return;
+    }
+
+    const authority = (da + pa + dr) / 3;
+    let tier: 'Premium' | 'Standard' | 'Budget';
+    let reason: string;
+
+    if (authority >= 50 && traffic >= 3000) {
+      tier = 'Premium';
+      reason = 'High authority with meaningful traffic — a strong first-filter candidate.';
+    } else if (authority >= 25) {
+      tier = 'Standard';
+      reason = 'Reasonable authority — worth a closer look at audience and content.';
+    } else {
+      tier = 'Budget';
+      reason = 'Lower authority or traffic — still review it if it is genuinely relevant to your niche.';
+    }
+
+    if (price > 0 && price < authority * 1.5 && tier !== 'Budget') {
+      reason += ' The price also looks reasonable for this authority level.';
+    }
+
+    tierEl.textContent = tier;
+    tierEl.className = `tier-badge ${tier.toLowerCase()}`;
+    explainEl.textContent = reason;
+  }
+
+  [daInput, paInput, drInput, trafficInput, priceInput].forEach((el) => el.addEventListener('input', update));
+  update();
+</script>
