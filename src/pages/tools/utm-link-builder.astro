@@ -14,48 +14,48 @@ const pageSchema = {
 ---
 
 <BaseLayout title="Free UTM Campaign Link Builder | Web Grouth" description="Build a clean, consistently tagged UTM link for a guest post or link insertion placement so referral traffic is easy to measure in analytics." structuredData={pageSchema}>
-  <section class="page-hero section-tight">
-    <div class="shell">
-      <div class="article-header" data-reveal>
+  <div class="homev3">
+    <section class="tool-hero-v3">
+      <div class="shell tool-hero-v3-inner" data-reveal>
         <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools">Free Tools</a><span>/</span><span>UTM Link Builder</span></div>
-        <div class="eyebrow"><span class="eyebrow-dot"></span> Free tool</div>
+        <span class="tool-icon-badge" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg>`} />
         <h1>UTM campaign link builder.</h1>
         <p>Build a consistently tagged link for a placement so you can measure it in analytics. See our <a href="/blog/measure-guest-posting-results">guide to measuring guest posting results</a> for how to read the report.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-tight">
-    <div class="shell tool-layout">
-      <div>
-        <div class="field"><label for="utm-url">Destination URL</label><input id="utm-url" type="text" placeholder="https://www.yoursite.com/services/technical-seo" /></div>
-        <div class="form-row">
-          <div class="field"><label for="utm-source">Campaign source (the publisher)</label><input id="utm-source" type="text" placeholder="e.g. publisher.example" /></div>
-          <div class="field"><label for="utm-medium">Campaign medium</label><input id="utm-medium" type="text" value="referral" /></div>
+    <section class="homev3-section" style="padding-top: 50px;">
+      <div class="shell tool-layout">
+        <div>
+          <div class="field"><label for="utm-url">Destination URL</label><input id="utm-url" type="text" placeholder="https://www.yoursite.com/services/technical-seo" /></div>
+          <div class="form-row">
+            <div class="field"><label for="utm-source">Campaign source (the publisher)</label><input id="utm-source" type="text" placeholder="e.g. publisher.example" /></div>
+            <div class="field"><label for="utm-medium">Campaign medium</label><input id="utm-medium" type="text" value="referral" /></div>
+          </div>
+          <div class="field" style="margin-bottom:0;"><label for="utm-campaign">Campaign name</label><input id="utm-campaign" type="text" placeholder="e.g. guest_post_technical_seo" /></div>
         </div>
-        <div class="field" style="margin-bottom:0;"><label for="utm-campaign">Campaign name</label><input id="utm-campaign" type="text" placeholder="e.g. guest_post_technical_seo" /></div>
+        <div class="tool-result-v3" data-reveal>
+          <span class="live-label"><span class="live-dot"></span> Generated link</span>
+          <pre class="code-box" id="utm-output">Enter a destination URL to begin.</pre>
+          <button class="button button-secondary button-small" id="utm-copy" type="button">Copy to clipboard</button>
+          <p class="form-note" style="margin-top: 16px; margin-bottom: 0;">Use lowercase, consistent naming for the source and campaign on every placement so reports stay comparable.</p>
+        </div>
       </div>
-      <div data-reveal>
-        <span class="kicker">Generated link</span>
-        <pre class="code-box" id="utm-output">Enter a destination URL to begin.</pre>
-        <button class="button button-secondary button-small" id="utm-copy" type="button">Copy to clipboard</button>
-        <p class="form-note" style="margin-top: 16px;">Use lowercase, consistent naming for the source and campaign on every placement so reports stay comparable.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-block">
-    <div class="shell cta-card" data-reveal>
-      <div class="eyebrow"><span class="eyebrow-dot"></span> Want the whole reporting system?</div>
-      <h2>See how we track every placement.</h2>
-      <a class="button" href="/seo-services">View SEO services <span>&#8599;</span></a>
-    </div>
-  </section>
+    <section class="cta-block">
+      <div class="shell cta-card" data-reveal>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Want the whole reporting system?</div>
+        <h2>See how we track every placement.</h2>
+        <a class="button" href="/seo-services">View SEO services <span>&#8599;</span></a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
 
 <style>
   .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-  .code-box { padding: 22px; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-sm); background: rgba(0,0,0,.28); color: var(--lime-soft); font-family: 'Courier New', monospace; font-size: 13px; word-break: break-all; white-space: pre-wrap; }
+  .code-box { padding: 22px; overflow-x: auto; border-radius: 12px; background: rgba(255,255,255,.06); color: #93c5fd; font-family: 'Courier New', monospace; font-size: 13px; word-break: break-all; white-space: pre-wrap; }
   @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
 </style>
 

@@ -3,16 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { breadcrumb } from '../lib/seo';
 
 const liveTools = [
-  { href: '/tools/word-counter', name: 'Word Count & Read Time Calculator', text: 'Paste any article and get an instant word count, character count and estimated reading time before you submit it to a publisher.' },
-  { href: '/tools/meta-tag-checker', name: 'Meta Title & Description Checker', text: 'Preview how your title and description will look in Google search results and check they will not be cut off.' },
-  { href: '/tools/guest-post-price-calculator', name: 'Guest Post Price Calculator', text: 'Enter a website’s DA, DR and traffic to get a fair, ballpark price range for a guest post placement.' },
-  { href: '/tools/link-insertion-vs-guest-post-calculator', name: 'Link Insertion vs Guest Post Cost Comparison', text: 'Compare the complete cost of a new guest post against an existing-article link insertion, side by side.' },
-  { href: '/tools/link-attribute-generator', name: 'Link Attribute (rel) Generator', text: 'Generate the correct sponsored, nofollow or UGC HTML link tag for a placement in seconds.' },
-  { href: '/tools/guest-post-tracker-template', name: 'Guest Post Campaign Tracker Template', text: 'Download a ready-made spreadsheet template for tracking outreach, placements and results.' },
-  { href: '/tools/utm-link-builder', name: 'UTM Campaign Link Builder', text: 'Build a clean, consistently tagged link for a placement so referral traffic is easy to measure in analytics.' },
-  { href: '/tools/readability-checker', name: 'Readability Score Checker', text: 'Paste an article to get a Flesch reading ease score and a plain-language grade before you submit it.' },
-  { href: '/tools/website-quality-score-checker', name: 'Website Quality Score Checker', text: 'Enter DA, PA, DR and traffic to sort a shortlist into Premium, Standard or Budget tiers.' },
-  { href: '/tools/bulk-email-finder', name: 'Bulk Website Email Finder', text: 'Paste up to 20 websites at once to find publicly listed contact emails and download the results as a CSV.' },
+  { href: '/tools/word-counter', name: 'Word Count & Read Time Calculator', text: 'Paste any article and get an instant word count, character count and estimated reading time.', icon: 'doc' },
+  { href: '/tools/meta-tag-checker', name: 'Meta Title & Description Checker', text: 'Live Google search preview so your title and description are never cut off.', icon: 'search' },
+  { href: '/tools/guest-post-price-calculator', name: 'Guest Post Price Calculator', text: 'Enter DA, DR and traffic to get a fair, ballpark price range for a placement.', icon: 'tag' },
+  { href: '/tools/link-insertion-vs-guest-post-calculator', name: 'Link Insertion vs Guest Post Cost', text: 'Compare the complete cost of a new article against an existing-article insertion.', icon: 'scale' },
+  { href: '/tools/link-attribute-generator', name: 'Link Attribute (rel) Generator', text: 'Generate the correct sponsored, nofollow or UGC HTML link tag in seconds.', icon: 'code' },
+  { href: '/tools/guest-post-tracker-template', name: 'Campaign Tracker Template', text: 'A ready-made spreadsheet for tracking outreach, placements and results.', icon: 'sheet' },
+  { href: '/tools/utm-link-builder', name: 'UTM Campaign Link Builder', text: 'Build a consistently tagged link so referral traffic is easy to measure.', icon: 'link' },
+  { href: '/tools/readability-checker', name: 'Readability Score Checker', text: 'Get a Flesch reading-ease score and a plain-language grade before you submit.', icon: 'gauge' },
+  { href: '/tools/website-quality-score-checker', name: 'Website Quality Score Checker', text: 'Sort a shortlist into Premium, Standard or Budget tiers in one glance.', icon: 'star' },
+  { href: '/tools/bulk-email-finder', name: 'Bulk Website Email Finder', text: 'Check up to 20 sites at once and download contact emails as a CSV.', icon: 'mail' },
 ];
 
 const comingSoonTools = [
@@ -21,6 +21,13 @@ const comingSoonTools = [
   'Anchor Text Ratio Analyzer',
   'Single-Page Broken Link Checker',
   'Robots.txt & Sitemap Validator',
+];
+
+const stats = [
+  ['10', 'free tools live'],
+  ['$0', 'cost, forever'],
+  ['0', 'sign-ups required'],
+  ['100%', 'runs in your browser'],
 ];
 
 const pageSchema = [
@@ -38,61 +45,151 @@ const pageSchema = [
     })),
   },
 ];
+
+const icons: Record<string, string> = {
+  doc: '<path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6M9 9h2"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  tag: '<path d="M3 3h8l10 10-8 8L3 11V3Z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+  scale: '<path d="M12 3v18M7 21h10M5 7l-3 6a3 3 0 0 0 6 0l-3-6Zm14 0-3 6a3 3 0 0 0 6 0l-3-6ZM5 7h14M12 3l-2 4h4l-2-4Z"/>',
+  code: '<path d="m9 8-4 4 4 4M15 8l4 4-4 4"/>',
+  sheet: '<rect x="3" y="4" width="18" height="16" rx="1"/><path d="M3 9h18M9 9v11"/>',
+  link: '<path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1.5-1.5"/>',
+  gauge: '<path d="M12 21a9 9 0 1 0-9-9M12 12l4-3"/><path d="M12 12v.01"/>',
+  star: '<path d="m12 2 3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1 3-7Z"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+};
 ---
 
-<BaseLayout title="Free Guest Posting & SEO Tools | Web Grouth" description="Free tools for guest posting and link building: price calculators, a word counter, a meta tag checker, a link attribute generator and a campaign tracker template." pageType="CollectionPage" structuredData={pageSchema}>
-  <section class="page-hero">
-    <div class="shell">
-      <div class="article-header" data-reveal>
-        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><span>Free Tools</span></div>
-        <div class="eyebrow"><span class="eyebrow-dot"></span> Free, no sign-up required</div>
-        <h1>Free tools for guest posting and link building.</h1>
-        <p>Practical, free tools built from the same checks we use to plan and review guest posting and link insertion campaigns. No account, no email required.</p>
-      </div>
-    </div>
-  </section>
+<BaseLayout title="Free Guest Posting & SEO Tools | Web Grouth" description="Free tools for guest posting and link building: price calculators, a word counter, a meta tag checker, a link attribute generator, a bulk email finder and more." pageType="CollectionPage" structuredData={pageSchema}>
+  <div class="homev3 tools-hub">
+    <section class="homev3-hero tools-hero">
+      <div class="shell homev3-hero-grid">
+        <div class="homev3-hero-copy" data-reveal>
+          <p class="homev3-overline">Free, forever &mdash; no account required</p>
+          <h1>Tools built for <span>guest posting that works.</span></h1>
+          <p class="homev3-lead">Ten free tools built from the same checks we use to plan and review real guest posting and link insertion campaigns &mdash; not generic calculators.</p>
+          <div class="homev3-actions">
+            <a class="homev3-button homev3-button-primary" href="#tools">Browse all tools <span>&darr;</span></a>
+            <a class="homev3-button homev3-button-secondary" href="/guest-posting">View guest posting service</a>
+          </div>
+        </div>
 
-  <section class="section" id="tools">
-    <div class="shell">
-      <div class="tools-grid">
-        {liveTools.map((tool) => (
-          <a class="tool-card" href={tool.href} data-reveal>
-            <h3>{tool.name}</h3>
-            <p>{tool.text}</p>
-            <span class="tool-card-cta">Open tool <span aria-hidden="true">&rarr;</span></span>
-          </a>
-        ))}
+        <div class="homev3-network tools-hero-card" data-reveal data-reveal-delay="1">
+          <div class="homev3-network-top">
+            <div><span class="homev3-live"></span><strong>Live in your browser</strong></div>
+            <span>No data leaves your device</span>
+          </div>
+          <div class="tools-hero-stats">
+            {stats.map(([value, label]) => (
+              <div class="tools-hero-stat"><strong data-count-target={value}>{value}</strong><span>{label}</span></div>
+            ))}
+          </div>
+          <div class="tools-hero-list">
+            <span>&#10003; Instant results, no waiting</span>
+            <span>&#10003; Nothing you enter is stored</span>
+            <span>&#10003; Built from real campaign checklists</span>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-soft">
-    <div class="shell">
-      <span class="kicker">Coming soon</span>
-      <h2>More tools are on the way.</h2>
-      <div class="tag-row" style="margin-top: 20px;">
-        {comingSoonTools.map((name) => <span class="tag">{name}</span>)}
+    <section class="homev3-section homev3-services-section" id="tools">
+      <div class="shell">
+        <div class="homev3-heading-row" data-reveal>
+          <div><p class="homev3-overline">All tools</p><h2>Pick a tool and start immediately.</h2></div>
+        </div>
+        <div class="tools-grid-v3">
+          {liveTools.map((tool, index) => (
+            <a class="tool-card-v3" href={tool.href} data-reveal data-reveal-delay={String(index % 3)}>
+              <span class="tool-card-v3-icon" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${icons[tool.icon]}</svg>`} />
+              <h3>{tool.name}</h3>
+              <p>{tool.text}</p>
+              <span class="tool-card-v3-cta">Open tool <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-block">
-    <div class="shell cta-card" data-reveal>
-      <div class="eyebrow"><span class="eyebrow-dot"></span> Need a hand with a real campaign?</div>
-      <h2>Send your niche and target market.</h2>
-      <p>Web Grouth will prepare relevant guest posting and link insertion options for you to review.</p>
-      <a class="button" href="/order">Place an order <span>&#8599;</span></a>
-    </div>
-  </section>
+    <section class="homev3-section homev3-intro">
+      <div class="shell">
+        <span class="kicker">Coming soon</span>
+        <h2 style="margin: 14px 0 24px;">More tools are on the way.</h2>
+        <div class="tag-row">
+          {comingSoonTools.map((name) => <span class="tag tag-soon">{name}</span>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-block">
+      <div class="shell cta-card" data-reveal>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Need a hand with a real campaign?</div>
+        <h2>Send your niche and target market.</h2>
+        <p>Web Grouth will prepare relevant guest posting and link insertion options for you to review.</p>
+        <a class="button" href="/order">Place an order <span>&#8599;</span></a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
 
 <style>
-  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-  .tool-card { display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.022); transition: border-color .2s ease, transform .2s ease; }
-  .tool-card:hover { border-color: rgba(184,255,90,.4); transform: translateY(-3px); }
-  .tool-card h3 { margin: 0 0 10px; font-size: 1.18rem; }
-  .tool-card p { flex: 1; margin-bottom: 18px; font-size: .92rem; }
-  .tool-card-cta { color: var(--lime); font-size: 13px; font-weight: 700; }
-  @media (max-width: 900px) { .tools-grid { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 620px) { .tools-grid { grid-template-columns: 1fr; } }
+  .tools-hero { padding-bottom: 60px; }
+  .tools-hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 15px 0; }
+  .tools-hero-stat { padding: 15px; border-radius: 9px; background: var(--wg-paper, #f7f6f2); }
+  .tools-hero-stat strong { display: block; margin-bottom: 4px; color: var(--wg-blue, #2563eb); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 26px; letter-spacing: -.03em; }
+  .tools-hero-stat span { color: #777b84; font-size: 10px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+  .tools-hero-list { display: grid; gap: 10px; padding-top: 15px; border-top: 1px solid #ece9e2; }
+  .tools-hero-list span { color: #3f434b; font-size: 12px; font-weight: 600; }
+
+  .tools-grid-v3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tool-card-v3 { position: relative; display: flex; flex-direction: column; min-height: 210px; padding: 26px; border: 1px solid #343b49; border-radius: 10px; background: #1a2130; transition: transform .25s cubic-bezier(.2,.8,.2,1), border-color .25s ease, box-shadow .25s ease; }
+  .tool-card-v3:hover { transform: translateY(-6px); border-color: var(--wg-blue, #2563eb); box-shadow: 0 20px 45px rgba(37,99,235,.22); }
+  .tool-card-v3-icon { display: grid; place-items: center; width: 42px; height: 42px; margin-bottom: 18px; border-radius: 10px; color: #60a5fa; background: rgba(96,165,250,.12); transition: background .25s ease, color .25s ease, transform .25s ease; }
+  .tool-card-v3-icon svg { width: 20px; height: 20px; }
+  .tool-card-v3:hover .tool-card-v3-icon { color: #fff; background: var(--wg-blue, #2563eb); transform: scale(1.08) rotate(-4deg); }
+  .tool-card-v3 h3 { margin: 0 0 10px; color: #fff; font-size: 1.08rem; line-height: 1.3; }
+  .tool-card-v3 p { flex: 1; margin-bottom: 18px; color: #aeb5c1; font-size: .87rem; line-height: 1.55; }
+  .tool-card-v3-cta { color: #fff; font-size: 12px; font-weight: 700; }
+  .tool-card-v3-cta span { display: inline-block; color: #60a5fa; transition: transform .2s ease; }
+  .tool-card-v3:hover .tool-card-v3-cta span { transform: translateX(4px); }
+
+  .tag-soon { opacity: .75; }
+
+  @media (max-width: 980px) { .tools-grid-v3 { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 620px) { .tools-grid-v3 { grid-template-columns: 1fr; } .tools-hero-stats { grid-template-columns: 1fr 1fr; } }
 </style>
+
+<script>
+  function animateCount(el: HTMLElement) {
+    const target = el.dataset.countTarget ?? el.textContent ?? '';
+    const match = target.match(/^([\D]*)([\d.]+)([\D]*)$/);
+    if (!match) return;
+    const [, prefix, numStr, suffix] = match;
+    const end = parseFloat(numStr);
+    if (Number.isNaN(end)) return;
+    const duration = 900;
+    const start = performance.now();
+    function tick(now: number) {
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const value = end * eased;
+      const display = numStr.includes('.') ? value.toFixed(1) : Math.round(value).toString();
+      el.textContent = `${prefix}${display}${suffix}`;
+      if (progress < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const counters = document.querySelectorAll<HTMLElement>('[data-count-target]');
+  if ('IntersectionObserver' in window && counters.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target as HTMLElement);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach((el) => observer.observe(el));
+  }
+</script>

@@ -14,65 +14,65 @@ const pageSchema = {
 ---
 
 <BaseLayout title="Free Meta Title & Description Checker | Web Grouth" description="Check your title and meta description length and preview how the page will look in Google search results before you publish." structuredData={pageSchema}>
-  <section class="page-hero section-tight">
-    <div class="shell">
-      <div class="article-header" data-reveal>
+  <div class="homev3">
+    <section class="tool-hero-v3">
+      <div class="shell tool-hero-v3-inner" data-reveal>
         <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools">Free Tools</a><span>/</span><span>Meta Tag Checker</span></div>
-        <div class="eyebrow"><span class="eyebrow-dot"></span> Free tool</div>
+        <span class="tool-icon-badge" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>`} />
         <h1>Meta title &amp; description checker.</h1>
         <p>Type your title and description to see a live Google search preview and check whether either will be truncated.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-tight">
-    <div class="shell tool-layout">
-      <div>
-        <div class="field">
-          <label for="mt-url">Page URL (optional, for the preview)</label>
-          <input id="mt-url" type="text" placeholder="https://www.yoursite.com/example-page" />
+    <section class="homev3-section" style="padding-top: 50px;">
+      <div class="shell tool-layout">
+        <div>
+          <div class="field">
+            <label for="mt-url">Page URL (optional, for the preview)</label>
+            <input id="mt-url" type="text" placeholder="https://www.yoursite.com/example-page" />
+          </div>
+          <div class="field">
+            <label for="mt-title">Page title <span id="mt-title-count">0 / 60</span></label>
+            <input id="mt-title" type="text" placeholder="Write your page title..." maxlength="200" />
+          </div>
+          <div class="field" style="margin-bottom: 0;">
+            <label for="mt-desc">Meta description <span id="mt-desc-count">0 / 160</span></label>
+            <textarea id="mt-desc" placeholder="Write your meta description..." style="min-height: 120px;" maxlength="400"></textarea>
+          </div>
         </div>
-        <div class="field">
-          <label for="mt-title">Page title <span id="mt-title-count">0 / 60</span></label>
-          <input id="mt-title" type="text" placeholder="Write your page title..." maxlength="200" />
-        </div>
-        <div class="field" style="margin-bottom: 0;">
-          <label for="mt-desc">Meta description <span id="mt-desc-count">0 / 160</span></label>
-          <textarea id="mt-desc" placeholder="Write your meta description..." style="min-height: 120px;" maxlength="400"></textarea>
+        <div class="tool-result-v3" data-reveal>
+          <span class="live-label"><span class="live-dot"></span> Live preview</span>
+          <div class="serp-preview">
+            <div class="serp-url" id="mt-preview-url">www.yoursite.com &rsaquo; example-page</div>
+            <div class="serp-title" id="mt-preview-title">Your page title will appear here</div>
+            <div class="serp-desc" id="mt-preview-desc">Your meta description will appear here. Google may rewrite it if it does not match the page or the searcher's query.</div>
+          </div>
+          <p class="form-note" id="mt-warning" style="margin-top: 16px; margin-bottom: 0;"></p>
         </div>
       </div>
-      <div data-reveal>
-        <span class="kicker">Google preview</span>
-        <div class="serp-preview">
-          <div class="serp-url" id="mt-preview-url">www.yoursite.com &rsaquo; example-page</div>
-          <div class="serp-title" id="mt-preview-title">Your page title will appear here</div>
-          <div class="serp-desc" id="mt-preview-desc">Your meta description will appear here. Google may rewrite it if it does not match the page or the searcher's query.</div>
-        </div>
-        <p class="form-note" id="mt-warning" style="margin-top: 14px;"></p>
+    </section>
+
+    <section class="homev3-section homev3-intro">
+      <div class="shell content-grid">
+        <div><span class="kicker">Why length matters</span><h2>Google measures pixel width, not characters.</h2></div>
+        <div><p>A title around 50&ndash;60 characters and a description around 120&ndash;160 characters usually display fully on desktop, but Google can rewrite either one to better match a search query. This tool gives a practical estimate, not a guarantee of how a specific result will render.</p></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-soft">
-    <div class="shell content-grid">
-      <div><span class="kicker">Why length matters</span><h2>Google measures pixel width, not characters.</h2></div>
-      <div><p>A title around 50&ndash;60 characters and a description around 120&ndash;160 characters usually display fully on desktop, but Google can rewrite either one to better match a search query. This tool gives a practical estimate, not a guarantee of how a specific result will render.</p></div>
-    </div>
-  </section>
-
-  <section class="cta-block">
-    <div class="shell cta-card" data-reveal>
-      <div class="eyebrow"><span class="eyebrow-dot"></span> Want a full on-page review?</div>
-      <h2>Talk to Web Grouth about your SEO.</h2>
-      <a class="button" href="/seo-services">View SEO services <span>&#8599;</span></a>
-    </div>
-  </section>
+    <section class="cta-block">
+      <div class="shell cta-card" data-reveal>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Want a full on-page review?</div>
+        <h2>Talk to Web Grouth about your SEO.</h2>
+        <a class="button" href="/seo-services">View SEO services <span>&#8599;</span></a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
 
 <style>
   .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
   .field label span { float: right; color: var(--muted); font-weight: 500; text-transform: none; letter-spacing: 0; }
-  .serp-preview { padding: 22px 24px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: #fff; font-family: arial, sans-serif; }
+  .serp-preview { padding: 22px 24px; border-radius: 12px; background: #fff; font-family: arial, sans-serif; }
   .serp-url { margin-bottom: 4px; color: #202124; font-size: 14px; }
   .serp-title { margin-bottom: 4px; overflow: hidden; color: #1a0dab; font-size: 20px; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
   .serp-desc { color: #4d5156; font-size: 14px; line-height: 1.5; }

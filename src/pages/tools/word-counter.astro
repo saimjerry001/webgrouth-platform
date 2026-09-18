@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { breadcrumb, SITE_URL, canonicalUrl } from '../../lib/seo';
+import { SITE_URL, canonicalUrl } from '../../lib/seo';
 
 const pageSchema = {
   '@context': 'https://schema.org',
@@ -14,61 +14,62 @@ const pageSchema = {
 ---
 
 <BaseLayout title="Free Word Count & Read Time Calculator | Web Grouth" description="Paste any article to instantly count words, characters and sentences, and estimate its reading time before submitting it to a publisher." structuredData={pageSchema}>
-  <section class="page-hero section-tight">
-    <div class="shell">
-      <div class="article-header" data-reveal>
+  <div class="homev3">
+    <section class="tool-hero-v3">
+      <div class="shell tool-hero-v3-inner" data-reveal>
         <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools">Free Tools</a><span>/</span><span>Word Counter</span></div>
-        <div class="eyebrow"><span class="eyebrow-dot"></span> Free tool</div>
+        <span class="tool-icon-badge" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v13a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6M9 9h2"/></svg>`} />
         <h1>Word count &amp; read time calculator.</h1>
         <p>Paste your draft below. Everything runs in your browser &mdash; nothing you paste is uploaded or stored.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-tight">
-    <div class="shell tool-layout">
-      <div class="field" style="margin-bottom: 0;">
-        <label for="wc-input">Your article text</label>
-        <textarea id="wc-input" placeholder="Paste your article here..." style="min-height: 340px;"></textarea>
+    <section class="homev3-section" style="padding-top: 50px;">
+      <div class="shell tool-layout">
+        <div class="field" style="margin-bottom: 0;">
+          <label for="wc-input">Your article text</label>
+          <textarea id="wc-input" placeholder="Paste your article here..." style="min-height: 340px;"></textarea>
+        </div>
+        <div class="tool-result-v3" data-reveal>
+          <span class="live-label"><span class="live-dot"></span> Updates as you type</span>
+          <div class="tool-stats-v3">
+            <div class="tool-stat-v3"><span id="wc-words">0</span><label>Words</label></div>
+            <div class="tool-stat-v3"><span id="wc-chars">0</span><label>Characters</label></div>
+            <div class="tool-stat-v3"><span id="wc-chars-ns">0</span><label>Chars (no spaces)</label></div>
+            <div class="tool-stat-v3"><span id="wc-sentences">0</span><label>Sentences</label></div>
+            <div class="tool-stat-v3"><span id="wc-paragraphs">0</span><label>Paragraphs</label></div>
+            <div class="tool-stat-v3"><span id="wc-time">0m</span><label>Read time</label></div>
+          </div>
+        </div>
       </div>
-      <div class="tool-stats" data-reveal>
-        <div class="stat-box"><span id="wc-words">0</span><label>Words</label></div>
-        <div class="stat-box"><span id="wc-chars">0</span><label>Characters</label></div>
-        <div class="stat-box"><span id="wc-chars-ns">0</span><label>Characters (no spaces)</label></div>
-        <div class="stat-box"><span id="wc-sentences">0</span><label>Sentences</label></div>
-        <div class="stat-box"><span id="wc-paragraphs">0</span><label>Paragraphs</label></div>
-        <div class="stat-box wide"><span id="wc-time">0 min</span><label>Estimated read time (200 wpm)</label></div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-soft">
-    <div class="shell content-grid">
-      <div><span class="kicker">Why this matters</span><h2>Publishers set a word count for a reason.</h2></div>
-      <div>
-        <p>Most guest post guidelines specify a minimum word count. Checking before you submit avoids a rejected or delayed draft. Reading time is estimated at roughly 200 words per minute, a common editorial average.</p>
-        <p>Once your draft is ready, see our <a href="/blog/write-guest-post-editors-publish">guide to writing a guest post editors want to publish</a>.</p>
+    <section class="homev3-section homev3-intro">
+      <div class="shell content-grid">
+        <div><span class="kicker">Why this matters</span><h2>Publishers set a word count for a reason.</h2></div>
+        <div>
+          <p>Most guest post guidelines specify a minimum word count. Checking before you submit avoids a rejected or delayed draft. Reading time is estimated at roughly 200 words per minute, a common editorial average.</p>
+          <p>Once your draft is ready, see our <a href="/blog/write-guest-post-editors-publish">guide to writing a guest post editors want to publish</a>.</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta-block">
-    <div class="shell cta-card" data-reveal>
-      <div class="eyebrow"><span class="eyebrow-dot"></span> Ready to pitch this article?</div>
-      <h2>Find a relevant publisher for it.</h2>
-      <a class="button" href="/guest-posting">View guest posting service <span>&#8599;</span></a>
-    </div>
-  </section>
+    <section class="cta-block">
+      <div class="shell cta-card" data-reveal>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Ready to pitch this article?</div>
+        <h2>Find a relevant publisher for it.</h2>
+        <a class="button" href="/guest-posting">View guest posting service <span>&#8599;</span></a>
+      </div>
+    </section>
+  </div>
 </BaseLayout>
 
 <style>
   .tool-layout { display: grid; grid-template-columns: 1.3fr .9fr; gap: 40px; align-items: start; }
-  .tool-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; position: sticky; top: 120px; }
-  .stat-box { padding: 20px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: rgba(255,255,255,.03); text-align: center; }
-  .stat-box.wide { grid-column: 1 / -1; }
-  .stat-box span { display: block; margin-bottom: 6px; color: var(--lime); font-family: 'Manrope', sans-serif; font-size: 1.9rem; font-weight: 800; }
-  .stat-box label { color: var(--muted); font-size: 12px; }
-  @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } .tool-stats { position: static; } }
+  .tool-stats-v3 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
+  .tool-stat-v3 span { transition: transform .18s ease; }
+  .tool-stat-v3 span.pop { transform: scale(1.14); }
+  @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
 </style>
 
 <script>
@@ -80,6 +81,15 @@ const pageSchema = {
   const paragraphsEl = document.getElementById('wc-paragraphs')!;
   const timeEl = document.getElementById('wc-time')!;
 
+  function setValue(el: HTMLElement, value: string) {
+    if (el.textContent === value) return;
+    el.textContent = value;
+    el.classList.remove('pop');
+    void el.offsetWidth;
+    el.classList.add('pop');
+    setTimeout(() => el.classList.remove('pop'), 200);
+  }
+
   function update() {
     const text = input.value;
     const trimmed = text.trim();
@@ -90,12 +100,12 @@ const pageSchema = {
     const paragraphs = trimmed ? trimmed.split(/\n\s*\n/).filter((p) => p.trim().length > 0).length : 0;
     const minutes = Math.max(1, Math.round(words / 200));
 
-    wordsEl.textContent = words.toLocaleString();
-    charsEl.textContent = chars.toLocaleString();
-    charsNsEl.textContent = charsNoSpaces.toLocaleString();
-    sentencesEl.textContent = sentences.toLocaleString();
-    paragraphsEl.textContent = paragraphs.toLocaleString();
-    timeEl.textContent = words === 0 ? '0 min' : `${minutes} min`;
+    setValue(wordsEl, words.toLocaleString());
+    setValue(charsEl, chars.toLocaleString());
+    setValue(charsNsEl, charsNoSpaces.toLocaleString());
+    setValue(sentencesEl, sentences.toLocaleString());
+    setValue(paragraphsEl, paragraphs.toLocaleString());
+    setValue(timeEl, words === 0 ? '0m' : `${minutes}m`);
   }
 
   input.addEventListener('input', update);
