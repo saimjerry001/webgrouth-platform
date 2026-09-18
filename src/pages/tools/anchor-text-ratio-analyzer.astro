@@ -1,0 +1,177 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, canonicalUrl } from '../../lib/seo';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Free Tools', item: canonicalUrl('/tools') },
+    { '@type': 'ListItem', position: 3, name: 'Anchor Text Ratio Analyzer', item: canonicalUrl('/tools/anchor-text-ratio-analyzer') },
+  ],
+};
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Anchor Text Ratio Analyzer',
+  url: canonicalUrl('/tools/anchor-text-ratio-analyzer'),
+  description: 'Paste your backlink anchor texts to see the split between branded, exact-match, partial-match, generic and naked-URL anchors, and whether the mix looks over-optimized.',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
+---
+
+<BaseLayout title="Free Anchor Text Ratio Analyzer | Web Grouth" description="Paste your backlink anchor texts to see the split between branded, exact-match, partial-match, generic and naked-URL anchors, and whether the mix looks over-optimized." structuredData={[pageSchema, toolSchema]}>
+  <div class="homev3">
+    <section class="tool-hero-v3">
+      <div class="shell tool-hero-v3-inner" data-reveal>
+        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools">Free Tools</a><span>/</span><span>Anchor Text Ratio Analyzer</span></div>
+        <span class="tool-icon-badge" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l3-4 3 3 4-6"/></svg>`} />
+        <h1>Anchor text ratio analyzer.</h1>
+        <p>Paste the anchor texts pointing to a page to see the mix, and whether it leans too heavily on exact-match text. See our <a href="/blog/anchor-text">anchor text guide</a> for what a healthy ratio looks like.</p>
+      </div>
+    </section>
+
+    <section class="homev3-section" style="padding-top: 50px;">
+      <div class="shell tool-layout">
+        <div>
+          <div class="form-row">
+            <div class="field"><label for="at-brand">Your brand name (optional)</label><input id="at-brand" type="text" placeholder="e.g. Web Grouth" /></div>
+            <div class="field"><label for="at-keyword">Target keyword (optional)</label><input id="at-keyword" type="text" placeholder="e.g. guest posting services" /></div>
+          </div>
+          <div class="field" style="margin-bottom: 0;">
+            <label for="at-input">Anchor texts (one per line)</label>
+            <textarea id="at-input" placeholder={"Web Grouth\nguest posting services\nclick here\nhttps://yoursite.com\nlink building for agencies"} style="min-height: 260px;"></textarea>
+          </div>
+        </div>
+        <div class="tool-result-v3" data-reveal>
+          <span class="live-label"><span class="live-dot"></span> Live breakdown</span>
+          <div class="anchor-bar" id="at-bar"></div>
+          <div class="tool-stats-v3" id="at-stats" style="margin-top: 18px;"></div>
+          <p id="at-verdict" class="form-note" style="margin-top: 16px; margin-bottom: 0;">Paste anchor texts to see the breakdown.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="homev3-section homev3-intro">
+      <div class="shell content-grid">
+        <div><span class="kicker">Why the mix matters</span><h2>A natural link profile is not all keyword-perfect.</h2></div>
+        <div><p>A backlink profile leaning too heavily on exact-match anchor text is a common pattern in manual and algorithmic over-optimization signals. A healthier mix is mostly branded and generic anchors, with exact-match kept to a small minority &mdash; roughly the pattern real editorial links create naturally.</p></div>
+      </div>
+    </section>
+
+    <section class="cta-block">
+      <div class="shell cta-card" data-reveal>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Want a naturally varied link profile?</div>
+        <h2>We manage anchor text across every placement.</h2>
+        <a class="button" href="/link-insertion">View link insertion service <span>&#8599;</span></a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .tool-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; }
+  .anchor-bar { display: flex; overflow: hidden; height: 14px; border-radius: 7px; background: rgba(255,255,255,.06); }
+  .anchor-bar-seg { height: 100%; transition: width .25s ease; }
+  .tool-stats-v3 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tool-stat-v3 span.pop { transform: scale(1.1); }
+  .at-legend { display: flex; align-items: center; gap: 6px; }
+  .at-legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+  @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  interface Category { key: string; label: string; color: string; test: (anchor: string, brand: string, keyword: string) => boolean; }
+
+  const GENERIC_PHRASES = new Set([
+    'click here', 'here', 'this article', 'read more', 'learn more', 'this page',
+    'website', 'source', 'this guide', 'check this out', 'this link', 'more info',
+    'this post', 'continue reading', 'visit site', 'this website',
+  ]);
+
+  function isUrlLike(anchor: string): boolean {
+    return /^https?:\/\//i.test(anchor) || /^www\./i.test(anchor) || /^[a-z0-9-]+\.[a-z]{2,}(\/\S*)?$/i.test(anchor);
+  }
+
+  const categories: Category[] = [
+    { key: 'naked', label: 'Naked URL', color: '#94a3b8', test: (a) => isUrlLike(a) },
+    { key: 'branded', label: 'Branded', color: '#2563eb', test: (a, brand) => !!brand && a.toLowerCase().includes(brand.toLowerCase()) },
+    { key: 'exact', label: 'Exact match', color: '#ef4444', test: (a, _b, kw) => !!kw && a.toLowerCase() === kw.toLowerCase() },
+    { key: 'partial', label: 'Partial match', color: '#f59e0b', test: (a, _b, kw) => !!kw && a.toLowerCase() !== kw.toLowerCase() && a.toLowerCase().includes(kw.toLowerCase()) },
+    { key: 'generic', label: 'Generic', color: '#a855f7', test: (a) => GENERIC_PHRASES.has(a.toLowerCase()) },
+    { key: 'other', label: 'Other / natural', color: '#34d399', test: () => true },
+  ];
+
+  const brandInput = document.getElementById('at-brand') as HTMLInputElement;
+  const keywordInput = document.getElementById('at-keyword') as HTMLInputElement;
+  const textInput = document.getElementById('at-input') as HTMLTextAreaElement;
+  const bar = document.getElementById('at-bar')!;
+  const statsEl = document.getElementById('at-stats')!;
+  const verdictEl = document.getElementById('at-verdict')!;
+
+  function classify(anchor: string, brand: string, keyword: string): Category {
+    return categories.find((c) => c.test(anchor, brand, keyword)) ?? categories[categories.length - 1];
+  }
+
+  function update() {
+    const brand = brandInput.value.trim();
+    const keyword = keywordInput.value.trim();
+    const anchors = textInput.value.split('\n').map((line) => line.trim()).filter(Boolean);
+
+    if (anchors.length === 0) {
+      bar.innerHTML = '';
+      statsEl.innerHTML = '';
+      verdictEl.textContent = 'Paste anchor texts to see the breakdown.';
+      return;
+    }
+
+    const counts = new Map<string, number>();
+    for (const anchor of anchors) {
+      const cat = classify(anchor, brand, keyword);
+      counts.set(cat.key, (counts.get(cat.key) ?? 0) + 1);
+    }
+
+    const total = anchors.length;
+    bar.innerHTML = categories
+      .filter((c) => (counts.get(c.key) ?? 0) > 0)
+      .map((c) => {
+        const pct = ((counts.get(c.key) ?? 0) / total) * 100;
+        return `<span class="anchor-bar-seg" style="width:${pct}%; background:${c.color};" title="${c.label}: ${pct.toFixed(0)}%"></span>`;
+      })
+      .join('');
+
+    statsEl.innerHTML = categories
+      .filter((c) => (counts.get(c.key) ?? 0) > 0)
+      .map((c) => {
+        const pct = ((counts.get(c.key) ?? 0) / total) * 100;
+        return `<div class="tool-stat-v3"><span>${pct.toFixed(0)}%</span><label class="at-legend"><span class="at-legend-dot" style="background:${c.color};"></span>${c.label}</label></div>`;
+      })
+      .join('');
+
+    const exactPct = ((counts.get('exact') ?? 0) / total) * 100;
+    if (exactPct > 15) {
+      verdictEl.textContent = `Exact-match anchors are ${exactPct.toFixed(0)}% of this set — that's higher than the natural pattern editorial links tend to produce. Consider diversifying toward branded, generic or partial-match anchors on future placements.`;
+    } else if (exactPct > 0) {
+      verdictEl.textContent = `Exact-match anchors sit at ${exactPct.toFixed(0)}%, within a typical natural range. Keep branded and generic anchors as the majority of the mix.`;
+    } else {
+      verdictEl.textContent = 'No exact-match anchors detected in this set. Add a target keyword above to check that specifically.';
+    }
+  }
+
+  [brandInput, keywordInput, textInput].forEach((el) => el.addEventListener('input', update));
+  update();
+</script>
