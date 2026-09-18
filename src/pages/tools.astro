@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { breadcrumb } from '../lib/seo';
+
+const liveTools = [
+  { href: '/tools/word-counter', name: 'Word Count & Read Time Calculator', text: 'Paste any article and get an instant word count, character count and estimated reading time before you submit it to a publisher.' },
+  { href: '/tools/meta-tag-checker', name: 'Meta Title & Description Checker', text: 'Preview how your title and description will look in Google search results and check they will not be cut off.' },
+  { href: '/tools/guest-post-price-calculator', name: 'Guest Post Price Calculator', text: 'Enter a website’s DA, DR and traffic to get a fair, ballpark price range for a guest post placement.' },
+  { href: '/tools/link-insertion-vs-guest-post-calculator', name: 'Link Insertion vs Guest Post Cost Comparison', text: 'Compare the complete cost of a new guest post against an existing-article link insertion, side by side.' },
+  { href: '/tools/link-attribute-generator', name: 'Link Attribute (rel) Generator', text: 'Generate the correct sponsored, nofollow or UGC HTML link tag for a placement in seconds.' },
+  { href: '/tools/guest-post-tracker-template', name: 'Guest Post Campaign Tracker Template', text: 'Download a ready-made spreadsheet template for tracking outreach, placements and results.' },
+];
+
+const comingSoonTools = [
+  'Bulk Website Email Finder',
+  'Outreach Pitch Email Generator',
+  'Domain Age (WHOIS) Checker',
+  'Anchor Text Ratio Analyzer',
+  'Readability Score Checker',
+  'Single-Page Broken Link Checker',
+  'Robots.txt & Sitemap Validator',
+  'Website Quality Score Checker',
+  'UTM Campaign Link Builder',
+];
+
+const pageSchema = [
+  breadcrumb('/tools', 'Free Tools'),
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Free Guest Posting & SEO Tools',
+    numberOfItems: liveTools.length,
+    itemListElement: liveTools.map((tool, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: tool.name,
+      url: `https://www.webgrouth.com${tool.href}`,
+    })),
+  },
+];
+---
+
+<BaseLayout title="Free Guest Posting & SEO Tools | Web Grouth" description="Free tools for guest posting and link building: price calculators, a word counter, a meta tag checker, a link attribute generator and a campaign tracker template." pageType="CollectionPage" structuredData={pageSchema}>
+  <section class="page-hero">
+    <div class="shell">
+      <div class="article-header" data-reveal>
+        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><span>Free Tools</span></div>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Free, no sign-up required</div>
+        <h1>Free tools for guest posting and link building.</h1>
+        <p>Practical, free tools built from the same checks we use to plan and review guest posting and link insertion campaigns. No account, no email required.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tools">
+    <div class="shell">
+      <div class="tools-grid">
+        {liveTools.map((tool) => (
+          <a class="tool-card" href={tool.href} data-reveal>
+            <h3>{tool.name}</h3>
+            <p>{tool.text}</p>
+            <span class="tool-card-cta">Open tool <span aria-hidden="true">&rarr;</span></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="shell">
+      <span class="kicker">Coming soon</span>
+      <h2>More tools are on the way.</h2>
+      <div class="tag-row" style="margin-top: 20px;">
+        {comingSoonTools.map((name) => <span class="tag">{name}</span>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-block">
+    <div class="shell cta-card" data-reveal>
+      <div class="eyebrow"><span class="eyebrow-dot"></span> Need a hand with a real campaign?</div>
+      <h2>Send your niche and target market.</h2>
+      <p>Web Grouth will prepare relevant guest posting and link insertion options for you to review.</p>
+      <a class="button" href="/order">Place an order <span>&#8599;</span></a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .tool-card { display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: rgba(255,255,255,.022); transition: border-color .2s ease, transform .2s ease; }
+  .tool-card:hover { border-color: rgba(184,255,90,.4); transform: translateY(-3px); }
+  .tool-card h3 { margin: 0 0 10px; font-size: 1.18rem; }
+  .tool-card p { flex: 1; margin-bottom: 18px; font-size: .92rem; }
+  .tool-card-cta { color: var(--lime); font-size: 13px; font-weight: 700; }
+  @media (max-width: 900px) { .tools-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 620px) { .tools-grid { grid-template-columns: 1fr; } }
+</style>
