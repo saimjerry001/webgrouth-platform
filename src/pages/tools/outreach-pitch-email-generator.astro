@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE_URL, canonicalUrl } from '../../lib/seo';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+    { '@type': 'ListItem', position: 2, name: 'Free Tools', item: canonicalUrl('/tools') },
+    { '@type': 'ListItem', position: 3, name: 'Outreach Pitch Email Generator', item: canonicalUrl('/tools/outreach-pitch-email-generator') },
+  ],
+};
+
+const toolSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'Outreach Pitch Email Generator',
+  url: canonicalUrl('/tools/outreach-pitch-email-generator'),
+  description: 'Fill in a few details about your pitch to generate a ready-to-send guest post outreach email, formatted the way publishers expect to see it.',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any (runs in browser)',
+  isAccessibleForFree: true,
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  provider: {
+    '@type': 'Organization',
+    name: 'Web Grouth',
+    url: SITE_URL,
+  },
+};
+---
+
+<BaseLayout title="Free Outreach Pitch Email Generator | Web Grouth" description="Fill in a few details about your pitch to generate a ready-to-send guest post outreach email, formatted the way publishers expect to see it." structuredData={[pageSchema, toolSchema]}>
+  <div class="homev3">
+    <section class="tool-hero-v3">
+      <div class="shell tool-hero-v3-inner" data-reveal>
+        <div class="breadcrumbs"><a href="/">Home</a><span>/</span><a href="/tools">Free Tools</a><span>/</span><span>Outreach Pitch Generator</span></div>
+        <span class="tool-icon-badge" set:html={`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>`} />
+        <h1>Outreach pitch email generator.</h1>
+        <p>Fill in the details once to get a clean, ready-to-send pitch. See our <a href="/blog/guest-post-outreach">outreach guide</a> for how to find the right contact before you send it.</p>
+      </div>
+    </section>
+
+    <section class="homev3-section" style="padding-top: 50px;">
+      <div class="shell tool-layout">
+        <div>
+          <div class="form-row">
+            <div class="field"><label for="pg-name">Your name</label><input id="pg-name" type="text" placeholder="e.g. Nasir Haider" /></div>
+            <div class="field"><label for="pg-site">Your site / brand</label><input id="pg-site" type="text" placeholder="e.g. Web Grouth" /></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="pg-target">Target publisher name</label><input id="pg-target" type="text" placeholder="e.g. Marketing Weekly" /></div>
+            <div class="field"><label for="pg-editor">Editor's first name (optional)</label><input id="pg-editor" type="text" placeholder="Leave blank if unknown" /></div>
+          </div>
+          <div class="field"><label for="pg-title">Working title for the article</label><input id="pg-title" type="text" placeholder="e.g. 7 Link Building Mistakes Costing You Traffic" /></div>
+          <div class="field"><label for="pg-angle">Why it fits their audience (one or two lines)</label><textarea id="pg-angle" placeholder="e.g. I noticed you cover SEO for small agencies — this piece walks through mistakes I see weekly in client audits, with real before/after examples." style="min-height: 90px;"></textarea></div>
+          <div class="field" style="margin-bottom:0;"><label for="pg-sample">Link to a writing sample (optional)</label><input id="pg-sample" type="text" placeholder="https://yoursite.com/example-article" /></div>
+        </div>
+        <div class="tool-result-v3" data-reveal>
+          <span class="live-label"><span class="live-dot"></span> Generated email</span>
+          <pre class="code-box" id="pg-output">Enter your name and the publisher's name to begin.</pre>
+          <button class="button button-secondary button-small" id="pg-copy" type="button">Copy to clipboard</button>
+          <p class="form-note" style="margin-top: 16px; margin-bottom: 0;">Always personalize the opening line further once you've actually read a recent piece on the target site — generic pitches get ignored.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-block">
+      <div class="shell cta-card" data-reveal>
+        <div class="eyebrow"><span class="eyebrow-dot"></span> Don't want to chase replies yourself?</div>
+        <h2>Let us run outreach and placement for you.</h2>
+        <a class="button" href="/guest-posting">View guest posting service <span>&#8599;</span></a>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .tool-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; }
+  .code-box { padding: 22px; overflow-x: auto; border-radius: 12px; background: rgba(255,255,255,.06); color: #d5dae3; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+  @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  const nameInput = document.getElementById('pg-name') as HTMLInputElement;
+  const siteInput = document.getElementById('pg-site') as HTMLInputElement;
+  const targetInput = document.getElementById('pg-target') as HTMLInputElement;
+  const editorInput = document.getElementById('pg-editor') as HTMLInputElement;
+  const titleInput = document.getElementById('pg-title') as HTMLInputElement;
+  const angleInput = document.getElementById('pg-angle') as HTMLTextAreaElement;
+  const sampleInput = document.getElementById('pg-sample') as HTMLInputElement;
+  const output = document.getElementById('pg-output')!;
+  const copyBtn = document.getElementById('pg-copy')!;
+
+  function update() {
+    const name = nameInput.value.trim();
+    const site = siteInput.value.trim();
+    const target = targetInput.value.trim();
+    const editor = editorInput.value.trim();
+    const title = titleInput.value.trim();
+    const angle = angleInput.value.trim();
+    const sample = sampleInput.value.trim();
+
+    if (!name || !target) {
+      output.textContent = "Enter your name and the publisher's name to begin.";
+      return;
+    }
+
+    const greeting = editor ? `Hi ${editor},` : 'Hi there,';
+    const subject = `Subject: Guest post pitch${title ? `: ${title}` : ''} for ${target}`;
+
+    const lines = [
+      subject,
+      '',
+      greeting,
+      '',
+      `My name is ${name}${site ? ` from ${site}` : ''}. I've been reading ${target} and think your readers would get real value from a piece I'd like to write.`,
+      '',
+      title ? `Working title: "${title}"` : "I don't have a title locked in yet, but I have a specific angle in mind.",
+      angle ? angle : '',
+      '',
+      sample ? `A recent sample of my writing, if useful: ${sample}` : '',
+      '',
+      "Happy to tailor the angle, length or format to whatever fits your editorial calendar best. Let me know if this is a fit and I'll send a full outline.",
+      '',
+      'Best,',
+      name,
+    ].filter((line, index, arr) => !(line === '' && arr[index - 1] === ''));
+
+    output.textContent = lines.join('\n').trim();
+  }
+
+  copyBtn.addEventListener('click', async () => {
+    await navigator.clipboard.writeText(output.textContent ?? '');
+    copyBtn.textContent = 'Copied!';
+    setTimeout(() => { copyBtn.textContent = 'Copy to clipboard'; }, 1800);
+  });
+
+  [nameInput, siteInput, targetInput, editorInput, titleInput, angleInput, sampleInput].forEach((el) => el.addEventListener('input', update));
+  update();
+</script>
