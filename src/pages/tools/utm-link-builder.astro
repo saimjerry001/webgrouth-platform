@@ -53,13 +53,24 @@ const toolSchema = {
             <div class="field"><label for="utm-source">Campaign source (the publisher)</label><input id="utm-source" type="text" placeholder="e.g. publisher.example" /></div>
             <div class="field"><label for="utm-medium">Campaign medium</label><input id="utm-medium" type="text" value="referral" /></div>
           </div>
-          <div class="field" style="margin-bottom:0;"><label for="utm-campaign">Campaign name</label><input id="utm-campaign" type="text" placeholder="e.g. guest_post_technical_seo" /></div>
+          <div class="field"><label for="utm-campaign">Campaign name</label><input id="utm-campaign" type="text" placeholder="e.g. guest_post_technical_seo" /></div>
+          <details class="utm-advanced">
+            <summary>Advanced: content / term (optional)</summary>
+            <div class="form-row" style="margin-top:14px;">
+              <div class="field"><label for="utm-content">Campaign content</label><input id="utm-content" type="text" placeholder="e.g. author_bio_link" /></div>
+              <div class="field" style="margin-bottom:0;"><label for="utm-term">Campaign term</label><input id="utm-term" type="text" placeholder="e.g. seo_agency" /></div>
+            </div>
+          </details>
         </div>
         <div class="tool-result-v3" data-reveal>
           <span class="live-label"><span class="live-dot"></span> Generated link</span>
           <pre class="code-box" id="utm-output">Enter a destination URL to begin.</pre>
           <button class="button button-secondary button-small" id="utm-copy" type="button">Copy to clipboard</button>
-          <p class="form-note" style="margin-top: 16px; margin-bottom: 0;">Use lowercase, consistent naming for the source and campaign on every placement so reports stay comparable.</p>
+          <p id="utm-note" class="form-note" style="margin-top: 16px;">Use lowercase, consistent naming for the source and campaign on every placement so reports stay comparable.</p>
+          <div class="utm-history" id="utm-history-wrap" style="display:none;">
+            <span class="live-label"><span class="live-dot"></span> Recent links (this browser)</span>
+            <ul class="utm-history-list" id="utm-history"></ul>
+          </div>
         </div>
       </div>
     </section>
@@ -77,6 +88,12 @@ const toolSchema = {
 <style>
   .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
   .code-box { padding: 22px; overflow-x: auto; border-radius: 12px; background: rgba(255,255,255,.06); color: #93c5fd; font-family: 'Courier New', monospace; font-size: 13px; word-break: break-all; white-space: pre-wrap; }
+  .utm-advanced { margin-top: 4px; }
+  .utm-advanced summary { cursor: pointer; margin-bottom: 4px; color: var(--muted); font-size: 12.5px; font-weight: 600; }
+  .utm-invalid { color: #fb923c; }
+  .utm-history { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
+  .utm-history-list { display: grid; gap: 8px; margin-top: 10px; padding: 0; list-style: none; }
+  .utm-history-list li { overflow: hidden; padding: 8px 10px; border-radius: 8px; background: rgba(255,255,255,.04); color: #93c5fd; font-family: 'Courier New', monospace; font-size: 11.5px; text-overflow: ellipsis; white-space: nowrap; }
   @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
 </style>
 
@@ -85,17 +102,43 @@ const toolSchema = {
   const sourceInput = document.getElementById('utm-source') as HTMLInputElement;
   const mediumInput = document.getElementById('utm-medium') as HTMLInputElement;
   const campaignInput = document.getElementById('utm-campaign') as HTMLInputElement;
+  const contentInput = document.getElementById('utm-content') as HTMLInputElement;
+  const termInput = document.getElementById('utm-term') as HTMLInputElement;
   const output = document.getElementById('utm-output')!;
   const copyBtn = document.getElementById('utm-copy')!;
+  const note = document.getElementById('utm-note')!;
+  const historyWrap = document.getElementById('utm-history-wrap')!;
+  const historyList = document.getElementById('utm-history')!;
+
+  const STORAGE_KEY = 'wg-utm-history';
+  let history: string[] = [];
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) history = JSON.parse(saved);
+  } catch { /* private browsing or blocked storage: start empty */ }
 
   function slug(value: string) {
     return value.trim().toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_.-]/g, '');
   }
 
+  function renderHistory() {
+    if (!history.length) {
+      historyWrap.style.display = 'none';
+      return;
+    }
+    historyWrap.style.display = 'block';
+    historyList.innerHTML = history.map((link) => `<li title="${link}">${link}</li>`).join('');
+  }
+  renderHistory();
+
+  let lastGenerated = '';
+
   function update() {
     const rawUrl = urlInput.value.trim();
     if (!rawUrl) {
       output.textContent = 'Enter a destination URL to begin.';
+      note.textContent = 'Use lowercase, consistent naming for the source and campaign on every placement so reports stay comparable.';
+      note.className = 'form-note';
       return;
     }
     try {
@@ -107,18 +150,34 @@ const toolSchema = {
       params.set('utm_source', source);
       params.set('utm_medium', medium);
       params.set('utm_campaign', campaign);
-      output.textContent = url.toString();
+      if (contentInput.value.trim()) params.set('utm_content', slug(contentInput.value));
+      if (termInput.value.trim()) params.set('utm_term', slug(termInput.value));
+      const finalUrl = url.toString();
+      output.textContent = finalUrl;
+      lastGenerated = finalUrl;
+
+      const rawHadUppercase = /[A-Z]/.test(sourceInput.value) || /[A-Z]/.test(campaignInput.value);
+      note.textContent = rawHadUppercase
+        ? 'Uppercase letters were auto-lowercased — analytics tools treat "Guest_Post" and "guest_post" as different campaigns.'
+        : 'Use lowercase, consistent naming for the source and campaign on every placement so reports stay comparable.';
+      note.className = rawHadUppercase ? 'form-note utm-invalid' : 'form-note';
     } catch {
       output.textContent = 'Enter a valid URL, e.g. https://www.yoursite.com/page';
+      lastGenerated = '';
     }
   }
 
   copyBtn.addEventListener('click', async () => {
-    await navigator.clipboard.writeText(output.textContent ?? '');
+    if (!lastGenerated) return;
+    await navigator.clipboard.writeText(lastGenerated);
     copyBtn.textContent = 'Copied!';
     setTimeout(() => { copyBtn.textContent = 'Copy to clipboard'; }, 1800);
+
+    history = [lastGenerated, ...history.filter((l) => l !== lastGenerated)].slice(0, 5);
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(history)); } catch { /* ignore */ }
+    renderHistory();
   });
 
-  [urlInput, sourceInput, mediumInput, campaignInput].forEach((el) => el.addEventListener('input', update));
+  [urlInput, sourceInput, mediumInput, campaignInput, contentInput, termInput].forEach((el) => el.addEventListener('input', update));
   update();
 </script>

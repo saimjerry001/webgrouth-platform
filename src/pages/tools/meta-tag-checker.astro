@@ -55,10 +55,14 @@ const toolSchema = {
           <div class="field">
             <label for="mt-title">Page title <span id="mt-title-count">0 / 60</span></label>
             <input id="mt-title" type="text" placeholder="Write your page title..." maxlength="200" />
+            <div class="pixel-bar"><div class="pixel-bar-fill" id="mt-title-bar"></div></div>
+            <span class="pixel-note" id="mt-title-px">0 / 600px (estimated desktop width)</span>
           </div>
           <div class="field" style="margin-bottom: 0;">
             <label for="mt-desc">Meta description <span id="mt-desc-count">0 / 160</span></label>
             <textarea id="mt-desc" placeholder="Write your meta description..." style="min-height: 120px;" maxlength="400"></textarea>
+            <div class="pixel-bar"><div class="pixel-bar-fill" id="mt-desc-bar"></div></div>
+            <span class="pixel-note" id="mt-desc-px">0 / 920px (estimated desktop width)</span>
           </div>
         </div>
         <div class="tool-result-v3" data-reveal>
@@ -93,6 +97,11 @@ const toolSchema = {
 <style>
   .tool-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
   .field label span { float: right; color: var(--muted); font-weight: 500; text-transform: none; letter-spacing: 0; }
+  .pixel-bar { overflow: hidden; height: 5px; margin-top: 8px; border-radius: 999px; background: rgba(23,26,34,.08); }
+  .pixel-bar-fill { height: 100%; width: 0%; background: #34d399; border-radius: 999px; transition: width .2s ease, background .2s ease; }
+  .pixel-bar-fill.warn { background: #f59e0b; }
+  .pixel-bar-fill.over { background: #ef4444; }
+  .pixel-note { display: block; margin-top: 5px; margin-bottom: 16px; color: var(--muted); font-size: 11.5px; }
   .serp-preview { padding: 22px 24px; border-radius: 12px; background: #fff; font-family: arial, sans-serif; }
   .serp-url { margin-bottom: 4px; color: #202124; font-size: 14px; }
   .serp-title { margin-bottom: 4px; overflow: hidden; color: #1a0dab; font-size: 20px; line-height: 1.3; text-overflow: ellipsis; white-space: nowrap; }
@@ -106,18 +115,52 @@ const toolSchema = {
   const descInput = document.getElementById('mt-desc') as HTMLTextAreaElement;
   const titleCount = document.getElementById('mt-title-count')!;
   const descCount = document.getElementById('mt-desc-count')!;
+  const titleBar = document.getElementById('mt-title-bar')!;
+  const descBar = document.getElementById('mt-desc-bar')!;
+  const titlePx = document.getElementById('mt-title-px')!;
+  const descPx = document.getElementById('mt-desc-px')!;
   const previewUrl = document.getElementById('mt-preview-url')!;
   const previewTitle = document.getElementById('mt-preview-title')!;
   const previewDesc = document.getElementById('mt-preview-desc')!;
   const warning = document.getElementById('mt-warning')!;
+
+  // Google renders SERP titles in ~20px Arial and descriptions in ~14px
+  // Arial on desktop. Measuring the actual rendered pixel width (via a
+  // canvas, the same technique real font-rendering uses) is a much closer
+  // approximation of Google's truncation point than counting characters,
+  // since a title full of "W"/"M" truncates far earlier than one full of "i"/"l".
+  const measureCanvas = document.createElement('canvas');
+  const measureCtx = measureCanvas.getContext('2d');
+  const TITLE_MAX_PX = 600;
+  const DESC_MAX_PX = 920;
+
+  function pixelWidth(text: string, font: string): number {
+    if (!measureCtx) return text.length * 8; // no canvas support: rough fallback
+    measureCtx.font = font;
+    return measureCtx.measureText(text).width;
+  }
+
+  function updateBar(bar: HTMLElement, note: HTMLElement, px: number, max: number, unit: string) {
+    const pct = Math.min(100, (px / max) * 100);
+    bar.style.width = `${pct}%`;
+    bar.classList.remove('warn', 'over');
+    if (px > max) bar.classList.add('over');
+    else if (pct > 85) bar.classList.add('warn');
+    note.textContent = `${Math.round(px)} / ${max}${unit} (estimated desktop width)`;
+  }
 
   function update() {
     const title = titleInput.value.trim();
     const desc = descInput.value.trim();
     const url = urlInput.value.trim();
 
+    const titlePxWidth = pixelWidth(title, '20px arial');
+    const descPxWidth = pixelWidth(desc, '14px arial');
+
     titleCount.textContent = `${title.length} / 60`;
     descCount.textContent = `${desc.length} / 160`;
+    updateBar(titleBar, titlePx, titlePxWidth, TITLE_MAX_PX, 'px');
+    updateBar(descBar, descPx, descPxWidth, DESC_MAX_PX, 'px');
 
     previewTitle.textContent = title || 'Your page title will appear here';
     previewDesc.textContent = desc || "Your meta description will appear here. Google may rewrite it if it does not match the page or the searcher's query.";
@@ -135,8 +178,8 @@ const toolSchema = {
     }
 
     const warnings: string[] = [];
-    if (title.length > 60) warnings.push('Title is longer than the ~60-character guideline and may be cut off.');
-    if (desc.length > 160) warnings.push('Description is longer than the ~160-character guideline and may be cut off.');
+    if (titlePxWidth > TITLE_MAX_PX) warnings.push(`Title's rendered width (~${Math.round(titlePxWidth)}px) is over Google's ~${TITLE_MAX_PX}px desktop cutoff and will likely be truncated.`);
+    if (descPxWidth > DESC_MAX_PX) warnings.push(`Description's rendered width (~${Math.round(descPxWidth)}px) is over Google's ~${DESC_MAX_PX}px cutoff and will likely be truncated.`);
     if (title.length > 0 && title.length < 30) warnings.push('Title is quite short — there may be room for more descriptive wording.');
     warning.textContent = warnings.join(' ');
   }
