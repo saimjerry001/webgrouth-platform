@@ -7,8 +7,8 @@ author: "Nasir Haider"
 tags: ["Guest Posting", "Content Strategy"]
 date: "2026-09-20"
 readTime: "8 min read"
-image: "/images/blog/guest-posting-vs-link-insertion.webp"
-imageAlt: "Two article drafts compared side by side with editorial annotations on a wooden desk"
+image: "/images/blog/guest-post-rejected-mark.png"
+imageAlt: "Circled cross-mark icon graphic, representing a rejected guest post submission"
 ---
 
 **Most guest post rejections aren't about the writer's ability — they're about a small set of recurring, checkable problems that show up before an editor even finishes the introduction.** Knowing what those problems are lets you catch them yourself before submitting, instead of finding out after a rejection.

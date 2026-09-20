@@ -7,8 +7,8 @@ author: "Nasir Haider"
 tags: ["Guest Posting", "Budgeting", "Link Building"]
 date: "2026-09-20"
 readTime: "8 min read"
-image: "/images/blog/content-strategy-organic-traffic.webp"
-imageAlt: "Person planning a quarterly guest posting budget in a notebook beside a laptop"
+image: "/images/blog/guest-posting-budget-dollar.png"
+imageAlt: "Dollar sign icon graphic, representing guest posting budget planning"
 ---
 
 **A guest posting budget usually fails from bad allocation, not from being too small — spending it all on the first few placements that come along, with nothing left for the writing, tracking, or follow-through that makes those placements actually work.** A little planning up front makes a modest budget go noticeably further.
