@@ -7,8 +7,8 @@ author: "Nasir Haider"
 tags: ["Link Building", "Outreach"]
 date: "2026-09-20"
 readTime: "8 min read"
-image: "/images/blog/internal-linking-seo.webp"
-imageAlt: "Printed website pages grouped beside an open binder, with one page marked as a broken link"
+image: "/images/blog/broken-link-chain.png"
+imageAlt: "Broken chain-link icon graphic, representing a dead link opportunity"
 ---
 
 **Broken link building works on a simple exchange: you find a dead link on someone else's site, point out the problem, and offer your own relevant page as a working replacement.** It's one of the few link building tactics where you're doing the site owner a genuine favor first, which is exactly why it still gets replies when cold pitches don't.

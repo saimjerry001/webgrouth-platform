@@ -7,8 +7,8 @@ author: "Nasir Haider"
 tags: ["Technical SEO", "Link Building"]
 date: "2026-09-20"
 readTime: "9 min read"
-image: "/images/blog/pbns-vs-editorial-backlinks.jpg"
-imageAlt: "SEO dashboard illustration with charts and a search bar, representing a backlink profile audit"
+image: "/images/blog/backlink-audit-magnifier.png"
+imageAlt: "Magnifying glass icon graphic, representing a backlink profile audit"
 ---
 
 **A backlink audit isn't just pulling a list of links — it's a structured review of where they come from, what they say (anchor text), and whether they're actually contributing to rankings or sitting there unused.** Doing this periodically catches problems early and shows you where your link building effort is (and isn't) paying off.
