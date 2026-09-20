@@ -71,9 +71,10 @@ const toolSchema = {
     <section class="homev3-section homev3-intro" id="ef-results-section" style="display:none; padding-top: 0;">
       <div class="shell">
         <span class="kicker">Results</span>
+        <div class="ef-summary" id="ef-summary"></div>
         <div class="results-table-wrap">
           <table class="results-table" id="ef-results-table">
-            <thead><tr><th>Website</th><th>Emails found</th><th>Status</th></tr></thead>
+            <thead><tr><th>Website</th><th>Emails found</th><th>Status</th><th></th></tr></thead>
             <tbody id="ef-results-body"></tbody>
           </table>
         </div>
@@ -102,6 +103,10 @@ const toolSchema = {
   .results-table tr:last-child td { border-bottom: none; }
   .status-ok { color: #16a34a; font-weight: 700; }
   .status-error { color: #ea580c; font-weight: 600; }
+  .ef-summary { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 18px; }
+  .ef-summary span { padding: 6px 14px; border-radius: 999px; background: rgba(96,165,250,.1); color: var(--wg-blue); font-size: 12.5px; font-weight: 700; }
+  .ef-copy { padding: 4px 10px; border: 1px solid var(--wg-line); border-radius: 6px; background: #fff; color: var(--wg-blue); font-size: 11.5px; font-weight: 600; cursor: pointer; }
+  .ef-copy:disabled { opacity: .4; cursor: default; }
   @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
 </style>
 
@@ -119,14 +124,20 @@ const toolSchema = {
   const statusEl = document.getElementById('ef-status')!;
   const resultsSection = document.getElementById('ef-results-section')!;
   const resultsBody = document.getElementById('ef-results-body')!;
+  const summaryEl = document.getElementById('ef-summary')!;
 
   let lastResults: EmailResult[] = [];
 
+  function normalizeDomain(raw: string): string {
+    return raw.trim().toLowerCase().replace(/^https?:\/\//, '').replace(/^www\./, '').replace(/\/.*$/, '');
+  }
+
   function parseDomains(): string[] {
-    return input.value
+    const raw = input.value
       .split(/[\n,]/)
-      .map((line) => line.trim())
+      .map((line) => normalizeDomain(line))
       .filter((line) => line.length > 0);
+    return [...new Set(raw)];
   }
 
   function renderResults(results: EmailResult[]) {
@@ -138,10 +149,33 @@ const toolSchema = {
         ? (row.emails.length ? 'Found' : 'No email found')
         : `Error: ${row.error ?? 'unknown'}`;
       const statusClass = row.status === 'ok' && row.emails.length ? 'status-ok' : 'status-error';
-      tr.innerHTML = `<td>${row.domain}</td><td>${emailsText}</td><td class="${statusClass}">${statusText}</td>`;
+      const copyCell = row.emails.length
+        ? `<button class="ef-copy" data-emails="${row.emails.join(',')}">Copy</button>`
+        : `<button class="ef-copy" disabled>Copy</button>`;
+      tr.innerHTML = `<td>${row.domain}</td><td>${emailsText}</td><td class="${statusClass}">${statusText}</td><td>${copyCell}</td>`;
       resultsBody.appendChild(tr);
     }
     resultsSection.style.display = results.length ? 'block' : 'none';
+
+    const foundCount = results.filter((r) => r.emails.length > 0).length;
+    const errorCount = results.filter((r) => r.status === 'error').length;
+    const totalEmails = results.reduce((sum, r) => sum + r.emails.length, 0);
+    summaryEl.innerHTML = `
+      <span>${results.length} sites checked</span>
+      <span>${foundCount} with an email</span>
+      <span>${totalEmails} email${totalEmails === 1 ? '' : 's'} total</span>
+      ${errorCount ? `<span>${errorCount} error${errorCount === 1 ? '' : 's'}</span>` : ''}
+    `;
+
+    resultsBody.querySelectorAll<HTMLButtonElement>('.ef-copy:not(:disabled)').forEach((btn) => {
+      btn.addEventListener('click', async () => {
+        const emails = btn.dataset.emails ?? '';
+        await navigator.clipboard.writeText(emails.replace(/,/g, ', '));
+        const original = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = original; }, 1500);
+      });
+    });
   }
 
   function toCsv(results: EmailResult[]): string {

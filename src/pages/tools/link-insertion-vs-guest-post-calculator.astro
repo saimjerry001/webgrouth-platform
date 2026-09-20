@@ -69,6 +69,10 @@ const toolSchema = {
           <div class="result-cell"><span class="kicker">Link insertion total</span><div class="result-figure" id="cmp-li-total">$0</div></div>
           <div class="result-cell highlight"><span class="kicker">Difference</span><div class="result-figure accent" id="cmp-diff">$0</div><p id="cmp-verdict" class="form-note" style="margin-bottom:0;">Enter both sides to compare.</p></div>
         </div>
+        <div class="cmp-bars" id="cmp-bars" style="display:none;">
+          <div class="cmp-bar-row"><label>Guest post</label><div class="cmp-bar-track"><div class="cmp-bar-fill gp" id="cmp-bar-gp"></div></div><span id="cmp-bar-gp-val">$0</span></div>
+          <div class="cmp-bar-row"><label>Link insertion</label><div class="cmp-bar-track"><div class="cmp-bar-fill li" id="cmp-bar-li"></div></div><span id="cmp-bar-li-val">$0</span></div>
+        </div>
       </div>
     </section>
 
@@ -91,6 +95,14 @@ const toolSchema = {
   .result-cell .kicker { display: block; margin-bottom: 4px; }
   .result-figure { transition: transform .18s ease; }
   .result-figure.pop { transform: scale(1.08); }
+  .cmp-bars { display: grid; gap: 14px; margin-top: 26px; }
+  .cmp-bar-row { display: grid; grid-template-columns: 100px 1fr 70px; align-items: center; gap: 12px; }
+  .cmp-bar-row label { color: var(--muted); font-size: 12.5px; font-weight: 600; }
+  .cmp-bar-track { overflow: hidden; height: 10px; border-radius: 999px; background: rgba(23,26,34,.06); }
+  .cmp-bar-fill { height: 100%; border-radius: 999px; width: 0%; transition: width .3s ease; }
+  .cmp-bar-fill.gp { background: #60a5fa; }
+  .cmp-bar-fill.li { background: #34d399; }
+  .cmp-bar-row span { text-align: right; font-size: 12.5px; font-weight: 700; }
   @media (max-width: 900px) { .tool-layout, .result-row-v3 { grid-template-columns: 1fr; } }
 </style>
 
@@ -101,6 +113,11 @@ const toolSchema = {
   const liTotalEl = document.getElementById('cmp-li-total')!;
   const diffEl = document.getElementById('cmp-diff')!;
   const verdictEl = document.getElementById('cmp-verdict')!;
+  const barsWrap = document.getElementById('cmp-bars')!;
+  const barGp = document.getElementById('cmp-bar-gp')!;
+  const barLi = document.getElementById('cmp-bar-li')!;
+  const barGpVal = document.getElementById('cmp-bar-gp-val')!;
+  const barLiVal = document.getElementById('cmp-bar-li-val')!;
 
   function pop(el: HTMLElement) {
     el.classList.remove('pop');
@@ -130,6 +147,7 @@ const toolSchema = {
     if (!anyEntered) {
       diffEl.textContent = '$0';
       verdictEl.textContent = 'Enter both sides to compare.';
+      barsWrap.style.display = 'none';
       return;
     }
 
@@ -137,13 +155,21 @@ const toolSchema = {
     const diffText = `$${diff.toLocaleString()}`;
     if (diffEl.textContent !== diffText) pop(diffEl);
     diffEl.textContent = diffText;
+    const pctDiff = Math.max(gpTotal, liTotal) > 0 ? Math.round((diff / Math.max(gpTotal, liTotal, 1)) * 100) : 0;
     if (gpTotal === liTotal) {
       verdictEl.textContent = 'Both options cost the same — base the choice on content fit, not price.';
     } else if (gpTotal < liTotal) {
-      verdictEl.textContent = `The guest post is $${diff.toLocaleString()} cheaper here.`;
+      verdictEl.textContent = `The guest post is $${diff.toLocaleString()} (${pctDiff}%) cheaper here.`;
     } else {
-      verdictEl.textContent = `The link insertion is $${diff.toLocaleString()} cheaper here.`;
+      verdictEl.textContent = `The link insertion is $${diff.toLocaleString()} (${pctDiff}%) cheaper here.`;
     }
+
+    barsWrap.style.display = 'grid';
+    const maxTotal = Math.max(gpTotal, liTotal, 1);
+    barGp.style.width = `${(gpTotal / maxTotal) * 100}%`;
+    barLi.style.width = `${(liTotal / maxTotal) * 100}%`;
+    barGpVal.textContent = gpText;
+    barLiVal.textContent = liText;
   }
 
   ids.forEach((id) => inputs[id].addEventListener('input', update));

@@ -68,7 +68,15 @@ const toolSchema = {
           <span class="live-label"><span class="live-dot"></span> Generated HTML</span>
           <pre class="code-box" id="rg-output">&lt;a href="#"&gt;anchor text&lt;/a&gt;</pre>
           <button class="button button-secondary button-small" id="rg-copy" type="button">Copy to clipboard</button>
-          <p id="rg-note" class="form-note" style="margin-top: 16px; margin-bottom: 0;"></p>
+          <p id="rg-note" class="form-note" style="margin-top: 16px;"></p>
+          <div class="rg-preview" id="rg-preview-wrap">
+            <span class="live-label"><span class="live-dot"></span> Rendered preview</span>
+            <p class="rg-preview-box"><a id="rg-preview-link" href="#">anchor text</a></p>
+          </div>
+          <details class="rg-markdown">
+            <summary>Also need it as Markdown?</summary>
+            <pre class="code-box" id="rg-markdown-output" style="margin-top:12px;">[anchor text](#)</pre>
+          </details>
         </div>
       </div>
     </section>
@@ -89,6 +97,12 @@ const toolSchema = {
   .radio-option { display: flex; align-items: center; gap: 9px; color: var(--wg-ink); font-size: 14px; font-weight: 500; }
   .radio-option input { accent-color: var(--wg-blue); }
   .code-box { padding: 22px; overflow-x: auto; border-radius: 12px; background: rgba(255,255,255,.06); color: #93c5fd; font-family: 'Courier New', monospace; font-size: 14px; white-space: pre-wrap; word-break: break-all; }
+  .rg-preview { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
+  .rg-preview-box { margin: 8px 0 0; padding: 14px 16px; border-radius: 10px; background: rgba(255,255,255,.04); font-size: 14px; }
+  .rg-preview-box a { color: #93c5fd; }
+  .rg-markdown { margin-top: 16px; }
+  .rg-markdown summary { cursor: pointer; color: var(--muted); font-size: 12.5px; font-weight: 600; }
+  .rg-invalid { color: #fb923c; }
   @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
 </style>
 
@@ -99,6 +113,8 @@ const toolSchema = {
   const output = document.getElementById('rg-output')!;
   const note = document.getElementById('rg-note')!;
   const copyBtn = document.getElementById('rg-copy')!;
+  const previewLink = document.getElementById('rg-preview-link') as HTMLAnchorElement;
+  const markdownOutput = document.getElementById('rg-markdown-output')!;
 
   function escapeHtml(value: string) {
     return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -125,15 +141,28 @@ const toolSchema = {
     const html = `<a href="${escapeHtml(url)}"${targetAttr}${relAttr}>${escapeHtml(anchor)}</a>`;
     output.textContent = html;
 
-    if (rel === 'sponsored' || rel === 'sponsored nofollow') {
-      note.textContent = 'Google recommends rel="sponsored" for paid links. Also add a visible disclosure near the link.';
-    } else if (rel === 'nofollow') {
-      note.textContent = 'Nofollow is also accepted for paid links, and suitable for links you do not want to vouch for.';
-    } else if (rel === 'ugc') {
-      note.textContent = 'Use ugc for links inside user-generated content, such as forum posts or comments.';
-    } else {
-      note.textContent = 'An ordinary link needs no rel attribute at all.';
+    previewLink.textContent = anchor;
+    previewLink.setAttribute('href', url);
+    if (newTab) previewLink.setAttribute('target', '_blank'); else previewLink.removeAttribute('target');
+    if (relValues.length) previewLink.setAttribute('rel', relValues.join(' ')); else previewLink.removeAttribute('rel');
+
+    markdownOutput.textContent = `[${anchor}](${url})`;
+
+    let urlWarning = '';
+    if (urlInput.value.trim() && !/^https?:\/\/[^\s]+\.[^\s]+/i.test(urlInput.value.trim())) {
+      urlWarning = ' This does not look like a full URL — make sure it starts with https:// so the link works as expected.';
     }
+
+    if (rel === 'sponsored' || rel === 'sponsored nofollow') {
+      note.textContent = 'Google recommends rel="sponsored" for paid links. Also add a visible disclosure near the link.' + urlWarning;
+    } else if (rel === 'nofollow') {
+      note.textContent = 'Nofollow is also accepted for paid links, and suitable for links you do not want to vouch for.' + urlWarning;
+    } else if (rel === 'ugc') {
+      note.textContent = 'Use ugc for links inside user-generated content, such as forum posts or comments.' + urlWarning;
+    } else {
+      note.textContent = 'An ordinary link needs no rel attribute at all.' + urlWarning;
+    }
+    note.className = urlWarning ? 'form-note rg-invalid' : 'form-note';
   }
 
   copyBtn.addEventListener('click', async () => {

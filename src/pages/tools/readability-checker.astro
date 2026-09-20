@@ -58,6 +58,8 @@ const toolSchema = {
           <div class="tool-stats-v3">
             <div class="tool-stat-v3"><span id="rd-sentence-len">0</span><label>Avg words / sentence</label></div>
             <div class="tool-stat-v3"><span id="rd-syllable-len">0</span><label>Avg syllables / word</label></div>
+            <div class="tool-stat-v3"><span id="rd-grade">0</span><label>Flesch&ndash;Kincaid grade</label></div>
+            <div class="tool-stat-v3"><span id="rd-long">0%</span><label>Sentences over 25 words</label></div>
           </div>
         </div>
       </div>
@@ -97,6 +99,8 @@ const toolSchema = {
   const labelEl = document.getElementById('rd-label')!;
   const sentenceLenEl = document.getElementById('rd-sentence-len')!;
   const syllableLenEl = document.getElementById('rd-syllable-len')!;
+  const gradeEl = document.getElementById('rd-grade')!;
+  const longEl = document.getElementById('rd-long')!;
 
   function pop(el: HTMLElement) {
     el.classList.remove('pop');
@@ -121,21 +125,32 @@ const toolSchema = {
       labelEl.textContent = 'Enter text to see a score';
       sentenceLenEl.textContent = '0';
       syllableLenEl.textContent = '0';
+      gradeEl.textContent = '0';
+      longEl.textContent = '0%';
       return;
     }
 
     const words = text.match(/\S+/g) ?? [];
-    const sentences = text.match(/[^.!?]+[.!?]+/g) ?? [text];
+    const sentenceList = text.match(/[^.!?]+[.!?]+/g) ?? [text];
     const syllables = words.reduce((sum, w) => sum + countSyllables(w), 0);
 
     const wordCount = Math.max(words.length, 1);
-    const sentenceCount = Math.max(sentences.length, 1);
+    const sentenceCount = Math.max(sentenceList.length, 1);
 
     const avgSentenceLen = wordCount / sentenceCount;
     const avgSyllablesPerWord = syllables / wordCount;
 
     const score = 206.835 - 1.015 * avgSentenceLen - 84.6 * avgSyllablesPerWord;
     const clamped = Math.max(0, Math.min(100, Math.round(score)));
+
+    // Flesch-Kincaid Grade Level -- the other half of the same formula
+    // family, expressed as a US school grade rather than a 0-100 score.
+    // Editors often ask for one or the other, so showing both saves a
+    // second lookup.
+    const gradeLevel = Math.max(0, 0.39 * avgSentenceLen + 11.8 * avgSyllablesPerWord - 15.59);
+
+    const longSentences = sentenceList.filter((s) => (s.match(/\S+/g) ?? []).length > 25).length;
+    const longPct = Math.round((longSentences / sentenceCount) * 100);
 
     let label = 'Very difficult, academic';
     if (clamped >= 90) label = 'Very easy';
@@ -145,11 +160,15 @@ const toolSchema = {
     else if (clamped >= 50) label = 'Fairly difficult';
     else if (clamped >= 30) label = 'Difficult';
 
+    if (longPct > 25) label += ' — many long sentences';
+
     if (scoreEl.textContent !== String(clamped)) pop(scoreEl);
     scoreEl.textContent = String(clamped);
     labelEl.textContent = label;
     sentenceLenEl.textContent = avgSentenceLen.toFixed(1);
     syllableLenEl.textContent = avgSyllablesPerWord.toFixed(2);
+    gradeEl.textContent = gradeLevel.toFixed(1);
+    longEl.textContent = `${longPct}%`;
   }
 
   input.addEventListener('input', update);

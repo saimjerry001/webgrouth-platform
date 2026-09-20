@@ -58,13 +58,20 @@ const toolSchema = {
           </div>
           <div class="field"><label for="pg-title">Working title for the article</label><input id="pg-title" type="text" placeholder="e.g. 7 Link Building Mistakes Costing You Traffic" /></div>
           <div class="field"><label for="pg-angle">Why it fits their audience (one or two lines)</label><textarea id="pg-angle" placeholder="e.g. I noticed you cover SEO for small agencies — this piece walks through mistakes I see weekly in client audits, with real before/after examples." style="min-height: 90px;"></textarea></div>
-          <div class="field" style="margin-bottom:0;"><label for="pg-sample">Link to a writing sample (optional)</label><input id="pg-sample" type="text" placeholder="https://yoursite.com/example-article" /></div>
+          <div class="field"><label for="pg-sample">Link to a writing sample (optional)</label><input id="pg-sample" type="text" placeholder="https://yoursite.com/example-article" /></div>
+          <div class="field" style="margin-bottom:0;">
+            <label for="pg-recipient">Editor's email (optional, for the "open in email app" button)</label>
+            <input id="pg-recipient" type="text" placeholder="editor@publisher.com" />
+          </div>
         </div>
         <div class="tool-result-v3" data-reveal>
           <span class="live-label"><span class="live-dot"></span> Generated email</span>
           <pre class="code-box" id="pg-output">Enter your name and the publisher's name to begin.</pre>
-          <button class="button button-secondary button-small" id="pg-copy" type="button">Copy to clipboard</button>
-          <p class="form-note" style="margin-top: 16px; margin-bottom: 0;">Always personalize the opening line further once you've actually read a recent piece on the target site — generic pitches get ignored.</p>
+          <div class="pg-actions">
+            <button class="button button-secondary button-small" id="pg-copy" type="button">Copy to clipboard</button>
+            <a class="button button-secondary button-small" id="pg-mailto" href="#" style="display:none;">Open in email app</a>
+          </div>
+          <p id="pg-length" class="form-note" style="margin-top: 16px; margin-bottom: 0;">Always personalize the opening line further once you've actually read a recent piece on the target site — generic pitches get ignored.</p>
         </div>
       </div>
     </section>
@@ -82,6 +89,8 @@ const toolSchema = {
 <style>
   .tool-layout { display: grid; grid-template-columns: 1.15fr .85fr; gap: 40px; align-items: start; }
   .code-box { padding: 22px; overflow-x: auto; border-radius: 12px; background: rgba(255,255,255,.06); color: #d5dae3; font-family: 'Courier New', monospace; font-size: 13px; line-height: 1.6; white-space: pre-wrap; word-break: break-word; }
+  .pg-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .pg-length-warn { color: #fb923c; }
   @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
 </style>
 
@@ -93,8 +102,11 @@ const toolSchema = {
   const titleInput = document.getElementById('pg-title') as HTMLInputElement;
   const angleInput = document.getElementById('pg-angle') as HTMLTextAreaElement;
   const sampleInput = document.getElementById('pg-sample') as HTMLInputElement;
+  const recipientInput = document.getElementById('pg-recipient') as HTMLInputElement;
   const output = document.getElementById('pg-output')!;
   const copyBtn = document.getElementById('pg-copy')!;
+  const mailtoBtn = document.getElementById('pg-mailto') as HTMLAnchorElement;
+  const lengthEl = document.getElementById('pg-length')!;
 
   function update() {
     const name = nameInput.value.trim();
@@ -107,6 +119,9 @@ const toolSchema = {
 
     if (!name || !target) {
       output.textContent = "Enter your name and the publisher's name to begin.";
+      mailtoBtn.style.display = 'none';
+      lengthEl.textContent = "Always personalize the opening line further once you've actually read a recent piece on the target site — generic pitches get ignored.";
+      lengthEl.className = 'form-note';
       return;
     }
 
@@ -131,7 +146,27 @@ const toolSchema = {
       name,
     ].filter((line, index, arr) => !(line === '' && arr[index - 1] === ''));
 
-    output.textContent = lines.join('\n').trim();
+    const emailBody = lines.join('\n').trim();
+    output.textContent = emailBody;
+
+    const wordCount = (emailBody.match(/\S+/g) ?? []).length;
+    if (wordCount > 180) {
+      lengthEl.textContent = `${wordCount} words — this pitch is on the long side. Editors respond better to pitches under ~150 words.`;
+      lengthEl.className = 'form-note pg-length-warn';
+    } else {
+      lengthEl.textContent = `${wordCount} words. Always personalize the opening line further once you've actually read a recent piece on the target site.`;
+      lengthEl.className = 'form-note';
+    }
+
+    const recipient = recipientInput.value.trim();
+    if (recipient) {
+      const subjectLine = subject.replace(/^Subject: /, '');
+      const bodyOnly = lines.slice(2).join('\n').trim();
+      mailtoBtn.href = `mailto:${encodeURIComponent(recipient)}?subject=${encodeURIComponent(subjectLine)}&body=${encodeURIComponent(bodyOnly)}`;
+      mailtoBtn.style.display = 'inline-flex';
+    } else {
+      mailtoBtn.style.display = 'none';
+    }
   }
 
   copyBtn.addEventListener('click', async () => {
@@ -140,6 +175,6 @@ const toolSchema = {
     setTimeout(() => { copyBtn.textContent = 'Copy to clipboard'; }, 1800);
   });
 
-  [nameInput, siteInput, targetInput, editorInput, titleInput, angleInput, sampleInput].forEach((el) => el.addEventListener('input', update));
+  [nameInput, siteInput, targetInput, editorInput, titleInput, angleInput, sampleInput, recipientInput].forEach((el) => el.addEventListener('input', update));
   update();
 </script>
