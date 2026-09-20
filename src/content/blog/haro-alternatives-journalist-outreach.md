@@ -7,8 +7,8 @@ author: "Nasir Haider"
 tags: ["Guest Posting", "PR", "Link Building"]
 date: "2026-09-20"
 readTime: "8 min read"
-image: "/images/blog/guest-post-outreach.webp"
-imageAlt: "Writer reviewing a journalist query beside an email draft on a laptop"
+image: "/images/blog/link-attributes.webp"
+imageAlt: "Laptop showing a journalist's article draft beside a printed pitch note with pencil marks"
 ---
 
 **HARO (Help A Reporter Out) was discontinued by Cision in December 2024 under its rebranded name Connectively, then acquired and relaunched by Featured.com in April 2025.** The relaunched version is free again for both journalists and sources, with no login required for the basic email digest. If you stopped using it during the shutdown, it's worth another look — and it's a good moment to also check the other platforms that filled the gap while it was gone.

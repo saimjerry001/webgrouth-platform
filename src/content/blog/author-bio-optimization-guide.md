@@ -7,8 +7,8 @@ author: "Nasir Haider"
 tags: ["Guest Posting", "Author Bio", "Content Strategy"]
 date: "2026-09-20"
 readTime: "7 min read"
-image: "/images/blog/guest-post-outreach.webp"
-imageAlt: "Writer editing an author bio at a laptop with notes beside the keyboard"
+image: "/images/blog/author-portrait-review.jpg"
+imageAlt: "Professional sitting with a portfolio, reviewing his author credentials before a guest post submission"
 ---
 
 **A guest post author bio typically gets one short paragraph and one link — and most writers waste both on generic self-promotion that neither builds trust nor earns a click.** A better bio does two jobs at once: it gives the reader a real reason to believe the article, and it gives them a specific reason to follow the link.
