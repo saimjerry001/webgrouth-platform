@@ -7,8 +7,8 @@ author: "Nasir Haider"
 tags: ["Link Building", "SEO Strategy"]
 date: "2026-09-20"
 readTime: "8 min read"
-image: "/images/blog/guest-post-outreach.webp"
-imageAlt: "Writer sketching a link building roadmap at a laptop with notes beside the keyboard"
+image: "/images/blog/ultimate-guide-contextual-links.jpg"
+imageAlt: "The word Backlinks typed on paper in a vintage typewriter, representing the first steps of a link building roadmap"
 ---
 
 **A brand-new website has no link history, no authority, and no track record — which means both the tactics available to it and the pace it should move at are different from an established site's.** Jumping straight into a large guest posting campaign before laying the groundwork often wastes budget on links a still-empty site can't yet make good use of.

@@ -7,8 +7,8 @@ author: "Nasir Haider"
 tags: ["Link Building", "SEO Strategy"]
 date: "2026-09-20"
 readTime: "7 min read"
-image: "/images/blog/anchor-text.webp"
-imageAlt: "Article proof with a highlighted publishing schedule beside reading glasses and a pen"
+image: "/images/blog/link-velocity-speedometer.jpg"
+imageAlt: "Close-up of a car speedometer, representing a safe versus risky pace of link building"
 ---
 
 **There's no official "links per month" limit Google publishes, and link velocity isn't a fixed rule — but a sudden, large spike in new links on a site with no prior link-building history is a pattern that draws more scrutiny than the same total number of links spread naturally over time.** The concern isn't speed itself; it's whether the pattern looks like something a real, growing business would produce.
