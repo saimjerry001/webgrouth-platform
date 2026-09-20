@@ -61,7 +61,8 @@ const toolSchema = {
           <span class="live-label"><span class="live-dot"></span> Live breakdown</span>
           <div class="anchor-bar" id="at-bar"></div>
           <div class="tool-stats-v3" id="at-stats" style="margin-top: 18px;"></div>
-          <p id="at-verdict" class="form-note" style="margin-top: 16px; margin-bottom: 0;">Paste anchor texts to see the breakdown.</p>
+          <p id="at-verdict" class="form-note" style="margin-top: 16px;">Paste anchor texts to see the breakdown.</p>
+          <div class="at-concentration" id="at-concentration" style="display:none;"></div>
         </div>
       </div>
     </section>
@@ -91,6 +92,8 @@ const toolSchema = {
   .tool-stat-v3 span.pop { transform: scale(1.1); }
   .at-legend { display: flex; align-items: center; gap: 6px; }
   .at-legend-dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; }
+  .at-concentration { margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); font-size: 12.5px; color: #aeb5c1; }
+  .at-concentration b { color: #fb923c; }
   @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
 </style>
 
@@ -122,6 +125,7 @@ const toolSchema = {
   const bar = document.getElementById('at-bar')!;
   const statsEl = document.getElementById('at-stats')!;
   const verdictEl = document.getElementById('at-verdict')!;
+  const concentrationEl = document.getElementById('at-concentration')!;
 
   function classify(anchor: string, brand: string, keyword: string): Category {
     return categories.find((c) => c.test(anchor, brand, keyword)) ?? categories[categories.length - 1];
@@ -136,6 +140,7 @@ const toolSchema = {
       bar.innerHTML = '';
       statsEl.innerHTML = '';
       verdictEl.textContent = 'Paste anchor texts to see the breakdown.';
+      concentrationEl.style.display = 'none';
       return;
     }
 
@@ -169,6 +174,20 @@ const toolSchema = {
       verdictEl.textContent = `Exact-match anchors sit at ${exactPct.toFixed(0)}%, within a typical natural range. Keep branded and generic anchors as the majority of the mix.`;
     } else {
       verdictEl.textContent = 'No exact-match anchors detected in this set. Add a target keyword above to check that specifically.';
+    }
+
+    const anchorCounts = new Map<string, number>();
+    for (const anchor of anchors) {
+      const key = anchor.toLowerCase();
+      anchorCounts.set(key, (anchorCounts.get(key) ?? 0) + 1);
+    }
+    const [topAnchor, topCount] = [...anchorCounts.entries()].sort((a, b) => b[1] - a[1])[0];
+    const topPct = (topCount / total) * 100;
+    if (topCount > 1 && topPct >= 20) {
+      concentrationEl.style.display = 'block';
+      concentrationEl.innerHTML = `Concentration risk: <b>"${topAnchor}"</b> is used ${topCount} times (${topPct.toFixed(0)}% of all anchors). Repeating one exact anchor too often looks unnatural even if it isn't the "exact match" keyword itself.`;
+    } else {
+      concentrationEl.style.display = 'none';
     }
   }
 

@@ -61,7 +61,11 @@ const toolSchema = {
         <div class="tool-result-v3 tier-result" data-reveal>
           <span class="live-label"><span class="live-dot"></span> Live score</span>
           <div class="result-figure" id="qs-tier">&mdash;</div>
+          <div class="qs-composite" id="qs-composite" style="display:none;">
+            <span id="qs-composite-score">0</span><span class="qs-composite-max">/100</span>
+          </div>
           <p id="qs-explain" class="form-note" style="margin-bottom:0;">Enter DA, PA, DR and traffic to see a tier.</p>
+          <div class="qs-breakdown" id="qs-breakdown"></div>
         </div>
       </div>
     </section>
@@ -91,6 +95,15 @@ const toolSchema = {
   .result-figure.premium { color: #34d399; }
   .result-figure.standard { color: #60a5fa; }
   .result-figure.budget { color: #fb923c; }
+  .qs-composite { margin: 6px 0 4px; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .qs-composite span#qs-composite-score { font-size: 22px; font-weight: 800; color: #fff; }
+  .qs-composite-max { color: #77809a; font-size: 13px; }
+  .qs-breakdown { display: grid; gap: 10px; margin-top: 18px; text-align: left; }
+  .qs-breakdown-row { display: grid; grid-template-columns: 90px 1fr 34px; align-items: center; gap: 10px; }
+  .qs-breakdown-row label { color: #aeb5c1; font-size: 12px; font-weight: 600; }
+  .qs-breakdown-row span { color: #dfe3ea; font-size: 12px; font-weight: 700; text-align: right; }
+  .qs-breakdown-bar { overflow: hidden; height: 6px; border-radius: 999px; background: rgba(255,255,255,.08); }
+  .qs-breakdown-fill { height: 100%; border-radius: 999px; background: #60a5fa; transition: width .3s ease; }
   @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
 </style>
 
@@ -102,6 +115,9 @@ const toolSchema = {
   const priceInput = document.getElementById('qs-price') as HTMLInputElement;
   const tierEl = document.getElementById('qs-tier')!;
   const explainEl = document.getElementById('qs-explain')!;
+  const compositeWrap = document.getElementById('qs-composite')!;
+  const compositeScoreEl = document.getElementById('qs-composite-score')!;
+  const breakdownEl = document.getElementById('qs-breakdown')!;
 
   function pop(el: HTMLElement) {
     el.classList.remove('pop');
@@ -121,6 +137,8 @@ const toolSchema = {
       tierEl.textContent = '—';
       tierEl.className = 'result-figure';
       explainEl.textContent = 'Enter DA, PA, DR and traffic to see a tier.';
+      compositeWrap.style.display = 'none';
+      breakdownEl.innerHTML = '';
       return;
     }
 
@@ -143,10 +161,46 @@ const toolSchema = {
       reason += ' The price also looks reasonable for this authority level.';
     }
 
+    // A transparent, weighted composite (0-100) so the tier isn't a black
+    // box: DA/DR carry the most weight (they drive real link equity), PA
+    // and traffic support it, and price is only scored when given.
+    const trafficScore = Math.max(0, Math.min(100, (Math.log10(Math.max(traffic, 1)) / 5) * 100));
+    const fairPrice = authority * 1.5;
+    const priceScore = price > 0
+      ? Math.max(0, Math.min(100, 100 - ((price - fairPrice) / Math.max(fairPrice, 1)) * 100))
+      : null;
+
+    const components: { label: string; score: number; weight: number }[] = [
+      { label: 'DA', score: Math.max(0, Math.min(100, da)), weight: 25 },
+      { label: 'PA', score: Math.max(0, Math.min(100, pa)), weight: 15 },
+      { label: 'DR', score: Math.max(0, Math.min(100, dr)), weight: 25 },
+      { label: 'Traffic', score: trafficScore, weight: 25 },
+    ];
+    if (priceScore !== null) components.push({ label: 'Price fit', score: priceScore, weight: 10 });
+
+    const totalWeight = components.reduce((sum, c) => sum + c.weight, 0);
+    const composite = Math.round(
+      components.reduce((sum, c) => sum + c.score * (c.weight / totalWeight), 0)
+    );
+
     if (tierEl.textContent !== tier) pop(tierEl);
     tierEl.textContent = tier;
     tierEl.className = `result-figure ${tier.toLowerCase()}`;
     explainEl.textContent = reason;
+
+    compositeWrap.style.display = 'block';
+    if (compositeScoreEl.textContent !== String(composite)) pop(compositeScoreEl as HTMLElement);
+    compositeScoreEl.textContent = String(composite);
+
+    breakdownEl.innerHTML = components
+      .map((c) => `
+        <div class="qs-breakdown-row">
+          <label>${c.label}</label>
+          <div class="qs-breakdown-bar"><div class="qs-breakdown-fill" style="width:${Math.round(c.score)}%;"></div></div>
+          <span>${Math.round(c.score)}</span>
+        </div>
+      `)
+      .join('');
   }
 
   [daInput, paInput, drInput, trafficInput, priceInput].forEach((el) => el.addEventListener('input', update));

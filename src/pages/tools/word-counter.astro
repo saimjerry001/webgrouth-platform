@@ -59,7 +59,14 @@ const toolSchema = {
             <div class="tool-stat-v3"><span id="wc-chars-ns">0</span><label>Chars (no spaces)</label></div>
             <div class="tool-stat-v3"><span id="wc-sentences">0</span><label>Sentences</label></div>
             <div class="tool-stat-v3"><span id="wc-paragraphs">0</span><label>Paragraphs</label></div>
+            <div class="tool-stat-v3"><span id="wc-unique">0</span><label>Unique words</label></div>
+            <div class="tool-stat-v3"><span id="wc-avglen">0</span><label>Avg word length</label></div>
             <div class="tool-stat-v3"><span id="wc-time">0m</span><label>Read time</label></div>
+            <div class="tool-stat-v3"><span id="wc-speak">0m</span><label>Speaking time</label></div>
+          </div>
+          <div class="wc-density" id="wc-density-wrap" style="display:none;">
+            <span class="wc-density-label">Most repeated words</span>
+            <div class="wc-density-list" id="wc-density"></div>
           </div>
         </div>
       </div>
@@ -90,6 +97,11 @@ const toolSchema = {
   .tool-stats-v3 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; }
   .tool-stat-v3 span { transition: transform .18s ease; }
   .tool-stat-v3 span.pop { transform: scale(1.14); }
+  .wc-density { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.08); }
+  .wc-density-label { display: block; margin-bottom: 10px; color: #aeb5c1; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+  .wc-density-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .wc-density-chip { padding: 5px 11px; border-radius: 999px; background: rgba(96,165,250,.12); color: #93c5fd; font-size: 12.5px; font-weight: 600; }
+  .wc-density-chip b { color: #fff; }
   @media (max-width: 900px) { .tool-layout { grid-template-columns: 1fr; } }
 </style>
 
@@ -100,7 +112,19 @@ const toolSchema = {
   const charsNsEl = document.getElementById('wc-chars-ns')!;
   const sentencesEl = document.getElementById('wc-sentences')!;
   const paragraphsEl = document.getElementById('wc-paragraphs')!;
+  const uniqueEl = document.getElementById('wc-unique')!;
+  const avgLenEl = document.getElementById('wc-avglen')!;
   const timeEl = document.getElementById('wc-time')!;
+  const speakEl = document.getElementById('wc-speak')!;
+  const densityWrap = document.getElementById('wc-density-wrap')!;
+  const densityEl = document.getElementById('wc-density')!;
+
+  const STOPWORDS = new Set([
+    'the','a','an','and','or','but','if','of','to','in','on','for','with','as','is','are',
+    'was','were','be','been','being','it','its','this','that','these','those','at','by',
+    'from','into','than','then','so','such','not','no','can','will','would','could','should',
+    'has','have','had','you','your','i','we','our','they','their','he','she','his','her','them',
+  ]);
 
   function setValue(el: HTMLElement, value: string) {
     if (el.textContent === value) return;
@@ -114,19 +138,56 @@ const toolSchema = {
   function update() {
     const text = input.value;
     const trimmed = text.trim();
+    const wordList = trimmed ? (trimmed.match(/[A-Za-z0-9''-]+/g) ?? []) : [];
     const words = trimmed ? (trimmed.match(/\S+/g) ?? []).length : 0;
     const chars = text.length;
     const charsNoSpaces = text.replace(/\s/g, '').length;
     const sentences = trimmed ? (trimmed.match(/[^.!?]+[.!?]+/g) ?? (trimmed ? [trimmed] : [])).length : 0;
     const paragraphs = trimmed ? trimmed.split(/\n\s*\n/).filter((p) => p.trim().length > 0).length : 0;
-    const minutes = Math.max(1, Math.round(words / 200));
+    const readMinutes = Math.max(1, Math.round(words / 200));
+    const speakMinutes = Math.max(1, Math.round(words / 130));
+
+    const lower = wordList.map((w) => w.toLowerCase());
+    const uniqueWords = new Set(lower).size;
+    const avgWordLen = wordList.length
+      ? wordList.reduce((sum, w) => sum + w.length, 0) / wordList.length
+      : 0;
 
     setValue(wordsEl, words.toLocaleString());
     setValue(charsEl, chars.toLocaleString());
     setValue(charsNsEl, charsNoSpaces.toLocaleString());
     setValue(sentencesEl, sentences.toLocaleString());
     setValue(paragraphsEl, paragraphs.toLocaleString());
-    setValue(timeEl, words === 0 ? '0m' : `${minutes}m`);
+    setValue(uniqueEl, uniqueWords.toLocaleString());
+    setValue(avgLenEl, wordList.length ? `${avgWordLen.toFixed(1)}` : '0');
+    setValue(timeEl, words === 0 ? '0m' : `${readMinutes}m`);
+    setValue(speakEl, words === 0 ? '0m' : `${speakMinutes}m`);
+
+    if (words < 15) {
+      densityWrap.style.display = 'none';
+      return;
+    }
+    const freq = new Map<string, number>();
+    for (const w of lower) {
+      if (w.length < 3 || STOPWORDS.has(w) || /^\d+$/.test(w)) continue;
+      freq.set(w, (freq.get(w) ?? 0) + 1);
+    }
+    const top = [...freq.entries()]
+      .filter(([, count]) => count >= 2)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 6);
+
+    if (!top.length) {
+      densityWrap.style.display = 'none';
+      return;
+    }
+    densityWrap.style.display = 'block';
+    densityEl.innerHTML = top
+      .map(([word, count]) => {
+        const pct = ((count / words) * 100).toFixed(1);
+        return `<span class="wc-density-chip">${word} &middot; <b>${count}&times;</b> (${pct}%)</span>`;
+      })
+      .join('');
   }
 
   input.addEventListener('input', update);

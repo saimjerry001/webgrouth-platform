@@ -57,6 +57,42 @@ const toolSchema = {
       </div>
     </section>
 
+    <section class="homev3-section" style="padding-top: 0;">
+      <div class="shell">
+        <div class="tracker-builder" data-reveal>
+          <span class="live-label"><span class="live-dot"></span> Quick row builder</span>
+          <h3>Add a placement without opening a spreadsheet.</h3>
+          <p class="form-note">Fill this in for each site you pitch, then export everything as a CSV that matches the template's columns.</p>
+          <div class="form-row">
+            <div class="field"><label for="gt-domain">Publisher domain</label><input id="gt-domain" type="text" placeholder="example.com" /></div>
+            <div class="field"><label for="gt-status">Status</label>
+              <select id="gt-status">
+                <option>Interested</option>
+                <option>Brief agreed</option>
+                <option>Draft under review</option>
+                <option>Published</option>
+                <option>Declined</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="gt-cost">Placement cost ($)</label><input id="gt-cost" type="number" min="0" placeholder="e.g. 150" /></div>
+            <div class="field"><label for="gt-next">Next action</label><input id="gt-next" type="text" placeholder="e.g. Send outline" /></div>
+          </div>
+          <button class="button button-secondary button-small" id="gt-add" type="button">Add row</button>
+
+          <div class="tracker-table-wrap" id="gt-table-wrap" style="display:none;">
+            <table class="tracker-table">
+              <thead><tr><th>Domain</th><th>Status</th><th>Cost</th><th>Next action</th><th></th></tr></thead>
+              <tbody id="gt-tbody"></tbody>
+            </table>
+            <div class="tracker-summary" id="gt-summary"></div>
+            <button class="button button-secondary button-small" id="gt-export" type="button">Export my rows as CSV</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="homev3-section homev3-intro" style="padding-top: 50px;">
       <div class="shell content-grid">
         <div class="content-sticky" data-reveal>
@@ -90,4 +126,107 @@ const toolSchema = {
 <style>
   .detail-card { background: #fff; box-shadow: 0 8px 22px rgba(23,26,34,.05); }
   .detail-card-icon { background: var(--wg-blue); }
+  .tracker-builder { padding: 30px; border-radius: 16px; background: #fff; box-shadow: 0 10px 30px rgba(23,26,34,.06); }
+  .tracker-builder h3 { margin: 4px 0 6px; }
+  .tracker-table-wrap { margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(23,26,34,.08); }
+  .tracker-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .tracker-table th { padding: 8px 10px; color: var(--muted); text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; }
+  .tracker-table td { padding: 8px 10px; border-top: 1px solid rgba(23,26,34,.06); }
+  .tracker-table td.gt-remove { cursor: pointer; color: #ef4444; font-weight: 700; text-align: right; }
+  .tracker-summary { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+  .tracker-summary span { padding: 5px 12px; border-radius: 999px; background: rgba(96,165,250,.1); color: var(--wg-blue); font-size: 12px; font-weight: 700; }
 </style>
+
+<script>
+  type Row = { domain: string; status: string; cost: string; next: string };
+
+  const domainInput = document.getElementById('gt-domain') as HTMLInputElement;
+  const statusSelect = document.getElementById('gt-status') as HTMLSelectElement;
+  const costInput = document.getElementById('gt-cost') as HTMLInputElement;
+  const nextInput = document.getElementById('gt-next') as HTMLInputElement;
+  const addBtn = document.getElementById('gt-add')!;
+  const tableWrap = document.getElementById('gt-table-wrap')!;
+  const tbody = document.getElementById('gt-tbody')!;
+  const summary = document.getElementById('gt-summary')!;
+  const exportBtn = document.getElementById('gt-export')!;
+
+  const STORAGE_KEY = 'wg-guest-post-tracker-rows';
+  let rows: Row[] = [];
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) rows = JSON.parse(saved);
+  } catch { /* private browsing or blocked storage: start empty */ }
+
+  function escapeHtml(value: string) {
+    return value.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function save() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(rows)); } catch { /* ignore */ }
+  }
+
+  function render() {
+    if (!rows.length) {
+      tableWrap.style.display = 'none';
+      return;
+    }
+    tableWrap.style.display = 'block';
+    tbody.innerHTML = rows
+      .map((r, i) => `
+        <tr>
+          <td>${escapeHtml(r.domain)}</td>
+          <td>${escapeHtml(r.status)}</td>
+          <td>${r.cost ? `$${escapeHtml(r.cost)}` : '—'}</td>
+          <td>${escapeHtml(r.next) || '—'}</td>
+          <td class="gt-remove" data-index="${i}">Remove</td>
+        </tr>
+      `)
+      .join('');
+
+    const totalCost = rows.reduce((sum, r) => sum + (Number(r.cost) || 0), 0);
+    const published = rows.filter((r) => r.status === 'Published').length;
+    summary.innerHTML = `
+      <span>${rows.length} placement${rows.length === 1 ? '' : 's'}</span>
+      <span>${published} published</span>
+      <span>$${totalCost.toLocaleString()} committed</span>
+    `;
+
+    tbody.querySelectorAll<HTMLElement>('.gt-remove').forEach((cell) => {
+      cell.addEventListener('click', () => {
+        const idx = Number(cell.dataset.index);
+        rows.splice(idx, 1);
+        save();
+        render();
+      });
+    });
+  }
+
+  addBtn.addEventListener('click', () => {
+    const domain = domainInput.value.trim();
+    if (!domain) {
+      domainInput.focus();
+      return;
+    }
+    rows.push({ domain, status: statusSelect.value, cost: costInput.value.trim(), next: nextInput.value.trim() });
+    domainInput.value = '';
+    costInput.value = '';
+    nextInput.value = '';
+    save();
+    render();
+  });
+
+  exportBtn.addEventListener('click', () => {
+    const header = 'Publisher domain,Status,Placement cost,Next action';
+    const csvRows = rows.map((r) => [r.domain, r.status, r.cost, r.next].map((v) => `"${v.replace(/"/g, '""')}"`).join(','));
+    const csv = [header, ...csvRows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'my-guest-post-tracker.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  render();
+</script>
