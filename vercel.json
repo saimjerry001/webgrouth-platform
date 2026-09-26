@@ -11,6 +11,81 @@
       "source": "/index.php",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/guest-post",
+      "destination": "/guest-posting",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/guest-posting",
+      "permanent": true
+    },
+    {
+      "source": "/faqs",
+      "destination": "/guest-posting",
+      "permanent": true
+    },
+    {
+      "source": "/team",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/blogs",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/high-da-backlinks-offers-buy-backlinks",
+      "destination": "/guest-posting",
+      "permanent": true
+    },
+    {
+      "source": "/write-for-us-guest-post-webgrouth-com",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/mastering-backlink-tracking-and-analysis-2025-seo",
+      "destination": "/blog/backlink-audit-how-to-check-your-profile",
+      "permanent": true
+    },
+    {
+      "source": "/blog/white-label-seo",
+      "destination": "/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/blog/technical-seo-static-sites",
+      "destination": "/seo-services",
+      "permanent": true
+    },
+    {
+      "source": "/blog/what-makes-a-backlink-useful",
+      "destination": "/blog/ultimate-guide-contextual-links",
+      "permanent": true
+    },
+    {
+      "source": "/blog/guest-posting-that-earns-its-place",
+      "destination": "/blog/guest-posting-strategy-scales",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-choose-guest-post-sites-usa-uk",
+      "destination": "/blog/how-to-vet-guest-post-sites",
+      "permanent": true
+    },
+    {
+      "source": "/blog/how-to-vette-guest-post-sites",
+      "destination": "/blog/how-to-vet-guest-post-sites",
+      "permanent": true
     }
   ],
   "buildCommand": "npm run build"
