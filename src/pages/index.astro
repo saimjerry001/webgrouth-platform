@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import UiIcon from '../components/UiIcon.astro';
 
 const publisherSites = [
   { domain: 'news.guestpostnow.com', da: 57, dr: 71, traffic: '—' },
@@ -68,6 +69,16 @@ const faqs = [
   ['When do I pay?', 'Eligible orders can be paid after the link is live. We confirm the website, price and payment terms before work starts.'],
 ] as const;
 
+const serviceIcons = ['layers', 'target', 'chart'] as const;
+const categoryIcons = ['layers', 'wallet', 'badge', 'building', 'target', 'sparkles', 'star', 'database'] as const;
+const standardIcons = ['target', 'search', 'check', 'badge', 'chart', 'refresh'] as const;
+const steps = [
+  ['01', 'Send your order', 'Add your email and any link details you already know.', 'arrow'],
+  ['02', 'Review website options', 'We send suitable websites with prices and key details.', 'search'],
+  ['03', 'Approve your choice', 'Confirm the website, article, anchor and price.', 'check'],
+  ['04', 'Receive the live link', 'We check the published link and send the live URL to you.', 'external'],
+] as const;
+
 const homeSchema = [
   {
     '@context': 'https://schema.org',
@@ -97,163 +108,176 @@ const homeSchema = [
 ---
 
 <BaseLayout title="Link Building Agency for Brands & SEO Agencies | Web Grouth" description="Web Grouth is a link building agency for brands and SEO agencies worldwide. Pick vetted publishers, compare prices and get a verified live link." structuredData={homeSchema}>
-  <div class="homev3">
-    <section class="homev3-hero">
-      <div class="shell homev3-hero-grid">
-        <div class="homev3-hero-copy" data-reveal>
-          <p class="homev3-overline">Guest posting for brands and SEO agencies</p>
-          <h1>Guest posting on <span>websites that matter.</span></h1>
-          <p class="homev3-lead">Choose from 40,000+ publisher websites across countries, niches and categories. We help you find the right sites, confirm every detail and deliver your live link.</p>
-          <div class="homev3-actions">
-            <a class="homev3-button homev3-button-primary" href="/order">Place Your Order <span>↗</span></a>
-            <a class="homev3-button homev3-button-secondary" href="#database">View Website Network</a>
+  <div class="wg4-home">
+    <section class="h4-hero">
+      <div class="h4-hero-bg" aria-hidden="true"><div class="h4-grid"></div><div class="h4-blob h4-blob-a" data-parallax="0.25"></div><div class="h4-blob h4-blob-b" data-parallax="-0.15"></div><div class="h4-dots"></div></div>
+      <div class="shell h4-hero-grid">
+        <div class="h4-hero-copy" data-reveal="left">
+          <p class="h4-pill"><span class="h4-live"></span> Guest posting for brands and SEO agencies</p>
+          <h1>Guest posting on <span class="h4-grad">websites that matter.</span></h1>
+          <p class="h4-lead">Choose from 40,000+ publisher websites across countries, niches and categories. We help you find the right sites, confirm every detail and deliver your live link.</p>
+          <div class="h4-actions">
+            <a class="h4-btn h4-btn-primary wg4-shine" href="/order">Place Your Order <span aria-hidden="true">↗</span></a>
+            <a class="h4-btn h4-btn-glass" href="#database">View Website Network</a>
           </div>
-          <div class="homev3-assurance" aria-label="Service highlights">
-            <span><i>✓</i> 40,000+ websites</span>
-            <span><i>✓</i> Single & bulk orders</span>
-            <span><i>✓</i> Pay after live link on eligible orders</span>
-          </div>
+          <ul class="h4-assure" aria-label="Service highlights">
+            <li><UiIcon name="check" size={14} strokeWidth={3} /> 40,000+ websites</li>
+            <li><UiIcon name="check" size={14} strokeWidth={3} /> Single &amp; bulk orders</li>
+            <li><UiIcon name="check" size={14} strokeWidth={3} /> Pay after live link on eligible orders</li>
+          </ul>
         </div>
 
-        <div class="homev3-network publisher-feed" data-reveal data-reveal-delay="1">
-          <div class="homev3-network-top">
-            <div><span class="homev3-live"></span><strong>Publisher network</strong></div>
-            <span>Publisher examples</span>
-          </div>
-          <div class="homev3-network-summary">
-            <div><span>Available websites</span><strong>40,000+</strong></div>
-            <div><span>Coverage</span><strong>30+ niches</strong></div>
-          </div>
-          <div class="publisher-feed-table">
-            <div class="publisher-feed-head"><span>Website</span><span>DA</span><span>DR</span><span>Traffic</span></div>
-            <div class="publisher-feed-viewport">
-              <div class="publisher-feed-track">
-                {[...publisherSites, ...publisherSites].map((site, index) =>
-                  <div class="publisher-feed-row" aria-hidden={index >= publisherSites.length ? 'true' : undefined}>
-                    <span><i>{site.domain.charAt(0).toUpperCase()}</i><b>{site.domain}</b></span>
-                    <strong>{site.da}</strong><strong>{site.dr}</strong><em>{site.traffic}</em>
-                  </div>
-                )}
+        <div class="h4-stage" data-tilt data-reveal="right" data-reveal-delay="1">
+          <div class="h4-orbit h4-orbit-a" aria-hidden="true" data-parallax="-0.08"><i></i></div>
+          <div class="h4-orbit h4-orbit-b" aria-hidden="true"><i></i></div>
+          <div class="h4-card">
+            <div class="h4-card-top">
+              <div><span class="h4-live"></span><strong>Publisher network</strong></div>
+              <span>Publisher examples</span>
+            </div>
+            <div class="h4-card-summary">
+              <div><span>Available websites</span><strong>40,000+</strong></div>
+              <div><span>Coverage</span><strong>30+ niches</strong></div>
+            </div>
+            <div class="h4-table">
+              <div class="h4-table-head"><span>Website</span><span>DA</span><span>DR</span><span>Traffic</span></div>
+              <div class="h4-table-view">
+                <div class="h4-table-track">
+                  {[...publisherSites, ...publisherSites].map((site, index) =>
+                    <div class="h4-row" aria-hidden={index >= publisherSites.length ? 'true' : undefined}>
+                      <span><i>{site.domain.charAt(0).toUpperCase()}</i><b>{site.domain}</b></span>
+                      <strong>{site.da}</strong><strong>{site.dr}</strong><em>{site.traffic}</em>
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
+            <div class="h4-card-tags"><span>All niches</span><span>DA &amp; DR reviewed</span><span>Traffic checked on request</span></div>
           </div>
-          <div class="homev3-network-filters"><span>All niches</span><span>DA & DR reviewed</span><span>Traffic checked on request</span></div>
+          <div class="h4-float h4-float-a"><span class="h4-float-icon"><UiIcon name="check" size={16} strokeWidth={2.6} /></span><div><strong>Live link delivered</strong><small>URL + report sent</small></div></div>
+          <div class="h4-float h4-float-b"><span class="h4-float-icon"><UiIcon name="badge" size={16} strokeWidth={2.2} /></span><div><strong>Site approved</strong><small>You choose first</small></div></div>
+          <div class="h4-float h4-float-c"><span class="h4-float-icon"><UiIcon name="chart" size={16} strokeWidth={2.2} /></span><div><strong>DA &amp; DR checked</strong><small>Relevance first</small></div></div>
         </div>
       </div>
     </section>
 
-    <section class="homev3-proof" aria-label="Web Grouth in numbers">
-      <div class="shell homev3-proof-grid">
-        <div class="homev3-proof-item"><strong>40,000+</strong><span>websites in popular categories</span></div>
-        <div class="homev3-proof-item"><strong>5,000+</strong><span>client orders handled</span></div>
-        <div class="homev3-proof-item"><strong>30+</strong><span>niche categories available</span></div>
-        <div class="homev3-proof-item"><strong>1:1</strong><span>human support until delivery</span></div>
+    <section class="h4-marquee" aria-label="Website categories">
+      <div class="h4-marquee-track">
+        {[...categories, ...categories].map(([title], index) => <span aria-hidden={index >= categories.length ? 'true' : undefined}><UiIcon name={categoryIcons[index % categories.length]} size={18} />{title}</span>)}
       </div>
     </section>
 
-    <section class="homev3-section homev3-intro">
-      <div class="shell homev3-intro-grid">
-        <div class="homev3-section-title" data-reveal>
-          <p class="homev3-overline">Simple guest posting</p>
-          <h2>The right website makes every backlink stronger.</h2>
+    <section class="h4-stats" aria-label="Web Grouth in numbers">
+      <div class="shell h4-stats-grid">
+        <div class="h4-stat" data-reveal="zoom"><strong data-count="40000" data-suffix="+">40,000+</strong><span>websites in popular categories</span></div>
+        <div class="h4-stat" data-reveal="zoom" data-reveal-delay="1"><strong data-count="5000" data-suffix="+">5,000+</strong><span>client orders handled</span></div>
+        <div class="h4-stat" data-reveal="zoom" data-reveal-delay="2"><strong data-count="30" data-suffix="+">30+</strong><span>niche categories available</span></div>
+        <div class="h4-stat" data-reveal="zoom" data-reveal-delay="3"><strong>1:1</strong><span>human support until delivery</span></div>
+      </div>
+    </section>
+
+    <section class="h4-section h4-intro">
+      <div class="shell h4-intro-grid">
+        <div data-reveal="left">
+          <p class="h4-kicker">Simple guest posting</p>
+          <h2>The right website makes every backlink <span class="h4-grad-dark">stronger.</span></h2>
         </div>
-        <div class="homev3-intro-copy" data-reveal data-reveal-delay="1">
+        <div class="h4-intro-copy" data-reveal="right" data-reveal-delay="1">
           <p>Tell us the page you want to grow, your niche and your audience. We use these details to find websites that fit your campaign—not only websites with high numbers.</p>
-          <div class="homev3-checks">
-            <span>Websites selected by a real person</span><span>Approve the site before publishing</span>
-            <span>Anchor and target URL checked</span><span>Clear live-link report</span>
+          <div class="h4-checks">
+            {['Websites selected by a real person', 'Approve the site before publishing', 'Anchor and target URL checked', 'Clear live-link report'].map((item) => <span><i><UiIcon name="check" size={14} strokeWidth={3} /></i>{item}</span>)}
           </div>
         </div>
       </div>
     </section>
 
-    <section class="homev3-section homev3-services-section" id="services">
+    <section class="h4-section h4-dark" id="services">
       <span id="pricing" class="anchor-target" aria-hidden="true"></span>
+      <div class="h4-dark-glow" aria-hidden="true" data-parallax="0.18"></div>
       <div class="shell">
-        <div class="homev3-heading-row" data-reveal>
-          <div><p class="homev3-overline">Our services</p><h2>Everything you need to place quality links.</h2></div>
-          <a href="/guest-posting">View guest posting <span>↗</span></a>
+        <div class="h4-head-row" data-reveal>
+          <div><p class="h4-kicker">Our services</p><h2>Everything you need to place quality links.</h2></div>
+          <a class="h4-link" href="/guest-posting">View guest posting <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="homev3-service-grid">
+        <div class="h4-service-grid">
           {services.map((service, index) =>
-            <article class="homev3-service-card" data-reveal data-reveal-delay={String(index)}>
-              <span class="homev3-service-number">{service.number}</span>
+            <article class="h4-service" data-reveal={index === 0 ? 'left' : index === 2 ? 'right' : 'up'} data-reveal-delay={String(index)}>
+              <div class="h4-service-top"><span class="h4-icon"><UiIcon name={serviceIcons[index]} size={26} /></span><span class="h4-num">{service.number}</span></div>
               <h3>{service.title}</h3><p>{service.text}</p>
-              <ul>{service.points.map((point) => <li><i>✓</i>{point}</li>)}</ul>
-              <a href={service.details}>View service details <span>↗</span></a>
+              <ul>{service.points.map((point) => <li><UiIcon name="check" size={16} strokeWidth={2.6} />{point}</li>)}</ul>
+              <a href={service.details}>View service details <span aria-hidden="true">↗</span></a>
             </article>
           )}
         </div>
       </div>
     </section>
 
-    <section class="homev3-section homev3-categories-section" id="database">
+    <section class="h4-section h4-cats" id="database">
       <div class="shell">
-        <div class="homev3-centered" data-reveal>
-          <p class="homev3-overline">Website categories</p>
+        <div class="h4-center" data-reveal>
+          <p class="h4-kicker">Website categories</p>
           <h2>40,000+ websites. We help you choose the right ones.</h2>
           <p>Tell us your niche, target country and preferred metrics. We will send you a short list of suitable websites.</p>
         </div>
-        <div class="homev3-category-grid">
+        <div class="h4-cat-grid">
           {categories.map(([title, copy], index) =>
-            <a class="homev3-category" href={`/order?service=Guest%20Posting&niche=${encodeURIComponent(title)}`} data-reveal data-reveal-delay={String(index % 4)}>
-              <span>{String(index + 1).padStart(2, '0')}</span><h3>{title}</h3><p>{copy}</p>
+            <a class="h4-cat" href={`/order?service=Guest%20Posting&niche=${encodeURIComponent(title)}`} data-reveal={index % 2 ? 'right' : 'left'} data-reveal-delay={String(index % 4)}>
+              <div class="h4-cat-top"><span class="h4-icon h4-icon-light"><UiIcon name={categoryIcons[index]} size={22} /></span><span class="h4-cat-num">{String(index + 1).padStart(2, '0')}</span></div>
+              <h3>{title}</h3><p>{copy}</p>
+              <span class="h4-cat-go">Get websites <span aria-hidden="true">→</span></span>
             </a>
           )}
         </div>
       </div>
     </section>
 
-    <section class="homev3-section homev3-process-section" id="process">
-      <div class="shell homev3-process-layout">
-        <div class="homev3-process-copy" data-reveal>
-          <p class="homev3-overline">How it works</p>
-          <h2>Order in four simple steps.</h2>
-          <p>Add the details you know. You can leave optional fields blank and we will ask you by email.</p>
-          <a class="homev3-button homev3-button-primary" href="/order">Open Order Form <span>↗</span></a>
-        </div>
-        <div class="homev3-process-list" data-reveal data-reveal-delay="1">
-          {[
-            ['01', 'Send your order', 'Add your email and any link details you already know.'],
-            ['02', 'Review website options', 'We send suitable websites with prices and key details.'],
-            ['03', 'Approve your choice', 'Confirm the website, article, anchor and price.'],
-            ['04', 'Receive the live link', 'We check the published link and send the live URL to you.'],
-          ].map(([number, title, copy]) =>
-            <article class="homev3-process-step"><span>{number}</span><div><h3>{title}</h3><p>{copy}</p></div></article>
-          )}
-        </div>
-      </div>
-    </section>
-
-    <section class="homev3-experience">
+    <section class="h4-section h4-process" id="process">
       <div class="shell">
-        <div class="homev3-experience-head" data-reveal>
-          <div><p class="homev3-overline">How we work</p><h2>Clear, professional support at every step.</h2></div>
-          <p>Whether you need one link or a bulk campaign, we keep the process simple and easy to check.</p>
+        <div class="h4-head-row" data-reveal>
+          <div><p class="h4-kicker">How it works</p><h2>Order in four simple steps.</h2></div>
+          <p class="h4-head-copy">Add the details you know. You can leave optional fields blank and we will ask you by email.</p>
         </div>
-        <div class="homev3-standard-grid">
+        <div class="h4-steps" data-reveal>
+          <div class="h4-steps-line" aria-hidden="true"><i></i></div>
+          {steps.map(([number, title, copy, icon]) =>
+            <article class="h4-step" style={`--d:${Number(number) * 140}ms`}><span class="h4-step-dot"><UiIcon name={icon} size={22} /></span><span class="h4-step-num">Step {number}</span><h3>{title}</h3><p>{copy}</p></article>
+          )}
+        </div>
+        <div class="h4-center-cta" data-reveal><a class="h4-btn h4-btn-primary wg4-shine" href="/order">Open Order Form <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="h4-section h4-standards">
+      <div class="shell">
+        <div class="h4-head-row" data-reveal>
+          <div><p class="h4-kicker">How we work</p><h2>Clear, professional support at every step.</h2></div>
+          <p class="h4-head-copy">Whether you need one link or a bulk campaign, we keep the process simple and easy to check.</p>
+        </div>
+        <div class="h4-std-grid">
           {standards.map(([title, copy], index) =>
-            <article class="homev3-standard-card" data-reveal data-reveal-delay={String(index % 3)}><span>{String(index + 1).padStart(2,'0')}</span><strong>{title}</strong><p>{copy}</p></article>
+            <article class="h4-std" data-reveal={index % 3 === 0 ? 'left' : index % 3 === 2 ? 'right' : 'zoom'} data-reveal-delay={String(index % 3)}><span class="h4-icon h4-icon-soft"><UiIcon name={standardIcons[index]} size={22} /></span><strong>{title}</strong><p>{copy}</p></article>
           )}
         </div>
       </div>
     </section>
 
-    <section class="homev3-section homev3-faq-section">
-      <div class="shell homev3-faq-layout">
-        <div class="homev3-process-copy" data-reveal><p class="homev3-overline">Common questions</p><h2>Simple answers before you order.</h2><p>If you still have a question, add it to the order form or contact us directly.</p></div>
-        <div class="homev3-faq-list" data-reveal data-reveal-delay="1">
-          {faqs.map(([question, answer], index) => <details open={index === 0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}
+    <section class="h4-section h4-faq">
+      <div class="shell h4-faq-grid">
+        <div data-reveal="left"><p class="h4-kicker">Common questions</p><h2>Simple answers before you order.</h2><p>If you still have a question, add it to the order form or contact us directly.</p><a class="h4-link h4-link-dark" href="/contact">Contact Web Grouth <span aria-hidden="true">↗</span></a></div>
+        <div class="h4-faq-list" data-reveal="right" data-reveal-delay="1">
+          {faqs.map(([question, answer], index) => <details open={index === 0}><summary>{question}<span class="h4-plus" aria-hidden="true"></span></summary><p>{answer}</p></details>)}
         </div>
       </div>
     </section>
 
-    <section class="homev3-final">
-      <div class="shell homev3-final-inner" data-reveal>
-        <div><p class="homev3-overline">Ready to start?</p><h2>Send your order. We’ll find the right websites.</h2><p>Use the short order form or message Web Grouth on WhatsApp if you want to talk first.</p></div>
-        <div class="homev3-final-actions"><a class="homev3-button homev3-button-white" href="/order">Place an Order <span>↗</span></a><a href="https://wa.me/923327810261" target="_blank" rel="noopener">Talk on WhatsApp</a></div>
+    <section class="h4-final">
+      <div class="shell">
+        <div class="h4-final-card" data-reveal="zoom">
+          <div class="h4-final-rings" aria-hidden="true" data-parallax="-0.12"><i></i><i></i><i></i></div>
+          <div class="h4-final-copy"><p class="h4-kicker h4-kicker-light">Ready to start?</p><h2>Send your order. We’ll find the right websites.</h2><p>Use the short order form or message Web Grouth on WhatsApp if you want to talk first.</p></div>
+          <div class="h4-final-actions"><a class="h4-btn h4-btn-white" href="/order">Place an Order <span aria-hidden="true">↗</span></a><a class="h4-btn h4-btn-glass" href="https://wa.me/923327810261" target="_blank" rel="noopener">Talk on WhatsApp</a></div>
+        </div>
       </div>
     </section>
   </div>
 </BaseLayout>
-

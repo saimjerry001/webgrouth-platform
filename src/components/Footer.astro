@@ -1,10 +1,11 @@
-<footer class="site-footer wg-footer">
+---
+import Logo from './Logo.astro';
+---
+<footer class="site-footer wg-footer wg4-footer">
+  <div class="wg4-footer-glow" aria-hidden="true"></div>
   <div class="shell footer-top">
     <div class="footer-intro">
-      <a class="brand" href="/" aria-label="Web Grouth home">
-        <span class="brand-symbol" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M9 28.5 18 19l5.5 5L31 14" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M25.5 14H31v5.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-        <span class="brand-word">Web <strong>Grouth</strong></span>
-      </a>
+      <a class="wg4-brand" href="/" aria-label="Web Grouth home"><Logo id="wgLogoFoot" size={42} /><span class="wg4-word">Web<span>Grouth</span></span></a>
       <p>Editorial guest posting and contextual link placements for brands, consultants and SEO agencies worldwide.</p>
       <a class="footer-order" href="/order">Place a guest post order <span>↗</span></a>
     </div>
