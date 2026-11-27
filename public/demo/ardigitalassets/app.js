@@ -21,7 +21,7 @@
   mnav && $$('a', mnav).forEach(a => a.addEventListener('click', () => { burger.setAttribute('aria-expanded', 'false'); mnav.classList.remove('open'); }));
 
   /* 3D coin */
-  const LOGO = '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l17.3 10v20L24 44 6.7 34V14z" fill="none" stroke="rgba(20,20,19,.45)" stroke-width="2.4" stroke-linejoin="round"/><path d="M15 33l9-19 9 19" fill="none" stroke="#141413" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.8 26h10.4" stroke="#FAF9F5" stroke-width="3.6" stroke-linecap="round"/></svg>';
+  const LOGO = '<svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l17.3 10v20L24 44 6.7 34V14z" fill="none" stroke="rgba(14,42,34,.5)" stroke-width="2.4" stroke-linejoin="round"/><path d="M15 33l9-19 9 19" fill="none" stroke="#0E2A22" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M18.8 26h10.4" stroke="#F8FBF7" stroke-width="3.6" stroke-linecap="round"/></svg>';
   $$('[data-coin]').forEach(c => {
     let h = '';
     for (let z = -7; z <= 7; z += 1.5) h += `<div class="edge" style="transform:translateZ(${z}px)"></div>`;
@@ -79,9 +79,9 @@
   /* language switcher (preview: key texts) */
   const T = {
     en: {},
-    es: { 'nav.home': 'Inicio', 'nav.about': 'Acerca de', 'nav.tokenomics': 'Tokenómica', 'nav.roadmap': 'Hoja de ruta', 'nav.whitepaper': 'Whitepaper', 'nav.blog': 'Blog', 'nav.contact': 'Contacto', login: 'Iniciar sesión', buy: 'Comprar ARD', 'hero.pill': 'Ya disponible en BNB Chain · ejemplo', 'hero.h1': 'Sé dueño de la nueva era de los <span class="hl">activos digitales.</span>', 'hero.lead': 'ARDigital Token (ARD) es un activo digital impulsado por la comunidad de ARDigitalAssets. Explora la tokenómica, lee el whitepaper y únete a la comunidad.', 'hero.cta1': 'Comprar ARD', 'hero.cta2': 'Leer whitepaper', 'market.kick': 'Mercado en vivo', 'market.title': 'Sigue el mercado <em>en tiempo real.</em>', 'about.title': '¿Qué es <em>ARDigital Token?</em>', 'tok.title': 'Distribución <em>clara y justa.</em>', 'road.title': 'Hacia dónde <em>vamos.</em>', 'buy.title': 'Consigue ARD en <em>4 pasos.</em>', 'news.title': 'No te pierdas <em>ninguna novedad.</em>', 'faq.title': 'Preguntas <em>frecuentes.</em>' },
-    fr: { 'nav.home': 'Accueil', 'nav.about': 'À propos', 'nav.tokenomics': 'Tokenomics', 'nav.roadmap': 'Feuille de route', 'nav.whitepaper': 'Livre blanc', 'nav.blog': 'Blog', 'nav.contact': 'Contact', login: 'Connexion', buy: 'Acheter ARD', 'hero.pill': 'Disponible sur BNB Chain · exemple', 'hero.h1': 'Prenez part à la nouvelle ère des <span class="hl">actifs numériques.</span>', 'hero.lead': "ARDigital Token (ARD) est un actif numérique communautaire d'ARDigitalAssets. Découvrez la tokenomics, lisez le livre blanc et rejoignez la communauté.", 'hero.cta1': 'Acheter ARD', 'hero.cta2': 'Lire le livre blanc', 'market.kick': 'Marché en direct', 'market.title': 'Suivez le marché <em>en temps réel.</em>', 'about.title': "Qu'est-ce que <em>ARDigital Token ?</em>", 'tok.title': 'Une distribution <em>claire et juste.</em>', 'road.title': 'Où nous <em>allons.</em>', 'buy.title': 'Obtenez ARD en <em>4 étapes.</em>', 'news.title': 'Ne manquez <em>aucune actualité.</em>', 'faq.title': 'Vos questions, <em>nos réponses.</em>' },
-    de: { 'nav.home': 'Start', 'nav.about': 'Über uns', 'nav.tokenomics': 'Tokenomics', 'nav.roadmap': 'Roadmap', 'nav.whitepaper': 'Whitepaper', 'nav.blog': 'Blog', 'nav.contact': 'Kontakt', login: 'Anmelden', buy: 'ARD kaufen', 'hero.pill': 'Jetzt live auf BNB Chain · Beispiel', 'hero.h1': 'Gestalte die nächste Ära <span class="hl">digitaler Werte.</span>', 'hero.lead': 'ARDigital Token (ARD) ist ein Community-Token von ARDigitalAssets. Entdecke die Tokenomics, lies das Whitepaper und werde Teil der Community.', 'hero.cta1': 'ARD jetzt kaufen', 'hero.cta2': 'Whitepaper lesen', 'market.kick': 'Live-Markt', 'market.title': 'Den Markt <em>in Echtzeit verfolgen.</em>', 'about.title': 'Was ist <em>ARDigital Token?</em>', 'tok.title': 'Klare, faire <em>Verteilung.</em>', 'road.title': 'Wohin wir <em>gehen.</em>', 'buy.title': 'ARD in <em>4 einfachen Schritten.</em>', 'news.title': 'Kein Update <em>verpassen.</em>', 'faq.title': 'Fragen, <em>beantwortet.</em>' }
+    es: { 'nav.about': 'Proyecto', 'nav.tokenomics': 'Tokenómica', 'nav.roadmap': 'Hoja de ruta', 'nav.buy': 'Cómo comprar', 'nav.whitepaper': 'Whitepaper', 'nav.blog': 'Noticias', 'nav.contact': 'Contacto', login: 'Entrar', buy: 'Comprar ARD', 'hero.h1': 'Dinero digital, acuñado para su comunidad.', 'hero.lead': 'ARD es el token de ARDigitalAssets. Mira cómo se reparte el suministro, revisa el contrato tú mismo y compra en cuatro pasos.', 'hero.cta1': 'Comprar ARD', 'hero.cta2': 'Leer el whitepaper', 'market.title': 'El mercado de hoy, en vivo', 'about.title': 'Por qué existe ARD', 'tok.title': 'Adónde va cada token', 'road.title': 'El plan, fase a fase', 'buyt.title': 'Cómo comprar ARD', 'news.title': 'Recibe novedades por email', 'faq.title': 'Preguntas frecuentes' },
+    fr: { 'nav.about': 'Le projet', 'nav.tokenomics': 'Tokenomics', 'nav.roadmap': 'Feuille de route', 'nav.buy': 'Acheter', 'nav.whitepaper': 'Livre blanc', 'nav.blog': 'Actualités', 'nav.contact': 'Contact', login: 'Connexion', buy: 'Acheter ARD', 'hero.h1': 'Une monnaie numérique, frappée pour sa communauté.', 'hero.lead': "ARD est le jeton d'ARDigitalAssets. Voyez comment l'offre est répartie, vérifiez le contrat vous-même et achetez en quatre étapes.", 'hero.cta1': 'Acheter ARD', 'hero.cta2': 'Lire le livre blanc', 'market.title': 'Le marché du jour, en direct', 'about.title': 'Pourquoi ARD existe', 'tok.title': 'Où va chaque jeton', 'road.title': 'Le plan, étape par étape', 'buyt.title': 'Comment acheter ARD', 'news.title': 'Recevez les nouvelles par email', 'faq.title': 'Vos questions' },
+    de: { 'nav.about': 'Projekt', 'nav.tokenomics': 'Tokenomics', 'nav.roadmap': 'Roadmap', 'nav.buy': 'Kaufen', 'nav.whitepaper': 'Whitepaper', 'nav.blog': 'News', 'nav.contact': 'Kontakt', login: 'Anmelden', buy: 'ARD kaufen', 'hero.h1': 'Digitales Geld, geprägt für seine Community.', 'hero.lead': 'ARD ist der Token von ARDigitalAssets. Sieh genau, wie die Menge verteilt ist, prüfe den Vertrag selbst und kaufe in vier Schritten.', 'hero.cta1': 'ARD kaufen', 'hero.cta2': 'Whitepaper lesen', 'market.title': 'Der Markt heute, live', 'about.title': 'Warum es ARD gibt', 'tok.title': 'Wohin jeder Token geht', 'road.title': 'Der Plan, Phase für Phase', 'buyt.title': 'So kaufst du ARD', 'news.title': 'Neuigkeiten per E-Mail', 'faq.title': 'Häufige Fragen' }
   };
   const orig = {};
   $$('[data-i18n],[data-i18n-html]').forEach(el => { orig[el.dataset.i18n || el.dataset.i18nHtml] = el.innerHTML; });
@@ -110,8 +110,8 @@
   /* tokenomics donut */
   const donut = $('[data-donut]');
   if (donut) {
-    const segs = [['Community & rewards', 40, '#D97757'], ['Liquidity pool', 25, '#B4532E'], ['Development', 15, '#F0A485'], ['Marketing', 10, '#3D3D3A'], ['Team (locked)', 10, '#C9C3B4']];
-    const C = 2 * Math.PI * 80; let off = 0, html = '<circle cx="110" cy="110" r="80" fill="none" stroke="#F0EEE6" stroke-width="34"/>', leg = '';
+    const segs = [['Community and rewards', 40, '#E3C870'], ['Liquidity pool', 25, '#8FD3B6'], ['Development', 15, '#F8FBF7'], ['Marketing', 10, '#B8912F'], ['Team, locked', 10, '#4E7D6C']];
+    const C = 2 * Math.PI * 80; let off = 0, html = '<circle cx="110" cy="110" r="80" fill="none" stroke="#0F4A39" stroke-width="30"/>', leg = '';
     segs.forEach(([n, p, c]) => { const L = C * p / 100; html += `<circle class="seg" cx="110" cy="110" r="80" stroke="${c}" stroke-dasharray="0 ${C}" data-len="${L - 2}" stroke-dashoffset="${-off}"><title>${n}: ${p}%</title></circle>`; off += L; leg += `<div class="lg"><i style="background:${c}"></i><span>${n}</span><b>${p}%</b></div>`; });
     donut.innerHTML = html; $('[data-legend]').innerHTML = leg;
     new IntersectionObserver((es, o) => es.forEach(e => { if (e.isIntersecting) { $$('.seg', donut).forEach((s, i) => setTimeout(() => s.setAttribute('stroke-dasharray', `${s.dataset.len} ${C}`), reduce ? 0 : i * 180)); o.disconnect(); } }), { threshold: .3 }).observe(donut);
@@ -125,19 +125,19 @@
     if (!arr || !arr.length) return '';
     const pts = arr.filter((_, i) => i % 4 === 0); const mn = Math.min(...pts), mx = Math.max(...pts);
     const d = pts.map((v, i) => `${(i / (pts.length - 1) * 110).toFixed(1)},${(34 - (v - mn) / (mx - mn || 1) * 30).toFixed(1)}`).join(' L');
-    return `<svg class="spark" viewBox="0 0 110 36" aria-hidden="true"><path d="M${d}" fill="none" stroke="${upc ? '#2F8F5B' : '#C2412D'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    return `<svg class="spark" viewBox="0 0 110 36" aria-hidden="true"><path d="M${d}" fill="none" stroke="${upc ? '#1E7A4F' : '#B23A26'}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
   };
   const tickerEl = $('[data-ticker]'), marketEl = $('[data-market]');
-  const ardTick = `<span class="tk"><span class="tk-ic">AR</span><b>ARD</b><span class="p">$${SAMPLE_PRICE}</span><span class="chg up">sample</span></span>`;
+  const ardTick = `<span class="tk"><span class="tk-ic">AR</span><b>ARD</b><span class="p">$${SAMPLE_PRICE}</span><span class="chg up">sample price</span></span>`;
   const renderTicker = list => {
     const items = ardTick + list.map(c => `<span class="tk"><img src="${c.image}" alt="" loading="lazy" width="26" height="26"><b>${c.symbol.toUpperCase()}</b><span class="p">${money(c.current_price)}</span>${chg(c.price_change_percentage_24h || 0)}</span>`).join('');
     tickerEl.innerHTML = items + items;
   };
   const fallback = () => {
     const names = [['BTC', 'Bitcoin'], ['ETH', 'Ethereum'], ['BNB', 'BNB'], ['SOL', 'Solana'], ['XRP', 'XRP'], ['USDT', 'Tether']];
-    const items = ardTick + names.map(([s]) => `<span class="tk"><span class="tk-ic">${s[0]}</span><b>${s}</b><span class="p">Live price</span></span>`).join('');
+    const items = ardTick + names.map(([s]) => `<span class="tk"><span class="tk-ic">${s[0]}</span><b>${s}</b><span class="p">…</span></span>`).join('');
     if (tickerEl && !tickerEl.dataset.ok) tickerEl.innerHTML = items + items;
-    if (marketEl && !marketEl.dataset.ok) marketEl.innerHTML = [['Bitcoin','btc'],['Ethereum','eth'],['BNB','bnb'],['Solana','sol'],['XRP','xrp'],['Tether','usdt']].map(([n,s],i) => `<div class="mkt-row"><span class="n">${i+1}</span><span class="mkt-coin"><span class="tk-ic">${s[0].toUpperCase()}</span><span><b>${n}</b><small>${s}</small></span></span><span class="p">Loading…</span><span class="chg">—</span><span></span></div>`).join('');
+    if (marketEl && !marketEl.dataset.ok) marketEl.innerHTML = [['Bitcoin','btc'],['Ethereum','eth'],['BNB','bnb'],['Solana','sol'],['XRP','xrp'],['Tether','usdt']].map(([n,s],i) => `<div class="mkt-row"><span class="n">${i+1}</span><span class="mkt-coin"><span class="tk-ic">${s[0].toUpperCase()}</span><span><b>${n}</b><small>${s}</small></span></span><span class="p">…</span><span class="chg"></span><span></span></div>`).join('');
   };
   const load = async () => {
     try {
@@ -165,8 +165,8 @@
   const nf = $('[data-news]');
   nf && nf.addEventListener('submit', e => {
     e.preventDefault(); const i = $('input', nf), m = $('[data-news-msg]');
-    if (!/^\S+@\S+\.\S+$/.test(i.value)) { m.style.color = '#C2412D'; m.textContent = 'Please enter a valid email address.'; i.focus(); return; }
-    m.style.color = ''; m.textContent = '✓ Subscribed! (Preview: on the final site this saves to your mailing list.)'; nf.reset();
+    if (!/^\S+@\S+\.\S+$/.test(i.value)) { m.style.color = '#C2412D'; m.textContent = 'Enter an email address like name@example.com.'; i.focus(); return; }
+    m.style.color = ''; m.textContent = 'Subscribed. On the live site this address goes to your mailing list.'; nf.reset();
   });
 
   /* toast */
@@ -184,7 +184,7 @@
   const pw = $('[data-strength]');
   pw && pw.addEventListener('input', () => {
     const v = pw.value; let s = 0; if (v.length >= 8) s++; if (/[A-Z]/.test(v)) s++; if (/[0-9]/.test(v)) s++; if (/[^A-Za-z0-9]/.test(v)) s++;
-    const m = $('[data-meter]'); m.style.width = (s * 25) + '%'; m.style.background = ['#C2412D', '#C2412D', '#D97757', '#D9A157', '#2F8F5B'][s];
+    const m = $('[data-meter]'); m.style.width = (s * 25) + '%'; m.style.background = ['#B23A26', '#B23A26', '#B8912F', '#8DAF3B', '#1E7A4F'][s];
     $('[data-meter-txt]').textContent = ['Too short', 'Weak', 'Okay', 'Good', 'Strong'][s];
   });
   $$('[data-auth]').forEach(f => f.addEventListener('submit', e => {
@@ -200,7 +200,7 @@
     for (let i = 0; i <= 40; i++) { v += Math.sin(i * .6 + seed) * 6 + Math.cos(i * .27 + seed) * 4 + .8; pts.push(v); }
     const mn = Math.min(...pts), mx = Math.max(...pts);
     const d = pts.map((p, i) => `${(i / 40 * 600).toFixed(1)},${(220 - (p - mn) / (mx - mn) * 190).toFixed(1)}`).join(' L');
-    chart.innerHTML = `<defs><linearGradient id="cf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D97757" stop-opacity=".3"/><stop offset="1" stop-color="#D97757" stop-opacity="0"/></linearGradient></defs><g stroke="rgba(20,20,19,.07)"><line x1="0" y1="60" x2="600" y2="60"/><line x1="0" y1="120" x2="600" y2="120"/><line x1="0" y1="180" x2="600" y2="180"/></g><path d="M${d} L600,240 L0,240Z" fill="url(#cf)"/><path class="line" d="M${d}" fill="none" stroke="#D97757" stroke-width="3" stroke-linecap="round"/>`;
+    chart.innerHTML = `<defs><linearGradient id="cf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#135E46" stop-opacity=".25"/><stop offset="1" stop-color="#135E46" stop-opacity="0"/></linearGradient></defs><g stroke="rgba(20,20,19,.07)"><line x1="0" y1="60" x2="600" y2="60"/><line x1="0" y1="120" x2="600" y2="120"/><line x1="0" y1="180" x2="600" y2="180"/></g><path d="M${d} L600,240 L0,240Z" fill="url(#cf)"/><path class="line" d="M${d}" fill="none" stroke="#135E46" stroke-width="3" stroke-linecap="round"/>`;
   };
   if (chart) { drawChart(1); $$('[data-range]').forEach((b, i) => b.addEventListener('click', () => { $$('[data-range]').forEach(x => x.classList.remove('on')); b.classList.add('on'); drawChart(i + 1); })); }
 })();
