@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /demo/
 Sitemap: https://www.webgrouth.com/sitemap.xml
 Host: www.webgrouth.com

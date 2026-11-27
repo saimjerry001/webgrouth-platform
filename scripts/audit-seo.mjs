@@ -22,7 +22,7 @@ const files = async dir => (await Promise.all((await readdir(dir, { withFileType
 const canonicalPath = file => '/' + relative(root, file).replaceAll('\\', '/').replace(/(^|\/)index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '');
 const exists = async file => { try { await access(file); return true; } catch { return false; } };
 const fail = (path, message) => failures.push(`${path}: ${message}`);
-for (const file of (await files(root)).filter(file => file.endsWith('.html'))) {
+for (const file of (await files(root)).filter(file => file.endsWith('.html') && !file.replaceAll('\\', '/').includes('/demo/'))) {
   const path = canonicalPath(file);
   const html = await readFile(file, 'utf8');
   const nodes = [...walk(parse(html))];
